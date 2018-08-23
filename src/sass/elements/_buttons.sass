@@ -12,10 +12,37 @@ button
   position: relative
   text-align: center
   cursor: pointer
-  color: white
   transition: .25s $ease
   &:focus, &:active
     outline: none
   &--block
     display: block
     width: 100%
+
+.btn-outline
+  color: $colorBlue
+  border: 1px solid $colorBlue
+  background-color: transparent
+  font-size: 12px
+  font-weight: 700
+  padding: 13px 20px
+  text-transform: uppercase
+  border-radius: 30px
+  &:hover
+    background-color: $colorBlue
+    color: white
+
+
+.btn-primary
+  color: white
+  border: 1px solid transparent
+  background-color: $colorBlue
+  font-size: 12px
+  font-weight: 700
+  padding: 13px 20px
+  text-transform: uppercase
+  border-radius: 30px
+  &:hover
+    background-color: transparent
+    color: $colorBlue
+    border-color: $colorBlue

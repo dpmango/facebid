@@ -1,0 +1,36 @@
+.social-list
+  display: flex
+  justify-content: space-between
+  margin-left: -5px
+  margin-right: -5px
+  .social-btn
+    margin: 5px
+
+.social-btn
+  size: 48px
+  border-radius: 50%
+  display: flex
+  align-items: center
+  justify-content: center
+  color: white
+  font-size: 0
+  cursor: pointer
+  transition: .25s $ease
+  &--facebook
+    background: #3B5997
+    .ico
+      font-size: 18px
+  &--vkontakte
+    background: #31518B
+    .ico
+      font-size: 10px
+  &--instagram
+    background-image: linear-gradient(-165deg, #4E60D3 0%, #913BAF 14%, #D52D88 76%, #F26D4F 100%)
+    .ico
+      font-size: 18px
+  &--twitter
+    background: #27AAE1
+    .ico
+      font-size: 14px
+  &:hover
+    opacity: .7

@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="page">
+        <div className="page container">
           <Sidebar />
           <div className="page__content">
             <RenderSwitch />
