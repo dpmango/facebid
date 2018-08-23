@@ -15,7 +15,6 @@ export default class NewUser extends Component {
     api
       .get('postCounter')
       .then(res => {
-        console.log(res)
         this.setState({
           totalPosts: res.data.totalPosts
         })
