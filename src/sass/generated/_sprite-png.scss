@@ -1,0 +1,465 @@
+$sprite: (
+	cabin-logo: (
+		offset-x: -121px,
+		offset-y: -315px,
+		width: 111px,
+		height: 27px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-bbounce: (
+		offset-x: -107px,
+		offset-y: -357px,
+		width: 99px,
+		height: 33px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-canny: (
+		offset-x: 0px,
+		offset-y: -93px,
+		width: 154px,
+		height: 38px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-elements: (
+		offset-x: -216px,
+		offset-y: -357px,
+		width: 94px,
+		height: 28px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-grain: (
+		offset-x: 0px,
+		offset-y: -315px,
+		width: 111px,
+		height: 32px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-poh: (
+		offset-x: -457px,
+		offset-y: -325px,
+		width: 42px,
+		height: 51px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-seventeen: (
+		offset-x: 0px,
+		offset-y: -357px,
+		width: 97px,
+		height: 34px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-style: (
+		offset-x: -151px,
+		offset-y: -202px,
+		width: 107px,
+		height: 30px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-waa: (
+		offset-x: -82px,
+		offset-y: -243px,
+		width: 71px,
+		height: 60px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	homeFeatures-1: (
+		offset-x: -457px,
+		offset-y: 0px,
+		width: 56px,
+		height: 53px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	homeFeatures-2: (
+		offset-x: -129px,
+		offset-y: -141px,
+		width: 58px,
+		height: 41px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	homeFeatures-3: (
+		offset-x: -457px,
+		offset-y: -198px,
+		width: 46px,
+		height: 55px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	homeFeatures-4: (
+		offset-x: -457px,
+		offset-y: -263px,
+		width: 48px,
+		height: 52px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	logo-ACCA: (
+		offset-x: -232px,
+		offset-y: -77px,
+		width: 77px,
+		height: 77px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	logo-ACRA: (
+		offset-x: 0px,
+		offset-y: -141px,
+		width: 119px,
+		height: 51px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	logo-ISCA: (
+		offset-x: 0px,
+		offset-y: -202px,
+		width: 141px,
+		height: 31px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	logo-Xero: (
+		offset-x: -107px,
+		offset-y: 0px,
+		width: 115px,
+		height: 53px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	optionBox: (
+		offset-x: -405px,
+		offset-y: -261px,
+		width: 28px,
+		height: 29px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-allin: (
+		offset-x: -232px,
+		offset-y: 0px,
+		width: 89px,
+		height: 67px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-annual-reporting-table: (
+		offset-x: -405px,
+		offset-y: -300px,
+		width: 23px,
+		height: 26px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-annual-reporting: (
+		offset-x: -405px,
+		offset-y: -94px,
+		width: 42px,
+		height: 44px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-compliance: (
+		offset-x: -163px,
+		offset-y: -243px,
+		width: 70px,
+		height: 60px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-corporate: (
+		offset-x: -331px,
+		offset-y: -207px,
+		width: 60px,
+		height: 62px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-custom: (
+		offset-x: 0px,
+		offset-y: -243px,
+		width: 72px,
+		height: 62px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-dormant: (
+		offset-x: -457px,
+		offset-y: -137px,
+		width: 50px,
+		height: 51px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-full-stack-table: (
+		offset-x: -405px,
+		offset-y: -148px,
+		width: 23px,
+		height: 53px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-full-stack: (
+		offset-x: -405px,
+		offset-y: 0px,
+		width: 42px,
+		height: 84px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-incorp-lean: (
+		offset-x: -331px,
+		offset-y: 0px,
+		width: 64px,
+		height: 59px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-incorp-standart: (
+		offset-x: -331px,
+		offset-y: -69px,
+		width: 64px,
+		height: 59px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-incorp-value: (
+		offset-x: -331px,
+		offset-y: -138px,
+		width: 64px,
+		height: 59px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-monthly-reporting-table: (
+		offset-x: -405px,
+		offset-y: -211px,
+		width: 23px,
+		height: 40px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-monthly-reporting: (
+		offset-x: -457px,
+		offset-y: -63px,
+		width: 41px,
+		height: 64px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	pricing-secretary: (
+		offset-x: -243px,
+		offset-y: -243px,
+		width: 76px,
+		height: 55px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+	rifeng-sign: (
+		offset-x: 0px,
+		offset-y: 0px,
+		width: 97px,
+		height: 83px,
+		total-width: 513px,
+		total-height: 391px,
+		image: '../images/sprite.png'
+	),
+);
+
+
+@mixin sprite-size($image) {
+	background-size: map-get(map-get($sprite, $image), 'total-width') map-get(map-get($sprite, $image), 'total-height');
+}
+
+@mixin sprite-width($image) {
+	width: map-get(map-get($sprite, $image), 'width');
+}
+
+@mixin sprite-height($image) {
+	height: map-get(map-get($sprite, $image), 'height');
+}
+
+@mixin sprite-position($image) {
+	background-position: map-get(map-get($sprite, $image), 'offset-x') map-get(map-get($sprite, $image), 'offset-y');
+}
+
+@mixin sprite-image($image) {
+	background-image: url(map-get(map-get($sprite, $image), 'image'));
+}
+
+@mixin sprite-image-retina($image) {
+	$image-path: map-get(map-get($sprite, $image), 'image');
+	$image-path-retina: str-slice($image-path, 1, str-index($image-path, '.png') - 1) + '@2x.png';
+
+	background-image: url($image-path-retina);
+}
+
+@mixin sprite($image, $size: true) {
+	@include sprite-image($image);
+	@include sprite-position($image);
+	background-repeat: no-repeat;
+
+	@if $size {
+		@include sprite-width($image);
+		@include sprite-height($image);
+	}
+
+	@media
+		only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (   min--moz-device-pixel-ratio: 2),
+		only screen and (     -o-min-device-pixel-ratio: 2/1),
+		only screen and (        min-device-pixel-ratio: 2),
+		only screen and (                min-resolution: 192dpi),
+		only screen and (                min-resolution: 2dppx) {
+
+		@include sprite-size($image);
+		@include sprite-image-retina($image);
+
+	}
+}
+
+
+
+	.icon-cabin-logo {
+		@include sprite(cabin-logo)
+	}
+	.icon-clientLogo-bbounce {
+		@include sprite(clientLogo-bbounce)
+	}
+	.icon-clientLogo-canny {
+		@include sprite(clientLogo-canny)
+	}
+	.icon-clientLogo-elements {
+		@include sprite(clientLogo-elements)
+	}
+	.icon-clientLogo-grain {
+		@include sprite(clientLogo-grain)
+	}
+	.icon-clientLogo-poh {
+		@include sprite(clientLogo-poh)
+	}
+	.icon-clientLogo-seventeen {
+		@include sprite(clientLogo-seventeen)
+	}
+	.icon-clientLogo-style {
+		@include sprite(clientLogo-style)
+	}
+	.icon-clientLogo-waa {
+		@include sprite(clientLogo-waa)
+	}
+	.icon-homeFeatures-1 {
+		@include sprite(homeFeatures-1)
+	}
+	.icon-homeFeatures-2 {
+		@include sprite(homeFeatures-2)
+	}
+	.icon-homeFeatures-3 {
+		@include sprite(homeFeatures-3)
+	}
+	.icon-homeFeatures-4 {
+		@include sprite(homeFeatures-4)
+	}
+	.icon-logo-ACCA {
+		@include sprite(logo-ACCA)
+	}
+	.icon-logo-ACRA {
+		@include sprite(logo-ACRA)
+	}
+	.icon-logo-ISCA {
+		@include sprite(logo-ISCA)
+	}
+	.icon-logo-Xero {
+		@include sprite(logo-Xero)
+	}
+	.icon-optionBox {
+		@include sprite(optionBox)
+	}
+	.icon-pricing-allin {
+		@include sprite(pricing-allin)
+	}
+	.icon-pricing-annual-reporting-table {
+		@include sprite(pricing-annual-reporting-table)
+	}
+	.icon-pricing-annual-reporting {
+		@include sprite(pricing-annual-reporting)
+	}
+	.icon-pricing-compliance {
+		@include sprite(pricing-compliance)
+	}
+	.icon-pricing-corporate {
+		@include sprite(pricing-corporate)
+	}
+	.icon-pricing-custom {
+		@include sprite(pricing-custom)
+	}
+	.icon-pricing-dormant {
+		@include sprite(pricing-dormant)
+	}
+	.icon-pricing-full-stack-table {
+		@include sprite(pricing-full-stack-table)
+	}
+	.icon-pricing-full-stack {
+		@include sprite(pricing-full-stack)
+	}
+	.icon-pricing-incorp-lean {
+		@include sprite(pricing-incorp-lean)
+	}
+	.icon-pricing-incorp-standart {
+		@include sprite(pricing-incorp-standart)
+	}
+	.icon-pricing-incorp-value {
+		@include sprite(pricing-incorp-value)
+	}
+	.icon-pricing-monthly-reporting-table {
+		@include sprite(pricing-monthly-reporting-table)
+	}
+	.icon-pricing-monthly-reporting {
+		@include sprite(pricing-monthly-reporting)
+	}
+	.icon-pricing-secretary {
+		@include sprite(pricing-secretary)
+	}
+	.icon-rifeng-sign {
+		@include sprite(rifeng-sign)
+	}
