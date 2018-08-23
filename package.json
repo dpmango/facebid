@@ -61,7 +61,7 @@
     "build-scripts": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "surge": "mv build/index.html build/200.html && surge --domain cabin.surge.sh --project ./build",
+    "surge": "mv build/index.html build/200.html && surge --domain facebid.surge.sh --project ./build",
     "start": "concurrently --kill-others \"gulp\" \"yarn start-scripts\"",
     "build": "gulp build --production && yarn build-scripts",
     "postbuild": "react-snap"
