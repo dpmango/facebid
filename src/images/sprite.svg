@@ -5,6 +5,11 @@
         checkmark
     </title>
     <path d="M1.154 2.497l2.119 2.147L7.846 0 9 1.174 3.273 7 0 3.67z" fill-rule="nonzero"/>
+</symbol><symbol id="ico-close" viewBox="0 0 12 12">
+    <title>
+        close
+    </title>
+    <path d="M7.56 5.854L12 10.293l-1.415 1.414-4.439-4.44-4.439 4.44-1.414-1.414 4.44-4.44-4.44-4.438L1.707 0l4.44 4.439L10.584 0 12 1.416 7.56 5.854z" fill-rule="evenodd"/>
 </symbol><symbol id="ico-facebook" viewBox="0 0 9 18">
     <title>
         facebook
@@ -15,6 +20,16 @@
         instagram
     </title>
     <path d="M5 0h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H5a5 5 0 0 1-5-5V5a5 5 0 0 1 5-5zm.5 1.5a4 4 0 0 0-4 4v7a4 4 0 0 0 4 4h7a4 4 0 0 0 4-4v-7a4 4 0 0 0-4-4h-7zM14 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm-5 8.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9zM9 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" fill-rule="evenodd"/>
+</symbol><symbol id="ico-plus" viewBox="0 0 14 14">
+    <title>
+        plus
+    </title>
+    <path fill-rule="nonzero" d="M14 8H8v6H6V8H0V6h6V0h2v6h6z"/>
+</symbol><symbol id="ico-search" viewBox="0 0 18 18">
+    <title>
+        Mask
+    </title>
+    <path d="M12.5 11h-.79l-.28-.27A6.471 6.471 0 0 0 13 6.5 6.5 6.5 0 1 0 6.5 13c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L17.49 16l-4.99-5zm-6 0C4.01 11 2 8.99 2 6.5S4.01 2 6.5 2 11 4.01 11 6.5 8.99 11 6.5 11z" fill-rule="nonzero"/>
 </symbol><symbol id="ico-twitter" viewBox="0 0 18 14">
     <title>
         twitter

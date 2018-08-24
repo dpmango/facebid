@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Filters from '../components/Events/Filters';
+import EventsGrid from '../components/Events/EventsGrid';
 
 class Home extends Component {
   static propTypes = {
@@ -13,9 +15,10 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="home">
-        <h1>Homepage</h1>
-      </div>
+      <React.Fragment>
+        <Filters />
+        <EventsGrid />
+      </React.Fragment>
     );
   }
 }

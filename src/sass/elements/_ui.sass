@@ -1,0 +1,32 @@
+.ui-input
+  position: relative
+  display: block
+  input, textarea
+    display: block
+    width: 100%
+    font-family: $defaultFamily
+    font-size: 14px
+    -webkit-appearance: none
+    background: transparent
+    border: 1px solid #DCE1E7
+    padding: 12px 20px
+    border-radius: 30px
+    transition: .25s $ease
+    &::placeholder
+      color: #828E9A
+    &:focus
+      border-color: $colorBlue
+
+
+  textarea
+    resize: vertical
+
+  &--iconed
+    .ico
+      position: absolute
+      right: 15px
+      top: 50%
+      transform: translateY(-50%)
+      &-search
+        font-size: 18px
+        fill: #C6CCD2

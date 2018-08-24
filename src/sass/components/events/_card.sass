@@ -1,0 +1,38 @@
+.e-card
+  position: relative
+  margin-bottom: 25px
+  &:last-child
+    margin-bottom: 0
+  &__wrapper
+    position: relative
+    display: flex
+    background: white
+  &__media
+    flex: 0 1 50%
+    max-width: 50%
+    min-width: 1px
+    min-height: 0
+
+  &__image
+    border-radius: 4px
+    position: relative
+    z-index: 1
+    // overflow: hidden
+    font-size: 0
+    box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
+    img
+      max-width: 100%
+      display: block
+      border-radius: 4px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute 0
+      background: rgba(white, .05)
+      border-radius: 4px
+
+  &__contents
+    flex: 0 1 50%
+    max-width: 50%
+    min-width: 1px
+    min-height: 0
