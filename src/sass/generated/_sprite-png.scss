@@ -5,7 +5,16 @@ $sprite: (
 		width: 108px,
 		height: 24px,
 		total-width: 108px,
-		total-height: 24px,
+		total-height: 47px,
+		image: '../images/sprite.png'
+	),
+	plane: (
+		offset-x: 0px,
+		offset-y: -34px,
+		width: 13px,
+		height: 13px,
+		total-width: 108px,
+		total-height: 47px,
 		image: '../images/sprite.png'
 	),
 );
@@ -66,4 +75,7 @@ $sprite: (
 
 	.icon-logo {
 		@include sprite(logo)
+	}
+	.icon-plane {
+		@include sprite(plane)
 	}

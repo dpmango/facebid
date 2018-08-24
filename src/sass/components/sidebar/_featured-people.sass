@@ -1,0 +1,133 @@
+.f-people
+  position: relative
+  z-index: 1
+  background: #8894A3
+  border-radius: 4px
+  overflow: hidden
+  color: white
+  margin-bottom: 25px
+  font-family: $roboto
+  &::after
+    display: inline-block
+    content: ' '
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: 1
+    height: 100px
+    // originally .5
+    opacity: 0.7
+    background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, #000000 100%);
+
+  &__image
+    font-size: 0
+    img
+      width: 100%
+
+  &__general
+    position: absolute
+    display: flex
+    align-items: center
+    z-index: 3
+    bottom: 0
+    left: 0
+    right: 0
+    padding: 15px
+    transition: .25s $ease
+  &__general-content
+    flex: 0 1 auto
+
+  &__line
+    display: flex
+    align-items: center
+
+  &__name
+    display: inline-block
+    font-size: 16px
+    font-weight: 700
+    margin-right: 8px
+    font-family: $defaultFamily
+
+  &__status
+    display: inline-block
+    vertical-align: middle
+
+  &__distance
+    margin-top: 5px
+    font-size: 12px
+    color: $colorWhite70
+
+  &__date
+    flex: 0 0 40px
+    size: 40px
+    margin-left: auto
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    text-align: center
+    border-radius: 8px
+    border: 1px solid #DDE1E6
+    opacity: 0
+    transition: .25s $ease
+    span
+      display: block
+      &:first-child
+        font-family: $defaultFamily
+        font-weight: 700
+        font-size: 16px
+      &:last-child
+        font-size: 10px
+        color: $colorWhite70
+
+
+  &__info
+    position: absolute 0
+    display: flex
+    flex-direction: column
+    opacity: 0
+    z-index: 2
+    background: rgba(black, .7)
+    // top padding is for the offset
+    padding: 60px 15px 15px
+    pointer-events: none
+    transform: translateY(100%)
+    transition: .25s $ease
+
+  &:hover
+    .f-people
+      &__info
+        opacity: 1
+        pointer-events: all
+        transform: none
+      &__general
+        bottom: calc(100% - 65px)
+
+      &__date
+        // with the delay
+        // shows when info transition done
+        transition-delay: .15s
+        opacity: 1
+
+  &__event-name
+    font-size: 18px
+    font-weight: 700
+
+  &__event-line
+    font-family: $defaultFamily
+    font-weight: 500
+    font-size: 12px
+    color: $colorWhite70
+    display: flex
+    align-items: center
+    margin: 10px 0
+    .icon
+      margin: 0 8px
+
+  &__event-description
+    font-size: 12px
+    line-height: 1.5
+
+  &__event-cta
+    margin-top: auto

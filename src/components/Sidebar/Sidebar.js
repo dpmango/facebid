@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NewUser from './NewUser';
+import Featured from './Featured';
 
 class Sidebar extends Component {
   static propTypes = {
@@ -18,6 +19,7 @@ class Sidebar extends Component {
           <div className="sidebar__user">
             <NewUser />
           </div>
+          <Featured />
         </div>
       </div>
     );
