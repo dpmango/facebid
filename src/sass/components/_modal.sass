@@ -16,8 +16,6 @@
     overflow-y: scroll
     display: flex
     flex-direction: column
-    opacity: 0
-    transform: translateY(20%)
     padding: 30px 50px 20px 15px
 
   &__container
@@ -29,12 +27,15 @@
     max-width: 940px
     width: 100%
     text-align: left
+    opacity: 0
+    transform: translateY(20%)
+    transition: .25s $ease
 
   &.is-active
     pointer-events: all
     .modal-bg
       opacity: 1
-    .modal__area
+    .modal__container
       opacity: 1
       transform: none
 

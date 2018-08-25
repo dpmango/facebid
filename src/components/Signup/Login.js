@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Modal from '../Modal/Modal';
 import FormInput from '../Forms/Input';
 import Checkbox from '../Forms/Checkbox';
+import SocialLogin from './SocialLogin';
 
 class Login extends Component{
   constructor(props){
@@ -152,7 +153,7 @@ class Login extends Component{
               </div>
 
               <div className="login__right">
-
+                <SocialLogin />
               </div>
 
             </div>
