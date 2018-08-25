@@ -3,7 +3,7 @@
   top: 0
   bottom: 0
   right: 0
-  left: calc(225px + 50px + 30px)
+  left: calc(225px + 50px + 15px)
   z-index: 999
   display: flex
   flex-direction: column
@@ -18,11 +18,17 @@
     flex-direction: column
     opacity: 0
     transform: translateY(20%)
+    padding: 30px 50px 20px 15px
+
   &__container
     position: relative
     z-index: 2
     margin: auto
+    border-radius: 4px
     background: white
+    max-width: 940px
+    width: 100%
+    text-align: left
 
   &.is-active
     pointer-events: all
@@ -32,6 +38,38 @@
       opacity: 1
       transform: none
 
+  &__close
+    position: absolute
+    z-index: 2
+    display: flex
+    align-items: center
+    justify-content: center
+    top: -16px
+    right: -16px
+    size: 32px
+    border-radius: 50%
+    background: white
+    font-size: 0
+    cursor: pointer
+    box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
+    transition: .25s $ease
+    .ico
+      // fill: url(#gradient)
+      fill: #9B35F0
+      font-size: 11px
+    &:hover
+      opacity: .7
+
+  &__header
+    padding: 25px
+    border-bottom: 1px solid #DDE1E6
+
+  &__header-name
+    font-size: 18px
+    font-weight: 500
+
+  &__content
+    padding: 25px
 
 .modal-bg
   position: absolute 0
