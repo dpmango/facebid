@@ -2,8 +2,21 @@ import React, {Component} from 'react';
 import Swiper from 'react-id-swiper';
 import SvgIcon from '../Helpers/SvgIcon';
 import Image from '../Helpers/Image';
+import ConvertMonthNumToName from '../../services/ConvertMonthNumToName';
 
 class EventCard extends Component {
+  convertDate = (str) => {
+    const date = str.substring(0,2)
+    const month = ConvertMonthNumToName(str.substring(2))
+
+    return (
+      <React.Fragment>
+        <span>{date}</span>
+        <span>{month}</span>
+      </React.Fragment>
+    )
+  }
+
   render(){
     const SwiperParams = {
       // react specific params
@@ -29,7 +42,12 @@ class EventCard extends Component {
     const {
       data: {
         images,
-        user
+        user,
+        name,
+        from,
+        date,
+        to,
+        desc
       }
     } = this.props
 
@@ -78,6 +96,21 @@ class EventCard extends Component {
                   <SvgIcon name="more" />
                 </div>
               </div>
+            </div>
+            <div className="e-card__scrollable">
+              <div className="e-card__head">
+                <div className="e-card__title">{name}</div>
+                <div className="e-card__event-line">
+                  <span>{from}</span>
+                  <i className="icon icon-plane"></i>
+                  <span>{to}</span>
+                </div>
+                <div className="e-card__date">
+                  {this.convertDate(date)}
+                </div>
+              </div>
+              <div className="e-card__desc">{desc}</div>
+
             </div>
           </div>
         </div>

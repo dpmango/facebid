@@ -69,7 +69,7 @@
     "build-scripts": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "surge": "mv build/index.html build/200.html && surge --domain facebid.surge.sh --project ./build",
+    "surge": "mv build/index.html build/200.html && surge --domain facebid.surge.sh --project ./build && yarn deploy-backend",
     "fakeServer": "json-server --watch api/db.json",
     "start": "concurrently --kill-others \"gulp\" \"yarn start-scripts\" \"yarn fakeServer -p 8000\"",
     "build": "gulp build --production && yarn build-scripts",
