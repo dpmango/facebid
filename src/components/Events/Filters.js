@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SvgIcon from '../../components/Helpers/SvgIcon';
+import FilterSlider from './FilterSlider';
 
 class Filters extends Component {
   createEventClick = () => {
@@ -27,12 +28,41 @@ class Filters extends Component {
           </div>
         </div>
         <div className="filters__options">
-
+          <div className="filters__options-col filters__options-col--gender">
+            <div className="ui-group">
+              <label htmlFor="">Показывать</label>
+              <div className="ui-input">
+                <input type="text"/>
+              </div>
+            </div>
+          </div>
+          <div className="filters__options-col filters__options-col--gender">
+            <div className="ui-group">
+              <label htmlFor="">В радиусе</label>
+              <div className="ui-input">
+                <input type="text"/>
+              </div>
+            </div>
+          </div>
+          <div className="filters__options-col filters__options-col--gender">
+            <div className="ui-group">
+              <label htmlFor="">Возраст</label>
+              <div className="ui-input">
+                <input type="text"/>
+              </div>
+            </div>
+          </div>
+          <div className="filters__options-col filters__options-col--gender">
+            <div className="ui-group">
+              <label htmlFor="">Языки</label>
+              <div className="ui-input">
+                <input type="text"/>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="filters__categories">
-          <div className="filters__slider">
-
-          </div>
+          <FilterSlider />
         </div>
       </div>
     )

@@ -20,6 +20,11 @@ class Sidebar extends Component {
             <NewUser />
           </div>
           <Featured />
+          <div className="sidebar__footer">
+            <a href="#">О компании</a>
+            <a href="#">Правила</a>
+            <a href="#">О компании</a>
+          </div>
         </div>
       </div>
     );

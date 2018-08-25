@@ -8,7 +8,7 @@ class EventsGrid extends Component {
     return(
       <div className="events">
         <div className="events__header">
-          <h3 class="h3-title">Результаты поиска</h3>
+          <h3 className="h3-title">Результаты поиска</h3>
           <div className="events__header-total">Найдено 148 событий</div>
         </div>
         <div className="events__grid">

@@ -30,7 +30,7 @@ var processors = [
   short(),
   svginline(),
   animations(),
-  focus(),
+  // focus(),
   easings(),
   autoprefixer({
     browsers: ['last 5 versions'],

@@ -10,6 +10,10 @@ class Featured extends Component {
     }
   }
 
+  onFeaturedClick = () => {
+
+  }
+
   componentDidMount(){
     api
       .get('featuredPeople')
@@ -36,10 +40,13 @@ class Featured extends Component {
             return (
               <FeaturedPeople
                 key={person.id}
-                data={person} />  
+                data={person} />
             )
           })
         }
+        <div className="sidebar__featured-cta">
+          <button onClick={this.onFeaturedClick} className="btn btn-primary btn--block">Хочу сюда</button>
+        </div>
       </div>
     )
   }

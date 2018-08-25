@@ -19,9 +19,7 @@ http://facebid.surge.sh
 * `yarn postbuild` - run react-snap (prebuild command to be run authomatically)
 
 ## Back-end
-Backed is under development. Fake API responces located at `/src/api/db.json` and server through [json-server](https://github.com/typicode/json-server).
-
-If you don't need to change things on API side, adjust `BACKEND_URL` to heroku URL in `src/services/Api.js` file
+Backed is under development. Fake API responces located at `/src/db.json` and server through [json-server](https://github.com/typicode/json-server). For the surge "production-like" it's located on `http://facebid-api.herokuapp.com` with uptime robot for 100% uptime and should be deployed with `yarn deploy-backend` command (subtree push)
 
 ## Folder structure
 ```
