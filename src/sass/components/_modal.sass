@@ -65,18 +65,9 @@
     padding: 25px
     border-bottom: 1px solid #DDE1E6
 
-  &__header-name
-    font-size: 18px
-    font-weight: 500
-
   &__content
     padding: 25px
 
-  &__intro
-    color: $fontColorGray
-    font-size: 16px
-    line-height: 1.5
-    font-family: $roboto
 
 .modal-bg
   position: absolute 0
@@ -122,3 +113,35 @@
     flex: 0 0 35%
     max-width: 35%
     padding-left: 6%
+
+
+// alert modal
+.modal-alert
+  padding: 40px
+  display: flex
+  &__image
+    flex: 0 0 auto
+    img
+      max-width: 100%
+
+  &__contents
+    flex: 0 1 60%
+    padding-left: 35px
+    max-width: 435px
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+  &__paragraph
+    margin: 25px 0
+
+  &__actions
+    margin-top: 5px
+    .btn
+      margin-right: 30px
+
+  &__geo-test
+    display: block
+    font-size: 12px
+    color: $fontColorGray
+    margin-top: 10px

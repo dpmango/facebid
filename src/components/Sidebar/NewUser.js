@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import api from '../../services/Api';
-import SvgIcon from '../../components/Helpers/SvgIcon';
-import Login from '../../components/Signup/Login';
-import Signup from '../../components/Signup/Signup';
+import SvgIcon from '../Helpers/SvgIcon';
+import Login from '../Signup/Login';
+import Signup from '../Signup/Signup';
 
 export default class NewUser extends Component {
   constructor(){

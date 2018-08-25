@@ -94,12 +94,12 @@ class Login extends Component{
         onHide={this.hide}
         >
           <div className="modal__header">
-            <div className="modal__header-name">
+            <div className="h4-title">
               Вход на сайт
             </div>
           </div>
           <div className="modal__content">
-            <div className="modal__intro">Введите свои данные или зарегистрируйтесь, <br /> если вы здесь впервые.</div>
+            <div className="t-primary">Введите свои данные или зарегистрируйтесь, <br /> если вы здесь впервые.</div>
             <div className="modal-auth">
               <div className="modal-auth__left">
                 <Formsy

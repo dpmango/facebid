@@ -9,12 +9,11 @@ class Signup extends Component{
   constructor(props){
     super(props)
     this.state = {
-      modalOpened: true,
+      modalOpened: false,
       nickname: '',
       email: '',
       password: '',
-      password_repeat: '',
-
+      password_repeat: ''
     }
   }
 
@@ -89,12 +88,12 @@ class Signup extends Component{
         onHide={this.hide}
         >
           <div className="modal__header">
-            <div className="modal__header-name">
+            <div className="h4-title">
               Регистрация
             </div>
           </div>
           <div className="modal__content">
-            <div className="modal__intro">Начинте общение уже сейчас! Получите доступ  <br/>к 99 481 объявлениям в 2 клика!</div>
+            <div className="t-primary">Начинте общение уже сейчас! Получите доступ  <br/>к 99 481 объявлениям в 2 клика!</div>
             <div className="modal-auth">
               <div className="modal-auth__left">
                 <Formsy

@@ -8,12 +8,30 @@ h1, h2, h3, h4
 .h3-title
   font-size: 24px
   font-weight: 700
+  font-family: $defaultFamily
+
+.h4-title
+  font-size: 18px
+  font-weight: 700
+  font-family: $defaultFamily
+
+.t-primary
+  font-size: 16px
+  line-height: 1.5
+  font-family: $roboto
+  color: $grayColor
+
+// p.t-primary
+//   margin: 1em 0
 
 .t-secondary
   font-family: $roboto
   font-size: 14px
   line-height: 1.42
   color: $fontColorGray
+
+// p.t-secondary
+//   margin: 1em 0
 
 .t-center
   text-align: center
@@ -22,6 +40,18 @@ h1, h2, h3, h4
   color: $colorBlue
   font-size: 14px
   font-family: $roboto
+  cursor: pointer
   transition: .25s $ease
+  &:hover
+    color: $fontColor
+
+.t-link-small
+  color: $colorBlue
+  transition: .25s $ease
+  font-family: $defaultFamily
+  font-size: 12px
+  font-weight: 700
+  cursor: pointer
+  text-transform: uppercase
   &:hover
     color: $fontColor
