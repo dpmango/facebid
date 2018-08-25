@@ -24,7 +24,6 @@ class FilterSlider extends Component {
 
       // common swiper API
       // http://idangero.us/swiper/api/
-
       direction: 'horizontal',
       watchOverflow: true,
       setWrapperSize: false,

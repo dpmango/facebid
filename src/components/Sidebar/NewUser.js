@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import api from '../../services/Api';
 import SvgIcon from '../../components/Helpers/SvgIcon';
+import Login from '../../components/Signup/Login';
 
 export default class NewUser extends Component {
   constructor(){
@@ -25,13 +26,11 @@ export default class NewUser extends Component {
   }
 
   loginUserClick = () => {
-    // modal ?
-    alert('тут будет модалка')
+    this.loginModal.show()
   }
 
   signupUserClick = () => {
     // modal ?
-    alert('тут будет модалка')
   }
 
   socialLoginClick = (provider) => {
@@ -44,13 +43,15 @@ export default class NewUser extends Component {
         totalPosts
       }
     } = this
+
     return (
       <div className="new-user">
         <div className="new-user__title">Создайте аккаунт</div>
         <div className="new-user__message t-secondary">Начинте общение уже сейчас! Получите доступ к <span>{totalPosts}</span> объявлениям в 2 клика!</div>
         <div className="new-user__cta">
-          <a href="" onClick={this.loginUserClick} className="btn btn-outline btn--block">Войти</a>
-          <a href="" onClick={this.signupUserClick} className="btn btn-primary btn--block">Зарегистрироваться</a>
+          <button onClick={this.loginUserClick} className="btn btn-outline btn--block">Войти</button>
+          <Login onRef={ref => (this.loginModal = ref)} />
+          <button onClick={this.signupUserClick} className="btn btn-primary btn--block">Зарегистрироваться</button>
         </div>
         <div className="new-user__socials">
           <div className="t-secondary t-center">Или войдите с помощью социальных сетей</div>
@@ -70,7 +71,6 @@ export default class NewUser extends Component {
           </div>
         </div>
       </div>
-
     )
   }
 }

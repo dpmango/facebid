@@ -1,0 +1,41 @@
+.modal
+  position: fixed
+  top: 0
+  bottom: 0
+  right: 0
+  left: calc(225px + 50px + 30px)
+  z-index: 999
+  display: flex
+  flex-direction: column
+  pointer-events: none
+  &__wrapper
+    flex: 1 1 auto
+    position: relative
+  &__area
+    height: 100vh
+    overflow-y: scroll
+    display: flex
+    flex-direction: column
+    opacity: 0
+    transform: translateY(20%)
+  &__container
+    position: relative
+    z-index: 2
+    margin: auto
+    background: white
+
+  &.is-active
+    pointer-events: all
+    .modal-bg
+      opacity: 1
+    .modal__area
+      opacity: 1
+      transform: none
+
+
+.modal-bg
+  position: absolute 0
+  z-index: 1
+  background: rgba(black, .5)
+  opacity: 0
+  transition: opacity .25s $ease
