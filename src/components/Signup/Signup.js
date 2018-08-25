@@ -3,17 +3,18 @@ import Formsy from 'formsy-react';
 import { connect } from 'react-redux';
 import Modal from '../Modal/Modal';
 import FormInput from '../Forms/Input';
-import Checkbox from '../Forms/Checkbox';
 import SocialLogin from './SocialLogin';
 
-class Login extends Component{
+class Signup extends Component{
   constructor(props){
     super(props)
     this.state = {
-      modalOpened: false,
+      modalOpened: true,
+      nickname: '',
       email: '',
       password: '',
-      remember: false
+      password_repeat: '',
+
     }
   }
 
@@ -48,7 +49,7 @@ class Login extends Component{
   handleSubmit = (e) => {
     this.setState({isFormSubmitted: true})
     if ( this.state.formIsValid ){
-      this.loginUser();
+      this.signupUser();
       this.setState({isFormSubmitted: false}) // reset state here
     }
   }
@@ -70,13 +71,7 @@ class Login extends Component{
     }
   }
 
-  toggleRemember = () => {
-    this.setState({
-      remember: !this.state.remember
-    })
-  }
-
-  loginUser = () => {
+  signupUser = () => {
     // auth
     alert('TODO - auth')
   }
@@ -84,7 +79,7 @@ class Login extends Component{
   render(){
     const {
       state: {
-        email, password, remember
+        nickname, email, password, password_repeat
       }
     } = this
 
@@ -95,24 +90,37 @@ class Login extends Component{
         >
           <div className="modal__header">
             <div className="modal__header-name">
-              Вход на сайт
+              Регистрация
             </div>
           </div>
           <div className="modal__content">
-            <div className="modal__intro">Введите свои данные или зарегистрируйтесь, <br /> если вы здесь впервые.</div>
+            <div className="modal__intro">Начинте общение уже сейчас! Получите доступ  <br/>к 99 481 объявлениям в 2 клика!</div>
             <div className="modal-auth">
               <div className="modal-auth__left">
                 <Formsy
-                  className="login__form"
+                  className="signup__form"
                   onSubmit={this.handleSubmit}
                   onValid={this.formValid}
                   onInvalid={this.formInvalid}
                   ref={this.formRef}
                 >
                   <FormInput
+                    name="nickname"
+                    type="text"
+                    label="Никнейм:"
+                    placeholder="Например, Adelina491"
+                    extraClass="ui-group--row"
+                    value={nickname}
+                    validationErrors={{
+                      isDefaultRequiredValue: 'Заполните никнейм'
+                    }}
+                    onChangeHandler={this.handleChange}
+                    onKeyHandler={this.keyPressHandler}
+                    required />
+                  <FormInput
                     name="email"
-                    label="Логин:"
-                    placeholder="E–mail или номер телефона"
+                    label="Email:"
+                    placeholder="Введите e-mail"
                     extraClass="ui-group--row"
                     value={email}
                     validations="isEmail"
@@ -136,19 +144,23 @@ class Login extends Component{
                     onChangeHandler={this.handleChange}
                     onKeyHandler={this.keyPressHandler}
                     required />
-                  <div className="login__remember">
-                    <Checkbox
-                      name="remember"
-                      text="Запомнить меня"
-                      clickHandler={this.toggleRemember}
-                      value={remember}
-                    />
+                  <FormInput
+                    name="password_repeat"
+                    type="password"
+                    label="Повторите пароль:"
+                    placeholder="Введите пароль"
+                    extraClass="ui-group--row"
+                    value={password_repeat}
+                    validationErrors={{
+                      isDefaultRequiredValue: 'Заполните пароль'
+                    }}
+                    onChangeHandler={this.handleChange}
+                    onKeyHandler={this.keyPressHandler}
+                    required />
+                  <div className="signup__cta">
+                    <button className="btn btn-primary" type="submit">Зарегистрироваться</button>
                   </div>
-                  <div className="login__cta">
-                    <button className="btn btn-primary" type="submit">Войти</button>
-                    <a href="#" className="t-link">Не помню пароль</a>
-                  </div>
-                  <div className="login__rules">Пользуясь сайтом Вы соглашаетесь с Пользовательским  соглашением и Политикой конфиденциальности</div>
+                  <div className="signup__rules">Пользуясь сайтом Вы соглашаетесь с Пользовательским соглашением и Политикой конфиденциальности</div>
                 </Formsy>
               </div>
 
@@ -171,4 +183,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

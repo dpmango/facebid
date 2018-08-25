@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import api from '../../services/Api';
 import SvgIcon from '../../components/Helpers/SvgIcon';
 import Login from '../../components/Signup/Login';
+import Signup from '../../components/Signup/Signup';
 
 export default class NewUser extends Component {
   constructor(){
@@ -30,7 +31,7 @@ export default class NewUser extends Component {
   }
 
   signupUserClick = () => {
-    // modal ?
+    this.signupModal.show();
   }
 
   socialLoginClick = (provider) => {
@@ -52,6 +53,7 @@ export default class NewUser extends Component {
           <button onClick={this.loginUserClick} className="btn btn-outline btn--block">Войти</button>
           <Login onRef={ref => (this.loginModal = ref)} />
           <button onClick={this.signupUserClick} className="btn btn-primary btn--block">Зарегистрироваться</button>
+          <Signup onRef={ref => (this.signupModal = ref)} />
         </div>
         <div className="new-user__socials">
           <div className="t-secondary t-center">Или войдите с помощью социальных сетей</div>
