@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import api from '../../services/Api';
 import FeaturedPeople from '../People/FeaturedPeople'
+import Loading from '../Helpers/Loading';
 
 class Featured extends Component {
   constructor(){
@@ -33,7 +34,7 @@ class Featured extends Component {
     return (
       <div className="sidebar__featured">
         { !featuredPeople &&
-          <span>Загрузка... </span>
+          <Loading />
         }
         { featuredPeople &&
           featuredPeople.map(person => {

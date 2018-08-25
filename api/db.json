@@ -36,11 +36,38 @@
       }
     }
   ],
-  "posts": [
+  "events": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "images": [
+        "eventImage_1.jpg",
+        "eventImage_1.jpg",
+        "eventImage_1.jpg",
+        "eventImage_1.jpg"
+      ],
+      "user": {
+        "name": "Анастасия",
+        "age": "30",
+        "isVerified": true,
+        "distance": "19 км от Вас"
+      },
+      "name": "event name"
+    },
+    {
+      "id": 2,
+      "images": [
+        "eventImage_1.jpg",
+        "eventImage_1.jpg",
+        "eventImage_1.jpg",
+        "eventImage_1.jpg"
+      ],
+      "user": {
+        "name": "Анастасия",
+        "age": "30",
+        "isVerified": true,
+        "distance": "19 км от Вас"
+      },
+      "name": "event name"
     }
   ],
   "comments": [

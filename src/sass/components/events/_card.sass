@@ -13,7 +13,23 @@
     min-width: 1px
     min-height: 0
 
+  &__slider
+    .swiper-pagination
+      bottom: 20px
+
+    .swiper-pagination-bullet
+      size: 6px
+      background: rgba(white, .5)
+      transition: .25s $ease
+      transform: scale(.66)
+      opacity: 1
+
+    .swiper-pagination-bullet-active
+      background: white
+      transform: none
+
   &__image
+    flex: 0 0 auto
     border-radius: 4px
     position: relative
     z-index: 1
@@ -36,3 +52,87 @@
     max-width: 50%
     min-width: 1px
     min-height: 0
+
+  &__top
+    background: #F6F7FB
+    padding: 12px 20px
+    display: flex
+    align-items: center
+
+  &__user
+    display: flex
+    &-avatar
+      flex: 0 0 40px
+      size: 40px
+      position: relative
+      z-index: 1
+      overflow: hidden
+      border-radius: 50%
+      img
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+        width: 102%
+
+  &__user-info
+    flex: 1 1 auto
+    margin-left: 18px
+
+  &__user-line
+    display: flex
+    align-items: center
+    margin-top: -2px
+
+  &__user-name
+    flex: 0 1 auto
+    font-size: 18px
+    +text-overflow
+    font-size: 18px
+    font-weight: 700
+    margin-right: 8px
+
+  &__user-status
+    font-size: 0
+    display: inline-block
+    flex: 0 0 auto
+    vertical-align: middle
+
+  &__user-distance
+    margin-top: 5px
+    font-size: 14px
+    color: #8894A3
+
+  &__actions
+    flex: 0 0 auto
+    margin-left: auto
+    display: flex
+    align-items: center
+    padding-right: 5px
+    padding-left: 20px
+
+  &__action
+    size: 24px
+    margin-right: 16px
+    display: flex
+    align-items: center
+    color: $grayColor
+    transition: color .25s $ease
+    font-size: 0
+    &:last-child
+      margin-right: 0
+    .ico
+
+    &:hover, &.is-active
+      color: $colorBlue
+
+  &__bookmark
+    .ico
+      font-size: 18px
+  &__share
+    .ico
+      font-size: 20px
+  &__more
+    .ico
+      font-size: 4px
+      transform: rotate(90deg)
