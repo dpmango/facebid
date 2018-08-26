@@ -56,9 +56,9 @@ class EventCard extends Component {
         <div className="e-card__wrapper">
           <div className="e-card__media">
             <Swiper {...SwiperParams}>
-              {images.map(image => {
+              {images.map((image, index) => {
                 return(
-                  <div className="e-card__image">
+                  <div key={index} className="e-card__image">
                     <Image file={image} />
                   </div>
                 )

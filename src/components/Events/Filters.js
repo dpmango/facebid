@@ -3,13 +3,15 @@ import SvgIcon from '../../components/Helpers/SvgIcon';
 import FilterSlider from './FilterSlider';
 // import Select from '../Forms/Select';
 import Select from 'react-select';
+import Slider from 'rc-slider';
 
 class Filters extends Component {
   constructor(){
     super()
 
     this.state = {
-      gender: null
+      gender: null,
+      range: 20
     }
   }
 
@@ -21,15 +23,28 @@ class Filters extends Component {
 
   }
 
+  // select functions
   handleSelectChange = (value, name) => {
     this.setState({ [name]: value })
   }
+
+  // slider functions
+  rangeSliderChange = (val) => {
+    this.setState({
+      range: val
+    })
+  };
+
+  rangeSliderAfterChange = (val) => {
+
+  }
+
 
   render(){
 
     const {
       state: {
-        gender
+        gender, range
       }
     } = this
 
@@ -66,11 +81,23 @@ class Filters extends Component {
               />
             </div>
           </div>
-          <div className="filters__options-col filters__options-col--radius">
+          <div className="filters__options-col filters__options-col--range">
             <div className="ui-group">
               <label htmlFor="">В радиусе</label>
-              <div className="ui-input">
-                <input type="text"/>
+              <div className="ui-slider">
+                <div className="ui-slider__info">
+                  <div className="ui-slider__val">{range === 100 ? "100+" : range}</div>
+                  <div className="ui-slider__name">км</div>
+                </div>
+                <Slider
+                  defaultValue={20}
+                  value={range}
+                  min={5}
+                  step={5}
+                  max={100}
+                  onChange={this.rangeSliderChange}
+                  onAfterChange={this.rangeSliderAfterChange}
+                />
               </div>
             </div>
           </div>

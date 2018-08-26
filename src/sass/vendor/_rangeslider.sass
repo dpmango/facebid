@@ -1,9 +1,9 @@
 .rc-slider
   position: relative
-  height: 25px
+  height: 18px
   padding: 5px 0
   width: 100%
-  border-radius: 10px
+  border-radius: 0px
   touch-action: none
   box-sizing: border-box
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
@@ -14,52 +14,46 @@
 .rc-slider-rail
   position: absolute
   width: 100%
-  background-color: #FFFFFF
-  height: 14px
-  border-radius: 10px
+  background-color: #DDE1E6
+  height: 1px
+  border-radius: 0px
 
 .rc-slider-track
   position: absolute
   left: 0
-  height: 14px
+  height: 1px
   border-radius: 10px
-  background-color: rgba($colorBlue, .1)
+  background-color: #3397FF
 
 .rc-slider-handle
   position: absolute
-  margin-left: -12px
-  margin-top: -5px
-  size: 25px
+  margin-left: -8px
+  margin-top: -8px
+  size: 16px
   cursor: pointer
   cursor: -webkit-grab
   cursor: grab
   border-radius: 50%
-  // border: solid 2px #96dbfa
-  background-color: $fontColorGray
+  border: solid 4px white
+  background-color: #3397FF
   touch-action: pan-x
   transition: background .25s $ease
-
-  box-shadow: 4px 0 8px 0 rgba(0,0,0,0.11)
+  box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
+  transition: border .25s $ease
   &:focus
     // border-color: #57c5f7
     // box-shadow: 0 0 0 5px #96dbfa
     outline: none
+  &:hover
+    // border-color: #57c5f7
+  &:active
+    border-width: 2px
+    cursor: -webkit-grabbing
+    cursor: grabbing
 
 .rc-slider-handle-click-focused:focus
   border-color: #96dbfa
   box-shadow: unset
-
-.rc-slider-handle
-  background-color: $colorBlue
-  border-color: #57c5f7
-  &:hover
-    border-color: #57c5f7
-  &:active
-    background-color: $colorBlue
-    border-color: #57c5f7
-    // box-shadow: 0 0 5px #57c5f7
-    cursor: -webkit-grabbing
-    cursor: grabbing
 
 .rc-slider-mark
   position: absolute
