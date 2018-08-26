@@ -4,6 +4,7 @@ import FilterSlider from './FilterSlider';
 // import Select from '../Forms/Select';
 import Select from 'react-select';
 import Slider from 'rc-slider';
+import Toggle from '../Forms/Toggle';
 
 class Filters extends Component {
   constructor(){
@@ -11,7 +12,9 @@ class Filters extends Component {
 
     this.state = {
       gender: null,
-      range: 20
+      range: 20,
+      age: null,
+      languages: []
     }
   }
 
@@ -39,12 +42,17 @@ class Filters extends Component {
 
   }
 
+  selectToggle = (val) => {
+    this.setState({
+      age: val
+    })
+  }
 
   render(){
 
     const {
       state: {
-        gender, range
+        gender, range, age, languages
       }
     } = this
 
@@ -104,17 +112,36 @@ class Filters extends Component {
           <div className="filters__options-col filters__options-col--age">
             <div className="ui-group">
               <label htmlFor="">Возраст</label>
-              <div className="ui-input">
-                <input type="text"/>
-              </div>
+              <Toggle
+                value={age}
+                options={{
+                  left: "26",
+                  right: "32"
+                }}
+                clickHandler={this.selectToggle} />
             </div>
           </div>
           <div className="filters__options-col filters__options-col--languages">
             <div className="ui-group">
               <label htmlFor="">Языки</label>
-              <div className="ui-input">
-                <input type="text"/>
-              </div>
+              <Select
+                name="languages"
+                multi={true}
+                removeSelected={false}
+                simpleValue={true}
+                searchable={false}
+                autosize={false}
+                value={languages}
+                onChange={(e) => this.handleSelectChange(e, "languages")}
+                placeholder="Выберите языки"
+                options={[
+                  { value: 'RUS', label: 'Русский' },
+                  { value: 'ENG', label: 'Английский' },
+                  { value: 'GER', label: 'Немецкий' },
+                  { value: 'ESP', label: 'Испанский' },
+                  { value: 'FRA', label: 'Французкий' }
+                ]}
+              />
             </div>
           </div>
           <div className="filters__options-col filters__options-col--clear">
