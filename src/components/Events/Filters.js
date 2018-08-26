@@ -53,7 +53,6 @@ class Filters extends Component {
             <div className="ui-group">
               <label htmlFor="">Показывать</label>
               <Select
-                className="Select-main"
                 name="gender"
                 searchable={false}
                 autosize={false}
