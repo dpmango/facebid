@@ -14,7 +14,8 @@ class Filters extends Component {
       gender: null,
       range: 20,
       age: null,
-      languages: []
+      languages: [],
+      categories: [1]
     }
   }
 
@@ -48,11 +49,25 @@ class Filters extends Component {
     })
   }
 
+  selectCategory = (id) => {
+    const options = this.state.categories
+    const index = options.indexOf(id)
+    if ( index !== -1 ){
+      options.splice(index, 1);
+    } else {
+      options.push(id)
+    }
+
+    this.setState({
+      categories: options
+    })
+  }
+
   render(){
 
     const {
       state: {
-        gender, range, age, languages
+        gender, range, age, languages, categories
       }
     } = this
 
@@ -149,7 +164,9 @@ class Filters extends Component {
           </div>
         </div>
         <div className="filters__categories">
-          <FilterSlider />
+          <FilterSlider
+            values={categories}
+            clickHandler={this.selectCategory}/>
         </div>
       </div>
     )

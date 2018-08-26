@@ -40,28 +40,36 @@ class FilterSlider extends Component {
     }
 
     const slides = [
-      {icon: "filter-category-1", name: "Все"},
-      {icon: "filter-category-2", name: "Подписчики"},
-      {icon: "filter-category-3", name: "путешествия"},
-      {icon: "filter-category-4", name: "В кино"},
-      {icon: "filter-category-5", name: "Свидание"},
-      {icon: "filter-category-6", name: "Спорт"},
-      {icon: "filter-category-7", name: "Языковой обмен"},
-      {icon: "filter-category-8", name: "Все"},
-      {icon: "filter-category-9", name: "Все"},
-      {icon: "filter-category-10", name: "Все"},
-      {icon: "filter-category-11", name: "Все"},
-      {icon: "filter-category-12", name: "Все"},
-      {icon: "filter-category-13", name: "Все"},
-      {icon: "filter-category-14", name: "Все"},
-      {icon: "filter-category-15", name: "Все"}
+      {id: 1, icon: "filter-category-1", name: "Все"},
+      {id: 2, icon: "filter-category-2", name: "Подписчики"},
+      {id: 3, icon: "filter-category-3", name: "путешествия"},
+      {id: 4, icon: "filter-category-4", name: "В кино"},
+      {id: 5, icon: "filter-category-5", name: "Свидание"},
+      {id: 6, icon: "filter-category-6", name: "Спорт"},
+      {id: 7, icon: "filter-category-7", name: "Языковой обмен"},
+      {id: 8, icon: "filter-category-8", name: "Все"},
+      {id: 9, icon: "filter-category-9", name: "Все"},
+      {id: 10, icon: "filter-category-10", name: "Все"},
+      {id: 11, icon: "filter-category-11", name: "Все"},
+      {id: 12, icon: "filter-category-12", name: "Все"},
+      {id: 13, icon: "filter-category-13", name: "Все"},
+      {id: 14, icon: "filter-category-14", name: "Все"},
+      {id: 15, icon: "filter-category-15", name: "Все"}
     ]
 
     return(
       <div className="filters__slider">
         <Swiper {...SwiperParams}>
-          { slides.map((slide,index) => {
-            return <FilterCategory key={index} icon={slide.icon} name={slide.name} />
+          { slides.map(slide => {
+            return (
+              <FilterCategory
+                key={slide.id}
+                values={this.props.values}
+                clickHandler={this.props.clickHandler}
+                id={slide.id}
+                icon={slide.icon}
+                name={slide.name} />
+            )
           }) }
         </Swiper>
       </div>
@@ -70,9 +78,11 @@ class FilterSlider extends Component {
 }
 
 const FilterCategory = (props) => {
-  const { icon, name } = props
+  const { icon, name, id, values } = props
   return(
-    <div className="filter-category">
+    <div
+      onClick={props.clickHandler.bind(this, id)}
+      className={"filter-category" + (values.indexOf(id) !== -1 ? " is-active" : "")}>
       <div className="filter-category__icon">
         <SvgIcon name={icon} />
       </div>
