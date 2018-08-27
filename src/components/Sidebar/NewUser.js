@@ -56,7 +56,7 @@ export default class NewUser extends Component {
           <Signup onRef={ref => (this.signupModal = ref)} />
         </div>
         <div className="new-user__socials">
-          <div className="t-secondary t-center">Или войдите с помощью социальных сетей</div>
+          <div className="t-secondary t-center">Или войдите с помощью  социальных сетей</div>
           <div className="social-list">
             <div onClick={this.socialLoginClick.bind(this, "facebook")} className="social-btn social-btn--facebook">
               <SvgIcon name="facebook" />

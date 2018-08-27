@@ -17,8 +17,15 @@ class Sidebar extends Component {
   }
 
   render() {
+
+    const {
+      props: {
+        menuOpened
+      }
+    } = this;
+
     return (
-      <div className="sidebar">
+      <div className={"sidebar" + (menuOpened ? " is-active": "")}>
         <GeolocationRequest onRef={ref => (this.geoModal = ref)} />
         <div className="sidebar__wrapper">
           <div className="sidebar__logo">
@@ -40,7 +47,7 @@ class Sidebar extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+  menuOpened: state.header.menuOpened
 });
 
 const mapDispatchToProps = (dispatch) => ({

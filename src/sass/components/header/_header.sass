@@ -1,0 +1,22 @@
+.header
+  display: none
+  position: fixed !important
+  top: 0
+  left: 0
+  right: 0
+  position: relative
+  z-index: 10
+  background: #FFFFFF
+  box-shadow: 0 2px 4px 0 rgba(106,117,129,0.10)
+  &__wrapper
+    display: flex
+    align-items: center
+    min-height: 56px
+  &__logo
+    flex: 0 0 auto
+  &__actions
+    margin-left: auto
+
++r($desktop)
+  .header
+    display: block

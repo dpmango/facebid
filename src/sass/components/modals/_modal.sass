@@ -55,8 +55,7 @@
     box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
     transition: .25s $ease
     .ico
-      // fill: url(#gradient)
-      fill: #9B35F0
+      fill: url(#gradient1)
       font-size: 11px
     &:hover
       opacity: .7
@@ -76,72 +75,10 @@
   opacity: 0
   transition: opacity .25s $ease
 
-
-.modal-auth
-  display: flex
-  &__left
-    position: relative
-    flex: 1 1 65%
-    max-width: 65%
-    padding-right: 6%
-    padding-top: 30px
-    &::after
-      display: inline-block
-      content: ' '
-      position: absolute
-      z-index: 1
-      top: 30px
-      bottom: 0
-      right: 0
-      width: 1px
-      background: #DDE1E6
-    &::before
-      display: inline-block
-      content: 'Или'
-      position: absolute
-      top: 50%
-      right: -15px
-      background: white
-      z-index: 2
-      color: $fontColorGray
-      font-size: 16px
-      line-height: 1
-      padding: 10px 0
-
-  &__right
-    position: relative
-    flex: 0 0 35%
-    max-width: 35%
-    padding-left: 6%
-
-
-// alert modal
-.modal-alert
-  padding: 40px
-  display: flex
-  &__image
-    flex: 0 0 auto
-    img
++r($desktop)
+  .modal
+    left: 0
+    &__area
+      padding: 20px 20px 20px 20px
+    &__container
       max-width: 100%
-
-  &__contents
-    flex: 0 1 60%
-    padding-left: 35px
-    max-width: 435px
-    display: flex
-    flex-direction: column
-    justify-content: center
-
-  &__paragraph
-    margin: 25px 0
-
-  &__actions
-    margin-top: 5px
-    .btn
-      margin-right: 30px
-
-  &__geo-test
-    display: block
-    font-size: 12px
-    color: $fontColorGray
-    margin-top: 10px

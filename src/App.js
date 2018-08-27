@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import svg4everybody from 'svg4everybody';
 import RenderSwitch from './Switch';
 import Sidebar from './components/Sidebar/Sidebar';
+import Header from './components/Header/Header';
 import Gradients from './components/Helpers/Gradients'
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="page container">
           <Sidebar />
+          <Header />
           <div className="page__content">
             <RenderSwitch />
           </div>

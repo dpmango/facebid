@@ -1,0 +1,37 @@
+
+.modal-auth
+  display: flex
+  &__left
+    position: relative
+    flex: 1 1 65%
+    max-width: 65%
+    padding-right: 6%
+    padding-top: 30px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      z-index: 1
+      top: 30px
+      bottom: 0
+      right: 0
+      width: 1px
+      background: #DDE1E6
+    &::before
+      display: inline-block
+      content: 'Или'
+      position: absolute
+      top: 50%
+      right: -15px
+      background: white
+      z-index: 2
+      color: $fontColorGray
+      font-size: 16px
+      line-height: 1
+      padding: 10px 0
+
+  &__right
+    position: relative
+    flex: 0 0 35%
+    max-width: 35%
+    padding-left: 6%

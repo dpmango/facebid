@@ -58,3 +58,31 @@
   // moved to separate sass file
   .social-list
     margin-top: 15px
+
++r($desktop)
+  .sidebar
+    position: fixed
+    top: 0
+    left: 0
+    bottom: 0
+    z-index: 9
+    background: #F6F7FB
+    max-width: 315px
+    box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
+    transform: translate(-100%,0)
+    pointer-events: none
+    transition: .25s $ease
+    &.is-active
+      transform: none
+      pointer-events: all
+    &__wrapper
+      overflow-y: scroll
+      padding-left: 15px
+      padding-right: 15px
+    &__logo
+      display: none
+      
+    &__featured
+      display: none
+    &__footer
+      display: none
