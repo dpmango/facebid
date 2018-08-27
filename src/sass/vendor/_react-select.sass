@@ -273,84 +273,106 @@
   display: block
   padding: 8px 10px
 
-// .Select--multi
-//   .Select-input
-//     vertical-align: middle
-//     margin-left: 10px
-//     padding: 0
-//   &.Select--rtl .Select-input
-//     margin-left: 0
-//     margin-right: 10px
-//   &.has-value .Select-input
-//     margin-left: 5px
-//   .Select-value
-//     background-color: #ebf5ff
-//     /* Fallback color for IE 8
-//     background-color: rgba(0, 126, 255, 0.08)
-//     border-radius: 2px
-//     border: 1px solid #c2e0ff
-//     /* Fallback color for IE 8
-//     border: 1px solid rgba(0, 126, 255, 0.24)
-//     color: #007eff
-//     display: inline-block
-//     font-size: 0.9em
-//     line-height: 1.4
-//     margin-left: 5px
-//     margin-top: 5px
-//     vertical-align: top
-//   .Select-value-icon
-//     display: inline-block
-//     vertical-align: middle
-//   .Select-value-label
-//     display: inline-block
-//     vertical-align: middle
-//     border-bottom-right-radius: 2px
-//     border-top-right-radius: 2px
-//     cursor: default
-//     padding: 2px 5px
-//   a.Select-value-label
-//     color: #007eff
-//     cursor: pointer
-//     text-decoration: none
-//     &:hover
-//       text-decoration: underline
-//   .Select-value-icon
-//     cursor: pointer
-//     border-bottom-left-radius: 2px
-//     border-top-left-radius: 2px
-//     border-right: 1px solid #c2e0ff
-//     /* Fallback color for IE 8
-//     border-right: 1px solid rgba(0, 126, 255, 0.24)
-//     padding: 1px 5px 3px
-//     &:hover, &:focus
-//       background-color: #d8eafd
-//       /* Fallback color for IE 8
-//       background-color: rgba(0, 113, 230, 0.08)
-//       color: #0071e6
-//     &:active
-//       background-color: #c2e0ff
-//       /* Fallback color for IE 8
-//       background-color: rgba(0, 126, 255, 0.24)
-//   &.Select--rtl
-//     .Select-value
-//       margin-left: 0
-//       margin-right: 5px
-//     .Select-value-icon
-//       border-right: none
-//       border-left: 1px solid #c2e0ff
-//       /* Fallback color for IE 8
-//       border-left: 1px solid rgba(0, 126, 255, 0.24)
-//   &.is-disabled
-//     .Select-value
-//       background-color: #fcfcfc
-//       border: 1px solid #e3e3e3
-//       color: #333
-//     .Select-value-icon
-//       cursor: not-allowed
-//       border-right: 1px solid #e3e3e3
-//       &:hover, &:focus, &:active
-//         background-color: #fcfcfc
+.Select--multi
+  .Select-input
+    vertical-align: middle
+    margin-left: 10px
+    padding: 0
+  &.Select--rtl .Select-input
+    margin-left: 0
+    margin-right: 10px
+  &.has-value .Select-input
+    margin-left: 5px
+  .Select-value
+    background-color: #ebf5ff
+    /* Fallback color for IE 8
+    background-color: rgba(0, 126, 255, 0.08)
+    border-radius: 2px
+    border: 1px solid #c2e0ff
+    /* Fallback color for IE 8
+    border: 1px solid rgba(0, 126, 255, 0.24)
+    color: #007eff
+    display: inline-block
+    font-size: 0.9em
+    line-height: 1.4
+    margin-left: 5px
+    margin-top: 5px
+    vertical-align: top
+  .Select-value-icon
+    display: inline-block
+    vertical-align: middle
+  .Select-value-label
+    display: inline-block
+    vertical-align: middle
+    border-bottom-right-radius: 2px
+    border-top-right-radius: 2px
+    cursor: default
+    padding: 2px 5px
+  a.Select-value-label
+    color: #007eff
+    cursor: pointer
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+  .Select-value-icon
+    cursor: pointer
+    border-bottom-left-radius: 2px
+    border-top-left-radius: 2px
+    border-right: 1px solid #c2e0ff
+    /* Fallback color for IE 8
+    border-right: 1px solid rgba(0, 126, 255, 0.24)
+    padding: 1px 5px 3px
+    &:hover, &:focus
+      background-color: #d8eafd
+      /* Fallback color for IE 8
+      background-color: rgba(0, 113, 230, 0.08)
+      color: #0071e6
+    &:active
+      background-color: #c2e0ff
+      /* Fallback color for IE 8
+      background-color: rgba(0, 126, 255, 0.24)
+  &.Select--rtl
+    .Select-value
+      margin-left: 0
+      margin-right: 5px
+    .Select-value-icon
+      border-right: none
+      border-left: 1px solid #c2e0ff
+      /* Fallback color for IE 8
+      border-left: 1px solid rgba(0, 126, 255, 0.24)
+  &.is-disabled
+    .Select-value
+      background-color: #fcfcfc
+      border: 1px solid #e3e3e3
+      color: #333
+    .Select-value-icon
+      cursor: not-allowed
+      border-right: 1px solid #e3e3e3
+      &:hover, &:focus, &:active
+        background-color: #fcfcfc
 
 @keyframes Select-animation-spin
   to
     transform: rotate(1turn)
+
+// select multi modifier
+.Select--multi
+  .Select-multi-value-wrapper
+    .Select-value
+      background-color: transparent
+      border: 0
+      border-radius: 0
+      display: none
+      position: absolute 0
+      max-width: 100%
+      color: #828E9A
+      font-size: 14px
+      margin: 0
+      line-height: 38px
+      padding-left: 20px
+      &:first-child
+        display: inline-block
+  .Select-value-label
+    padding: 0
+    vertical-align: baseline
+    +text-overflow

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import SvgIcon from '../../components/Helpers/SvgIcon';
+import SvgIcon from '../Helpers/SvgIcon';
 import FilterSlider from './FilterSlider';
+import Plurize from '../../services/Plurize';
 // import Select from '../Forms/Select';
 import Select from 'react-select';
 import Slider from 'rc-slider';
@@ -61,6 +62,20 @@ class Filters extends Component {
     this.setState({
       categories: options
     })
+  }
+
+  multipleValueTransform = (items) => {
+    const totalHiddenItems = items.length;
+
+    return (
+      <div className="Select-value more-than-allowed">
+        <span className="Select-value-label" role="option" aria-selected="true">
+          {Plurize(totalHiddenItems, "Выбран", "Выбрано", "Выбрано")} {(totalHiddenItems)} {Plurize(totalHiddenItems, "язык", "языка", "языков")}
+            <span className="Select-aria-only">&nbsp;</span>
+        </span>
+      </div>
+    );
+
   }
 
   render(){
@@ -143,12 +158,14 @@ class Filters extends Component {
                 name="languages"
                 multi={true}
                 removeSelected={false}
-                simpleValue={true}
+                simpleValue={false}
+                clearable={false}
                 searchable={false}
                 autosize={false}
                 value={languages}
                 onChange={(e) => this.handleSelectChange(e, "languages")}
                 placeholder="Выберите языки"
+                valueComponent={this.multipleValueTransform.bind(this, languages)}
                 options={[
                   { value: 'RUS', label: 'Русский' },
                   { value: 'ENG', label: 'Английский' },
