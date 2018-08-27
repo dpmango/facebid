@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import svg4everybody from 'svg4everybody';
 import RenderSwitch from './Switch';
 import Sidebar from './components/Sidebar/Sidebar';
+import Gradients from './components/Helpers/Gradients'
 
 class App extends Component {
   componentDidMount(){
@@ -22,6 +23,7 @@ class App extends Component {
           <div className="page__content">
             <RenderSwitch />
           </div>
+          <Gradients />
         </div>
       </BrowserRouter>
     );
