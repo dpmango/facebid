@@ -6,16 +6,6 @@ import Featured from './Featured';
 import GeolocationRequest from '../Modal/GeolocationRequest';
 
 class Sidebar extends Component {
-  static propTypes = {
-
-  };
-
-  componentDidMount(){
-    setTimeout(() => {
-      this.geoModal.show();
-    }, 5000)
-  }
-
   render() {
 
     const {
@@ -26,7 +16,6 @@ class Sidebar extends Component {
 
     return (
       <div className={"sidebar" + (menuOpened ? " is-active": "")}>
-        <GeolocationRequest onRef={ref => (this.geoModal = ref)} />
         <div className="sidebar__wrapper">
           <div className="sidebar__logo">
             <i className="icon icon-logo"></i>
@@ -44,6 +33,10 @@ class Sidebar extends Component {
       </div>
     );
   }
+}
+
+Sidebar.propTypes = {
+  menuOpened: PropTypes.bool
 }
 
 const mapStateToProps = (state) => ({

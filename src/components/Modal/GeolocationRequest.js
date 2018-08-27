@@ -1,27 +1,31 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
 import { connect } from 'react-redux';
 import Geolocation from 'react-geolocation';
 import Modal from '../Modal/Modal';
 import Image from '../Helpers/Image';
+import { setGeolocation } from '../../actions/geolocation';
 
 class GeolocationRequest extends Component{
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       modalOpened: false,
-      latitude: null,
-      longitude: null,
-      accuracy: null,
-      timestamp: null
+      latitude: props.geolocationRedux.latitude,
+      longitude: props.geolocationRedux.longitude,
+      accuracy: props.geolocationRedux.accuracy,
+      timestamp: props.geolocationRedux.timestamp
     }
   }
 
   componentDidMount() {
-    this.props.onRef(this)
-  }
-  componentWillUnmount() {
-    this.props.onRef(undefined)
+    if ( this.state.latitude === null ) {
+      // show the modal only if no data is present in redux
+      setTimeout(() => {
+        this.show();
+      }, 5000)
+    }
   }
 
   show = () => {
@@ -33,6 +37,16 @@ class GeolocationRequest extends Component{
   hide = () => {
     this.setState({
       modalOpened: false
+    })
+  }
+
+  // when geolocation is sucessfully fetched
+  onSucessFetch = (pos) => {
+    this.props.setGeolocation({
+      latitude: pos.coords.latitude,
+      longitude: pos.coords.longitude,
+      accuracy: pos.coords.accuracy,
+      timestamp: pos.timestamp
     })
   }
 
@@ -73,14 +87,7 @@ class GeolocationRequest extends Component{
                         {error.message}
                       </div>}
                   </React.Fragment>}
-                onSuccess={(pos) => {
-                  this.setState({
-                    latitude: pos.coords.latitude,
-                    longitude: pos.coords.longitude,
-                    accuracy: pos.coords.accuracy,
-                    timestamp: pos.timestamp
-                  })
-                }}
+                onSuccess={this.onSucessFetch}
               />
               <span className="t-link-small" onClick={this.hide}>напомнить позже</span>
               {latitude &&
@@ -94,12 +101,16 @@ class GeolocationRequest extends Component{
   }
 }
 
-const mapStateToProps = (state) => ({
+GeolocationRequest.propTypes = {
+  geolocationRedux: PropTypes.object
+};
 
+const mapStateToProps = (state) => ({
+  geolocationRedux: state.geolocation
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
+  setGeolocation: (data) => dispatch(setGeolocation(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GeolocationRequest);

@@ -112,9 +112,13 @@
     font-size: 14px
     font-weight: 500
     margin-top: 20px
+    transition: .25s $ease
+  &:hover
+    .filter-category
+      &__name
+        color: $colorBlue
   &.is-active
     .filter-category
       &__icon
-        // color: $colorBlue
         .ico
           fill: url('#gradient1')

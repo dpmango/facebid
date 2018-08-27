@@ -3,8 +3,8 @@ import { BrowserRouter } from 'react-router-dom';
 import svg4everybody from 'svg4everybody';
 import RenderSwitch from './Switch';
 import Sidebar from './components/Sidebar/Sidebar';
-import Header from './components/Header/Header';
-import Gradients from './components/Helpers/Gradients'
+import Header from './components/Header/Header'; // for tablet
+import Common from './components/Common';
 
 class App extends Component {
   componentDidMount(){
@@ -25,7 +25,7 @@ class App extends Component {
           <div className="page__content">
             <RenderSwitch />
           </div>
-          <Gradients />
+          <Common />
         </div>
       </BrowserRouter>
     );

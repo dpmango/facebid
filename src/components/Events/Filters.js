@@ -11,13 +11,17 @@ class Filters extends Component {
   constructor(){
     super()
 
-    this.state = {
+    this.initialState = {
+      eventName: '',
       gender: null,
       range: 20,
       age: null,
       languages: [],
       categories: [1]
     }
+
+    this.state = this.initialState
+
   }
 
   createEventClick = () => {
@@ -25,7 +29,18 @@ class Filters extends Component {
   }
 
   clearFiltersClick = () => {
+    this.setState(this.initialState)
+  }
 
+  closeFiltersClick = () => {
+
+  }
+
+  // input functions
+  handleChange = (e) => {
+    let fieldName = e.target.name;
+    let fleldVal = e.target.value;
+    this.setState({...this.state, [fieldName]: fleldVal});
   }
 
   // select functions
@@ -82,7 +97,7 @@ class Filters extends Component {
 
     const {
       state: {
-        gender, range, age, languages, categories
+        gender, range, age, languages, categories, eventName
       }
     } = this
 
@@ -94,10 +109,16 @@ class Filters extends Component {
             <span>Создать событие</span>
           </button>
           <div className="ui-input ui-input--iconed">
-            <input type="text" placeholder="Чем ты хочешь заняться?"/>
+            <input
+              name="eventName"
+              onChange={this.handleChange}
+              value={eventName}
+              type="text"
+              placeholder="Чем ты хочешь заняться?"
+            />
             <SvgIcon name="search" />
           </div>
-          <div onClick={this.clearFiltersClick} className="filters__clear">
+          <div onClick={this.closeFiltersClick} className="filters__clear">
             <SvgIcon name="close" />
           </div>
         </div>
@@ -177,7 +198,7 @@ class Filters extends Component {
             </div>
           </div>
           <div className="filters__options-col filters__options-col--clear">
-            <a href="#" className="t-link-small">Очистить</a>
+            <a onClick={this.clearFiltersClick} className="t-link-small">Очистить</a>
           </div>
         </div>
         <div className="filters__categories">
