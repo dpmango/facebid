@@ -7,6 +7,10 @@ import Modal from '../Modal/Modal';
 import Image from '../Helpers/Image';
 import { setGeolocation } from '../../actions/geolocation';
 
+// TODO
+// refresh the request every `1 hour` or so ?
+// (compare geolocationRedux.timestamp with Date.now()
+
 class GeolocationRequest extends Component{
   constructor(props){
     super(props)

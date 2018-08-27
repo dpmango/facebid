@@ -3,6 +3,7 @@ import Swiper from 'react-id-swiper';
 import SvgIcon from '../Helpers/SvgIcon';
 import Image from '../Helpers/Image';
 import ConvertMonthNumToName from '../../services/ConvertMonthNumToName';
+import AvatarList from '../People/AvatarList';
 
 class EventCard extends Component {
   convertDate = (str) => {
@@ -37,6 +38,17 @@ class EventCard extends Component {
         el: '.swiper-pagination',
         type: 'bullets',
       },
+    }
+
+    const avatars = {
+      more: 14,
+      list: [
+        { id: 1, file: "userAvatar_2.jpg" },
+        { id: 2, file: "userAvatar_3.jpg" },
+        { id: 3, file: "userAvatar_4.jpg" },
+        { id: 4, file: "userAvatar_5.jpg" },
+        { id: 5, file: "userAvatar_6.jpg" }
+      ]
     }
 
     const {
@@ -110,7 +122,16 @@ class EventCard extends Component {
                 </div>
               </div>
               <div className="e-card__desc">{desc}</div>
-
+              <div className="e-card__cta">
+                <button className="btn btn-primary btn--iconed">
+                  <SvgIcon name="checkmark" />
+                  <span>Участвовать</span>
+                </button>
+                <div className="e-card__partisipants">
+                  <AvatarList
+                    avatars={avatars} />
+                </div>
+              </div>
             </div>
           </div>
         </div>

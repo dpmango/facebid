@@ -1,0 +1,29 @@
+.avatar-list
+  display: flex
+  &__el
+    position: relative
+    z-index: 1
+    overflow: hidden
+    border-radius: 50%
+    size: 40px
+    flex: 0 0 40px
+    margin-left: -10px
+    border: 2px solid white
+    transition: .25s $ease
+    &:first-child
+      margin-left: 0
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      width: 102%
+    &--more
+      background: #333333
+      color: white
+      display: flex
+      align-items: center
+      justify-content: center
+      text-align: center
+      font-size: 13px
+      font-weight: 500
