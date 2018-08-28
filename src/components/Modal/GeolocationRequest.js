@@ -51,7 +51,9 @@ class GeolocationRequest extends Component{
       longitude: pos.coords.longitude,
       accuracy: pos.coords.accuracy,
       timestamp: pos.timestamp
-    })
+    });
+
+    this.hide();
   }
 
   render(){

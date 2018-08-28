@@ -8,6 +8,8 @@ http://facebid.surge.sh
 
 ## Table of Contents
 - [How to start](#hot-to-start)
+- [Back-end](#back-end)
+- [Test Authentication](#test-authentication)
 - [Folder structure](#folder-structure)
 - [Gulp](#gulp)
 - [Important notes](#important-notes)
@@ -20,6 +22,9 @@ http://facebid.surge.sh
 
 ## Back-end
 Backed is under development. Fake API responces located at `/src/db.json` and server through [json-server](https://github.com/typicode/json-server). For the surge "production-like" it's located on `http://facebid-api.herokuapp.com` with uptime robot for 100% uptime and should be deployed with `yarn deploy-backend` command (subtree push)
+
+### Test Authentication
+For the development purposes, please use the login `test@mail.com` and `123456` as a password to process for login form
 
 ## Folder structure
 ```

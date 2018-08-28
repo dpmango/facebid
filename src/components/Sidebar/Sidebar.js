@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NewUser from './NewUser';
+import AuthUser from './AuthUser';
 import Featured from './Featured';
 import GeolocationRequest from '../Modal/GeolocationRequest';
 
@@ -10,7 +11,7 @@ class Sidebar extends Component {
 
     const {
       props: {
-        menuOpened
+        menuOpened, userId
       }
     } = this;
 
@@ -21,7 +22,8 @@ class Sidebar extends Component {
             <i className="icon icon-logo"></i>
           </div>
           <div className="sidebar__user">
-            <NewUser />
+            { !userId && <NewUser /> }
+            { userId && <AuthUser /> }
           </div>
           <Featured />
           <div className="sidebar__footer">
@@ -36,11 +38,13 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-  menuOpened: PropTypes.bool
+  menuOpened: PropTypes.bool,
+  // userId: PropTypes.number
 }
 
 const mapStateToProps = (state) => ({
-  menuOpened: state.header.menuOpened
+  menuOpened: state.header.menuOpened,
+  userId: state.user.userId
 });
 
 const mapDispatchToProps = (dispatch) => ({

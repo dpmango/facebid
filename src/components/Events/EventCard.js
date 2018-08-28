@@ -4,6 +4,7 @@ import SvgIcon from '../Helpers/SvgIcon';
 import Image from '../Helpers/Image';
 import ConvertMonthNumToName from '../../services/ConvertMonthNumToName';
 import AvatarList from '../People/AvatarList';
+import Comments from './Comments';
 
 class EventCard extends Component {
   convertDate = (str) => {
@@ -132,6 +133,7 @@ class EventCard extends Component {
                     avatars={avatars} />
                 </div>
               </div>
+              <Comments />
             </div>
           </div>
         </div>

@@ -15,6 +15,9 @@ class Login extends Component{
       password: '',
       remember: false
     }
+
+    this.formRef = React.createRef();
+
   }
 
   componentDidMount() {
@@ -76,9 +79,13 @@ class Login extends Component{
     })
   }
 
+  // auth passed to redux
   loginUser = () => {
-    // auth
-    alert('TODO - auth')
+    const { email, password, remember } = this.state;
+
+    this.props.logIn({
+      email, password, remember
+    });
   }
 
   render(){
@@ -168,7 +175,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
+  logIn: (credentials) => dispatch({ type: 'LOG_IN', payload: credentials }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

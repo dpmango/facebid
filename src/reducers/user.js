@@ -1,19 +1,23 @@
-import { SET_USER_ID } from '../actions/user';
+import { AUTHORIZATION_SUCCESS, SIGN_OUT, AUTHORIZATION_FAIL, SET_USER_ID } from '../actions/user';
 
 export const initialState = {
   randomId: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10),
   userId: null,
-  authToken: null
+  authToken: null,
+  errorMessage: ''
 }
 
 const user = (state = initialState, action) => {
   switch (action.type) {
-
-    case SET_USER_ID:
+    case AUTHORIZATION_SUCCESS:
       return {
-        ...state,
-        userId: action.payload,
-      }
+        userId: action.payload
+      };
+    case SIGN_OUT:
+    case AUTHORIZATION_FAIL:
+      return {
+        errorMessage: action.payload
+      };
 
     default:
       return state;
