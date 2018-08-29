@@ -6,7 +6,7 @@ class Comments extends Component {
     return(
       <div className="e-card__comments">
         <div className="e-comment">
-          <div className="e-comment__avatar">
+          <div className="avatar">
             <Image file="userAvatar_3.jpg" />
           </div>
           <div className="e-comment__contents">

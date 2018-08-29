@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NewUser from './NewUser';
 import AuthUser from './AuthUser';
@@ -18,9 +19,9 @@ class Sidebar extends Component {
     return (
       <div className={"sidebar" + (menuOpened ? " is-active": "")}>
         <div className="sidebar__wrapper">
-          <div className="sidebar__logo">
+          <Link to="/" className="sidebar__logo">
             <i className="icon icon-logo"></i>
-          </div>
+          </Link>
           <div className="sidebar__user">
             { !userId && <NewUser /> }
             { userId && <AuthUser /> }
@@ -51,4 +52,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(Sidebar);

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="19px" viewBox="0 0 20 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>test-grad-2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#8F64EC" offset="0%"></stop>
+            <stop stop-color="#A838F1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Elements-/-Profile-/-Card-/-05" transform="translate(-46.000000, -161.000000)" fill="url(#linearGradient-1)">
+            <g id="Group-5" transform="translate(0.000000, 32.000000)">
+                <g id="кнопки" transform="translate(0.000000, 116.000000)">
+                    <g id="01">
+                        <g id="Elements-/-Btn-/-Medium-/-Standart" transform="translate(36.000000, 3.000000)">
+                            <g id="Component-/-Icons-/-S-/-Star-Stroke" transform="translate(10.000000, 10.000000)">
+                                <g id="test-grad-2" transform="translate(-2.000000, -2.000000)">
+                                    <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

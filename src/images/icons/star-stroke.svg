@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="19px" viewBox="0 0 20 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>star-stroke</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Component-/-Icons-/-S-/-Star-Stroke" transform="translate(-2.000000, -2.000000)">
+            <mask id="mask-2" fill="white">
+                <path d="M12,14.9339482 L15.1554708,16.8384638 L14.3180455,13.2487686 L17.1076664,10.8321191 L13.4391982,10.520886 L12,7.12519767 L10.5608018,10.520886 L6.89233364,10.8321191 L9.68195448,13.2487686 L8.84452916,16.8384638 L12,14.9339482 Z M12,17.27 L5.82,21 L7.46,13.97 L2,9.24 L9.19,8.63 L12,2 L14.81,8.63 L22,9.24 L16.54,13.97 L18.18,21 L12,17.27 Z"></path>
+            </mask>
+            <path d="M12,14.9339482 L15.1554708,16.8384638 L14.3180455,13.2487686 L17.1076664,10.8321191 L13.4391982,10.520886 L12,7.12519767 L10.5608018,10.520886 L6.89233364,10.8321191 L9.68195448,13.2487686 L8.84452916,16.8384638 L12,14.9339482 Z M12,17.27 L5.82,21 L7.46,13.97 L2,9.24 L9.19,8.63 L12,2 L14.81,8.63 L22,9.24 L16.54,13.97 L18.18,21 L12,17.27 Z" fill="#000000" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

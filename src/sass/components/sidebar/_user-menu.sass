@@ -1,0 +1,50 @@
+.user-menu
+  list-style: none
+  margin: 0
+  padding: 0
+  li
+    display: block
+  a
+    padding: 8px 0
+    display: flex
+    align-items: center
+    color: #828E9A
+    transition: .25s $ease
+    .ico
+      &-menu-events
+        font-size: 16px
+      &-menu-invite
+        font-size: 18px
+      &-my-events
+        font-size: 16px
+      &-messages
+        font-size: 15px
+      &-notifications
+        font-size: 16px
+      &-news
+        font-size: 16px
+      &-bookmarks
+        font-size: 16px
+
+    span
+      display: inline-block
+      margin-left: 8px
+      font-size: 14px
+      font-weight: 500
+
+    &:hover, &.is-active
+      color: $colorBlue
+
+  &__icon
+    flex: 0 0 24px
+    size: 24px
+    display: flex
+    align-items: center
+    justify-content: center
+
+  &__add
+    margin-left: auto
+    flex: 0 0 auto
+  &__counter
+    margin-left: auto
+    flex: 0 0 auto

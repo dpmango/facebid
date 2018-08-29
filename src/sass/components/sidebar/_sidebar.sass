@@ -12,6 +12,7 @@
     flex-direction: column
     padding: 30px 0
   &__logo
+    display: inline-block
     text-align: center
 
   &__user
@@ -39,6 +40,7 @@
       &:hover
         color: $colorBlue
 
+
 // intro section for guest user
 .new-user
   text-align: center
@@ -59,8 +61,94 @@
   .social-list
     margin-top: 15px
 
+
 // authenticated user
 .user-panel
+  &__scope
+    display: flex
+
+  &__scope-contents
+    margin-left: 20px
+
+  &__name
+    font-family: $defaultFamily
+    font-weight: 500
+    font-size: 16px
+
+  &__location
+    display: flex
+    margin-top: 5px
+    .ico
+      font-size: 17px
+      color: $colorBlue
+    span
+      display: inline-block
+      color: $grayColor
+      font-size: 14px
+      margin-left: 8px
+      transform: translateY(3px)
+
+  &__actions
+    display: flex
+    margin: 20px -10px 15px
+
+  &__menu
+    margin: 15px 0
+
+
+.panel-action
+  flex: 0 1 50%
+  max-width: 50%
+  padding: 0 10px
+  position: relative
+  cursor: pointer
+  text-align: center
+  &__icon
+    position: relative
+    size: 40px
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-left: auto
+    margin-right: auto
+    border-radius: 50%
+    background: #FFFFFF
+    box-shadow: 0 1px 2px 0 rgba(106,117,129,0.10)
+  &__name
+    margin-top: 8px
+    font-family: $roboto
+    font-size: 11px
+    color: #6C7580
+  &__counter
+    position: absolute
+    left: -5px
+    top: -5px
+    z-index: 1
+    display: flex
+    align-items: center
+    justify-content: center
+    size: 20px
+    color: white
+    border-radius: 50%
+    border: 2px solid #F6F7FB
+    background: $gradient2
+    span
+      font-size: 10px
+      font-weight: 700
+      text-align: center
+
+  &--up
+    .panel-action
+      &__icon
+        .ico
+          font-size: 19px
+          fill: url('#gradient2')
+  &--vip
+    .panel-action
+      &__icon
+        .ico
+          font-size: 14px
+          color: $colorYellow
 
 
 +r($desktop)

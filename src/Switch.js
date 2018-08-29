@@ -4,6 +4,7 @@ import { routes } from './Routes';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import Authorization from './hoc/Authorization';
 import ScrollTo from './services/ScrollTo';
 import AOS from 'aos';
 
@@ -46,14 +47,17 @@ class RenderSwitch extends React.Component {
 
     return(
       <Switch>
-        {routes.map(route => (
-          <PropsRoute
-            key={route.path}
-            exact={route.isExact}
-            path={route.path}
-            component={route.component}
-          />
-        ))}
+        {routes.map(route => {
+          const component = route.protected ? Authorization(route.component) : route.component;
+          return (
+            <PropsRoute
+              key={route.path}
+              exact={route.isExact}
+              path={route.path}
+              component={component}
+            />
+          )
+        })}
       </Switch>
     )
   }
