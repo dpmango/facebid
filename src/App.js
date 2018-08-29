@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import svg4everybody from 'svg4everybody';
 import RenderSwitch from './Switch';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -19,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="page container">
+        <div className={"page container " + (this.props.pageClass)}>
           <Sidebar />
           <Header />
           <div className="page__content">
@@ -32,4 +33,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  pageClass: state.page.pageClass
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

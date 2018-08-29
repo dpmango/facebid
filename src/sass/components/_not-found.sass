@@ -1,0 +1,81 @@
+.not-found
+  background: #333333
+  color: white
+  &__wrapper
+    min-height: 100vh
+    max-width: 500px
+    display: flex
+    flex-direction: column
+    margin-left: auto
+    margin-right: auto
+    padding: 150px 0
+  &__picture
+    position: relative
+
+  &__waves
+
+  &__wave
+    position: absolute
+    z-index: 1
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    border-radius: 50%
+    background: $colorBlue
+    opacity: .1
+    animation-name: waveAnim
+    animation-duration: 3.5s
+    animation-timing-function: ease
+    animation-iteration-count: infinite
+    &--center
+      size: 260px
+    &--middle
+      size: 380px
+    &--top
+      size: 500px
+
+  &__404
+    position: relative
+    z-index: 2
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    &-4
+      font-weight: 700
+      font-size: 200px
+
+    &-center
+      size: 140px
+      border-radius: 50%
+      margin: 0 40px
+      background-image: linear-gradient(-180deg, #FFFFFF 0%, #CED9D9 97%)
+      box-shadow: 0 20px 40px 0 rgba(0,180,249,0.20)
+
+  &__contents
+    position: relative
+    z-index: 2
+    text-align: center
+    margin-top: 50px
+
+  &__title
+    font-size: 40px
+    font-weight: 700
+  &__description
+    margin: 30px 0
+    font-size: 18px
+    line-height: 1.55
+    font-family: $roboto
+  &__cta
+
+
+@keyframes waveAnim
+  from
+    transform: translate(-50%,-50%) scale(1)
+    opacity: .1
+  50%
+    transform: translate(-50%,-50%) scale(1.2)
+    opacity: .05
+  to
+    transform: translate(-50%,-50%) scale(1)
+    opacity: .1
