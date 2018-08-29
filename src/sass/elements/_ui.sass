@@ -49,6 +49,8 @@
       padding-right: 20px
     .ui-input
       flex: 1 1 auto
+    .Select
+      flex: 1 1 auto
 
 .ui-validation
   color: $colorRed
@@ -170,3 +172,16 @@
   &__right
     border-radius: 0 20px 20px 0
     margin-left: -1px
+
+
+.ui-birth-selects
+  flex: 1 1 auto
+  display: flex
+  margin-left: -8px
+  margin-right: -8px
+  .Select
+    padding: 0 8px
+    &:first-child, &:last-child
+      flex: 0 1 110px
+    &:nth-child(2)
+      flex: 0 1 145px
