@@ -31,13 +31,11 @@ class NewUser extends Component {
   }
 
   loginUserClick = () => {
-    // this.loginModal.show()
-    this.props.openModal('signup')
+    this.props.openModal('login')
   }
 
   signupUserClick = () => {
-    // this.signupModal.show();
-    this.props.openModal('login')
+    this.props.openModal('signup')
   }
 
   socialLoginClick = (provider) => {

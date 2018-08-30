@@ -7,6 +7,7 @@
 
 .Select
   position: relative
+  // z-index: 2
   box-sizing: border-box
   input
     &::-webkit-contacts-auto-fill-button, &::-webkit-credentials-auto-fill-button, &::-ms-clear, &::-ms-reveal
@@ -236,8 +237,10 @@
   position: absolute
   left: 0
   top: 100%
-  width: calc(100% - 1px)
-  z-index: 1
+  width: 100%
+  // width: calc(100% - 1px)
+  // fix ? original - 1
+  z-index: 999 !important
   -webkit-overflow-scrolling: touch
 
 .Select-menu

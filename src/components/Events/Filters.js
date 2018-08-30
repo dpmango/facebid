@@ -128,6 +128,7 @@ class Filters extends Component {
               <label htmlFor="">Показывать</label>
               <Select
                 name="gender"
+                clearable={false}
                 searchable={false}
                 autosize={false}
                 value={gender}

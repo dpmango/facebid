@@ -12,7 +12,7 @@ class Login extends Component{
   constructor(){
     super()
     this.state = {
-      modalName: false,
+      modalName: 'login',
       email: '',
       password: '',
       remember: false

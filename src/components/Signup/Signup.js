@@ -148,7 +148,8 @@ class Signup extends Component{
                     <div className="ui-birth-selects">
                       <Select
                         name="birth_day"
-                        searchable={false}
+                        clearable={false}
+                        searchable={true}
                         autosize={false}
                         value={birth_day}
                         onChange={(e) => this.handleSelectChange(e, "birth_day")}
@@ -164,6 +165,7 @@ class Signup extends Component{
                       />
                       <Select
                         name="birth_month"
+                        clearable={false}
                         searchable={false}
                         autosize={false}
                         value={birth_month}
@@ -186,6 +188,7 @@ class Signup extends Component{
                       />
                       <Select
                         name="birth_year"
+                        clearable={false}
                         searchable={false}
                         autosize={false}
                         value={birth_year}
@@ -206,6 +209,7 @@ class Signup extends Component{
                     <label htmlFor="">Пол</label>
                     <Toggle
                       value={gender}
+                      modifierClass="ui-toggle--big"
                       options={{
                         left: "Женский",
                         right: "Мужской"

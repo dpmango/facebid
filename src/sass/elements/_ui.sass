@@ -51,6 +51,8 @@
       flex: 1 1 auto
     .Select
       flex: 1 1 auto
+    .ui-toggle
+      flex: 1 1 auto
 
 .ui-validation
   color: $colorRed
@@ -172,6 +174,13 @@
   &__right
     border-radius: 0 20px 20px 0
     margin-left: -1px
+  &--big
+    .ui-toggle
+      &__left, &__right
+        color: $fontColorGray
+        font-weight: 700
+        &.is-active
+          color: $colorBlue
 
 
 .ui-birth-selects
@@ -185,3 +194,7 @@
       flex: 0 1 110px
     &:nth-child(2)
       flex: 0 1 145px
+    .Select-menu-outer
+      left: 8px
+      right: 8px
+      width: calc(100% - 16px)

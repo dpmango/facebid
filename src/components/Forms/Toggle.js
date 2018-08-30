@@ -10,10 +10,10 @@ class Toggle extends Component{
   }
 
   render(){
-    const { value, options } = this.props;
+    const { value, options, modifierClass } = this.props;
 
     return(
-      <div className="ui-toggle">
+      <div className={`ui-toggle ${modifierClass}`}>
         <div className={"ui-toggle__left" + (value === options.left ? " is-active" : " ")}
           onClick={this.onSelectHandler.bind(this, options.left)}>
           {options.left}</div>
