@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
 import { connect } from 'react-redux';
 import Geolocation from 'react-geolocation';
+import axios from 'axios';
 import Modal from '../Modal/Modal';
 import Image from '../Helpers/Image';
-import { setGeolocation } from '../../actions/geolocation';
+import { setGeolocation, setIpLookup } from '../../actions/geolocation';
 import { openModal, closeModal } from '../../actions/modal'
 
 // TODO
@@ -25,12 +26,24 @@ class GeolocationRequest extends Component{
   }
 
   componentDidMount() {
-    if ( this.state.latitude === null ) {
-      // show the modal only if no data is present in redux
-      setTimeout(() => {
-        this.show();
-      }, 5000)
+    this.ipLookUp()
+    // if ( !this.props.geolocationRedux.iplookup ){
+    //   this.ipLookUp()
+    // }
+
+    if ("geolocation" in navigator) {
+      // geolocation enabled
+      if ( this.state.latitude === null ) {
+        // show the modal only if no data is present in redux
+        setTimeout(() => {
+          // this.show();
+        }, 5000)
+      }
+    } else {
+      console.log('geolocation is not enabled on this browser');
+      this.ipLookUp()
     }
+
   }
 
   show = () => {
@@ -55,6 +68,40 @@ class GeolocationRequest extends Component{
 
     this.hide();
   }
+
+  onErrorFetch = (err) => {
+    console.log(err);
+    this.ipLookUp();
+  }
+
+  // geolocation backup and error state
+  ipLookUp = async () => {
+    await axios
+      .get('http://ip-api.com/json')
+      .then(res => {
+        let result = res.data
+        result.timestamp = new Date();
+        this.props.setIpLookup(result)
+      })
+      .catch(err => {
+        console.log('error catching ip lookup')
+      })
+  }
+
+  // google api reverse geocoding
+  // getAddress = (latitude, longitude) => {
+  //   const GOOGLE_MAP_KEY = 'xxxxxx'
+  //
+  //   axios
+  //     .get('https://maps.googleapis.com/maps/api/geocode/json?
+  //             latlng=' + latitude + ',' + longitude + '&key=' + GOOGLE_MAP_KEY)
+  //     .then(res => {
+  //       console.log(res)
+  //     })
+  //     .catch(err => {
+  //       console.log('error catching ip lookup')
+  //     })
+  // }
 
   render(){
     const {
@@ -97,6 +144,7 @@ class GeolocationRequest extends Component{
                       </div>}
                   </React.Fragment>}
                 onSuccess={this.onSucessFetch}
+                onError={this.onErrorFetch}
               />
               <span className="t-link-small" onClick={this.hide}>напомнить позже</span>
               {latitude &&
@@ -124,6 +172,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setGeolocation: (data) => dispatch(setGeolocation(data)),
+  setIpLookup: (data) => dispatch(setIpLookup(data)),
   openModal: (data) => dispatch(openModal(data)),
   closeModal: () => dispatch(closeModal())
 });

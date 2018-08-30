@@ -8,6 +8,7 @@ import FormInput from '../Forms/Input';
 import Toggle from '../Forms/Toggle';
 import SocialLogin from './SocialLogin';
 import { openModal, closeModal } from '../../actions/modal'
+import { signupRequest } from '../../actions/user';
 
 class Signup extends Component{
   constructor(props){
@@ -93,7 +94,22 @@ class Signup extends Component{
 
   signupUser = () => {
     // auth
-    alert('TODO - auth')
+    const {
+      nickname, birth_day, birth_month, birth_year, gender, city, email, password
+    } = this.state;
+
+    const leadObj = {
+      nickname: nickname,
+      birth_day: birth_day ? birth_day.value : "",
+      birth_month: birth_month ? birth_month.value : "",
+      birth_year: birth_year ? birth_year.value : "",
+      gender: gender,
+      city: city ? city.value : "",
+      email: email,
+      password: password
+    }
+
+    this.props.signupRequest(leadObj)
   }
 
   render(){
@@ -303,7 +319,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   openModal: (data) => dispatch(openModal(data)),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  signupRequest: (data) => dispatch(signupRequest(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
