@@ -48,12 +48,17 @@
       border-radius: 4px
 
   &__contents
+    position: relative
     flex: 0 1 50%
-    display: flex
-    flex-direction: column
     max-width: 50%
     min-width: 1px
     min-height: 0
+    &-wrapper
+      // it's abs positioned because
+      /// of scrollbar (max-height to slider height)
+      position: absolute 0
+      display: flex
+      flex-direction: column
 
   &__top
     background: #F6F7FB
@@ -122,6 +127,7 @@
     color: $grayColor
     transition: color .25s $ease
     font-size: 0
+    cursor: pointer
     &:last-child
       margin-right: 0
     .ico
