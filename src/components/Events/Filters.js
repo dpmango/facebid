@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import SvgIcon from '../Helpers/SvgIcon';
 import FilterSlider from './FilterSlider';
 import Plurize from '../../services/Plurize';
@@ -6,19 +8,21 @@ import Plurize from '../../services/Plurize';
 import Select from 'react-select';
 import Slider from 'rc-slider';
 import Toggle from '../Forms/Toggle';
+import { setFilterParams } from '../../actions/event-filter';
 
 class Filters extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
-    this.initialState = {
-      eventName: '',
-      gender: null,
-      range: 20,
-      age: null,
-      languages: [],
-      categories: [1]
-    }
+    this.initialState = props.eventFilterRedux
+    // {
+    //   eventName: props.eventFilterRedux.eventName,
+    //   gender: props.eventFilterRedux.gender,
+    //   range: props.eventFilterRedux.range,
+    //   age: props.eventFilterRedux.age,
+    //   languages: props.eventFilterRedux.languages,
+    //   categories: props.eventFilterRedux.categories
+    // }
 
     this.state = this.initialState
 
@@ -212,4 +216,12 @@ class Filters extends Component {
   }
 }
 
-export default Filters
+const mapStateToProps = (state) => ({
+  eventFilterRedux: state.eventFilter
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setFilterParams: (data) => dispatch(setFilterParams(data))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);
