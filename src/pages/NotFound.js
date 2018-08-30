@@ -8,7 +8,7 @@ class NotFound extends Component {
 
   componentDidMount(){
     this.props.aosInst.refreshHard();
-    this.props.setClass('no-sidebar')
+    this.props.setPageClass('no-sidebar')
   }
 
   render() {
@@ -48,7 +48,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setClass: (data) => dispatch(setClass(data))
+  setPageClass: (data) => dispatch(setClass(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotFound);

@@ -4,10 +4,12 @@ import page from './page';
 import header from './header';
 import user from './user';
 import geolocation from './geolocation';
+import modal from './modal';
 
 export default combineReducers({
   page,
   header,
   user,
-  geolocation
+  geolocation,
+  modal
 })

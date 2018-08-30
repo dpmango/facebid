@@ -6,12 +6,10 @@ import PropTypes from 'prop-types';
 
 import Authorization from './hoc/Authorization';
 import ScrollTo from './services/ScrollTo';
+import { setClass } from './actions/page'
 import AOS from 'aos';
 
 class RenderSwitch extends React.Component {
-  static propTypes = {
-  };
-
   constructor(){
     super()
     this.aos = AOS
@@ -35,6 +33,9 @@ class RenderSwitch extends React.Component {
 
     // refresh AOS
     this.aos.refresh();
+
+    // set the page class when returning from service pages
+    this.props.setPageClass('')
   }
 
 
@@ -62,12 +63,17 @@ class RenderSwitch extends React.Component {
     )
   }
 }
+
+RenderSwitch.propTypes = {
+  setClass: PropTypes.func
+};
+
 const mapStateToProps = (state) => ({
 
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
+  setPageClass: (data) => dispatch(setClass(data))
 });
 
 export default withRouter(

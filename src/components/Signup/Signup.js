@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
@@ -6,12 +7,13 @@ import Modal from '../Modal/Modal';
 import FormInput from '../Forms/Input';
 import Toggle from '../Forms/Toggle';
 import SocialLogin from './SocialLogin';
+import { openModal, closeModal } from '../../actions/modal'
 
 class Signup extends Component{
   constructor(props){
     super(props)
     this.state = {
-      modalOpened: true,
+      modalName: 'signup',
       nickname: '',
       birth_day: '',
       birth_month: '',
@@ -22,25 +24,18 @@ class Signup extends Component{
       password: '',
       password_repeat: ''
     }
-  }
 
-  componentDidMount() {
-    this.props.onRef(this)
-  }
-  componentWillUnmount() {
-    this.props.onRef(undefined)
+    this.formRef = React.createRef();
   }
 
   show = () => {
-    this.setState({
-      modalOpened: true
-    })
+    this.props.openModal(
+      this.state.modalName
+    )
   }
 
   hide = () => {
-    this.setState({
-      modalOpened: false
-    })
+    this.props.closeModal()
   }
 
   formInvalid = () => {
@@ -104,15 +99,19 @@ class Signup extends Component{
   render(){
     const {
       state: {
+        modalName,
         nickname,
         birth_day, birth_month, birth_year,
         gender, city, email, password, password_repeat
+      },
+      props: {
+        activeModal
       }
     } = this
 
     return(
       <Modal
-        isActive={this.state.modalOpened}
+        isActive={activeModal === modalName}
         onHide={this.hide}
         >
           <div className="modal__header">
@@ -288,12 +287,18 @@ class Signup extends Component{
   }
 }
 
-const mapStateToProps = (state) => ({
+Signup.propTypes = {
+  openModal: PropTypes.func,
+  closeModal: PropTypes.func
+}
 
+const mapStateToProps = (state) => ({
+  activeModal: state.modal.activeModal
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
+  openModal: (data) => dispatch(openModal(data)),
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

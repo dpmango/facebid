@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
 import { connect } from 'react-redux';
 import Modal from '../Modal/Modal';
 import FormInput from '../Forms/Input';
 import Checkbox from '../Forms/Checkbox';
 import SocialLogin from './SocialLogin';
+import { openModal, closeModal } from '../../actions/modal'
 
 class Login extends Component{
-  constructor(props){
-    super(props)
+  constructor(){
+    super()
     this.state = {
-      modalOpened: false,
+      modalName: false,
       email: '',
       password: '',
       remember: false
@@ -20,23 +22,15 @@ class Login extends Component{
 
   }
 
-  componentDidMount() {
-    this.props.onRef(this)
-  }
-  componentWillUnmount() {
-    this.props.onRef(undefined)
-  }
 
   show = () => {
-    this.setState({
-      modalOpened: true
-    })
+    this.props.openModal(
+      this.state.modalName
+    )
   }
 
   hide = () => {
-    this.setState({
-      modalOpened: false
-    })
+    this.props.closeModal()
   }
 
   formInvalid = () => {
@@ -91,13 +85,16 @@ class Login extends Component{
   render(){
     const {
       state: {
-        email, password, remember
+        modalName, email, password, remember
+      },
+      props: {
+        activeModal
       }
     } = this
 
     return(
       <Modal
-        isActive={this.state.modalOpened}
+        isActive={activeModal === modalName}
         onHide={this.hide}
         >
           <div className="modal__header">
@@ -170,12 +167,21 @@ class Login extends Component{
   }
 }
 
-const mapStateToProps = (state) => ({
 
+Login.propTypes = {
+  logIn: PropTypes.func,
+  openModal: PropTypes.func,
+  closeModal: PropTypes.func
+}
+
+const mapStateToProps = (state) => ({
+  activeModal: state.modal.activeModal
 });
 
 const mapDispatchToProps = (dispatch) => ({
   logIn: (credentials) => dispatch({ type: 'LOG_IN', payload: credentials }),
+  openModal: (data) => dispatch(openModal(data)),
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

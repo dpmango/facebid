@@ -6,6 +6,7 @@ import Geolocation from 'react-geolocation';
 import Modal from '../Modal/Modal';
 import Image from '../Helpers/Image';
 import { setGeolocation } from '../../actions/geolocation';
+import { openModal, closeModal } from '../../actions/modal'
 
 // TODO
 // refresh the request every `1 hour` or so ?
@@ -15,7 +16,7 @@ class GeolocationRequest extends Component{
   constructor(props){
     super(props)
     this.state = {
-      modalOpened: false,
+      modalName: 'geolocation',
       latitude: props.geolocationRedux.latitude,
       longitude: props.geolocationRedux.longitude,
       accuracy: props.geolocationRedux.accuracy,
@@ -33,16 +34,15 @@ class GeolocationRequest extends Component{
   }
 
   show = () => {
-    this.setState({
-      modalOpened: true
-    })
+    this.props.openModal(
+      this.state.modalName
+    )
   }
 
   hide = () => {
-    this.setState({
-      modalOpened: false
-    })
+    this.props.closeModal()
   }
+
 
   // when geolocation is sucessfully fetched
   onSucessFetch = (pos) => {
@@ -59,13 +59,16 @@ class GeolocationRequest extends Component{
   render(){
     const {
       state: {
-        latitude, longitude
+        modalName, latitude, longitude
+      },
+      props: {
+        activeModal
       }
     } = this
 
     return(
       <Modal
-        isActive={this.state.modalOpened}
+        isActive={activeModal === modalName}
         onHide={this.hide}
         >
         <div className="modal-alert">
@@ -108,15 +111,21 @@ class GeolocationRequest extends Component{
 }
 
 GeolocationRequest.propTypes = {
-  geolocationRedux: PropTypes.object
+  geolocationRedux: PropTypes.object,
+  setGeolocation: PropTypes.func,
+  openModal: PropTypes.func,
+  closeModal: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
-  geolocationRedux: state.geolocation
+  geolocationRedux: state.geolocation,
+  activeModal: state.modal.activeModal
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setGeolocation: (data) => dispatch(setGeolocation(data))
+  setGeolocation: (data) => dispatch(setGeolocation(data)),
+  openModal: (data) => dispatch(openModal(data)),
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GeolocationRequest);
