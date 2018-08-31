@@ -98,14 +98,38 @@ class Signup extends Component{
 
   // select functions
   handleSelectChange = (value, name) => {
-    this.setState({ [name]: value })
+    this.setState({ [name]: value },
+      () => {
+        if ( name === "birth_month" || name === "birth_year" ){
+          this.updateDatesOnSelect();
+        }
+    })
+  }
 
-    if ( name === "birth_month" ){
+  updateDatesOnSelect = () => {
+    const { birth_day, birth_month, birth_year } = this.state;
 
+    // should update availbe days on select
+    // as the monthes and years are always the same
+    if ( birth_month && birth_year ){
+      const availableDays = this.getDaysArray(parseInt(birth_year.value, 10), parseInt(birth_month.value, 10))
+      this.setState({ daySelect: availableDays }, () => {
+        // update the day if seleted past!
+        const lastAvailableDay = availableDays.slice(-1)[0];
+        const currentSelectedDay = parseInt(birth_day.value, 10)
+
+        if ( lastAvailableDay < currentSelectedDay ){
+          console.log('correcting day')
+          const makeDay = lastAvailableDay < 10 ? `0${lastAvailableDay}` : lastAvailableDay
+          this.setState({
+            ...this.state,
+            birth_day: {
+              value: makeDay, label: makeDay
+            }
+          })
+        }
+      })
     }
-    // else if ( name === "birth_year" ){
-    //
-    // }
   }
 
   mapArrToSelect = (arr) => {
@@ -113,6 +137,18 @@ class Signup extends Component{
     return arr.map(el => {
       return { value: el, label: el }
     })
+  }
+
+  // moment functions
+  getDaysArray = (year, month) => {
+    const date = new Date(year, month - 1, 1);
+    const result = [];
+    while (date.getMonth() == month - 1) {
+      let day = date.getDate()
+      result.push(day);
+      date.setDate(date.getDate() + 1);
+    }
+    return result;
   }
 
   // toggle functions
@@ -128,11 +164,15 @@ class Signup extends Component{
       nickname, birth_day, birth_month, birth_year, gender, city, email, password
     } = this.state;
 
+    const date = {
+      day: birth_day ? birth_day.value : "",
+      month: birth_month ? birth_month.value : "",
+      year: birth_year ? birth_year.value : "",
+    }
+
     const leadObj = {
       nickname: nickname,
-      birth_day: birth_day ? birth_day.value : "",
-      birth_month: birth_month ? birth_month.value : "",
-      birth_year: birth_year ? birth_year.value : "",
+      birth_date: `${date.day} ${date.month} ${date.year}`,
       gender: gender,
       city: city ? city.value : "",
       email: email,
