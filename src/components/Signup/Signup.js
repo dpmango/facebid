@@ -113,23 +113,32 @@ class Signup extends Component{
     // as the monthes and years are always the same
     if ( birth_month && birth_year ){
       const availableDays = this.getDaysArray(parseInt(birth_year.value, 10), parseInt(birth_month.value, 10))
-
-      // update the day if seleted past!
-      const lastAvailableDay = availableDays.slice(-1)[0];
-      const currentSelectedDay = parseInt(birth_day.value, 10)
-      let makeDay
-
-      if ( lastAvailableDay < currentSelectedDay ){
-        makeDay = lastAvailableDay < 10 ? `0${lastAvailableDay}` : lastAvailableDay
+      let resultObj = {
+        ...this.state,
+        daySelect: availableDays
       }
 
-      this.setState({
-        ...this.state,
-        daySelect: availableDays,
-        birth_day: {
-          value: makeDay, label: makeDay
+      // update the day if seleted past!
+      if ( birth_day ){
+        const lastAvailableDay = availableDays.slice(-1)[0];
+        const currentSelectedDay = parseInt(birth_day.value, 10)
+        let makeDay
+
+        if ( lastAvailableDay < currentSelectedDay ){
+          makeDay = lastAvailableDay < 10 ? `0${lastAvailableDay}` : lastAvailableDay
+
+          resultObj = {
+            ...this.state,
+            daySelect: availableDays,
+            birth_day: {
+              value: makeDay, label: makeDay
+            }
+          }
         }
-      })
+
+      }
+
+      this.setState(resultObj)
     }
   }
 
@@ -238,6 +247,7 @@ class Signup extends Component{
                         name="birth_day"
                         clearable={false}
                         searchable={true}
+                        noResultsText="Не найдено"
                         autosize={false}
                         value={birth_day}
                         onChange={(e) => this.handleSelectChange(e, "birth_day")}
@@ -255,7 +265,8 @@ class Signup extends Component{
                       <Select
                         name="birth_year"
                         clearable={false}
-                        searchable={false}
+                        searchable={true}
+                        noResultsText="Не найдено"
                         autosize={false}
                         value={birth_year}
                         onChange={(e) => this.handleSelectChange(e, "birth_year")}
@@ -278,7 +289,8 @@ class Signup extends Component{
                     <label htmlFor="">Город</label>
                     <Select
                       name="city"
-                      searchable={false}
+                      searchable={true}
+                      noResultsText="Не найдено"
                       autosize={false}
                       value={city}
                       onChange={(e) => this.handleSelectChange(e, "city")}

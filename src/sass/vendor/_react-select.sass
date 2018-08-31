@@ -95,7 +95,8 @@
   left: 0
   line-height: 38px
   padding-left: 20px
-  padding-right: 15px
+  // mind arrow offset
+  padding-right: 35px
   position: absolute
   right: 0
   top: 0
@@ -107,7 +108,7 @@
 
 .Select-input
   height: 38px
-  padding-left: 10px
+  padding-left: 20px
   padding-right: 10px
   vertical-align: middle
   > input
@@ -121,9 +122,11 @@
     font-size: inherit
     margin: 0
     outline: none
+    height: 38px
+    font-size: 14px
     line-height: 17px
     /* For IE 8 compatibility
-    padding: 8px 0 12px
+    // padding: 8px 0 12px
     /* For IE 8 compatibility
     -webkit-appearance: none
 
@@ -254,7 +257,7 @@
   cursor: pointer
   display: block
   font-size: 14px
-  padding: 8px 15px 8px 20px
+  padding: 10px 15px 10px 20px
   transition: .25s $ease
   &:last-child
     border-bottom-right-radius: 4px
@@ -274,7 +277,8 @@
   color: $grayColor
   cursor: default
   display: block
-  padding: 8px 10px
+  font-size: 12px
+  padding: 15px 10px 15px 15px
 
 .Select--multi
   .Select-input
