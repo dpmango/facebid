@@ -113,20 +113,21 @@ class Signup extends Component{
     // as the monthes and years are always the same
     if ( birth_month && birth_year ){
       const availableDays = this.getDaysArray(parseInt(birth_year.value, 10), parseInt(birth_month.value, 10))
-      this.setState({ daySelect: availableDays }, () => {
-        // update the day if seleted past!
-        const lastAvailableDay = availableDays.slice(-1)[0];
-        const currentSelectedDay = parseInt(birth_day.value, 10)
 
-        if ( lastAvailableDay < currentSelectedDay ){
-          console.log('correcting day')
-          const makeDay = lastAvailableDay < 10 ? `0${lastAvailableDay}` : lastAvailableDay
-          this.setState({
-            ...this.state,
-            birth_day: {
-              value: makeDay, label: makeDay
-            }
-          })
+      // update the day if seleted past!
+      const lastAvailableDay = availableDays.slice(-1)[0];
+      const currentSelectedDay = parseInt(birth_day.value, 10)
+      let makeDay
+
+      if ( lastAvailableDay < currentSelectedDay ){
+        makeDay = lastAvailableDay < 10 ? `0${lastAvailableDay}` : lastAvailableDay
+      }
+
+      this.setState({
+        ...this.state,
+        daySelect: availableDays,
+        birth_day: {
+          value: makeDay, label: makeDay
         }
       })
     }
