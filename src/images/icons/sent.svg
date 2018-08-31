@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="16px" viewBox="0 0 18 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>sent</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Component-/-Icons-/-S-/-Sent" transform="translate(-3.000000, -4.000000)">
+            <mask id="mask-2" fill="white">
+                <polygon points="3 20.0083955 21 12.0083955 3 4.00839552 3 10.2306177 15.8571429 12.0083955 3 13.7861733"></polygon>
+            </mask>
+            <polygon points="3 20.0083955 21 12.0083955 3 4.00839552 3 10.2306177 15.8571429 12.0083955 3 13.7861733" fill="#000000" fill-rule="nonzero"></polygon>
+        </g>
+    </g>
+</svg>

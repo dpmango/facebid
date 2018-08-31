@@ -1,26 +1,16 @@
 import React, {Component} from 'react';
 import Image from '../Helpers/Image';
+import Loading from '../Helpers/Loading';
 
 class Comments extends Component {
   render(){
-    const comments = [
-      {
-        id: 1,
-        user: {
-          avatar: "userAvatar_3.jpg",
-          name: "Susie Holt"
-        },
-        text: "Супер! Я бы тоже не против скататься в такое интересное путешествие. Когда выезжаете?"
-      },
-      {
-        id: 2,
-        user: {
-          avatar: "userAvatar_2.jpg",
-          name: "Hello World"
-        },
-        text: "Супер! Я бы тоже не против скататься в такое интересное путешествие. Когда выезжаете?"
-      }
-    ]
+    const { comments } = this.props
+
+    if ( !comments ){
+      return (
+        <Loading />
+      )
+    }
     return(
       <div className="e-card__comments">
         {comments.map(comment => {

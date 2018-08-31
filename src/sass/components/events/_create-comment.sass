@@ -1,0 +1,55 @@
+.create-comment
+  position: relative
+  margin-top: auto
+  background: #FFFFFF
+  padding: 10px 25px
+  &__wrapper
+    display: flex
+    align-items: center
+    border: 1px solid #00A9FF
+    border-radius: 30px
+    padding: 4px
+
+  &::before
+    display: inline-block
+    content: ' '
+    position: absolute
+    left: 0
+    right: 0
+    top: -25px
+    background-image: linear-gradient(0deg, #FFFFFF 0%, rgba(255,255,255,0.00) 100%)
+    height: 25px
+
+  &__avatar
+    flex: 0 0 auto
+
+  &__writable
+    flex: 1 1 auto
+    padding: 7px
+    textarea
+      -webkit-appearance: none
+      display: block
+      width: 100%
+      background: transparent
+      box-shadow: none
+      border: 0
+      font-size: 14px
+      resize: none
+      font-family: $roboto
+      &::placeholder
+        color: #C7CCD1
+  &__cta
+    flex: 0 0 auto
+    button
+      -webkit-appearance: none
+      background: transparent
+      border: 0
+      box-shadow: none
+      color: $colorBlue
+      font-size: 0
+      padding: 4px
+      transition: .25s $ease
+      &:hover
+        color: $fontColor
+    .ico
+      font-size: 15px

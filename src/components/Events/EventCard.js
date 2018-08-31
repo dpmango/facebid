@@ -3,12 +3,11 @@ import Swiper from 'react-id-swiper';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import SvgIcon from '../Helpers/SvgIcon';
 import Image from '../Helpers/Image';
+import api from '../../services/Api';
 import ConvertMonthNumToName from '../../services/ConvertMonthNumToName';
 import AvatarList from '../People/AvatarList';
 import Comments from './Comments';
-
-// TODO
-import 'react-perfect-scrollbar/dist/css/styles.css';
+import CreateComment from './CreateComment'
 
 class EventCard extends Component {
 
@@ -16,11 +15,27 @@ class EventCard extends Component {
     super();
 
     this.state = {
-      shouldCtaStick: false
+      shouldCtaStick: false,
+      comments: []
     }
 
     this.ctaRef = React.createRef();
 
+  }
+
+  componentDidMount(){
+    this.getComments() // pass id on prod
+  }
+
+  getComments = (id) => {
+    api
+      .get('comments')
+      .then(res => {
+        this.setState({ comments: res.data })
+      })
+      .catch(err => {
+        console.log('some error happens', err)
+      })
   }
 
   convertDate = (str) => {
@@ -36,9 +51,9 @@ class EventCard extends Component {
   }
 
   onScroll = (container) => {
-    console.log(container.scrollTop);
-
-    console.log('cta ref', this.ctaRef.current)
+    // console.log(container.scrollTop);
+    //
+    // console.log('cta ref', this.ctaRef.current)
 
     // if ( bla bla ){
     //   this.setState({ shouldCtaStick: true })
@@ -81,16 +96,21 @@ class EventCard extends Component {
     }
 
     const {
-      data: {
-        images,
-        user,
-        name,
-        from,
-        date,
-        to,
-        desc
+      props: {
+        data: {
+          images,
+          user,
+          name,
+          from,
+          date,
+          to,
+          desc
+        }
+      },
+      state: {
+        comments
       }
-    } = this.props
+    } = this
 
     return(
       <div className="e-card">
@@ -173,9 +193,12 @@ class EventCard extends Component {
                         avatars={avatars} />
                     </div>
                   </div>
-                  <Comments />
+                  <Comments comments={comments} />
                 </div>
               </PerfectScrollbar>
+              <CreateComment
+                onNewComment={this.getComments}
+              />
             </div>
           </div>
         </div>

@@ -195,6 +195,11 @@
         select-arrow
     </title>
     <path fill-rule="nonzero" d="M10.59.59L6 5.17 1.41.59 0 2l6 6 6-6z"/>
+</symbol><symbol id="ico-sent" viewBox="0 0 18 16">
+    <title>
+        sent
+    </title>
+    <path fill-rule="nonzero" d="M0 16.008l18-8-18-8v6.223l12.857 1.777L0 9.786z"/>
 </symbol><symbol id="ico-share" viewBox="0 0 18 20">
     <title>
         share
