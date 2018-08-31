@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
+import moment from 'moment';
 import Modal from '../Modal/Modal';
 import FormInput from '../Forms/Input';
 import Toggle from '../Forms/Toggle';
@@ -23,10 +24,32 @@ class Signup extends Component{
       city: '',
       email: '',
       password: '',
-      password_repeat: ''
+      password_repeat: '',
+      daySelect: [
+        "01", "02", "03", "04", "05", "06", "07", "08", "09",
+        "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
+        "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
+        "30", "31"
+      ],
+      monthSelect: [
+        {value: "01", label: "Января"},
+        {value: "02", label: "Ферваля"},
+        {value: "03", label: "Марта"},
+        {value: "04", label: "Апреля"},
+        {value: "05", label: "Мая"},
+        {value: "06", label: "Июня"},
+        {value: "07", label: "Июля"},
+        {value: "08", label: "Августа"},
+        {value: "09", label: "Сентября"},
+        {value: "10", label: "Октября"},
+        {value: "11", label: "Ноября"},
+        {value: "12", label: "Декабря"}
+      ],
+      yearSelect: Array(2010 - 1940 + 1).fill().map((_, idx) => 2010 - idx)
     }
 
     this.formRef = React.createRef();
+
   }
 
   show = () => {
@@ -75,7 +98,48 @@ class Signup extends Component{
 
   // select functions
   handleSelectChange = (value, name) => {
-    this.setState({ [name]: value })
+    this.setState({ [name]: value },
+      () => {
+        if ( name === "birth_month" || name === "birth_year" ){
+          this.updateDatesOnSelect();
+        }
+    })
+  }
+
+  updateDatesOnSelect = () => {
+    const { birth_day, birth_month, birth_year } = this.state;
+
+    // should update availbe days on select
+    // as the monthes and years are always the same
+    if ( birth_month && birth_year ){
+      const availableDays = this.getDaysArray(parseInt(birth_year.value, 10), parseInt(birth_month.value, 10))
+      let resultObj = {
+        ...this.state,
+        daySelect: availableDays
+      }
+
+      // update the day if seleted past!
+      if ( birth_day ){
+        const lastAvailableDay = availableDays.slice(-1)[0];
+        const currentSelectedDay = parseInt(birth_day.value, 10)
+        let makeDay
+
+        if ( lastAvailableDay < currentSelectedDay ){
+          makeDay = lastAvailableDay < 10 ? `0${lastAvailableDay}` : lastAvailableDay
+
+          resultObj = {
+            ...this.state,
+            daySelect: availableDays,
+            birth_day: {
+              value: makeDay, label: makeDay
+            }
+          }
+        }
+
+      }
+
+      this.setState(resultObj)
+    }
   }
 
   mapArrToSelect = (arr) => {
@@ -83,6 +147,18 @@ class Signup extends Component{
     return arr.map(el => {
       return { value: el, label: el }
     })
+  }
+
+  // moment functions
+  getDaysArray = (year, month) => {
+    const date = new Date(year, month - 1, 1);
+    const result = [];
+    while (date.getMonth() == month - 1) {
+      let day = date.getDate()
+      result.push(day);
+      date.setDate(date.getDate() + 1);
+    }
+    return result;
   }
 
   // toggle functions
@@ -98,11 +174,15 @@ class Signup extends Component{
       nickname, birth_day, birth_month, birth_year, gender, city, email, password
     } = this.state;
 
+    const date = {
+      day: birth_day ? birth_day.value : "",
+      month: birth_month ? birth_month.value : "",
+      year: birth_year ? birth_year.value : "",
+    }
+
     const leadObj = {
       nickname: nickname,
-      birth_day: birth_day ? birth_day.value : "",
-      birth_month: birth_month ? birth_month.value : "",
-      birth_year: birth_year ? birth_year.value : "",
+      birth_date: `${date.day} ${date.month} ${date.year}`,
       gender: gender,
       city: city ? city.value : "",
       email: email,
@@ -118,7 +198,8 @@ class Signup extends Component{
         modalName,
         nickname,
         birth_day, birth_month, birth_year,
-        gender, city, email, password, password_repeat
+        gender, city, email, password, password_repeat,
+        daySelect, monthSelect, yearSelect
       },
       props: {
         activeModal
@@ -166,20 +247,12 @@ class Signup extends Component{
                         name="birth_day"
                         clearable={false}
                         searchable={true}
+                        noResultsText="Не найдено"
                         autosize={false}
                         value={birth_day}
                         onChange={(e) => this.handleSelectChange(e, "birth_day")}
                         placeholder="день"
-                        options={this.mapArrToSelect(
-                          [
-                            "01", "02", "03", "04", "05", "06", "07", "08", "09",
-                            "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
-                            "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
-                            "30", "31"
-                          ]
-                        )
-                        }
-                      />
+                        options={this.mapArrToSelect(daySelect)} />
                       <Select
                         name="birth_month"
                         clearable={false}
@@ -188,38 +261,17 @@ class Signup extends Component{
                         value={birth_month}
                         onChange={(e) => this.handleSelectChange(e, "birth_month")}
                         placeholder="месяц"
-                        options={[
-                          {value: "01", label: "Января"},
-                          {value: "02", label: "Ферваля"},
-                          {value: "03", label: "Марта"},
-                          {value: "04", label: "Апреля"},
-                          {value: "05", label: "Мая"},
-                          {value: "06", label: "Июня"},
-                          {value: "07", label: "Июля"},
-                          {value: "08", label: "Августа"},
-                          {value: "09", label: "Сентября"},
-                          {value: "10", label: "Октября"},
-                          {value: "11", label: "Ноября"},
-                          {value: "12", label: "Декабря"}
-                        ]}
-                      />
+                        options={monthSelect} />
                       <Select
                         name="birth_year"
                         clearable={false}
-                        searchable={false}
+                        searchable={true}
+                        noResultsText="Не найдено"
                         autosize={false}
                         value={birth_year}
                         onChange={(e) => this.handleSelectChange(e, "birth_year")}
                         placeholder="год"
-                        options={this.mapArrToSelect(
-                          [
-                            "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001",
-                            "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991",
-                            "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981"
-                          ]
-                        )
-                        }
-                      />
+                        options={this.mapArrToSelect(yearSelect)}/>
                     </div>
                   </div>
                   <div className="ui-group ui-group--row">
@@ -237,7 +289,8 @@ class Signup extends Component{
                     <label htmlFor="">Город</label>
                     <Select
                       name="city"
-                      searchable={false}
+                      searchable={true}
+                      noResultsText="Не найдено"
                       autosize={false}
                       value={city}
                       onChange={(e) => this.handleSelectChange(e, "city")}
