@@ -4,6 +4,7 @@
   padding: 0
   li
     display: block
+    max-width: 190px
   a
     padding: 8px 0
     display: flex
@@ -26,12 +27,6 @@
       &-bookmarks
         font-size: 16px
 
-    span
-      display: inline-block
-      margin-left: 8px
-      font-size: 14px
-      font-weight: 500
-
     &:hover, &.is-active
       color: $colorBlue
 
@@ -42,9 +37,29 @@
     align-items: center
     justify-content: center
 
+  &__name
+    display: inline-block
+    margin-left: 8px
+    font-size: 14px
+    font-weight: 500
+
   &__add
     margin-left: auto
     flex: 0 0 auto
   &__counter
     margin-left: auto
     flex: 0 0 auto
+    size: 24px
+    background: $colorBlue
+    color: white
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    font-family: $roboto
+    span
+      display: inline-block
+      font-size: 12px
+      line-height: 1
+      font-weight: 700

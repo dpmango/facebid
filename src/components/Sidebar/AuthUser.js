@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Image from '../Helpers/Image';
 import SvgIcon from '../Helpers/SvgIcon';
 import UserMenu from './UserMenu';
+import SearchPeople from './SearchPeople';
 
 class AuthUser extends Component{
   render(){
@@ -32,13 +33,15 @@ class AuthUser extends Component{
             <div className="panel-action__icon">
               <SvgIcon name="crown" />
             </div>
-            <div className="panel-action__name">Поднять  <br/>объявление</div>
+            <div className="panel-action__name">VIP <br/>аккаунт</div>
           </div>
         </div>
 
         <div className="user-panel__menu">
           <UserMenu />
         </div>
+
+        <SearchPeople />
 
       </div>
     )

@@ -65,7 +65,7 @@ class UserMenu extends Component {
                 <div className="user-menu__icon">
                   <SvgIcon name={el.icon} />
                 </div>
-                <span>{el.name}</span>
+                <span className="user-menu__name">{el.name}</span>
                 { el.haveAdd &&
                   <div className="user-menu__add">
                     <div className="icon-add">
