@@ -13,6 +13,9 @@
   "author": "Jesper Orb",
   "license": "ISC",
   "dependencies": {
-    "json-server": "^0.12.1"
+    "fs": "^0.0.1-security",
+    "https": "^1.0.0",
+    "json-server": "^0.12.1",
+    "path": "^0.12.7"
   }
 }

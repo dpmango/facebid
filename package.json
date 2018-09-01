@@ -61,6 +61,7 @@
     "redux-saga": "^0.16.0",
     "require-dir": "^1.0.0",
     "run-sequence": "^2.2.1",
+    "socket.io-client": "^2.1.1",
     "svg4everybody": "^2.1.9",
     "through2": "^2.0.3",
     "typograf": "^6.7.2",
@@ -71,15 +72,18 @@
     "react-scripts": "1.1.5"
   },
   "scripts": {
-    "start-scripts": "react-scripts start",
+    "start-scripts": "HTTPS=true react-scripts start",
     "build-scripts": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "surge": "mv build/index.html build/200.html && surge --domain facebid.surge.sh --project ./build && yarn deploy-backend",
-    "fakeServer": "json-server --watch api/db.json",
-    "start": "concurrently --kill-others \"gulp\" \"yarn start-scripts\" \"yarn fakeServer -p 8000\"",
+    "start": "concurrently --kill-others \"gulp\" \"yarn start-scripts\" \"yarn json-server\" \"yarn social-server\"",
+    "json-server": "node api/server.js",
+    "json-server-pure": "json-server --watch api/db.json -p 8000",
+    "social-server": "nodemon social-api/server.js",
     "build": "gulp build --production && yarn build-scripts",
     "postbuild": "react-snap",
-    "deploy-backend": "git subtree push --prefix api heroku master"
+    "deploy-json-server": "git subtree push --prefix api heroku master",
+    "deploy-social-server": "git subtree push --prefix social-api heroku-social master",
+    "deploy-all": "mv build/index.html build/200.html && surge --domain facebid.surge.sh --project ./build && yarn deploy-json-server && yarn deploy-social-server"
   }
 }

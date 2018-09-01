@@ -15,13 +15,18 @@ http://facebid.surge.sh
 - [Important notes](#important-notes)
 
 ## How to start
-* `yarn start` - run gulp and react scripts start
+* `yarn start` - run gulp, react scripts, json-server and social-server
 * `yarn build` - run gulp in production mode and react scripts build folder
-* `yarn surge` - deploy to surge
+* `yarn deploy-all` - deploy to surge, heroku json-server and social-server
 * `yarn postbuild` - run react-snap (prebuild command to be run authomatically)
 
 ## Back-end
-Backed is under development. Fake API responces located at `/src/db.json` and server through [json-server](https://github.com/typicode/json-server). For the surge "production-like" it's located on `http://facebid-api.herokuapp.com` with uptime robot for 100% uptime and should be deployed with `yarn deploy-backend` command (subtree push)
+While backed is under development. Fake API responces located at `/src/db.json` and server through [json-server](https://github.com/typicode/json-server). For the surge "production-like" it's located on `http://facebid-api.herokuapp.com` with uptime robot for 100% uptime and should be deployed with `yarn deploy-json-server` command (subtree push)
+
+You should have instaled [hotel](https://github.com/typicode/hotel) and `json-server` globally (`npm i -g json-server`)
+
+Social OAuth server for authentication is located under `social-api` and to be deployed with `yarn deploy-social-server`
+Please request `.env` file with secret keys
 
 ### Test Authentication
 For the development purposes, please use the login `test@mail.com` and `123456` as a password to process for login form
@@ -51,3 +56,4 @@ All available tasks are placed in a folder `./gulp/tasks` as separate **.js** fi
 
 ## Important notes
 - Redux store save state in localStorage. When data structure chages, please update `version` variable in `src/store/localStorage.js` to clear localStorage on user side.
+- Site is running under HTTPS as well as fake backends. If you have an issues setting up local environment, please user [This guide]( https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
