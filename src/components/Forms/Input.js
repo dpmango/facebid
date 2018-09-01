@@ -16,22 +16,34 @@ class FormInput extends Component {
   constructor(props){
     super()
 
+    this.state = {
+      isFocused: false
+    }
+
     this.textareaRef = React.createRef()
   }
 
-  changeValue = (event) => {
-    this.props.onChangeHandler(event)
-    this.props.setValue(event.currentTarget.value);
+  changeValue = (e) => {
+    this.props.onChangeHandler(e)
+    this.props.setValue(e.currentTarget.value);
+  }
+
+  onFocusHandler = () => {
+    this.setState({ isFocused: true })
+  }
+
+  onBlurHandler = () => {
+    this.setState({ isFocused: false })
   }
 
   render(){
-    const { name, id, placeholder, extraClass, mask, label, rows } = this.props
+    const { name, id, placeholder, extraClass, icon, mask, label, rows } = this.props
 
     const type = this.props.type ? this.props.type : "text"
 
     // An error message is returned only if the component is invalid
     const errorMessage = this.props.isFormSubmitted() ? this.props.getErrorMessage() : null;
-    const defaultClass = "ui-group" + (this.props.extraClass ? " " + extraClass : "")
+    const defaultClass = "ui-group" + ( this.state.isFocused ? " is-focused" : "" ) + (this.props.extraClass ? " " + extraClass : "")
     const parentClass = this.props.isFormSubmitted() ? this.props.isValid() ? defaultClass : `${defaultClass} has-error` : defaultClass
 
     if ( mask ){
@@ -56,7 +68,7 @@ class FormInput extends Component {
           {label &&
             <label htmlFor={name}>{label}</label>
           }
-          <div className="ui-input">
+          <div className={"ui-input" + (icon ? "ui-input--iconed" : "") }>
             { type !== "textarea" &&
               <input
                 type={type}
@@ -64,6 +76,8 @@ class FormInput extends Component {
                 id={id}
                 placeholder={placeholder}
                 onChange={this.changeValue}
+                onBlur={this.onBlurHandler}
+                onFocus={this.onFocusHandler}
                 onKeyPress={this.props.onKeyHandler}
                 value={this.props.getValue() || ''}
                 // required={isRequired ? true : false}
@@ -77,10 +91,15 @@ class FormInput extends Component {
                 name={name}
                 placeholder={placeholder}
                 onChange={this.changeValue}
+                onBlur={this.onBlurHandler}
+                onFocus={this.onFocusHandler}
                 onKeyPress={this.props.onKeyHandler}
                 value={this.props.getValue() || ''}
                 // required={isRequired ? true : false}
               />
+            }
+            { icon &&
+              <SvgIcon name={icon} />
             }
           </div>
           <span className="ui-validation">{errorMessage}</span>

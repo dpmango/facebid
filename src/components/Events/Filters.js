@@ -5,6 +5,7 @@ import SvgIcon from '../Helpers/SvgIcon';
 import FilterSlider from './FilterSlider';
 import Plurize from '../../services/Plurize';
 // import Select from '../Forms/Select';
+import SimpleInput from '../Forms/SimpleInput';
 import Select from 'react-select';
 import Slider from 'rc-slider';
 import Toggle from '../Forms/Toggle';
@@ -112,16 +113,12 @@ class Filters extends Component {
             <SvgIcon name="plus" />
             <span>Создать событие</span>
           </button>
-          <div className="ui-input ui-input--iconed">
-            <input
-              name="eventName"
-              onChange={this.handleChange}
-              value={eventName}
-              type="text"
-              placeholder="Чем ты хочешь заняться?"
-            />
-            <SvgIcon name="search" />
-          </div>
+          <SimpleInput
+            name="eventName"
+            placeholder="Чем ты хочешь заняться?"
+            icon="search"
+            value={eventName}
+            onChangeHandler={this.handleChange} />
           <div onClick={this.closeFiltersClick} className="filters__clear">
             <SvgIcon name="close" />
           </div>
