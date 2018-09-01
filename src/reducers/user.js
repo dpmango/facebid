@@ -3,6 +3,7 @@ import { AUTHORIZATION_SUCCESS, SIGN_OUT, AUTHORIZATION_FAIL, SET_USER_ID, SIGNU
 export const initialState = {
   randomId: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10),
   userId: null,
+  userDetails: {},
   authToken: null,
   errorMessage: '',
   signupDone: false
