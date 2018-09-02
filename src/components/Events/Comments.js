@@ -4,6 +4,29 @@ import Image from '../Helpers/Image';
 import Loading from '../Helpers/Loading';
 
 class Comments extends Component {
+
+  userClick = (user) => {
+
+  }
+
+  renderText = (text) => {
+    //helper function to get usernames as hyperlink
+    // TODO - should it be backend based ?
+    if ( text.indexOf("@") !== -1 ){
+      return text.split(" ").map(str => {
+        if ( str.indexOf("@") === 0 ){
+          return (
+            <span onClick={this.userClick.bind(this, str)}>{str} </span>
+          )
+        } else {
+          return `${str} `
+        }
+      })
+    } else {
+      return text
+    }
+  }
+
   render(){
     const { comments, userId } = this.props
 
@@ -27,7 +50,7 @@ class Comments extends Component {
                   </div>
                 </div>
                 <div className="e-comment__text">
-                  {comment.text}
+                  {this.renderText(comment.text)}
                 </div>
               </div>
             </div>
