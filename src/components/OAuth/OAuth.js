@@ -7,7 +7,7 @@ class OAuth extends Component {
 
   constructor(){
     super()
-    
+
     this.state = {
       user: {},
       disabled: ''
@@ -24,7 +24,7 @@ class OAuth extends Component {
     })
   }
 
-  checkPopup() {
+  checkPopup = () => {
     const check = setInterval(() => {
       const { popup } = this
       if (!popup || popup.closed || popup.closed === undefined) {
@@ -34,7 +34,7 @@ class OAuth extends Component {
     }, 1000)
   }
 
-  openPopup() {
+  openPopup = () => {
     const { provider, socket } = this.props
     const width = 600, height = 600
     const left = (window.innerWidth / 2) - (width / 2)
@@ -48,7 +48,8 @@ class OAuth extends Component {
     )
   }
 
-  startAuth() {
+  startAuth = () => {
+    console.log(this.state)
     if (!this.state.disabled) {
       this.popup = this.openPopup()
       this.checkPopup()
@@ -56,7 +57,7 @@ class OAuth extends Component {
     }
   }
 
-  closeCard() {
+  closeCard = () => {
     this.setState({user: {}})
   }
 

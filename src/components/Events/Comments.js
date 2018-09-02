@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import Image from '../Helpers/Image';
 import Loading from '../Helpers/Loading';
 
 class Comments extends Component {
   render(){
-    const { comments } = this.props
+    const { comments, userId } = this.props
 
     if ( !comments ){
       return (
@@ -12,7 +13,7 @@ class Comments extends Component {
       )
     }
     return(
-      <div className="e-card__comments">
+      <div className={'e-card__comments' + ( userId ? " is-logined" : "" )}>
         {comments.map(comment => {
           return(
             <div className="e-comment" key={comment.id}>
@@ -37,4 +38,13 @@ class Comments extends Component {
   }
 }
 
-export default Comments
+
+const mapStateToProps = (state) => ({
+  userId: state.user.userId
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comments);

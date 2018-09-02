@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
-import Swiper from 'react-id-swiper';
+import ReactDOM from 'react-dom';
+import anime from 'animejs'
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import throttle from 'lodash/throttle'
 import SvgIcon from '../Helpers/SvgIcon';
-import Image from '../Helpers/Image';
 import api from '../../services/Api';
 import ConvertMonthNumToName from '../../services/ConvertMonthNumToName';
+import GetCoordsOnDocument from '../../services/GetCoordsOnDocument';
+import GetWindowScroll from '../../services/GetWindowScroll';
+import EventCardMedia from './EventCardMedia';
+import EventCardTop from './EventCardTop';
 import AvatarList from '../People/AvatarList';
 import Comments from './Comments';
 import CreateComment from './CreateComment'
@@ -15,8 +20,10 @@ class EventCard extends Component {
     super();
 
     this.state = {
+      comments: [],
       shouldCtaStick: false,
-      comments: []
+      computeSticky: {},
+      stickyPoint: null
     }
 
     this.ctaRef = React.createRef();
@@ -51,38 +58,52 @@ class EventCard extends Component {
   }
 
   onScroll = (container) => {
-    // console.log(container.scrollTop);
-    //
-    // console.log('cta ref', this.ctaRef.current)
 
-    // if ( bla bla ){
-    //   this.setState({ shouldCtaStick: true })
-    // } else {
-    //   this.setState({ shouldCtaStick: false })
-    // }
+    const { shouldCtaStick, stickyPoint } = this.state
+
+    const scrollDistance = container.scrollTop
+    const ctaPosTop = stickyPoint ? stickyPoint : this.ctaRef.current.offsetTop
+
+    if ( scrollDistance >= ctaPosTop ){
+      if ( !shouldCtaStick ){
+
+        let containerPosition = GetCoordsOnDocument(container)
+        containerPosition.top = containerPosition.top - GetWindowScroll().top
+        const containerWidth = container.offsetWidth
+
+        this.setState({
+          shouldCtaStick: true,
+          stickyPoint: scrollDistance,
+          computeSticky: {
+            top: containerPosition.top,
+            left: containerPosition.left,
+            width: containerWidth
+          }
+        })
+
+      }
+    } else {
+      this.setState({
+        shouldCtaStick: false,
+        stickyPoint: null,
+        computeSticky: {}
+      })
+    }
+
+  }
+
+  scrollToTop = () => {
+    anime({
+      targets: this._scrollRef,
+      scrollTop: 0,
+      easing: [0.77, 0, 0.175, 1],
+      duration: 500
+    });
+
+    // this._scrollRef.scrollTop = 0;
   }
 
   render(){
-    const SwiperParams = {
-      // react specific params
-      // https://github.com/kidjp85/react-id-swiper
-      // containerClass: 'filter-category',
-      containerClass: 'swiper-container e-card__slider',
-      slideClass: 'e-card__image',
-      // common swiper API
-      // http://idangero.us/swiper/api/
-      direction: 'horizontal',
-      watchOverflow: true,
-      setWrapperSize: false,
-      spaceBetween: 0,
-      slidesPerView: 1,
-      normalizeSlideIndex: true,
-      freeMode: false,
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'bullets',
-      },
-    }
 
     const avatars = {
       more: 14,
@@ -108,82 +129,53 @@ class EventCard extends Component {
         }
       },
       state: {
-        comments
+        comments, shouldCtaStick, computeSticky
       }
     } = this
 
     return(
       <div className="e-card">
         <div className="e-card__wrapper">
-          <div className="e-card__media">
-            <Swiper {...SwiperParams}>
-              {images.map((image, index) => {
-                return(
-                  <div key={index} className="e-card__image">
-                    <Image file={image} />
-                  </div>
-                )
-              })}
-            </Swiper>
-          </div>
+
+          <EventCardMedia data={images} />
+
           <div className="e-card__contents">
-            <div className="e-card__contents-wrapper">
-              {/* top */}
-              <div className="e-card__top">
-                <div className="e-card__user">
-                  <div className="e-card__user-avatar">
-                    <Image file="userAvatar.jpg" />
-                  </div>
-                  <div className="e-card__user-info">
-                    <div className="e-card__user-line">
-                      <div className="e-card__user-name">{user.name}, {user.age}</div>
-                      <div className="e-card__user-status">
-                        {user.isVerified &&
-                          <div className="icon-verified">
-                            <SvgIcon name="checkmark" />
-                          </div>
-                        }
-                      </div>
-                    </div>
-                    <div className="e-card__user-distance">{user.distance}</div>
-                  </div>
-                </div>
-                <div className="e-card__actions">
-                  <div className="e-card__action e-card__bookmark">
-                    <SvgIcon name="bookmark" />
-                  </div>
-                  <div className="e-card__action e-card__share">
-                    <SvgIcon name="share" />
-                  </div>
-                  <div className="e-card__action e-card__more">
-                    <SvgIcon name="more" />
-                  </div>
-                </div>
-              </div>
-              {/* scrollbale */}
+            <div className={"e-card__contents-wrapper" + (shouldCtaStick ? " should-stick" : "") }>
+
+              <EventCardTop user={user} />
+
               <PerfectScrollbar
+                className="scrollbar-blue e-card__scrollable"
                 option={{
                   wheelSpeed: 1,
                   wheelPropagation: false,
                   suppressScrollX: true,
                 }}
-                onScrollY={this.onScroll}
-                >
-                <div className="e-card__scrollable">
-                  <div className="e-card__head">
-                    <div className="e-card__title">{name}</div>
-                    <div className="e-card__event-line">
-                      <span>{from}</span>
-                      <i className="icon icon-plane"></i>
-                      <span>{to}</span>
-                    </div>
-                    <div className="e-card__date">
-                      {this.convertDate(date)}
-                    </div>
+                onScrollY={throttle(this.onScroll, 20)}
+                containerRef={(ref) => { this._scrollRef = ref }} >
+
+                <div className="e-card__head">
+                  <div className="e-card__title">{name}</div>
+                  <div className="e-card__event-line">
+                    <span>{from}</span>
+                    <i className="icon icon-plane"></i>
+                    <span>{to}</span>
                   </div>
-                  <div className="e-card__desc">{desc}</div>
-                  {/* cta (sticky on scroll) */}
-                  <div className="e-card__cta" ref={this.ctaRef}>
+                  <div className="e-card__date">
+                    {this.convertDate(date)}
+                  </div>
+                </div>
+                <div className="e-card__desc">{desc}</div>
+                {/* cta (sticky on scroll) */}
+                <div
+                  style={shouldCtaStick ? {
+                    top: `${computeSticky.top}px`,
+                    left: `${computeSticky.left}px`,
+                    width: `${computeSticky.width}px`
+                  } : null }
+                  className="e-card__cta"
+                  ref={this.ctaRef}>
+                  <div className="e-card__cta-wrapper">
                     <button className="btn btn-primary btn--iconed">
                       <SvgIcon name="checkmark" />
                       <span>Участвовать</span>
@@ -192,9 +184,15 @@ class EventCard extends Component {
                       <AvatarList
                         avatars={avatars} />
                     </div>
+                    <div
+                      onClick={this.scrollToTop}
+                      className="e-card__scrolltop">
+                      <SvgIcon name="up-arrow" />
+                    </div>
                   </div>
-                  <Comments comments={comments} />
                 </div>
+                <Comments comments={comments} />
+
               </PerfectScrollbar>
               <CreateComment
                 onNewComment={this.getComments}

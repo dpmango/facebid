@@ -30,10 +30,17 @@ button
       transform: translateY(-55%)
     .ico-checkmark
       font-size: 9px
+    .ico-refresh
+      font-size: 22px
+      transition: .3s $ease
+
     span
       display: inline-block
       margin-left: 27px
       // transform: translateY(1px)
+    &:hover
+      .ico-refresh
+        transform: translateY(-55%) rotate(320deg)
 
 .btn-outline
   color: $colorBlue

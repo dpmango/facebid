@@ -76,9 +76,14 @@ class GeolocationRequest extends Component{
 
   // geolocation backup and error state
   ipLookUp = async () => {
+
+    // backup options
+    // https://stackoverflow.com/questions/391979/how-to-get-clients-ip-address-using-javascript
+    
     await axios
-      .get('http://ip-api.com/json')
+      .get(`https://ipapi.co/json/`)
       .then(res => {
+        console.log(res)
         let result = res.data
         result.timestamp = new Date();
         this.props.setIpLookup(result)

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import api from '../../services/Api';
 import EventCard from './EventCard';
 import Loading from '../Helpers/Loading';
+import SvgIcon from '../Helpers/SvgIcon';
 
 class EventsGrid extends Component {
   constructor(){
@@ -14,10 +15,24 @@ class EventsGrid extends Component {
 
   componentDidMount(){
     api
-      .get('events')
+      .get('events?_limit=2')
       .then(res => {
         this.setState({
           data: res.data
+        })
+      })
+      .catch(err => {
+        console.log(`Something wrong happens - ${err.data}`, err)
+      })
+  }
+
+  loadMore = () => {
+    // offset ??
+    api
+      .get('events?_page=2&_limit=2')
+      .then(res => {
+        this.setState({
+          data: this.state.data.concat(res.data)
         })
       })
       .catch(err => {
@@ -46,6 +61,17 @@ class EventsGrid extends Component {
                   data={event} />
               )
             })
+          }
+          { data &&
+            <div className="events__load-more">
+              <button
+                className="btn btn-primary btn--iconed"
+                onClick={this.loadMore}
+                >
+                  <SvgIcon name="refresh" />
+                  <span>Показать еще</span>
+                </button>
+            </div>
           }
         </div>
       </div>

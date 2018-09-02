@@ -59,8 +59,7 @@
 .ps__thumb-x
   background-color: #aaa
   border-radius: 6px
-  transition: background-color .2s linear, height .2s ease-in-out
-  -webkit-transition: background-color .2s linear, height .2s ease-in-out
+  transition: background-color .2s linear, height .2s $ease
   height: 6px
   /* there must be 'bottom' for ps__thumb-x
   bottom: 2px
@@ -70,8 +69,7 @@
 .ps__thumb-y
   background-color: #aaa
   border-radius: 6px
-  transition: background-color .2s linear, width .2s ease-in-out
-  -webkit-transition: background-color .2s linear, width .2s ease-in-out
+  transition: background-color .2s linear, width .2s $ease
   width: 6px
   /* there must be 'right' for ps__thumb-y
   right: 2px
@@ -100,3 +98,47 @@
 .scrollbar-container
   position: relative
   height: 100%
+
+
+
+// modifier classes
+.scrollbar-blue
+  .ps__rail-y
+    right: 10px !important
+    margin-top: 15px
+    width: 2px
+    // margin-bottom: -30px
+    z-index: 4
+    &:hover > .ps__thumb-y, &:focus > .ps__thumb-y, &.ps--clicking .ps__thumb-y
+      background-color: $colorBlue
+      width: 8px
+      right: -2px
+    &:hover, &:focus, &.ps--clicking
+      width: 4px
+
+  .ps__thumb-y
+    background-color: $colorBlue
+    border-radius: 6px
+    width: 4px
+    right: -1px
+    cursor: grab
+    transition: background-color .2s linear, width .2s $ease, right .2s $ease
+
+  .ps__rail-y:hover, .ps__rail-x:focus, .ps__rail-y.ps--clicking
+    background-color: #F3F7FB
+    opacity: 1
+
+  &.ps--active-y > .ps__rail-y
+    display: block
+    background-color: #F3F7FB
+
+  &:hover >
+    .ps__rail-y
+      opacity: 1
+
+  &.ps--focus >
+    .ps__rail-y
+      opacity: 1
+
+  &.ps--scrolling-y > .ps__rail-y
+    opacity: 1
