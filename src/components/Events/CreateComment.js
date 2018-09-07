@@ -52,8 +52,8 @@ class CreateComment extends Component {
           <div className="create-comment__writable">
             <Textarea
               onChange={this.onChangeContent}
-              minRows="1"
-              maxRows="5"
+              minRows={1}
+              maxRows={5}
               placeholder="Введите текст комментария" />
             {/* <textarea
               onChange={this.onChangeContent}

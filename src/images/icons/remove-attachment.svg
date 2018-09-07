@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>remove-attachment</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Marvel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Marvel_Create" transform="translate(-682.000000, -996.000000)" fill="#00A9FF">
+            <g id="Chat" transform="translate(369.000000, 7.000000)">
+                <g id="Чат" transform="translate(0.000000, 17.000000)">
+                    <g id="Group-4" transform="translate(24.000000, 897.000000)">
+                        <g id="Group-26" transform="translate(214.000000, 0.000000)">
+                            <g id="Group-22" transform="translate(68.000000, 68.000000)">
+                                <path d="M13.5588616,12 L16.674657,15.1157954 C17.1061894,15.5473278 17.1100536,16.2431159 16.6765848,16.6765848 C16.246117,17.1070525 15.5419198,17.1007814 15.1157954,16.674657 L12,13.5588616 L8.88420459,16.674657 C8.45267218,17.1061894 7.75688412,17.1100536 7.32341524,16.6765848 C6.8929475,16.246117 6.89921857,15.5419198 7.325343,15.1157954 L10.4411384,12 L7.325343,8.88420459 C6.89381059,8.45267218 6.88994636,7.75688412 7.32341524,7.32341524 C7.75388298,6.8929475 8.45808016,6.89921857 8.88420459,7.325343 L12,10.4411384 L15.1157954,7.325343 C15.5473278,6.89381059 16.2431159,6.88994636 16.6765848,7.32341524 C17.1070525,7.75388298 17.1007814,8.45808016 16.674657,8.88420459 L13.5588616,12 Z" id="remove-attachment"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

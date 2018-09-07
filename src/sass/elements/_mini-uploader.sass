@@ -1,0 +1,62 @@
+.mini-uploader
+  display: flex
+  overflow-x: scroll
+
+.mini-uploader-card
+  flex: 0 0 100px
+  position: relative
+  z-index: 1
+  margin-right: 16px
+  size: 100px
+  background: #848E99
+  border-radius: 4px
+  overflow: hidden
+  &:last-child
+    margin-right: 0
+  &__image
+    position: absolute 0
+    font-size: 0
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: center center
+
+  &__remove, &__add
+    position: absolute
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    z-index: 2
+    bottom: 8px
+    right: 8px
+    background: white
+    size: 24px
+    border-radius: 50%
+    font-size: 0
+    cursor: pointer
+    color: $colorBlue
+    transition: .25s $ease
+    &:hover
+      background: rgba(white, .85)
+
+
+  &__remove
+    opacity: 0
+    pointer-events: none
+    .ico
+      font-size: 10px
+
+  &__add
+    .ico
+      font-size: 13px
+
+
+  &.have-file
+    .mini-uploader-card
+      &__remove
+        pointer-events: all
+        opacity: 1
+
+      &__add
+        pointer-events: none
+        opacity: 0

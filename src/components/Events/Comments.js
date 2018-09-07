@@ -13,10 +13,10 @@ class Comments extends Component {
     //helper function to get usernames as hyperlink
     // TODO - should it be backend based ?
     if ( text.indexOf("@") !== -1 ){
-      return text.split(" ").map(str => {
+      return text.split(" ").map((str, index) => {
         if ( str.indexOf("@") === 0 ){
           return (
-            <span onClick={this.userClick.bind(this, str)}>{str} </span>
+            <span key={index} onClick={this.userClick.bind(this, str)}>{str} </span>
           )
         } else {
           return `${str} `

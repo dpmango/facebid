@@ -7,7 +7,8 @@ import Modal from '../Modal/Modal';
 import FormInput from '../Forms/Input';
 import Toggle from '../Forms/Toggle';
 import Checkbox from '../Forms/Checkbox';
-import { openModal, closeModal } from '../../actions/modal'
+import CreateMiniUploader from './CreateMiniUploader';
+import { openModal, closeModal } from '../../actions/modal';
 import { setCreateEvent } from '../../actions/create-event';
 import { daySelect, monthSelect, yearSelect } from '../../helpers/CalendarSelectArrays';
 import GetCalendarDays from '../../helpers/GetCalendarDays';
@@ -62,7 +63,7 @@ class Create extends Component{
   handleSubmit = (e) => {
     this.setState({isFormSubmitted: true})
     if ( this.state.formIsValid ){
-      this.loginUser();
+      this.processNext();
       this.setState({isFormSubmitted: false}) // reset state here
     }
   }
@@ -103,8 +104,29 @@ class Create extends Component{
 
 
   // auth passed to redux
-  loginUser = () => {
+  processNext = () => {
+    this.saveState();
+    // this.props.openModal('create-event-2')
+  }
 
+  saveState = () => {
+    this.props.setCreateEvent({
+      ...this.props.createEventRedux,
+      category: this.state.category,
+      departure: this.state.departure,
+      destination: this.state.destination,
+      event_day: this.state.event_day,
+      event_month: this.state.event_month,
+      event_year: this.state.event_year,
+      eventType: this.state.eventType,
+      numberOfPeople: this.state.numberOfPeople,
+
+      title: this.state.title,
+      description: this.state.description,
+
+      privacyComments: this.state.privacyComments,
+      privacyDisplayMembers: this.state.privacyDisplayMembers
+    })
   }
 
   render(){
@@ -321,6 +343,10 @@ class Create extends Component{
               onChangeHandler={this.handleChange}
               onKeyHandler={this.keyPressHandler}
               required />
+            <div className="ui-group ui-group--row">
+              <label></label>
+              <CreateMiniUploader />
+            </div>
           </div>
 
           {/* NEXT SECTION - PRIVACY */}
@@ -370,7 +396,6 @@ class Create extends Component{
     )
   }
 }
-
 
 Create.propTypes = {
   openModal: PropTypes.func,
