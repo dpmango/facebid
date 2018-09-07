@@ -40,21 +40,22 @@ class FilterSlider extends Component {
     }
 
     const slides = [
-      {id: 1, icon: "filter-category-1", name: "Все"},
-      {id: 2, icon: "filter-category-2", name: "Подписчики"},
-      {id: 3, icon: "filter-category-3", name: "путешествия"},
-      {id: 4, icon: "filter-category-4", name: "В кино"},
-      {id: 5, icon: "filter-category-5", name: "Свидание"},
-      {id: 6, icon: "filter-category-6", name: "Спорт"},
-      {id: 7, icon: "filter-category-7", name: "Языковой обмен"},
-      {id: 8, icon: "filter-category-8", name: "Культура"},
-      {id: 9, icon: "filter-category-9", name: "Хобби"},
-      {id: 10, icon: "filter-category-10", name: "Развлечения"},
-      {id: 11, icon: "filter-category-11", name: "Все"},
-      {id: 12, icon: "filter-category-12", name: "Все"},
-      {id: 13, icon: "filter-category-13", name: "Все"},
-      {id: 14, icon: "filter-category-14", name: "Все"},
-      {id: 15, icon: "filter-category-15", name: "Все"}
+      {id: 1, icon: "filter-category-all", name: "Все"},
+      {id: 2, icon: "filter-category-volonter", name: "Волонтерство"},
+      {id: 3, icon: "filter-category-travel", name: "Путешествия"},
+      {id: 4, icon: "filter-category-movie", name: "В кино"},
+      {id: 5, icon: "filter-category-dating", name: "Свидание"},
+      {id: 6, icon: "filter-category-fitness", name: "Фитнес"},
+      {id: 7, icon: "filter-category-lang", name: "Языковой обмен"},
+      {id: 8, icon: "filter-category-culture", name: "Культура"},
+      {id: 9, icon: "filter-category-hobby", name: "Хобби"},
+      {id: 10, icon: "filter-category-entertainment", name: "Развлечения"},
+      {id: 11, icon: "filter-category-food", name: "Перекусим"},
+      {id: 12, icon: "filter-category-childs", name: "Дети"},
+      {id: 13, icon: "filter-category-nightlife", name: "Ночная жизнь"},
+      {id: 14, icon: "filter-category-education", name: "Образование"},
+      {id: 15, icon: "filter-category-activelife", name: "Активный отдых"},
+      {id: 16, icon: "filter-category-couchserfing", name: "Каучсерфинг"}
     ]
 
     return(
