@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import Textarea from 'react-textarea-autosize';
 import Image from '../Helpers/Image';
 import SvgIcon from '../Helpers/SvgIcon';
 import api from '../../services/Api';
@@ -49,10 +50,15 @@ class CreateComment extends Component {
             </div>
           </div>
           <div className="create-comment__writable">
-            <textarea
+            <Textarea
+              onChange={this.onChangeContent}
+              minRows="1"
+              maxRows="5"
+              placeholder="Введите текст комментария" />
+            {/* <textarea
               onChange={this.onChangeContent}
               rows="1"
-              placeholder="Введите текст комментария"></textarea>
+              placeholder="Введите текст комментария" /> */}
           </div>
           <div className="create-comment__cta">
             <button onClick={this.submitComment}>
