@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SvgIcon from '../Helpers/SvgIcon';
+import { Collapse } from 'react-collapse';
+import Slider from 'rc-slider';
 import FilterSlider from './FilterSlider';
 import Plurize from '../../services/Plurize';
 // import Select from '../Forms/Select';
 import SimpleInput from '../Forms/SimpleInput';
 import Select from 'react-select';
-import Slider from 'rc-slider';
 import Toggle from '../Forms/Toggle';
 import { setFilterParams } from '../../actions/event-filter';
 
@@ -37,8 +38,10 @@ class Filters extends Component {
     this.setState(this.initialState)
   }
 
-  closeFiltersClick = () => {
-
+  filtersToggle = () => {
+    this.setState({
+      isOpened: !this.state.isOpened
+    })
   }
 
   // input functions
@@ -102,12 +105,12 @@ class Filters extends Component {
 
     const {
       state: {
-        gender, range, age, languages, categories, eventName
+        isOpened, gender, range, age, languages, categories, eventName
       }
     } = this
 
     return(
-      <div className="filters">
+      <div className={"filters" + ( isOpened ? " is-active" : "" )}>
         <div className="filters__top">
           <button onClick={this.createEventClick} className="btn btn-primary btn--iconed">
             <SvgIcon name="plus" />
@@ -119,11 +122,17 @@ class Filters extends Component {
             icon="search"
             value={eventName}
             onChangeHandler={this.handleChange} />
-          <div onClick={this.closeFiltersClick} className="filters__clear">
+          <div onClick={this.filtersToggle} className="filters__toggle">
+            <SvgIcon name="filter" />
             <SvgIcon name="close" />
           </div>
         </div>
-        <div className="filters__options">
+        <Collapse
+          isOpened={isOpened}
+          theme={{
+            content: 'filters__options-collapse'
+          }}
+          className="filters__options">
           <div className="filters__options-col filters__options-col--gender">
             <div className="ui-group">
               <label htmlFor="">Показывать</label>
@@ -202,7 +211,7 @@ class Filters extends Component {
           <div className="filters__options-col filters__options-col--clear">
             <a onClick={this.clearFiltersClick} className="t-link-small">Очистить</a>
           </div>
-        </div>
+        </Collapse>
         <div className="filters__categories">
           <FilterSlider
             values={categories}

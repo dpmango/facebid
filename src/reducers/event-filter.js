@@ -1,6 +1,7 @@
 import { SET_FILTER_PARAMS } from '../actions/event-filter';
 
 const initialState = {
+  isOpened: false,
   eventName: '',
   gender: null,
   range: 20,
