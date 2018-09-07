@@ -28,11 +28,18 @@ class EventCard extends Component {
 
     this.ctaRef = React.createRef();
 
+    // this.scrollWindow = throttle(this.handleWindowScroll, 10);
+    this.scrollWindow = this.handleWindowScroll
   }
 
   componentDidMount(){
     this.getComments() // pass id on prod
+    window.addEventListener('scroll', this.scrollWindow, false);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.scrollWindow, false);
+  };
 
   getComments = (id) => {
     api
@@ -68,12 +75,14 @@ class EventCard extends Component {
       if ( !shouldCtaStick ){
 
         let containerPosition = GetCoordsOnDocument(container)
+        let saveContainerTop = containerPosition.top
         containerPosition.top = containerPosition.top - GetWindowScroll().top
         const containerWidth = container.offsetWidth
 
         this.setState({
           shouldCtaStick: true,
           stickyPoint: scrollDistance,
+          containerTop: saveContainerTop,
           computeSticky: {
             top: containerPosition.top,
             left: containerPosition.left,
@@ -92,15 +101,39 @@ class EventCard extends Component {
 
   }
 
-  scrollToTop = () => {
+  scrollToTop = (instant) => {
     anime({
       targets: this._scrollRef,
       scrollTop: 0,
       easing: [0.77, 0, 0.175, 1],
-      duration: 500
+      duration: instant ? 0 : 500
     });
 
     // this._scrollRef.scrollTop = 0;
+  }
+
+  // when window is scrolled
+  handleWindowScroll = () => {
+    const { shouldCtaStick } = this.state;
+
+    if ( shouldCtaStick ){
+      // when user scroll the window and it's a sticky CTA
+      // adjust position fixed as the el is window fixed
+      // let newTop = this.state.containerTop
+      // newTop = newTop - GetWindowScroll().top
+      //
+      // this.setState({
+      //   ...this.state,
+      //   computeSticky: {
+      //     ...this.state.computeSticky,
+      //     top: newTop
+      //   }
+      // })
+
+      // animation is still jerky - scrollTop for now
+      this.scrollToTop(true);
+
+    }
   }
 
   render(){
