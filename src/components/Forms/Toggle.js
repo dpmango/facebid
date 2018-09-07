@@ -6,7 +6,7 @@ class Toggle extends Component{
     let setVal = val
     // double click should deactive
     if ( this.props.value === val ){ setVal = null }
-    this.props.clickHandler(setVal)
+    this.props.clickHandler(setVal, this.props.name)
   }
 
   render(){

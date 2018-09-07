@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Swiper from 'react-id-swiper';
 import SvgIcon from '../Helpers/SvgIcon';
 
-class FilterSlider extends Component {
+class GuestFilters extends Component{
   constructor(){
     super()
 
@@ -15,10 +15,7 @@ class FilterSlider extends Component {
     const SwiperParams = {
       // react specific params
       // https://github.com/kidjp85/react-id-swiper
-      // containerClass: 'filter-category',
-      slideClass: 'filter-category',
-      // shouldSwiperUpdate: true,
-      // rebuildOnUpdate: true,
+      slideClass: 'guest-category',
       renderPrevButton: () => <button className="filters__slider-prev"><SvgIcon name="arrow-left" /></button>,
       renderNextButton: () => <button className="filters__slider-next"><SvgIcon name="arrow-right" /></button>,
 
@@ -39,7 +36,7 @@ class FilterSlider extends Component {
       slidesOffsetAfter: 20
     }
 
-    const slides = [
+    const categories = [
       {id: 1, icon: "filter-category-all", name: "Все"},
       {id: 2, icon: "filter-category-volonter", name: "Волонтерство"},
       {id: 3, icon: "filter-category-travel", name: "Путешествия"},
@@ -59,37 +56,21 @@ class FilterSlider extends Component {
     ]
 
     return(
-      <div className="filters__slider">
-        <Swiper {...SwiperParams}>
-          { slides.map(slide => {
-            return (
-              <FilterCategory
-                key={slide.id}
-                values={this.props.values}
-                clickHandler={this.props.clickHandler}
-                id={slide.id}
-                icon={slide.icon}
-                name={slide.name} />
-            )
-          }) }
-        </Swiper>
+      <div className="guest-categories">
+        <div className="guest-categories__title h3-title">Категории событий (tmp)</div>
+        <div className="guest-categories__wrapper">
+          <Swiper {...SwiperParams}>
+            {categories.map(cat => (
+              <div key={cat.key} className="guest-category">
+                <SvgIcon name={cat.icon} />
+                <span>{cat.name}</span>
+              </div>
+            ))}
+          </Swiper>
+        </div>
       </div>
     )
   }
 }
 
-const FilterCategory = (props) => {
-  const { icon, name, id, values } = props
-  return(
-    <div
-      onClick={props.clickHandler.bind(this, id)}
-      className={"filter-category" + (values.indexOf(id) !== -1 ? " is-active" : "")}>
-      <div className="filter-category__icon">
-        <SvgIcon name={icon} />
-      </div>
-      <div className="filter-category__name">{name}</div>
-    </div>
-  )
-}
-
-export default FilterSlider
+export default GuestFilters

@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import SvgIcon from '../Helpers/SvgIcon';
 import { Collapse } from 'react-collapse';
 import Slider from 'rc-slider';
-import FilterSlider from './FilterSlider';
-import Plurize from '../../services/Plurize';
-// import Select from '../Forms/Select';
-import SimpleInput from '../Forms/SimpleInput';
 import Select from 'react-select';
+
+import CreateEvent from './Create';
+import FilterSlider from './FilterSlider';
+import SvgIcon from '../Helpers/SvgIcon';
+import SimpleInput from '../Forms/SimpleInput';
 import Toggle from '../Forms/Toggle';
+import Plurize from '../../services/Plurize';
+
 import { setFilterParams } from '../../actions/event-filter';
+import { openModal, closeModal } from '../../actions/modal'
 
 class Filters extends Component {
   constructor(props){
@@ -31,7 +34,7 @@ class Filters extends Component {
   }
 
   createEventClick = () => {
-
+    this.props.openModal('create-event');
   }
 
   clearFiltersClick = () => {
@@ -116,6 +119,7 @@ class Filters extends Component {
             <SvgIcon name="plus" />
             <span>Создать событие</span>
           </button>
+          <CreateEvent />
           <SimpleInput
             name="eventName"
             placeholder="Чем ты хочешь заняться?"
@@ -227,7 +231,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setFilterParams: (data) => dispatch(setFilterParams(data))
+  setFilterParams: (data) => dispatch(setFilterParams(data)),
+  openModal: (data) => dispatch(openModal(data)),
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);

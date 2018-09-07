@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import MaskedInput from 'react-text-mask'
+import MaskedInput from 'react-text-mask';
+import Textarea from 'react-textarea-autosize';
 import { withFormsy } from 'formsy-react';
 import SvgIcon from '../Helpers/SvgIcon';
 
@@ -24,6 +25,7 @@ class FormInput extends Component {
   }
 
   changeValue = (e) => {
+    console.log(e)
     this.props.onChangeHandler(e)
     this.props.setValue(e.currentTarget.value);
   }
@@ -84,19 +86,33 @@ class FormInput extends Component {
               />
             }
             { type === "textarea" &&
-              <textarea
-                type={type}
-                rows={rows}
+              <Textarea
+                // useCacheForDOMMeasurements
                 ref={this.textareaRef}
+                minRows={rows[0] || 5}
+                maxRows={rows[1] || 10}
                 name={name}
                 placeholder={placeholder}
                 onChange={this.changeValue}
                 onBlur={this.onBlurHandler}
                 onFocus={this.onFocusHandler}
                 onKeyPress={this.props.onKeyHandler}
+                // onHeightChange={(height, instance) => console.log(height, instance.rowCount)}
                 value={this.props.getValue() || ''}
-                // required={isRequired ? true : false}
               />
+              //<textarea
+              //  type={type}
+              //  rows={rows}
+              //  ref={this.textareaRef}
+              //  name={name}
+              //  placeholder={placeholder}
+              //  onChange={this.changeValue}
+              //  onBlur={this.onBlurHandler}
+              //  onFocus={this.onFocusHandler}
+              //  onKeyPress={this.props.onKeyHandler}
+              //  value={this.props.getValue() || ''}
+                // required={isRequired ? true : false}
+              // />
             }
             { icon &&
               <SvgIcon name={icon} />

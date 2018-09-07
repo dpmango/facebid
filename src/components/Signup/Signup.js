@@ -10,6 +10,9 @@ import Toggle from '../Forms/Toggle';
 import SocialLogin from './SocialLogin';
 import { openModal, closeModal } from '../../actions/modal'
 import { signupRequest } from '../../actions/user';
+import GetCalendarDays from '../../helpers/GetCalendarDays';
+import { daySelect, monthSelect, yearSelect } from '../../helpers/CalendarSelectArrays';
+import MapArrToSelect from '../../helpers/MapArrToSelect';
 
 class Signup extends Component{
   constructor(props){
@@ -25,27 +28,9 @@ class Signup extends Component{
       email: '',
       password: '',
       password_repeat: '',
-      daySelect: [
-        "01", "02", "03", "04", "05", "06", "07", "08", "09",
-        "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
-        "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
-        "30", "31"
-      ],
-      monthSelect: [
-        {value: "01", label: "Января"},
-        {value: "02", label: "Ферваля"},
-        {value: "03", label: "Марта"},
-        {value: "04", label: "Апреля"},
-        {value: "05", label: "Мая"},
-        {value: "06", label: "Июня"},
-        {value: "07", label: "Июля"},
-        {value: "08", label: "Августа"},
-        {value: "09", label: "Сентября"},
-        {value: "10", label: "Октября"},
-        {value: "11", label: "Ноября"},
-        {value: "12", label: "Декабря"}
-      ],
-      yearSelect: Array(2010 - 1940 + 1).fill().map((_, idx) => 2010 - idx)
+      daySelect: daySelect,
+      monthSelect: monthSelect,
+      yearSelect: yearSelect
     }
 
     this.formRef = React.createRef();
@@ -112,7 +97,7 @@ class Signup extends Component{
     // should update availbe days on select
     // as the monthes and years are always the same
     if ( birth_month && birth_year ){
-      const availableDays = this.getDaysArray(parseInt(birth_year.value, 10), parseInt(birth_month.value, 10))
+      const availableDays = GetCalendarDays(parseInt(birth_year.value, 10), parseInt(birth_month.value, 10))
       let resultObj = {
         ...this.state,
         daySelect: availableDays
@@ -140,25 +125,6 @@ class Signup extends Component{
 
       this.setState(resultObj)
     }
-  }
-
-  mapArrToSelect = (arr) => {
-    // create react-select value/label pair from arr entiries
-    return arr.map(el => {
-      return { value: el, label: el }
-    })
-  }
-
-  // moment functions
-  getDaysArray = (year, month) => {
-    const date = new Date(year, month - 1, 1);
-    const result = [];
-    while (date.getMonth() == month - 1) {
-      let day = date.getDate()
-      result.push(day);
-      date.setDate(date.getDate() + 1);
-    }
-    return result;
   }
 
   // toggle functions
@@ -242,7 +208,7 @@ class Signup extends Component{
                     required />
                   <div className="ui-group ui-group--row">
                     <label htmlFor="">Дата рождения</label>
-                    <div className="ui-birth-selects">
+                    <div className="ui-date-selects">
                       <Select
                         name="birth_day"
                         clearable={false}
@@ -252,7 +218,7 @@ class Signup extends Component{
                         value={birth_day}
                         onChange={(e) => this.handleSelectChange(e, "birth_day")}
                         placeholder="день"
-                        options={this.mapArrToSelect(daySelect)} />
+                        options={MapArrToSelect(daySelect)} />
                       <Select
                         name="birth_month"
                         clearable={false}
@@ -271,7 +237,7 @@ class Signup extends Component{
                         value={birth_year}
                         onChange={(e) => this.handleSelectChange(e, "birth_year")}
                         placeholder="год"
-                        options={this.mapArrToSelect(yearSelect)}/>
+                        options={MapArrToSelect(yearSelect)}/>
                     </div>
                   </div>
                   <div className="ui-group ui-group--row">
@@ -295,7 +261,7 @@ class Signup extends Component{
                       value={city}
                       onChange={(e) => this.handleSelectChange(e, "city")}
                       placeholder="Укажите местоположение"
-                      options={this.mapArrToSelect(
+                      options={MapArrToSelect(
                         [
                           "Москва", "Санкт-Питербург"
                         ]

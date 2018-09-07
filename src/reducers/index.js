@@ -6,6 +6,7 @@ import user from './user';
 import geolocation from './geolocation';
 import modal from './modal';
 import eventFilter from './event-filter';
+import createEvent from './create-event';
 
 export default combineReducers({
   page,
@@ -13,5 +14,6 @@ export default combineReducers({
   user,
   geolocation,
   modal,
-  eventFilter
+  eventFilter,
+  createEvent
 })
