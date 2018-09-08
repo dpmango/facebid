@@ -17,22 +17,37 @@ class EventCardTop extends Component {
 
   bookmarkAction = () => {
 
-    this.setState({
-      isBookmarked: !this.state.isBookmarked
-    })
+    const { isBookmarked } = this.state;
+    const { notify } = this.props;
+
+    if ( !isBookmarked ){
+      this.setState({
+        isBookmarked: true
+      }, () => {
+        notify({
+          title: 'Добавлено в избранное',
+          message: 'Событие добавлено в избранное',
+          status: 'default', // default, info, success, warning, error
+          dismissible: true,
+          dismissAfter: 2000,
+        })
+      })
+    } else {
+      this.setState({
+        isBookmarked: false
+      }, () => {
+        notify({
+          title: 'Удалено из избранного',
+          message: 'Событие удалено из избранного',
+          status: 'default', // default, info, success, warning, error
+          dismissible: true,
+          dismissAfter: 2000,
+        })
+      })
+    }
 
     // console.log(this.props.notify)
 
-    this.props.notify({
-      title: 'Добавлено в избранное',
-      message: 'Событие добавлено в избранное',
-      status: 'default', // default, info, success, warning, error
-      dismissible: true,
-      dismissAfter: 3000,
-      onAdd: function() {
-
-      },
-    })
 
     // + API call
 

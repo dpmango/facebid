@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NotificationsSystem from 'reapop';
-import theme from 'reapop-theme-wybo';
+// import theme from 'reapop-theme-wybo';
+import theme from '../theme/reapop'
 import Gradients from './Helpers/Gradients'
 import GeolocationRequest from './Modal/GeolocationRequest';
 
