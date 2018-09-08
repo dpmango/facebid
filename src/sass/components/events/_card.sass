@@ -16,6 +16,7 @@
   &__slider
     .swiper-pagination
       bottom: 20px
+      z-index: 2
 
     .swiper-pagination-bullet
       size: 6px
@@ -27,6 +28,41 @@
     .swiper-pagination-bullet-active
       background: white
       transform: none
+
+    &-prev, &-next
+      position: absolute
+      z-index: 3
+      background: transparent
+      top: 0
+      bottom: 0
+      width: 50%
+      font-size: 0
+      opacity: 0
+      color: white
+      display: flex
+      flex-direction: column
+      justify-content: center
+      padding: 10px 32px
+      transition: .25s $ease
+      .ico
+        font-size: 11px
+        filter: drop-shadow(0 2px 4px 0 rgba(0,0,0,0.30))
+
+    &-prev
+      left: 0px
+      align-items: flex-start
+      transform: translateX(-8px)
+    &-next
+      right: 0px
+      align-items: flex-end
+      transform: translateX(8px)
+
+    &:hover
+      .e-card__slider
+        &-next, &-prev
+          opacity: 1
+          transform: translateX(0)
+
 
   &__image
     flex: 0 0 auto
@@ -45,7 +81,9 @@
       display: inline-block
       content: ' '
       position: absolute 0
-      background: rgba(white, .05)
+      z-index: 1
+      pointer-events: none
+      background: rgba(black, .05)
       border-radius: 4px
 
   &__contents

@@ -41,8 +41,8 @@
       "id": 1,
       "images": [
         "eventImage_1.jpg",
-        "eventImage_1.jpg",
-        "eventImage_1.jpg",
+        "eventImage_2.jpg",
+        "eventImage_3.jpg",
         "eventImage_1.jpg"
       ],
       "user": {
@@ -60,7 +60,7 @@
     {
       "id": 2,
       "images": [
-        "eventImage_1.jpg",
+        "eventImage_2.jpg",
         "eventImage_1.jpg",
         "eventImage_1.jpg",
         "eventImage_1.jpg"
@@ -80,7 +80,7 @@
     {
       "id": 3,
       "images": [
-        "eventImage_1.jpg",
+        "eventImage_3.jpg",
         "eventImage_1.jpg",
         "eventImage_1.jpg",
         "eventImage_1.jpg"

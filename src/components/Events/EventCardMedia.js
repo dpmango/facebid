@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Swiper from 'react-id-swiper';
 import Image from '../Helpers/Image';
+import SvgIcon from '../Helpers/SvgIcon';
 
 class EventCardMedia extends Component {
   render(){
@@ -9,6 +10,10 @@ class EventCardMedia extends Component {
       // react specific params
       // https://github.com/kidjp85/react-id-swiper
       // containerClass: 'filter-category',
+
+      renderPrevButton: () => <button className="e-card__slider-prev"><SvgIcon name="arrow-left" /></button>,
+      renderNextButton: () => <button className="e-card__slider-next"><SvgIcon name="arrow-right" /></button>,
+
       containerClass: 'swiper-container e-card__slider',
       slideClass: 'e-card__image',
       // common swiper API
@@ -20,6 +25,10 @@ class EventCardMedia extends Component {
       slidesPerView: 1,
       normalizeSlideIndex: true,
       freeMode: false,
+      navigation: {
+        nextEl: '.e-card__slider-next',
+        prevEl: '.e-card__slider-prev',
+      },
       pagination: {
         el: '.swiper-pagination',
         type: 'bullets',
