@@ -1,10 +1,58 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { notify } from 'reapop';
 import SvgIcon from '../Helpers/SvgIcon';
 import Image from '../Helpers/Image';
 
 class EventCardTop extends Component {
+
+  constructor(){
+    super()
+
+    this.state = {
+      isBookmarked: false,
+      showMore: false
+    }
+  }
+
+  bookmarkAction = () => {
+
+    this.setState({
+      isBookmarked: !this.state.isBookmarked
+    })
+
+    // console.log(this.props.notify)
+
+    this.props.notify({
+      title: 'Добавлено в избранное',
+      message: 'Событие добавлено в избранное',
+      status: 'default', // default, info, success, warning, error
+      dismissible: true,
+      dismissAfter: 3000,
+      onAdd: function() {
+
+      },
+    })
+
+    // + API call
+
+  }
+
+  shareAction = () => {
+
+  }
+
+  moreAction = () => {
+    this.setState({
+      showMore: !this.state.showMore
+    })
+  }
+
   render(){
-    const { user } = this.props;
+    const {
+      props: { id, user },
+      state: { isBookmarked }
+    } = this;
 
     return(
       <div className="e-card__top">
@@ -27,13 +75,19 @@ class EventCardTop extends Component {
           </div>
         </div>
         <div className="e-card__actions">
-          <div className="e-card__action e-card__bookmark">
+          <div
+            onClick={this.bookmarkAction}
+            className={"e-card__action e-card__bookmark" + ( isBookmarked ? " is-active" : "" )}>
             <SvgIcon name="bookmark" />
           </div>
-          <div className="e-card__action e-card__share">
+          <div
+            onClick={this.shareAction}
+            className="e-card__action e-card__share">
             <SvgIcon name="share" />
           </div>
-          <div className="e-card__action e-card__more">
+          <div
+            onClick={this.moreAction}
+            className="e-card__action e-card__more">
             <SvgIcon name="more" />
           </div>
         </div>
@@ -42,4 +96,14 @@ class EventCardTop extends Component {
   }
 }
 
-export default EventCardTop
+console.log(notify)
+
+const mapStateToProps = (state) => ({
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  notify: (data) => dispatch(notify(data))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventCardTop);

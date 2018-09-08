@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import {reducer as notificationsReducer} from 'reapop';
 
 import page from './page';
 import header from './header';
@@ -15,5 +16,6 @@ export default combineReducers({
   geolocation,
   modal,
   eventFilter,
-  createEvent
+  createEvent,
+  notifications: notificationsReducer()
 })

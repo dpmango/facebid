@@ -161,6 +161,7 @@ class EventCard extends Component {
     const {
       props: {
         data: {
+          id,
           images,
           user,
           name,
@@ -184,7 +185,9 @@ class EventCard extends Component {
           <div className="e-card__contents">
             <div className={"e-card__contents-wrapper" + (shouldCtaStick ? " should-stick" : "") }>
 
-              <EventCardTop user={user} />
+              <EventCardTop
+                id={id}
+                user={user} />
 
               <PerfectScrollbar
                 className="scrollbar-blue e-card__scrollable"
