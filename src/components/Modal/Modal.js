@@ -11,7 +11,7 @@ class Modal extends Component{
   render(){
     const {
       props: {
-        isActive, show, onHide, children
+        isActive, show, onHide, children, containerClass
       }
     } = this
 
@@ -21,7 +21,7 @@ class Modal extends Component{
           <div className="modal__wrapper">
             <div className="modal-bg" onClick={onHide}></div>
             <div className="modal__area">
-              <div className="modal__container">
+              <div className={`modal__container ${containerClass}`}>
                 <div className="modal__close" onClick={onHide}>
                   <SvgIcon name="close" />
                 </div>

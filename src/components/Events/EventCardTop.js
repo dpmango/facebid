@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { notify } from 'reapop';
 import SvgIcon from '../Helpers/SvgIcon';
 import Image from '../Helpers/Image';
+import { openModal } from '../../actions/modal'
 
 class EventCardTop extends Component {
 
@@ -48,13 +49,13 @@ class EventCardTop extends Component {
 
     // console.log(this.props.notify)
 
-
     // + API call
 
   }
 
   shareAction = () => {
-
+    console.log('trigger from EventCardTop')
+    this.props.openModal('share-event')
   }
 
   moreAction = () => {
@@ -100,6 +101,7 @@ class EventCardTop extends Component {
             className="e-card__action e-card__share">
             <SvgIcon name="share" />
           </div>
+
           <div
             onClick={this.moreAction}
             className="e-card__action e-card__more">
@@ -111,14 +113,13 @@ class EventCardTop extends Component {
   }
 }
 
-console.log(notify)
-
 const mapStateToProps = (state) => ({
 
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  notify: (data) => dispatch(notify(data))
+  notify: (data) => dispatch(notify(data)),
+  openModal: (data) => dispatch(openModal(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventCardTop);
