@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Image from '../Helpers/Image';
+import SvgIcon from '../Helpers/SvgIcon';
 import Loading from '../Helpers/Loading';
 
 class Comments extends Component {
@@ -27,6 +28,19 @@ class Comments extends Component {
     }
   }
 
+  // comment actions
+  notifyClick = (id) => {
+
+  }
+
+  replyClick = (username) => {
+    this.props.onReplyClick(username)
+  }
+
+  removeClick = (id) => {
+
+  }
+
   render(){
     const { comments, userId } = this.props
 
@@ -47,6 +61,21 @@ class Comments extends Component {
                 <div className="e-comment__top">
                   <div className="e-comment__name">{comment.user.name}</div>
                   <div className="e-comment__actions">
+                    <div
+                      onClick={this.notifyClick.bind(this, comment.id)}
+                      className="e-comment__notify">
+                      <SvgIcon name="bell" />
+                    </div>
+                    <div
+                      onClick={this.replyClick.bind(this, comment.user.username)}
+                      className="e-comment__reply">
+                      <SvgIcon name="reply" />
+                    </div>
+                    <div
+                      onClick={this.removeClick.bind(this, comment.id)}
+                      className="e-comment__remove">
+                      <SvgIcon name="close" />
+                    </div>
                   </div>
                 </div>
                 <div className="e-comment__text">

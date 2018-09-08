@@ -21,6 +21,7 @@ class EventCard extends Component {
 
     this.state = {
       comments: [],
+      userMention: null, // to be passed into create
       shouldCtaStick: false,
       computeSticky: {},
       stickyPoint: null
@@ -136,6 +137,14 @@ class EventCard extends Component {
     }
   }
 
+  onCommentReplyClick = (username) => {
+    this.createCommentRef.appendUserMention(username);
+
+    // this.setState({
+    //   userMention: username
+    // })
+  }
+
   render(){
 
     const avatars = {
@@ -162,7 +171,7 @@ class EventCard extends Component {
         }
       },
       state: {
-        comments, shouldCtaStick, computeSticky
+        comments, userMention, shouldCtaStick, computeSticky
       }
     } = this
 
@@ -224,10 +233,13 @@ class EventCard extends Component {
                     </div>
                   </div>
                 </div>
-                <Comments comments={comments} />
-
+                <Comments
+                  onReplyClick={this.onCommentReplyClick}
+                  comments={comments} />
               </PerfectScrollbar>
               <CreateComment
+                onRef={ref => (this.createCommentRef = ref)}
+                mentionUser={userMention}
                 onNewComment={this.getComments}
               />
             </div>

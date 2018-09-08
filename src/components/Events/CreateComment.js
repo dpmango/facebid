@@ -14,6 +14,29 @@ class CreateComment extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.onRef(this)
+  }
+  componentWillUnmount() {
+    this.props.onRef(undefined)
+  }
+
+  appendUserMention = (username) => {
+    console.log(username)
+
+    this.setState({
+      text: this.state.text + " @" + username
+    })
+  }
+
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log(props, state)
+  //
+  //   this.setState({
+  //     text: this.state.text + props.mentionUser
+  //   })
+  // }
+
   onChangeContent = (e) => {
     this.setState({
       text: e.target.value
@@ -38,7 +61,13 @@ class CreateComment extends Component {
   }
 
   render(){
-    if ( !this.props.userId ){
+
+    const {
+      props: { userId },
+      state: { text }
+    } = this;
+
+    if ( !userId ){
       return null
     }
     return(
@@ -52,6 +81,7 @@ class CreateComment extends Component {
           <div className="create-comment__writable">
             <Textarea
               onChange={this.onChangeContent}
+              value={text}
               minRows={1}
               maxRows={5}
               placeholder="Введите текст комментария" />
