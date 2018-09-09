@@ -168,8 +168,8 @@ class ProfileHead extends Component{
                 <div className="p-head__name-row">
                   <div className="p-head__name">{username}, {age}</div>
                   { isVerified &&
-                    <div class="p-head__status">
-                      <div class="icon-verified">
+                    <div className="p-head__status">
+                      <div className="icon-verified">
                         <SvgIcon name="checkmark" />
                       </div>
                     </div>
@@ -185,7 +185,10 @@ class ProfileHead extends Component{
                     <div className="p-head__row">
                       <div className="p-head__row-title">Владею языками:</div>
                       <div className="p-head__row-content">
-                        { userLang.map(lang => <UserLang flag={lang.value} name={lang.label} />)}
+                        { userLang.map(lang => <UserLang
+                          key={lang.value}
+                          flag={lang.value}
+                          name={lang.label} />)}
                       </div>
                     </div>
 

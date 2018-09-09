@@ -13,6 +13,32 @@
     color: $fontColorGray
     font-family: $roboto
 
+  &__header-filter
+    margin-left: auto
+    display: flex
+    align-items: center
+    span
+      position: relative
+      font-size: 16px
+      font-weight: 500
+      display: inline-block
+      padding: 10px 15px
+      cursor: pointer
+      &.is-active
+        color: $colorBlue
+      &::after
+        display: inline-block
+        content: ' '
+        position: absolute
+        top: 0
+        bottom: 0
+        right: 0
+        width: 1px
+        background: #DDE1E6
+      &:last-child
+        &::after
+          display: none
+
   &__grid
     flex: 1 1 auto
     display: flex

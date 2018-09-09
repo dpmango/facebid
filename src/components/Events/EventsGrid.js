@@ -9,13 +9,20 @@ class EventsGrid extends Component {
     super();
 
     this.state = {
-      data: null
+      data: null,
+      filter: 'all'
     }
+
+    this.loadBy = 2
   }
 
   componentDidMount(){
+    this.getInitialEvents()
+  }
+
+  getInitialEvents = () => {
     api
-      .get('events?_limit=2')
+      .get(`events?_limit=${this.loadBy}`)
       .then(res => {
         this.setState({
           data: res.data
@@ -29,7 +36,7 @@ class EventsGrid extends Component {
   loadMore = () => {
     // offset ??
     api
-      .get('events?_page=2&_limit=2')
+      .get(`events?_page=2&_limit=${this.loadBy}`)
       .then(res => {
         this.setState({
           data: this.state.data.concat(res.data)
@@ -40,18 +47,63 @@ class EventsGrid extends Component {
       })
   }
 
+  setFilter = (id) => {
+    this.setState({
+      data: null, // TODO remove on prod - it change nothing now on new filter
+      filter: id
+    }, () => {
+      this.getInitialEvents();
+    })
+  }
+
+  renderHeader = () => {
+    const { type } = this.props
+    const { filter } = this.state
+
+    const filters = [
+      { id: 'all', name: 'Все' },
+      { id: 'my', name: 'Личные' },
+      { id: 'groups', name: 'Групповые' }
+    ]
+
+    if ( type === "my-profile" ){
+      return (
+        <React.Fragment>
+          <h3 className="h3-title">Вы участвует в событиях</h3>
+          <div className="events__header-filter">
+            { filters.map(f => (
+              <span
+                className={filter === f.id ? "is-active" : ""}
+                onClick={this.setFilter.bind(this, f.id)}>
+                {f.name}
+              </span>
+            ))}
+          </div>
+        </React.Fragment>
+      )
+    } else {
+      return(
+        <React.Fragment>
+          <h3 className="h3-title">Результаты поиска</h3>
+          <div className="events__header-total">Найдено 148 событий</div>
+        </React.Fragment>
+      )
+    }
+  }
+
   render(){
-    const { data } = this.state
+    const {
+      state: {data}
+    } = this
 
     return(
       <div className="events">
         <div className="events__header">
-          <h3 className="h3-title">Результаты поиска</h3>
-          <div className="events__header-total">Найдено 148 событий</div>
+          {this.renderHeader()}
         </div>
         <div className="events__grid">
           { !data &&
-            <Loading />
+            <Loading type="events" />
           }
           { data &&
             data.map(event => {
