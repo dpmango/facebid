@@ -4,14 +4,12 @@ import PropTypes from 'prop-types';
 import { Collapse } from 'react-collapse';
 import Slider from 'rc-slider';
 import Select from 'react-select';
-
 import CreateEvent from './Create';
 import FilterSlider from './FilterSlider';
 import SvgIcon from '../Helpers/SvgIcon';
 import SimpleInput from '../Forms/SimpleInput';
 import Toggle from '../Forms/Toggle';
-import Plurize from '../../services/Plurize';
-
+import MultipleSelectToTotal from '../../helpers/MultipleSelectToTotal';
 import { setFilterParams } from '../../actions/event-filter';
 import { openModal, closeModal } from '../../actions/modal'
 
@@ -88,20 +86,6 @@ class Filters extends Component {
     this.setState({
       categories: options
     })
-  }
-
-  multipleValueTransform = (items) => {
-    const totalHiddenItems = items.length;
-
-    return (
-      <div className="Select-value more-than-allowed">
-        <span className="Select-value-label" role="option" aria-selected="true">
-          {Plurize(totalHiddenItems, "Выбран", "Выбрано", "Выбрано")} {(totalHiddenItems)} {Plurize(totalHiddenItems, "язык", "языка", "языков")}
-            <span className="Select-aria-only">&nbsp;</span>
-        </span>
-      </div>
-    );
-
   }
 
   render(){
@@ -201,13 +185,13 @@ class Filters extends Component {
                 value={languages}
                 onChange={(e) => this.handleSelectChange(e, "languages")}
                 placeholder="Выберите языки"
-                valueComponent={this.multipleValueTransform.bind(this, languages)}
+                valueComponent={MultipleSelectToTotal.bind(this, languages)}
                 options={[
-                  { value: 'RUS', label: 'Русский' },
-                  { value: 'ENG', label: 'Английский' },
-                  { value: 'GER', label: 'Немецкий' },
-                  { value: 'ESP', label: 'Испанский' },
-                  { value: 'FRA', label: 'Французкий' }
+                  { value: 'ru', label: 'Русский' },
+                  { value: 'us', label: 'Английский' },
+                  { value: 'ge', label: 'Немецкий' },
+                  { value: 'es', label: 'Испанский' },
+                  { value: 'fr', label: 'Французкий' }
                 ]}
               />
             </div>

@@ -181,11 +181,13 @@
     "fullname": "Константинопольская Аделина",
     "isVerified": true,
     "userLang": [
-      {"flag": "ru", "name": "Русский"},
-      {"flag": "us", "name": "Английский"},
-      {"flag": "es", "name": "Испанский"}
+      {"value": "ru", "label": "Русский"},
+      {"value": "us", "label": "Английский"},
+      {"value": "es", "label": "Испанский"}
     ],
     "description": "Значимость этих проблем настолько очевидна, что консультация с широким активом требуют от нас анализа систем массового участия. Не следует, однако забывать.",
+    "subscribers": "14K",
+    "subscribed": "1,4K",
     "gallery": {
       "thumbs": [
         "galThumb_1.jpg", "galThumb_2.jpg", "galThumb_3.jpg",
