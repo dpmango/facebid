@@ -1,0 +1,154 @@
+.p-head
+  background: #FFFFFF
+  box-shadow: 0 4px 8px 0 rgba(95, 95, 95, 0.1)
+  border-radius: 0 0 4px 4px
+  width: 100%
+  padding: 32px 24px 24px
+  &__top
+    display: flex
+    border-bottom: 1px solid #DDE1E6
+    padding-bottom: 24px
+
+  &__left
+    flex: 0 0 auto
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    flex-direction: column
+
+  &__avatar
+    position: relative
+    size: 184px
+    border-radius: 50%
+    border: 1px solid
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 0
+    border: 1px solid transparent
+    // active state
+    &::after
+      display: inline-block
+      position: absolute 0
+      z-index: 1
+      content: ' '
+      background: $gradient
+      border-radius: 50%
+
+    &-wrapper
+      position: relative
+      z-index: 2
+      size: 180px
+      display: flex
+      align-items: center
+      justify-content: center
+      background: white
+      border-radius: 50%
+      overflow: hidden
+    &-holder
+      position: relative
+      size: 168px
+      border-radius: 50%
+      overflow: hidden
+      img
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+        width: 100%
+
+  &__right
+    position: relative
+    flex: 1 1 auto
+    padding-left: 16px
+
+  &__name-row
+    display: flex
+    align-items: center
+
+  &__name
+    font-size: 16px
+    font-weight: 600
+    margin-right: 8px
+
+  &__status
+
+  &__profile-link
+    font-family: $roboto
+    color: #8894A3
+    font-size: 14px
+    margin-top: 5px
+
+  &__row
+    display: flex
+    margin: 16px 0
+
+  &__row-title
+    flex: 0 0 auto
+    font-family: $roboto
+    font-size: 16px
+    color: #8894A3
+
+  &__row-content
+    flex: 1 1 auto
+    display: flex
+    flex-wrap: wrap
+    padding-left: 23px
+
+  &__country
+    display: flex
+    align-items: center
+    margin-right: 16px
+    .flag-r50
+      flex: 0 0 auto
+    span
+      display: inline-block
+      margin-left: 8px
+      font-size: 16px
+      font-family: $roboto
+
+  &__description
+    font-size: 16px
+    padding-left: 16px
+    font-family: $roboto
+    line-height: 1.5
+    position: relative
+    &::before
+      display: inline-block
+      content: ' '
+      position: absolute
+      width: 4px
+      top: 0
+      bottom: 0
+      left: 0
+      background: $colorBlue
+      border-radius: 2px 0 0 2px
+
+  &__metrics
+    display: flex
+    justify-content: space-around
+    // margin-top: 18px
+    margin-top: auto
+
+  &__metric
+    text-align: center
+
+  &__metric-num
+    font-size: 22px
+    color: $colorBlue
+    font-weight: 600
+  &__metric-name
+    font-family: $roboto
+    font-size: 11px
+    color: #848E99
+    line-height: 1.45
+
+  &__edit-btn
+    margin-top: 18px
+    display: flex
+    justify-content: flex-end
+
+  &__settings-btn
+    position: absolute
+    top: 0
+    right: 0

@@ -1,0 +1,118 @@
+.p-head-gal
+  padding: 24px 0px 0
+  margin-left: -24px
+  margin-right: -24px
+
+  &__thumbs
+    &-prev, &-next
+      position: absolute
+      z-index: 2
+      top: 50%
+      size: 32px
+      background: rgba(black, .5)
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.10)
+      border-radius: 50%
+      display: flex
+      align-items: center
+      justify-content: center
+      text-align: center
+      color: white
+      font-size: 0
+      transform: translateY(-50%)
+      transition: .25s $ease
+      .ico
+        font-size: 10px
+      &:hover
+        background: rgba(black, .75)
+      &.swiper-button-disabled
+        opacity: .5
+
+
+    &-prev
+      left: 32px
+
+    &-next
+      right: 32px
+
+  &__thumb
+    flex: 0 0 135px
+    size: 135px
+    position: relative
+    z-index: 1
+    overflow: hidden
+    font-size: 0
+    cursor: pointer
+    border-radius: 4px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute 0
+      background: rgba(white, .7)
+      opacity: 0
+      transition: .25s $ease
+      pointer-events: none
+    img
+      width: 100%
+    &:hover, &.is-active
+      &::after
+        opacity: 1
+
+
+  &__full-wrapper
+    position: relative
+    z-index: 1
+    margin-top: 16px
+    margin-left: 24px
+    margin-right: 24px
+    border-radius: 4px
+    overflow: hidden
+    color: white
+  &__full
+    margin-top: 16px
+    &-prev, &-next
+      position: absolute
+      z-index: 2
+      top: 50%
+      size: 32px
+      background: transparent
+      // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.10)
+      display: flex
+      align-items: center
+      justify-content: center
+      text-align: center
+      color: white
+      font-size: 0
+      transform: translateY(-50%)
+      transition: .25s $ease
+      .ico
+        font-size: 10px
+      &:hover
+        background: rgba(black, .75)
+      &.swiper-button-disabled
+        opacity: .5
+
+    &-prev
+      left: 32px
+
+    &-next
+      right: 32px
+
+  &__image
+    flex: 0 0 auto
+    font-size: 0
+    img
+      width: 100%
+
+  &__close-full
+    position: absolute
+    top: 30px
+    right: 20px
+    z-index: 2
+    size: 24px
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 0
+    cursor: pointer
+    .ico
+      font-size: 11px

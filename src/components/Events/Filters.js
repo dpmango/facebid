@@ -126,7 +126,7 @@ class Filters extends Component {
             icon="search"
             value={eventName}
             onChangeHandler={this.handleChange} />
-          <div onClick={this.filtersToggle} className="filters__toggle">
+          <div onClick={this.filtersToggle} className="filters__toggle btn btn-circle">
             <SvgIcon name="filter" />
             <SvgIcon name="close" />
           </div>

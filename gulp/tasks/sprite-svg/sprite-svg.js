@@ -11,7 +11,7 @@ var config      = require('../../config');
 
 gulp.task('sprite:svg', function() {
   return gulp
-    .src(config.src.iconsSvg + '/*.svg')
+    .src(config.src.iconsSvg + '/**/*.svg')
     .pipe(plumber({
         errorHandler: config.errorHandler
     }))

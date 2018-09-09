@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import Image from '../Helpers/Image';
 import SvgIcon from '../Helpers/SvgIcon';
 import UserMenu from './UserMenu';
@@ -8,7 +9,7 @@ class AuthUser extends Component{
   render(){
     return(
       <div className="user-panel">
-        <div className="user-panel__scope">
+        <Link to="/my-profile" className="user-panel__scope">
           <div className="avatar avatar--glow">
             <Image file="userAvatar_2.jpg" />
           </div>
@@ -19,7 +20,7 @@ class AuthUser extends Component{
               <span>Moscow, Russia</span>
             </div>
           </div>
-        </div>
+        </Link>
 
         <div className="user-panel__actions">
           <div className="panel-action panel-action--up">

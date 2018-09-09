@@ -172,6 +172,31 @@
     }
   ],
   "bookmarks": [
-    
-  ]
+
+  ],
+  "myProfile": {
+    "avatar": "avatarBig_1.jpg",
+    "username": "Angeshka",
+    "age": "24",
+    "fullname": "Константинопольская Аделина",
+    "isVerified": true,
+    "userLang": [
+      {"flag": "ru", "name": "Русский"},
+      {"flag": "us", "name": "Английский"},
+      {"flag": "es", "name": "Испанский"}
+    ],
+    "description": "Значимость этих проблем настолько очевидна, что консультация с широким активом требуют от нас анализа систем массового участия. Не следует, однако забывать.",
+    "gallery": {
+      "thumbs": [
+        "galThumb_1.jpg", "galThumb_2.jpg", "galThumb_3.jpg",
+        "galThumb_4.jpg", "galThumb_5.jpg", "galThumb_6.jpg",
+        "galThumb_1.jpg", "galThumb_2.jpg", "galThumb_3.jpg"
+      ],
+      "full": [
+        "galThumb_1.jpg", "galThumb_2.jpg", "galThumb_3.jpg",
+        "galThumb_4.jpg", "galThumb_5.jpg", "galThumb_6.jpg",
+        "galThumb_1.jpg", "galThumb_2.jpg", "galThumb_3.jpg"
+      ]
+    }
+  }
 }

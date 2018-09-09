@@ -79,7 +79,7 @@ class GeolocationRequest extends Component{
 
     // backup options
     // https://stackoverflow.com/questions/391979/how-to-get-clients-ip-address-using-javascript
-    
+
     await axios
       .get(`https://ipapi.co/json/`)
       .then(res => {
@@ -125,7 +125,7 @@ class GeolocationRequest extends Component{
         >
         <div className="modal-alert">
           <div className="modal-alert__image">
-            <Image file="alertModal.png" />
+            <Image folder="system" file="alertModal.png" />
           </div>
           <div className="modal-alert__contents">
             <div className="h4-title">Поделитесь своим местоположением</div>

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ProfileHead from '../components/Profile/ProfileHead';
+import EventsGrid from '../components/Events/EventsGrid';
 
-class Notifications extends Component {
+class MyProfile extends Component {
   componentDidMount(){
     this.props.aosInst.refreshHard()
   }
@@ -10,7 +12,8 @@ class Notifications extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Notifications</h1>
+        <ProfileHead />
+        <EventsGrid type="my-profile" />
       </React.Fragment>
     );
   }
@@ -24,4 +27,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
+export default connect(mapStateToProps, mapDispatchToProps)(MyProfile);

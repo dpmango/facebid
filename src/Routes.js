@@ -29,15 +29,15 @@ export const MyEvents = MyLoadable({
   modules: ['./pages/MyEvents'],
   webpack: () => [require.resolveWeak('./pages/MyEvents')]
 });
+export const MyProfile = MyLoadable({
+  loader: () => import("./pages/MyProfile"),
+  modules: ['./pages/MyProfile'],
+  webpack: () => [require.resolveWeak('./pages/MyProfile')]
+});
 export const Messages = MyLoadable({
   loader: () => import("./pages/Messages"),
   modules: ['./pages/Messages'],
   webpack: () => [require.resolveWeak('./pages/Messages')]
-});
-export const Notifications = MyLoadable({
-  loader: () => import("./pages/Notifications"),
-  modules: ['./pages/Notifications'],
-  webpack: () => [require.resolveWeak('./pages/Notifications')]
 });
 export const News = MyLoadable({
   loader: () => import("./pages/News"),
@@ -83,14 +83,14 @@ export const routes = [
   {
     isExact: false,
     protected: true,
-    path: '/messages',
-    component: Messages
+    path: '/my-profile',
+    component: MyProfile
   },
   {
     isExact: false,
     protected: true,
-    path: '/notifications',
-    component: Notifications
+    path: '/messages',
+    component: Messages
   },
   {
     isExact: false,
