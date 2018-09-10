@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { notify } from 'reapop';
 import Modal from '../Modal/Modal';
 import { logOut } from '../../actions/user';
 import { closeModal } from '../../actions/modal';
-import { notify } from 'reapop';
 
 class Logout extends Component{
   constructor(){
@@ -22,7 +22,7 @@ class Logout extends Component{
   logOut = () => {
     // TODO - descroy cookie on server
     this.props.logOut();
-
+    this.hide()
     this.props.notify({
       title: 'Выход из системы',
       message: 'Вы успешно вышли из системы',

@@ -37,12 +37,6 @@ class Signup extends Component{
 
   }
 
-  show = () => {
-    this.props.openModal(
-      this.state.modalName
-    )
-  }
-
   hide = () => {
     this.props.closeModal()
   }

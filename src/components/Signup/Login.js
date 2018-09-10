@@ -19,14 +19,6 @@ class Login extends Component{
     }
 
     this.formRef = React.createRef();
-
-  }
-
-
-  show = () => {
-    this.props.openModal(
-      this.state.modalName
-    )
   }
 
   hide = () => {
@@ -150,7 +142,9 @@ class Login extends Component{
                   </div>
                   <div className="login__cta">
                     <button className="btn btn-primary" type="submit">Войти</button>
-                    <a href="#" className="t-link">Не помню пароль</a>
+                    <a
+                      onClick={this.props.openModal.bind(this, 'recover')} 
+                      className="t-link">Не помню пароль</a>
                   </div>
                   <div className="login__rules">Пользуясь сайтом Вы соглашаетесь с Пользовательским  соглашением и Политикой конфиденциальности</div>
                 </Formsy>
