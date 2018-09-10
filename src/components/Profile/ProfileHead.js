@@ -8,6 +8,7 @@ import Image from '../Helpers/Image'
 import SvgIcon from '../Helpers/SvgIcon'
 import HeadMetrics from './HeadMetrics'
 import HeadGallery from './HeadGallery'
+import HeadVerifications from './HeadVerifications'
 import MultipleSelectToTotal from '../../helpers/MultipleSelectToTotal';
 
 class ProfileHead extends Component{
@@ -19,6 +20,7 @@ class ProfileHead extends Component{
       editMode: false,
       isLoaded: false,
       avatar: "",
+      isUploadedAvatar: false,
       username: "",
       age: "",
       fullname: "",
@@ -29,6 +31,12 @@ class ProfileHead extends Component{
       subscribed: "",
       gallery: {}
     }
+
+    this.formRef = React.createRef()
+    this.uploadRef = React.createRef();
+
+    this.base64Regex = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+
   }
 
   componentDidMount(){
@@ -112,7 +120,7 @@ class ProfileHead extends Component{
 
   keyPressHandler = (e) => {
     if ( e.key === "Enter" ){
-      this.submitForm();
+      // this.submitForm();
     }
   }
 
@@ -121,6 +129,27 @@ class ProfileHead extends Component{
     this.setState({ [name]: value })
   }
 
+  // avatar uploader
+  replaceAvatar = () => {
+    this.uploadRef.current.click();
+
+    // ++ API add request
+  }
+
+  // when input was actually changed
+  handleFileChange = (e) => {
+    const input = e.target
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (ev) => {
+        this.setState({
+          isUploadedAvatar: true,
+          avatar: ev.target.result
+        })
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
 
   render(){
 
@@ -129,6 +158,7 @@ class ProfileHead extends Component{
         editMode,
         isLoaded,
         avatar,
+        isUploadedAvatar,
         username,
         age,
         fullname,
@@ -142,17 +172,38 @@ class ProfileHead extends Component{
     } = this
 
     return(
-      <div className="p-head">
+      <div className={"p-head" + ( editMode ? " is-in-edit-mode" : "" )}>
         { !isLoaded ?
           <Loading type="user-profile" />
           :
           <Fragment>
             <div className="p-head__top">
               <div className="p-head__left">
-                <div className="p-head__avatar">
+                <div className={"p-head__avatar" + (editMode ? " is-editable" : "")}>
                   <div className="p-head__avatar-wrapper">
                     <div className="p-head__avatar-holder">
-                      <Image file={avatar} />
+                      { isUploadedAvatar ?
+                        <span style={{
+                          backgroundImage: `url(${avatar})`
+                        }} />
+                        :
+                        <Image file={avatar} />
+                      }
+
+                      { editMode &&
+                        <React.Fragment>
+                          <input
+                            type="file"
+                            ref={this.uploadRef}
+                            onChange={this.handleFileChange}
+                            style={{ display: 'none' }} />
+                          <button
+                            onClick={this.replaceAvatar}
+                            className="p-head__avatar-btn btn btn-circle btn-circle--white">
+                            <SvgIcon name="camera-add" />
+                          </button>
+                      </React.Fragment>
+                      }
                     </div>
                   </div>
                 </div>
@@ -167,12 +218,15 @@ class ProfileHead extends Component{
               <div className="p-head__right">
                 <div className="p-head__name-row">
                   <div className="p-head__name">{username}, {age}</div>
-                  { isVerified &&
+                  { (isVerified && !editMode) &&
                     <div className="p-head__status">
                       <div className="icon-verified">
                         <SvgIcon name="checkmark" />
                       </div>
                     </div>
+                  }
+                  { editMode &&
+                    <HeadVerifications />
                   }
                 </div>
                 <div className="p-head__profile-link">Ваш профиль</div>

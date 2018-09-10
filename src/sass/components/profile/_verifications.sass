@@ -1,0 +1,71 @@
+.verifications
+  display: flex
+  padding-left: 24px
+
+.v-btn
+  position: relative
+  z-index: 1
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  size: 40px
+  border-radius: 50%
+  background: #F4F7FB
+  color: #828E9A
+  margin-right: 16px
+  font-size: 0
+  cursor: pointer
+  transition: .25s $ease
+
+  &__verified
+    position: absolute
+    right: -2px
+    bottom: -2px
+    size: 20px
+    border: 2px solid white
+    border-radius: 50%
+    background: $colorGreen
+    color: white
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 0
+    .ico
+      font-size: 7px !important
+
+  &.is-verified
+    color: white
+
+  // color modifies for active state
+  &--vkontakte
+    .ico
+      font-size: 10px
+    &.is-verified
+      background: #31518B
+  &--facebook
+    .ico
+      font-size: 18px
+    &.is-verified
+      background: #3B5997
+  &--twitter
+    .ico
+      font-size: 14px
+    &.is-verified
+      background: #27AAE1
+  &--instagram
+    .ico
+      font-size: 17px
+    &.is-verified
+      background-image: linear-gradient(165deg, #4E60D3 0%, #913BAF 14%, #D52D88 76%, #F26D4F 100%)
+
+  &--phone
+    .ico
+      font-size: 19px
+    &.is-verified
+      background: $colorBlue
+  &--credit-card
+    .ico
+      font-size: 14px
+    &.is-verified
+      background: $colorBlue

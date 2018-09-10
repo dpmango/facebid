@@ -10,10 +10,15 @@ class MyProfile extends Component {
   }
 
   render() {
+
+    const urlParams = this.props.match.params
     return (
       <React.Fragment>
-        <ProfileHead />
-        <EventsGrid type="my-profile" />
+        <ProfileHead
+          profileID={urlParams} />
+        <EventsGrid
+          profileID={urlParams}
+          type="my-profile" />
       </React.Fragment>
     );
   }

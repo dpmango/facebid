@@ -6,8 +6,8 @@ import SvgIcon from '../Helpers/SvgIcon';
 
 class ProfileHeadGallery extends Component{
 
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
     this.state = {
       isGaleryOpen: false,
@@ -16,6 +16,11 @@ class ProfileHeadGallery extends Component{
 
     this.swiperThumbs = null
     this.swiperFull = null
+
+    this.totalSlides = props.gallery.thumbs.length
+
+    this.isPersonal = !props.profileID
+    // todo make some other type of detection server-side
   }
 
   componentDidMount(){
@@ -64,6 +69,9 @@ class ProfileHeadGallery extends Component{
         this.swiperThumbs.slideTo(currentSlide);
       }
     }
+  }
+
+  abuseClicked = () => {
 
   }
 
@@ -170,6 +178,18 @@ class ProfileHeadGallery extends Component{
               className="p-head-gal__close-full">
               <SvgIcon name="close" />
             </div>
+            <div className="p-head-gal__counter">
+              <SvgIcon name="camera" />
+              <span>{currentSlide + 1}/{this.totalSlides}</span>
+            </div>
+
+            { !this.isPersonal &&
+              <div
+                onClick={this.abuseClicked}
+                className="p-head-gal__abuse btn btn-circle btn-circle--black50">
+                <SvgIcon name="flag" />
+              </div>
+            }
           </div>
         </Collapse>
       </div>

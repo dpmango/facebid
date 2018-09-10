@@ -35,6 +35,9 @@ button
       transition: .3s $ease
     .ico-pencil
       font-size: 18px
+    .ico-user
+      font-size: 20px
+      left: 14px
 
     span
       display: inline-block
@@ -83,6 +86,8 @@ button
   flex: 0 0 auto
   border-radius: 50%
   size: 40px
+  background: transparent
+  box-shadow: none
   border: 1px solid #DDE1E6
   display: flex
   align-items: center
@@ -97,3 +102,16 @@ button
     font-size: 16px
     &-gear
       font-size: 16px
+    &-camera-add
+      font-size: 20px
+
+  &--white
+    border-color: white
+    background: white
+  &--black50
+    border-color: rgba(black, .5)
+    color: white
+    background: rgba(black, .5)
+    &:hover
+      background: rgba(black, .75)
+      border-color: rgba(black, .75)

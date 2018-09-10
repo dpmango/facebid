@@ -11,8 +11,6 @@
 
   &__left
     flex: 0 0 auto
-    display: -webkit-flex
-    display: -ms-flex
     display: flex
     flex-direction: column
 
@@ -20,12 +18,18 @@
     position: relative
     size: 184px
     border-radius: 50%
-    border: 1px solid
+    border: 1px solid #DDE1E6
     display: flex
     align-items: center
     justify-content: center
     font-size: 0
     border: 1px solid transparent
+
+    &.is-editable
+      border-color: transparent
+      &::after
+        opacity: 0
+
     // active state
     &::after
       display: inline-block
@@ -34,6 +38,7 @@
       content: ' '
       background: $gradient
       border-radius: 50%
+      transition: .25s $ease
 
     &-wrapper
       position: relative
@@ -56,6 +61,19 @@
         left: 50%
         transform: translate(-50%,-50%)
         width: 100%
+      span
+        display: block
+        position: absolute 0
+        background-repeat: no-repeat
+        background-position: center center
+        background-size: cover
+
+  &__avatar-btn
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    bottom: 16px
+
 
   &__right
     position: relative
@@ -72,6 +90,10 @@
     margin-right: 8px
 
   &__status
+
+  &__verify-primary
+    transform: translateY(-3px)
+    margin-left: 24px
 
   &__profile-link
     font-family: $roboto
@@ -166,3 +188,8 @@
       margin-right: 16px
       &:last-child
         margin-right: 0
+
+  &.is-in-edit-mode
+    .p-head__name-row
+      max-height: 18px
+      align-items: flex-start
