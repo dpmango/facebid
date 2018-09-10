@@ -1,15 +1,18 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Formsy from 'formsy-react';
 import Select from 'react-select';
 import FormInput from '../Forms/Input';
 import api from '../../services/Api';
 import Loading from '../Helpers/Loading';
-import Image from '../Helpers/Image'
-import SvgIcon from '../Helpers/SvgIcon'
-import HeadMetrics from './HeadMetrics'
-import HeadGallery from './HeadGallery'
-import HeadVerifications from './HeadVerifications'
+import Image from '../Helpers/Image';
+import SvgIcon from '../Helpers/SvgIcon';
+import HeadMetrics from './HeadMetrics';
+import HeadGallery from './HeadGallery';
+import HeadVerifications from './HeadVerifications';
 import MultipleSelectToTotal from '../../helpers/MultipleSelectToTotal';
+import { openModal } from '../../actions/modal';
 
 class ProfileHead extends Component{
 
@@ -250,6 +253,15 @@ class ProfileHead extends Component{
 
                     <div className="p-head__edit-btn">
                       <button
+                        onClick={this.props.openModal.bind(this, 'logout')}
+                        style={{
+                          'margin-right': '16px'
+                        }}
+                        className="btn btn-outline">
+                        Exit
+                      </button>
+
+                      <button
                         onClick={this.enableEditMode}
                         className="btn btn-primary btn--iconed">
                         <SvgIcon name="pencil" />
@@ -331,15 +343,10 @@ class ProfileHead extends Component{
                         className="btn btn-outline">
                         Отменить
                       </button>
-
-
                     </div>
                   </Formsy>
-
                 }
-
               </div>
-
             </div>
 
             <HeadGallery
@@ -367,4 +374,16 @@ const UserLang = (props) => {
   )
 }
 
-export default ProfileHead
+ProfileHead.propTypes = {
+  openModal: PropTypes.func
+}
+
+const mapStateToProps = (state) => ({
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  openModal: (data) => dispatch(openModal(data))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileHead);

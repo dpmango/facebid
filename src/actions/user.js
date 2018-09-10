@@ -3,7 +3,7 @@ import api from '../services/Api';
 export const LOG_IN = 'LOG_IN';
 export const AUTHORIZATION_SUCCESS = 'AUTHORIZATION_SUCCESS';
 export const AUTHORIZATION_FAIL = 'AUTHORIZATION_FAIL';
-export const SIGN_OUT = 'SIGN_OUT';
+export const LOG_OUT = 'LOG_OUT';
 
 export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
@@ -17,7 +17,6 @@ export const loginRequest = (data) => {
 }
 
 export const signupRequest = (data) => {
-  console.log('singup action', data)
   return {
     type: SIGNUP_REQUEST,
     payload: data
@@ -55,3 +54,9 @@ export const signUp = (payload) => (
       })
   })
 );
+
+export const logOut = () => {
+  return {
+    type: LOG_OUT
+  }
+}

@@ -5,6 +5,7 @@ import theme from '../theme/reapop'
 import Gradients from './Helpers/Gradients'
 import GeolocationRequest from './Modal/GeolocationRequest';
 import ShareModal from './Modal/ShareModal';
+import Logout from './Signup/Logout';
 
 class Common extends Component {
   render(){
@@ -14,6 +15,7 @@ class Common extends Component {
         <Gradients />
         <GeolocationRequest />
         <ShareModal />
+        <Logout />
       </Fragment>
     )
   }

@@ -1,4 +1,4 @@
-import { AUTHORIZATION_SUCCESS, SIGN_OUT, AUTHORIZATION_FAIL, SET_USER_ID, SIGNUP_SUCCESS, SIGNUP_FAIL } from '../actions/user';
+import { AUTHORIZATION_SUCCESS, AUTHORIZATION_FAIL, SET_USER_ID, SIGNUP_SUCCESS, SIGNUP_FAIL, LOG_OUT } from '../actions/user';
 
 export const initialState = {
   randomId: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10),
@@ -17,7 +17,6 @@ const user = (state = initialState, action) => {
         ...state,
         userId: action.payload
       };
-    case SIGN_OUT:
     case AUTHORIZATION_FAIL:
       return {
         ...state,
@@ -34,7 +33,11 @@ const user = (state = initialState, action) => {
         ...state,
         errorMessage: action.payload
       };
-
+    case LOG_OUT:
+      return {
+        ...state,
+        userId: null
+      }
     default:
       return state;
   }
