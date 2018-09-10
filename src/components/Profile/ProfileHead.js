@@ -343,6 +343,7 @@ class ProfileHead extends Component{
             </div>
 
             <HeadGallery
+              editMode={editMode}
               gallery={gallery} />
 
           </Fragment>

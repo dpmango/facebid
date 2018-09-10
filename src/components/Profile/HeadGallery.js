@@ -3,6 +3,7 @@ import Swiper from 'react-id-swiper';
 import { Collapse } from 'react-collapse';
 import Image from '../Helpers/Image';
 import SvgIcon from '../Helpers/SvgIcon';
+import Thumb from './GalleryThumb'
 
 class ProfileHeadGallery extends Component{
 
@@ -11,7 +12,8 @@ class ProfileHeadGallery extends Component{
 
     this.state = {
       isGaleryOpen: false,
-      currentSlide: null
+      currentSlide: null,
+      gallery: props.gallery
     }
 
     this.swiperThumbs = null
@@ -23,15 +25,7 @@ class ProfileHeadGallery extends Component{
     // todo make some other type of detection server-side
   }
 
-  componentDidMount(){
-    // this.connectSwipers()
-  }
-
-  connectSwipers = () => {
-    // this.swiperFull.controller.control = this.swiperThumbs;
-    // this.swiperThumbs.controller.control = this.swiperFull;
-  }
-
+  // sliders logic
   // when thumb is clicked
   // allow freemode swiping on change NO slides here
   thumbClick = (index) => {
@@ -47,7 +41,7 @@ class ProfileHeadGallery extends Component{
     }, () => this.syncSwipers('thumb') )
   }
 
-  // when
+  // when full slider has changed - sync thumbs trigger
   fullSliderChanged = () => {
     const curIndex = this.swiperFull.activeIndex
 
@@ -83,11 +77,25 @@ class ProfileHeadGallery extends Component{
     })
   }
 
+  fileChanged = (img, index) => {
+    console.log(img, index)
+
+    console.log(this.state.gallery)
+
+    // this.setState({
+    //   ...this.state,
+    // })
+  }
+
+  fileRemoved = (index) => {
+    console.log('file to be removed', index)
+  }
+
   render(){
 
     const {
-      props: { gallery },
-      state: { isGaleryOpen, currentSlide }
+      props: { editMode },
+      state: { gallery, isGaleryOpen, currentSlide }
     } = this
 
 
@@ -147,19 +155,23 @@ class ProfileHeadGallery extends Component{
         <Swiper
           ref={node => this.swiperThumbs = node ? node.swiper : null }
           {...SwiperParamsThumbs}>
-          { gallery.thumbs.map((slide, index) => {
+          { gallery.thumbs.map((thumb, index) => {
             return (
-              <div
-                onClick={this.thumbClick.bind(this, index)}
-                className={"p-head-gal__thumb" + (currentSlide === index ? " is-active": "") }>
-                <Image file={slide} />
-              </div>
+              <Thumb
+                image={thumb}
+                index={index}
+                currentSlide={currentSlide}
+                editMode={editMode}
+                clickHandler={this.thumbClick}
+                fileChangeHandler={this.fileChanged}
+                fileRemoveHandler={this.fileRemoved}
+              />
             )
           }) }
         </Swiper>
 
         <Collapse
-          isOpened={isGaleryOpen}>
+          isOpened={!editMode && isGaleryOpen}>
 
           <div className="p-head-gal__full-wrapper">
             <Swiper
@@ -196,5 +208,6 @@ class ProfileHeadGallery extends Component{
     )
   }
 }
+
 
 export default ProfileHeadGallery
