@@ -65,7 +65,18 @@ button
     // border-color: $colorBlue
     &:hover
       // background-color: white
-
+  &--muted
+    color: #848E99
+    border-color: #848E99
+    &:hover
+      background-color: #848E99
+      color: white
+  &--red
+    color: $colorRed
+    border-color: $colorRed
+    &:hover
+      background-color: $colorRed
+      color: white
 
 .btn-primary
   color: white
@@ -81,6 +92,10 @@ button
     color: $colorBlue
     border-color: $colorBlue
 
+  &--red
+    background: $colorRed
+    color: white
+    
 
 .btn-circle
   flex: 0 0 auto

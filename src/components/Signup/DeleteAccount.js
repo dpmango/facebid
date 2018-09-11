@@ -3,30 +3,35 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { notify } from 'reapop';
 import Modal from '../Modal/Modal';
+import SvgIcon from '../Helpers/SvgIcon';
 import { logOut } from '../../actions/user';
 import { closeModal, openModal } from '../../actions/modal';
 
-class Logout extends Component{
+class DeleteAccount extends Component{
   constructor(){
     super()
     this.state = {
-      modalName: 'logout'
+      modalName: 'delete-account'
     }
   }
 
   hide = () => {
+    // todo refactor throug redux saving prev value and pass exra flag
+    // redirectBack
     this.props.openModal('settings')
     // this.props.closeModal()
   }
 
   // auth passed to redux
-  logOut = () => {
+  DeleteAccount = () => {
     // TODO - descroy cookie on server
-    this.props.logOut();
+    // this.props.logOut();
     this.hide()
+
+    // TODO - account removal
     this.props.notify({
-      title: 'Выход из системы',
-      message: 'Вы успешно вышли из системы',
+      title: 'Аккаунт удален',
+      message: 'Спасибо что были с нами RIP',
       status: 'default', // default, info, success, warning, error
       dismissible: true,
       dismissAfter: 2000,
@@ -47,11 +52,16 @@ class Logout extends Component{
         >
           <div className="modal__content">
             <div className="modal-logout">
-              <div className="h4-title t-center">Вы действительно <br/> хотите выйти?</div>
+              <div className="t-center">
+                <SvgIcon name="tombstone" />
+                <div className="h4-title">Вы действительно хотите  <br/> удалить аккаунт?</div>
+                <p className="t-primary">Данное действие является необратимым.</p>
+              </div>
+
               <div className="modal-logout__btns">
                 <button
-                  onClick={this.logOut}
-                  className="btn btn-primary">Да</button>
+                  onClick={this.DeleteAccount}
+                  className="btn btn-primary btn-primary--red">Удалить аккаунт</button>
                 <button
                   onClick={this.hide}
                   className="btn btn-outline">Нет</button>
@@ -64,7 +74,7 @@ class Logout extends Component{
 }
 
 
-Logout.propTypes = {
+DeleteAccount.propTypes = {
   closeModal: PropTypes.func
 }
 
@@ -75,8 +85,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   closeModal: () => dispatch(closeModal()),
   openModal: (data) => dispatch(openModal(data)), 
-  logOut: () => dispatch(logOut()),
   notify: (data) => dispatch(notify(data)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Logout);
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteAccount);

@@ -11,6 +11,7 @@ import SvgIcon from '../Helpers/SvgIcon';
 import HeadMetrics from './HeadMetrics';
 import HeadGallery from './HeadGallery';
 import HeadVerifications from './HeadVerifications';
+import Settings from '../ProfileSettings/Settings';
 import MultipleSelectToTotal from '../../helpers/MultipleSelectToTotal';
 import { openModal } from '../../actions/modal';
 
@@ -89,6 +90,7 @@ class ProfileHead extends Component{
 
   settingsClick = () => {
     // open settings modal page
+    this.props.openModal('settings')
   }
 
 
@@ -253,15 +255,6 @@ class ProfileHead extends Component{
 
                     <div className="p-head__edit-btn">
                       <button
-                        onClick={this.props.openModal.bind(this, 'logout')}
-                        style={{
-                          'margin-right': '16px'
-                        }}
-                        className="btn btn-outline">
-                        Exit
-                      </button>
-
-                      <button
                         onClick={this.enableEditMode}
                         className="btn btn-primary btn--iconed">
                         <SvgIcon name="pencil" />
@@ -274,6 +267,8 @@ class ProfileHead extends Component{
                       className="p-head__settings-btn btn btn-circle">
                       <SvgIcon name="gear" />
                     </div>
+
+                    <Settings />
                   </Fragment>
                   :
                   <Formsy

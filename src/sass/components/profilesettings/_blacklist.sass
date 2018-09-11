@@ -1,0 +1,71 @@
+.face-list
+  margin: 32px 0
+  &__grid
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    margin: -8px
+  &__col
+    flex: 0 0 auto
+    padding: 8px
+  &__card
+    position: relative
+    display: flex
+    justify-content: center
+    border: 1px solid #F4F7FB
+    border-radius: 4px
+    font-size: 0
+    &::before
+      display: inline-block
+      content: ' '
+      position: absolute -1px
+      z-index: 1
+      border-radius: 4px
+      opacity: 0
+      background: $gradient
+      transition: .25s $ease
+    &-wrapper
+      size: 133px
+      position: relative
+      z-index: 2
+      background: white
+      padding: 16px
+      // margin: 1px
+      border-radius: 4px
+    &:hover
+      &::before
+        opacity: 1
+      .face-list
+        &__remove
+          opacity: 1
+
+  &__avatar
+    size: 72px
+    margin-left: auto
+    margin-right: auto
+    border-radius: 50%
+    position: relative
+    overflow: hidden
+
+  &__name
+    text-align: center
+    font-size: 14px
+    font-weight: 500
+    line-height: 1.7
+    margin-top: 5px
+
+  &__remove
+    position: absolute
+    top: 8px
+    display: flex
+    align-items: center
+    justify-content: center
+    right: 8px
+    padding: 6px
+    font-size: 0
+    cursor: pointer
+    color: #828E9A
+    opacity: 0
+    transition: .25s $ease
+    .ico
+      font-size: 12px

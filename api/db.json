@@ -171,9 +171,7 @@
       "text": "Супер! Я бы тоже не против скататься в такое интересное путешествие. Когда выезжаете?"
     }
   ],
-  "bookmarks": [
-
-  ],
+  "bookmarks": [],
   "myProfile": {
     "avatar": "avatarBig_1.jpg",
     "username": "Angeshka",
@@ -181,24 +179,122 @@
     "fullname": "Константинопольская Аделина",
     "isVerified": true,
     "userLang": [
-      {"value": "ru", "label": "Русский"},
-      {"value": "us", "label": "Английский"},
-      {"value": "es", "label": "Испанский"}
+      {
+        "value": "ru",
+        "label": "Русский"
+      },
+      {
+        "value": "us",
+        "label": "Английский"
+      },
+      {
+        "value": "es",
+        "label": "Испанский"
+      }
     ],
     "description": "Значимость этих проблем настолько очевидна, что консультация с широким активом требуют от нас анализа систем массового участия. Не следует, однако забывать.",
     "subscribers": "14K",
     "subscribed": "1,4K",
     "gallery": {
       "thumbs": [
-        "galThumb_1.jpg", "galThumb_2.jpg", "galThumb_3.jpg",
-        "galThumb_4.jpg", "galThumb_5.jpg", "galThumb_6.jpg",
-        "galThumb_1.jpg", "galThumb_2.jpg", "galThumb_3.jpg"
+        "galThumb_1.jpg",
+        "galThumb_2.jpg",
+        "galThumb_3.jpg",
+        "galThumb_4.jpg",
+        "galThumb_5.jpg",
+        "galThumb_6.jpg",
+        "galThumb_1.jpg",
+        "galThumb_2.jpg",
+        "galThumb_3.jpg"
       ],
       "full": [
-        "galThumb_1.jpg", "galThumb_2.jpg", "galThumb_3.jpg",
-        "galThumb_4.jpg", "galThumb_5.jpg", "galThumb_6.jpg",
-        "galThumb_1.jpg", "galThumb_2.jpg", "galThumb_3.jpg"
+        "galThumb_1.jpg",
+        "galThumb_2.jpg",
+        "galThumb_3.jpg",
+        "galThumb_4.jpg",
+        "galThumb_5.jpg",
+        "galThumb_6.jpg",
+        "galThumb_1.jpg",
+        "galThumb_2.jpg",
+        "galThumb_3.jpg"
       ]
     }
-  }
+  },
+  "blacklist": [
+    {
+      "id": 2,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_3.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_2.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_3.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_4.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_5.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_2.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_3.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_4.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_5.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_2.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_3.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_4.jpg"
+    },
+    {
+      "id": 16,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_5.jpg"
+    },
+    {
+      "id": 17,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_2.jpg"
+    },
+    {
+      "id": 18,
+      "name": "Illaria, 24",
+      "avatar": "userAvatar_3.jpg"
+    }
+  ]
 }

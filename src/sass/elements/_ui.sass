@@ -212,6 +212,60 @@
           color: $colorBlue
 
 
+.ui-toggle-row
+  width: 100%
+  display: flex
+  align-items: center
+  min-height: 58px
+  align-items: center
+  border-bottom: 1px solid #DDE1E6
+  label
+    flex: 0 1 auto
+    padding-right: 20px
+    font-size: 14px
+    font-family: $roboto
+  .ui-tumbler
+    flex: 0 0 auto
+    margin-left: auto
+    cursor: pointer
+
+.ui-tumbler
+  position: relative
+  size: 40px 20px
+  background: #DCE1E7
+  border-radius: 20px
+  transition: .25s $ease
+  &::after
+    display: inline-block
+    content: ' '
+    position: absolute
+    z-index: 2
+    left: 2px
+    top: 50%
+    size: 16px
+    border-radius: 50%
+    transform: translate(0,-50%)
+    background: white
+    font-size: 0
+    transition: transform .25s $ease
+  &.is-active
+    background-color: $colorBlue
+    &::after
+      transform: translate(20px, -50%)
+  .ico
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    &-checkmark
+      font-size: 8px
+      left: 7px
+      fill: rgba(white, .5)
+    &-close
+      right: 8px
+      font-size: 8px
+      fill: #848E99
+
+
 .ui-date-selects
   flex: 1 1 auto
   display: flex
