@@ -5,6 +5,7 @@ import theme from '../theme/reapop'
 import Gradients from './Helpers/Gradients'
 import GeolocationRequest from './Modal/GeolocationRequest';
 import ShareModal from './Modal/ShareModal';
+import Notifications from './Notifications/Notifications';
 
 class Common extends Component {
   render(){
@@ -14,6 +15,7 @@ class Common extends Component {
         <Gradients />
         <GeolocationRequest />
         <ShareModal />
+        <Notifications />
       </Fragment>
     )
   }
