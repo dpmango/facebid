@@ -15,7 +15,7 @@ class Settings extends Component{
     super(props)
     this.state = {
       modalName: 'settings',
-      currentTab: 3
+      currentTab: 1
     }
 
   }
