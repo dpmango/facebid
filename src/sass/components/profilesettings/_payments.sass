@@ -1,0 +1,112 @@
+.p-row
+  width: 100%
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+  > div
+    margin-right: 24px
+    &:last-child
+      margin-right: 0
+
+.p-btn
+  position: relative
+  min-height: 40px
+  min-width: 180px
+  display: flex
+  align-items: center
+  border: 1px solid transparent
+  border-radius: 20px
+  font-size: 0
+  transition: .25s $ease
+  &--balance
+    border-color: $colorPurple
+    .p-btn
+      &__icon
+        background: $colorPurple
+      &__label
+        color: $colorPurple
+  &--vip
+    border-color: #EFA747
+    .p-btn
+      &__icon
+        background: #EFA747
+      &__label
+        color: #EFA747
+
+  &__icon
+    position: absolute
+    // overlay on border
+    top: -1px
+    left: -1px
+    size: 40px
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    color: white
+    font-size: 0
+    border-radius: 50%
+    .ico
+      &-star-stroke
+        font-size: 19px
+      &-crown
+        font-size: 14px
+
+  &__label
+    flex: 1 1 auto
+    text-align: center
+    padding: 5px 10px 5px 50px
+    font-size: 14px
+    font-weight: 600
+
+.p-payments
+  margin-right: 0
+  width: 100%
+  &__cta
+    margin-top: 24px
+
+.p-pay
+  flex: 1 1 100%
+  display: flex
+  align-items: center
+  border-top: 1px solid #F4F7FB
+  font-family: $roboto
+  font-size: 14px
+  padding: 24px 0
+  &:last-child
+    border-bottom: 1px solid #F4F7FB
+  &__name
+    flex: 0 1 240px
+    max-width: 240px
+  &__credentials
+    flex: 1 1 auto
+
+  &__actions
+    margin-left: auto
+    display: flex
+    align-items: center
+
+  &__edit, &__remove
+    size: 24px
+    display: flex
+    align-items: center
+    justify-content: center
+    background: transparent
+    -webkit-apperance: none
+    border: 0
+    box-shadow: none
+    transition: .25s $ease
+    &:hover
+      opacity: .85
+      
+
+  &__edit
+    color: $colorBlue
+    margin-right: 8px
+    .ico
+      font-size: 18px
+
+  &__remove
+    color: $colorRed
+    .ico
+      font-size: 12px
