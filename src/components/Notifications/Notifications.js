@@ -4,13 +4,17 @@ import { connect } from 'react-redux';
 import { notify } from 'reapop';
 import Modal from '../Modal/Modal';
 import SvgIcon from '../Helpers/SvgIcon';
+import NoNotifications from './NoNotifications';
+import DisabledNotificaitons from './DisabledNotificaitons';
 import { closeModal } from '../../actions/modal';
 
 class Notifications extends Component{
   constructor(props){
     super(props)
     this.state = {
-      modalName: 'notifications'
+      modalName: 'notifications',
+      // state influence componenets render (not, blank, disabled)
+      notifications: false // types arr, [] arr, false
     }
   }
 
@@ -21,7 +25,7 @@ class Notifications extends Component{
   render(){
     const {
       state: {
-        modalName
+        modalName, notifications
       },
       props: {
         activeModal
@@ -33,44 +37,28 @@ class Notifications extends Component{
         isActive={activeModal === modalName}
         onHide={this.hide}
         >
-        <div className="modal__header">
-          <div className="h4-title">
-            Уведомления
-          </div>
-        </div>
-        <div className="modal__content">
-          <div className="ntf">
-            <div className="notification">
+        {notifications.length > 0 &&
+          <React.Fragment>
+            <div className="modal__header">
+              <div className="h4-title">
+                Уведомления
+              </div>
             </div>
-          </div>
-        </div>
+            <div className="modal__content">
+              <div className="ntf">
+                <div className="notification">
+                </div>
+              </div>
+            </div>
+          </React.Fragment>
+        }
+        {notifications.length === 0 &&
+          <NoNotifications />
+        }
+        {notifications === false &&
+          <DisabledNotificaitons />
+        }
       </Modal>
-    )
-  }
-}
-
-class ShareProvider extends Component{
-
-  shareAction = () => {
-
-  }
-
-  render(){
-    const {
-      props: { provider, name }
-    } = this
-
-    return(
-      <div
-        onClick={this.shareAction}
-        className={`share__element share__element--${provider}`}>
-        <div className="share__icon">
-          <SvgIcon name={provider} />
-        </div>
-        <div className="share__name">
-          {name}
-        </div>
-      </div>
     )
   }
 }

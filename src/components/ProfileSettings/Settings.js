@@ -15,7 +15,8 @@ class Settings extends Component{
     super(props)
     this.state = {
       modalName: 'settings',
-      currentTab: 1
+      currentTab: 1 // TODO - refactor to redux as it
+      // could be opened from the Notificaitons with specific tab
     }
 
   }

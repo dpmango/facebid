@@ -11,7 +11,6 @@ import SvgIcon from '../Helpers/SvgIcon';
 import HeadMetrics from './HeadMetrics';
 import HeadGallery from './HeadGallery';
 import HeadVerifications from './HeadVerifications';
-import Settings from '../ProfileSettings/Settings';
 import MultipleSelectToTotal from '../../helpers/MultipleSelectToTotal';
 import { openModal } from '../../actions/modal';
 
@@ -267,8 +266,6 @@ class ProfileHead extends Component{
                       className="p-head__settings-btn btn btn-circle">
                       <SvgIcon name="gear" />
                     </div>
-
-                    <Settings />
                   </Fragment>
                   :
                   <Formsy

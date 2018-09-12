@@ -1,10 +1,12 @@
 import React, {Component, Fragment} from 'react';
+import {connect} from 'react-redux';
 import NotificationsSystem from 'reapop';
 // import theme from 'reapop-theme-wybo';
 import theme from '../theme/reapop'
 import Gradients from './Helpers/Gradients'
 import GeolocationRequest from './Modal/GeolocationRequest';
 import ShareModal from './Modal/ShareModal';
+import Settings from './ProfileSettings/Settings';
 import Notifications from './Notifications/Notifications';
 
 class Common extends Component {
@@ -15,10 +17,19 @@ class Common extends Component {
         <Gradients />
         <GeolocationRequest />
         <ShareModal />
-        <Notifications />
+        {this.props.userId &&
+          <React.Fragment>
+            <Notifications />
+            <Settings />
+          </React.Fragment>
+        }
       </Fragment>
     )
   }
 }
 
-export default Common;
+const mapStateToProps = (state) => ({
+  userId: state.user.userId
+});
+
+export default connect(mapStateToProps, null)(Common);
