@@ -21,6 +21,70 @@ class Notification extends Component {
     switch(type){
       case "invited":
         return "add"
+      case "comment":
+        return "comments"
+      case "eventcreated":
+        return "star-stroke"
+      case "subscribed":
+        return "rss"
+      case "application":
+        return "checkmark"
+      case "photo":
+        return "camera-add"
+      case "profileview":
+        return "eye"
+      default:
+        return null
+    }
+  }
+
+  renderNotificaitonContent = (type) => {
+
+    const { user, data } = this.props
+
+    switch(type){
+      case "invited":
+        return (
+          <React.Fragment>
+            <span>{user.username}</span> приглашает Вас на событие <a href={data.id}><span>«{data.event}»</span></a>
+          </React.Fragment>
+        )
+      case "comment":
+      return (
+        <React.Fragment>
+          <span>{user.username}</span> оставил комментарий под Вашим событием
+        </React.Fragment>
+      )
+      case "eventcreated":
+      return (
+        <React.Fragment>
+          <span>{user.username}</span> создал новое событие <a href={data.id}><span>«{data.event}»</span></a>
+        </React.Fragment>
+      )
+      case "subscribed":
+        return (
+          <React.Fragment>
+            <span>{user.username}</span> подписался на Ваши обновления
+          </React.Fragment>
+        )
+      case "application":
+        return (
+          <React.Fragment>
+            <span>{user.username} и еще {data.participants}</span> оставили заявку на событие «Название события»
+          </React.Fragment>
+        )
+      case "photo":
+        return (
+          <React.Fragment>
+            <span>{user.username}</span> добавил <span>{data.counter} фотографий</span> в свой профиль
+          </React.Fragment>
+        )
+      case "profileview":
+        return (
+          <React.Fragment>
+            <span>{user.username}</span> посетил Ваш профиль
+          </React.Fragment>
+        )
       default:
         return null
     }
@@ -48,11 +112,7 @@ class Notification extends Component {
         </div>
         <div className="notification__wrapper">
           <div className="notification__content">
-            {type === "invited" &&
-              <p>
-                <span>{user.username}</span> приглашает Вас на событие <a href={data.id}><span>{data.event}</span></a>
-              </p>
-            }
+            <p>{this.renderNotificaitonContent(type)}</p>
             <div className="notification__timestamp">
               {ConvertTimestampToStr(timestamp)}
             </div>

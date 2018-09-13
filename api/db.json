@@ -307,7 +307,7 @@
       "type": "invited",
       "data": {
         "id": 223,
-        "event": "«Кто хочет со мной в путешествие?»"
+        "event": "Кто хочет со мной в путешествие?"
       },
       "timestamp": "2018-09-13T21:25:43.511Z"
     },
@@ -320,9 +320,90 @@
       "type": "invited",
       "data": {
         "id": 223,
-        "event": "«Аквапарк на выходные»"
+        "event": "Аквапарк на выходные"
       },
       "timestamp": "2018-09-13T17:25:43.511Z"
+    },
+    {
+      "id": 3,
+      "user": {
+        "avatar": "userAvatar_4.jpg",
+        "username": "SuperAndrey"
+      },
+      "type": "comment",
+      "data": {
+        "id": 223
+      },
+      "timestamp": "2018-09-13T03:25:43.511Z"
+    },
+    {
+      "id": 4,
+      "user": {
+        "avatar": "userAvatar_5.jpg",
+        "username": "VladMinor"
+      },
+      "type": "eventcreated",
+      "data": {
+        "id": 223,
+        "event": "Киникулы в Риме"
+      },
+      "timestamp": "2018-09-13T03:25:43.511Z"
+    },
+    {
+      "id": 5,
+      "user": {
+        "avatar": "userAvatar_2.jpg",
+        "username": "StasStas"
+      },
+      "type": "subscribed",
+      "timestamp": "2018-09-13T03:25:43.511Z"
+    },
+    {
+      "id": 6,
+      "user": {
+        "avatar": "userAvatar.jpg",
+        "username": "Anton"
+      },
+      "type": "application",
+      "data":{
+        "id": 223,
+        "participants": "18",
+        "event": "Название события"
+      },
+      "timestamp": "2018-09-13T03:25:43.511Z"
+    },
+    {
+      "id": 7,
+      "user": {
+        "avatar": "userAvatar_3.jpg",
+        "username": "StasStas"
+      },
+      "data":{
+        "photos": [
+          
+        ],
+        "counter": 5
+      },
+      "type": "photo",
+      "timestamp": "2018-09-13T03:25:43.511Z"
+    },
+    {
+      "id": 8,
+      "user": {
+        "avatar": "userAvatar_4.jpg",
+        "username": "VladMinor"
+      },
+      "type": "profileview",
+      "timestamp": "2018-09-13T03:25:43.511Z"
+    },
+    {
+      "id": 9,
+      "user": {
+        "avatar": "userAvatar_5.jpg",
+        "username": "Vinseslav"
+      },
+      "type": "profileview",
+      "timestamp": "2018-09-03T03:25:43.511Z"
     }
   ]
 }
