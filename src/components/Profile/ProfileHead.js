@@ -183,9 +183,9 @@ class ProfileHead extends Component{
           <Fragment>
             <div className="p-head__top">
               <div className="p-head__left">
-                <div className={"p-head__avatar" + (editMode ? " is-editable" : "")}>
-                  <div className="p-head__avatar-wrapper">
-                    <div className="p-head__avatar-holder">
+                <div className={"p-head__avatar avatar-outline" + (editMode ? " is-editable" : "")}>
+                  <div className="avatar-outline__wrapper">
+                    <div className="avatar-outline__holder">
                       { isUploadedAvatar ?
                         <span style={{
                           backgroundImage: `url(${avatar})`

@@ -296,5 +296,33 @@
       "name": "Illaria, 24",
       "avatar": "userAvatar_3.jpg"
     }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "user": {
+        "avatar": "userAvatar_2.jpg",
+        "username": "Vasilisa"
+      },
+      "type": "invited",
+      "data": {
+        "id": 223,
+        "event": "«Кто хочет со мной в путешествие?»"
+      },
+      "timestamp": "2018-09-13T21:25:43.511Z"
+    },
+    {
+      "id": 2,
+      "user": {
+        "avatar": "userAvatar_3.jpg",
+        "username": "Anita2000"
+      },
+      "type": "invited",
+      "data": {
+        "id": 223,
+        "event": "«Аквапарк на выходные»"
+      },
+      "timestamp": "2018-09-13T17:25:43.511Z"
+    }
   ]
 }

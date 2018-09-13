@@ -29,3 +29,60 @@
     width: 102%
   &--glow
     box-shadow: 0 0 20px 0 rgba(67,180,254,0.40)
+
+
+// avatar with gradient outline
+.avatar-outline
+  position: relative
+  size: 184px
+  border-radius: 50%
+  border: 1px solid #DDE1E6
+  display: flex
+  align-items: center
+  justify-content: center
+  font-size: 0
+  border: 1px solid transparent
+  &--small
+    size: 48px
+    .avatar-outline__wrapper
+      size: 44px
+    .avatar-outline__holder
+      size: 40px
+
+  // active state
+  &::after
+    display: inline-block
+    position: absolute 0
+    z-index: 1
+    content: ' '
+    background: $gradient
+    border-radius: 50%
+    transition: .25s $ease
+
+  &__wrapper
+    position: relative
+    z-index: 2
+    size: 180px
+    display: flex
+    align-items: center
+    justify-content: center
+    background: white
+    border-radius: 50%
+    overflow: hidden
+  &__holder
+    position: relative
+    size: 168px
+    border-radius: 50%
+    overflow: hidden
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%,-50%)
+      width: 100%
+    span
+      display: block
+      position: absolute 0
+      background-repeat: no-repeat
+      background-position: center center
+      background-size: cover
