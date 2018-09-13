@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="148px" height="148px" viewBox="0 0 148 148" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>smile-sad</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Marvel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Marvel_My_Events_Empty" transform="translate(-766.000000, -274.000000)">
+            <g id="Group-2" transform="translate(629.000000, 274.000000)">
+                <g id="smile-sad" transform="translate(137.000000, 0.000000)">
+                    <circle id="Oval-8" stroke="#C7CCD1" stroke-width="4" cx="74" cy="74" r="72"></circle>
+                    <circle stroke="#C7CCD1" stroke-width="8" cx="50" cy="58" r="4" fill="#D8D8D8" id="Oval-14"></circle>
+                    <circle stroke="#C7CCD1" stroke-width="8" cx="98" cy="58" r="4" fill="#D8D8D8" id="Oval-14-Copy"></circle>
+                    <path d="M98,113 C98,99.745166 87.254834,89 74,89 C60.745166,89 50,99.745166 50,113" id="Oval-15" stroke="#C7CCD1" stroke-width="4" stroke-linecap="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

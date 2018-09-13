@@ -246,6 +246,16 @@
         share
     </title>
     <path d="M15 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 1 0-6 3 3 0 0 1 0 6zM3 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm12 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm-2.808-3.059l-7.704-4.494.216-.422c.185-.359.276-.71.28-1.059a2.057 2.057 0 0 0-.254-1l-.225-.424L12.7 3.753l.505.864-7.397 4.321c.119.336.178.682.174 1.037a3.2 3.2 0 0 1-.198 1.07l6.912 4.033a3 3 0 1 1-.505.863z" fill-rule="nonzero"/>
+</symbol><symbol id="ico-smile-sad" viewBox="0 0 148 148">
+    <title>
+        smile-sad
+    </title>
+    <g fill-rule="evenodd">
+        <circle stroke-width="4" cx="74" cy="74" r="72"/>
+        <circle stroke-width="8" cx="50" cy="58" r="4"/>
+        <circle stroke-width="8" cx="98" cy="58" r="4"/>
+        <path d="M98 113c0-13.255-10.745-24-24-24s-24 10.745-24 24" stroke-width="4" stroke-linecap="round"/>
+    </g>
 </symbol><symbol id="ico-star-fill" viewBox="0 0 20 19">
     <title>
         star-fill
