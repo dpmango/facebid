@@ -367,8 +367,17 @@
       "type": "application",
       "data":{
         "id": 223,
-        "participants": "18",
-        "event": "Название события"
+        "event": "Название события",
+        "applicants": {
+          "more": 14,
+          "list": [
+            { "id": 1, "file": "userAvatar_2.jpg" },
+            { "id": 2, "file": "userAvatar_3.jpg" },
+            { "id": 3, "file": "userAvatar_4.jpg" },
+            { "id": 4, "file": "userAvatar_5.jpg" },
+            { "id": 5, "file": "userAvatar_6.jpg" }
+          ]
+        }
       },
       "timestamp": "2018-09-13T03:25:43.511Z"
     },
@@ -380,7 +389,11 @@
       },
       "data":{
         "photos": [
-          
+          "galThumb_1.jpg",
+          "galThumb_2.jpg",
+          "galThumb_3.jpg",
+          "galThumb_4.jpg",
+          "galThumb_5.jpg"
         ],
         "counter": 5
       },

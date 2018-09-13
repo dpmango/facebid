@@ -6,7 +6,6 @@ const ConvertTimestampToStr = (time) => {
   moment.locale("ru");
   const mDate = moment(time)
 
-  console.log(mDate)
   return mDate.fromNow()
 }
 

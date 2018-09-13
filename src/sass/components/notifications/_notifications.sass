@@ -61,8 +61,8 @@
     color: $fontColorGray
     p
       margin: 0 0 .4em
-    span
-      color: $fontColor
+      span
+        color: $fontColor
 
   &__actions
     flex: 0 0 auto
@@ -78,6 +78,31 @@
     line-height: 1.38
     color: $fontColorGray
     font-family: $roboto
+
+  &__data
+    margin-top: 8px
+    margin-bottom: -5px
+
+  &__images
+    display: flex
+
+  &__pic
+    flex: 0 0 72px
+    position: relative
+    z-index: 1
+    overflow: hidden
+    margin-right: 8px
+    border-radius: 16px
+    &::after
+      content: ""
+      display: block
+      padding-bottom: 100%
+
+    img
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
 
 // blank notifications
 .ntf-info
