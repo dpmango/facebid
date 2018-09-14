@@ -7,8 +7,8 @@ import { LOG_IN, AUTHORIZATION_SUCCESS, AUTHORIZATION_FAIL,
 
 function* logInSaga({ payload }) {
   try {
-    yield call(logIn, payload);
-    yield put({ type: AUTHORIZATION_SUCCESS, payload: payload.email });
+    const res = yield call(logIn, payload);
+    yield put({ type: AUTHORIZATION_SUCCESS, payload: res });
   } catch (error) {
     yield put({ type: AUTHORIZATION_FAIL, payload: error.message, error: true });
   }

@@ -55,7 +55,7 @@ class Login extends Component{
 
   keyPressHandler = (e) => {
     if ( e.key === "Enter" ){
-      this.submitForm();
+      // this.submitForm();
     }
   }
 
@@ -143,7 +143,7 @@ class Login extends Component{
                   <div className="login__cta">
                     <button className="btn btn-primary" type="submit">Войти</button>
                     <a
-                      onClick={this.props.openModal.bind(this, 'recover')} 
+                      onClick={this.props.openModal.bind(this, 'recover')}
                       className="t-link">Не помню пароль</a>
                   </div>
                   <div className="login__rules">Пользуясь сайтом Вы соглашаетесь с Пользовательским  соглашением и Политикой конфиденциальности</div>

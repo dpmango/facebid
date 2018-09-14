@@ -26,15 +26,16 @@ export const signupRequest = (data) => {
 export const logIn = (payload) => (
   new Promise((resolve, reject) => {
     api
-      .get('users')
+      .get(`users?email=${payload.email}`)
       .then(res => {
-        // dummy interation
-        res.data.forEach( user => {
-          if ( payload.email === user.email &&
-             payload.password.toString() === user.password ){
-            resolve();
-          }
-        })
+
+        // TODO
+        // should get flag from server on production
+        const userData = res.data[res.data.length - 1]
+        if ( payload.password.toString() ===
+             userData.password ){
+          resolve(userData);
+        }
       })
       .catch(err => {
         reject(new Error('Incorrect username or password.'));

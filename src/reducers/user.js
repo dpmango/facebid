@@ -15,7 +15,11 @@ const user = (state = initialState, action) => {
     case AUTHORIZATION_SUCCESS:
       return {
         ...state,
-        userId: action.payload
+        userId: action.payload.id,
+        userDetails: {
+          email: action.payload.email,
+          avatar: action.payload.avatar
+        }
       };
     case AUTHORIZATION_FAIL:
       return {

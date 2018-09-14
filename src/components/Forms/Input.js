@@ -25,7 +25,6 @@ class FormInput extends Component {
   }
 
   changeValue = (e) => {
-    console.log(e)
     this.props.onChangeHandler(e)
     this.props.setValue(e.currentTarget.value);
   }
