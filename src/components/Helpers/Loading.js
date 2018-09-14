@@ -7,9 +7,11 @@ const Loading = (props) => {
   if ( type === "events" ){
     return(
       // two loading cards
-      [1,2].map(() => {
+      [1,2].map((el, i) => {
         return(
-          <div className="loading-event">
+          <div
+            key={i}
+            className="loading-event">
 
           </div>
         )

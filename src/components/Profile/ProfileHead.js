@@ -37,9 +37,6 @@ class ProfileHead extends Component{
 
     this.formRef = React.createRef()
     this.uploadRef = React.createRef();
-
-    this.base64Regex = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
-
   }
 
   componentDidMount(){
@@ -73,7 +70,7 @@ class ProfileHead extends Component{
 
   saveUserData = () => {
 
-    this.setState({ editMode: false })
+    this.disableEdit()
   }
 
   enableEditMode = () => {
@@ -84,7 +81,13 @@ class ProfileHead extends Component{
     e.preventDefault()
     e.stopPropagation();
 
-    this.setState({ editMode: false })
+    this.disableEdit()
+  }
+
+  disableEdit = () => {
+    this.setState({ editMode: false }, () => {
+      this.galleryRef.refreshSliders()
+    })
   }
 
   settingsClick = () => {
@@ -342,6 +345,7 @@ class ProfileHead extends Component{
             </div>
 
             <HeadGallery
+              onRef={ref => (this.galleryRef = ref)}
               editMode={editMode}
               gallery={gallery} />
 

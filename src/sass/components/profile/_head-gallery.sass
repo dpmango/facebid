@@ -43,6 +43,7 @@
     font-size: 0
     cursor: pointer
     border-radius: 4px
+    background: #848E99
     &::after
       display: inline-block
       content: ' '
@@ -53,9 +54,51 @@
       pointer-events: none
     img
       width: 100%
+
+    &-remove, &-add
+      position: absolute
+      display: flex
+      align-items: center
+      justify-content: center
+      text-align: center
+      z-index: 2
+      bottom: 8px
+      right: 8px
+      background: white
+      size: 24px
+      border-radius: 50%
+      font-size: 0
+      cursor: pointer
+      color: $colorBlue
+      transition: .25s $ease
+      &:hover
+        background: rgba(white, .85)
+
+    &-remove
+      opacity: 0
+      pointer-events: none
+      .ico
+        font-size: 10px
+    &-add
+      .ico
+        font-size: 13px
+
     &:hover, &.is-active
       &::after
         opacity: 1
+    &.is-editable
+      &:hover, &.is-active
+        &::after
+          opacity: 0
+    &.has-image
+      .p-head-gal__thumb
+        &-remove
+          pointer-events: all
+          opacity: 1
+        &-add
+          pointer-events: none
+          opacity: 0
+
 
 
   &__full-wrapper
@@ -98,6 +141,7 @@
       right: 32px
 
   &__image
+    position: relative
     flex: 0 0 auto
     font-size: 0
     img
@@ -142,3 +186,21 @@
     z-index: 2
     right: 24px
     bottom: 30px
+
+
+// disable swiper when in edit mode
+.is-in-edit-mode
+  .p-head-gal__thumbs
+    .swiper-wrapper
+      flex-wrap: wrap
+      padding-left: 16px
+      padding-right: 16px
+      width: calc(100% - 32px)
+      // justify-content: center
+      transform: translate3d(0,0,0) !important
+    &-prev, &-next
+      opacity: 0
+      pointer-events: none
+
+  .p-head-gal__thumb
+    margin: 0 8px 16px !important

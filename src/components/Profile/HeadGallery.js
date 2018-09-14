@@ -4,6 +4,8 @@ import { Collapse } from 'react-collapse';
 import Image from '../Helpers/Image';
 import SvgIcon from '../Helpers/SvgIcon';
 import Thumb from './GalleryThumb'
+import AddImage from './AddImage';
+import RenderImage from '../../helpers/RenderImage'
 
 class ProfileHeadGallery extends Component{
 
@@ -19,16 +21,26 @@ class ProfileHeadGallery extends Component{
     this.swiperThumbs = null
     this.swiperFull = null
 
-    this.totalSlides = props.gallery.thumbs.length
-
     this.isPersonal = !props.profileID
     // todo make some other type of detection server-side
+  }
+
+  componentDidMount(){
+    this.props.onRef(this)
+  }
+
+  componentWillUnmount() {
+    this.props.onRef(undefined)
   }
 
   // sliders logic
   // when thumb is clicked
   // allow freemode swiping on change NO slides here
   thumbClick = (index) => {
+
+    if ( this.props.editMode ){
+      return false
+    }
 
     if ( !this.state.isGaleryOpen ){
       this.setState({
@@ -65,8 +77,18 @@ class ProfileHeadGallery extends Component{
     }
   }
 
-  abuseClicked = () => {
+  refreshSliders = () => {
+    // when slides change because of add/remove in edit mode
 
+    console.log('refresh')
+    
+    this.swiperThumbs.update() // updateSlides submethod of .update()
+    this.swiperFull.update() // updateSlides submethod of .update()
+  }
+
+
+  abuseClicked = () => {
+    // open modal with abuse
   }
 
   // close
@@ -77,18 +99,29 @@ class ProfileHeadGallery extends Component{
     })
   }
 
-  fileChanged = (img, index) => {
-    console.log(img, index)
+  imageAdded = (img, index) => {
+    this.setState({
+      ...this.state,
+      gallery: {
+        thumbs: [...this.state.gallery.thumbs, img],
+        full: [...this.state.gallery.full, img]
+      }
+    })
 
-    console.log(this.state.gallery)
-
-    // this.setState({
-    //   ...this.state,
-    // })
+    // TODO - + API call
   }
 
   fileRemoved = (index) => {
-    console.log('file to be removed', index)
+
+    this.setState({
+      ...this.state,
+      gallery: {
+        thumbs: this.state.gallery.thumbs.filter((x, i) => i !== index ),
+        full: this.state.gallery.full.filter((x, i) => i !== index)
+      }
+    })
+
+    // TODO - + API call
   }
 
   render(){
@@ -97,7 +130,6 @@ class ProfileHeadGallery extends Component{
       props: { editMode },
       state: { gallery, isGaleryOpen, currentSlide }
     } = this
-
 
     const SwiperParamsThumbs = {
       // react specific params
@@ -158,16 +190,21 @@ class ProfileHeadGallery extends Component{
           { gallery.thumbs.map((thumb, index) => {
             return (
               <Thumb
+                key={index}
                 image={thumb}
                 index={index}
                 currentSlide={currentSlide}
                 editMode={editMode}
                 clickHandler={this.thumbClick}
-                fileChangeHandler={this.fileChanged}
                 fileRemoveHandler={this.fileRemoved}
               />
             )
           }) }
+          { editMode &&
+            <AddImage
+              clickHandler={this.thumbClick}
+              fileChangeHandler={this.imageAdded} />
+          }
         </Swiper>
 
         <Collapse
@@ -177,10 +214,12 @@ class ProfileHeadGallery extends Component{
             <Swiper
               ref={node => this.swiperFull = node ? node.swiper : null }
               {...SwiperParamsFull}>
-              { gallery.full.map(slide => {
+              { gallery.full.map((slide, index) => {
                 return (
-                  <div className="p-head-gal__image">
-                    <Image file={slide} />
+                  <div
+                    key={index}
+                    className="p-head-gal__image">
+                    {RenderImage(slide)}
                   </div>
                 )
               }) }
@@ -192,7 +231,7 @@ class ProfileHeadGallery extends Component{
             </div>
             <div className="p-head-gal__counter">
               <SvgIcon name="camera" />
-              <span>{currentSlide + 1}/{this.totalSlides}</span>
+              <span>{currentSlide + 1}/{gallery.full.length}</span>
             </div>
 
             { !this.isPersonal &&

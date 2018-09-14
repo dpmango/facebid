@@ -99,8 +99,9 @@ class ShareModal extends Component{
             <div className="share">
               <span className="share__title">Отправить ссылку</span>
               <div className="share__grid">
-                { providers.map(el => (
+                { providers.map((el, i) => (
                   <ShareProvider
+                    key={i}
                     provider={el.provider}
                     name={el.name} />
                 ))}

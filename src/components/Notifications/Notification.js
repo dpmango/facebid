@@ -180,8 +180,10 @@ class Notification extends Component {
       case "photo":
         return (
           <div className="notification__data notification__images">
-            {data.photos.map(photo => (
-              <div className="notification__pic">
+            {data.photos.map((photo, index) => (
+              <div
+                key={index}
+                className="notification__pic">
                 <Image file={photo} />
               </div>
             ))}

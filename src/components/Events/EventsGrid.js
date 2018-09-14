@@ -71,8 +71,9 @@ class EventsGrid extends Component {
         <React.Fragment>
           <h3 className="h3-title">Вы участвует в событиях</h3>
           <div className="events__header-filter">
-            { filters.map(f => (
+            { filters.map((f, i) => (
               <span
+                key={i}
                 className={filter === f.id ? "is-active" : ""}
                 onClick={this.setFilter.bind(this, f.id)}>
                 {f.name}
