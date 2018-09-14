@@ -9,9 +9,9 @@ class HeadSettingsButtons extends Component{
   constructor(){
     super()
 
-    this.setState({
+    this.state = {
       moreMenuOpened: false,
-    })
+    }
   }
 
   toggleMoreBtn = () => {
