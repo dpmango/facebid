@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Head from '../components/Profile/Head';
 import EventsGrid from '../components/Events/EventsGrid';
 
-class MyProfile extends Component {
+class Profile extends Component {
   componentDidMount(){
     this.props.aosInst.refreshHard()
   }
@@ -12,6 +12,7 @@ class MyProfile extends Component {
   render() {
 
     const urlParams = this.props.match.params
+
     return (
       <React.Fragment>
         <Head
@@ -32,4 +33,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

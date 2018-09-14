@@ -36,7 +36,7 @@ class HeadVerifications extends Component{
       <React.Fragment>
         { !isVerificationsOpened ?
           <button
-            className="p-head__verify-primary btn btn-primary btn--iconed"
+            className="p-head__top-cta btn btn-primary btn--iconed"
             onClick={this.openVerifications}>
             <SvgIcon name="user" />
             <span>Верифицировать</span>
