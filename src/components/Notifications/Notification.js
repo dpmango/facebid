@@ -184,7 +184,7 @@ class Notification extends Component {
               <div
                 key={index}
                 className="notification__pic">
-                <Image file={photo} />
+                <Image folder="gallery" file={photo} />
               </div>
             ))}
           </div>

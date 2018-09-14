@@ -57,7 +57,7 @@ class EventsGrid extends Component {
   }
 
   renderHeader = () => {
-    const { type } = this.props
+    const { type, isMyProfile } = this.props
     const { filter } = this.state
 
     const filters = [
@@ -66,10 +66,10 @@ class EventsGrid extends Component {
       { id: 'groups', name: 'Групповые' }
     ]
 
-    if ( type === "my-profile" ){
+    if ( type === "profile" ){
       return (
         <React.Fragment>
-          <h3 className="h3-title">Вы участвует в событиях</h3>
+          <h3 className="h3-title">{isMyProfile? "Вы участвует в событиях" : "События"}</h3>
           <div className="events__header-filter">
             { filters.map((f, i) => (
               <span

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Image from '../Helpers/Image';
 import SvgIcon from '../Helpers/SvgIcon';
@@ -7,11 +8,14 @@ import SearchPeople from './SearchPeople';
 
 class AuthUser extends Component{
   render(){
+
+    const { userId, userDetails } = this.props
+
     return(
       <div className="user-panel">
-        <Link to="/my-profile" className="user-panel__scope">
+        <Link to={`/profile/${userId}`} className="user-panel__scope">
           <div className="avatar avatar--glow">
-            <Image file="userAvatar_2.jpg" />
+            <Image file={userDetails.avatar} />
           </div>
           <div className="user-panel__scope-contents">
             <div className="user-panel__name">Agneshka, 24</div>
@@ -49,4 +53,9 @@ class AuthUser extends Component{
   }
 }
 
-export default AuthUser;
+const mapStateToProps = (state) => ({
+  userId: state.user.userId,
+  userDetails: state.user.userDetails
+})
+
+export default connect(mapStateToProps, null)(AuthUser);

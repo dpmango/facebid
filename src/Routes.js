@@ -29,11 +29,6 @@ export const MyEvents = MyLoadable({
   modules: ['./pages/MyEvents'],
   webpack: () => [require.resolveWeak('./pages/MyEvents')]
 });
-export const MyProfile = MyLoadable({
-  loader: () => import("./pages/MyProfile"),
-  modules: ['./pages/MyProfile'],
-  webpack: () => [require.resolveWeak('./pages/MyProfile')]
-});
 export const Profile = MyLoadable({
   loader: () => import("./pages/Profile"),
   modules: ['./pages/Profile'],
@@ -84,12 +79,6 @@ export const routes = [
     protected: true,
     path: '/my-events',
     component: MyEvents
-  },
-  {
-    isExact: false,
-    protected: true,
-    path: '/my-profile',
-    component: MyProfile
   },
   {
     isExact: false,

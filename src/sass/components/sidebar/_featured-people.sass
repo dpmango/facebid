@@ -19,7 +19,7 @@
     // originally .5
     opacity: 0.7
     background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, #000000 100%);
-
+    transition: .25s $ease
   &__image
     font-size: 0
     img
@@ -96,7 +96,7 @@
     transform: translateY(100%)
     transition: .25s $ease
 
-  &:hover
+  &:hover:not(.have-no-info)
     .f-people
       &__info
         opacity: 1
@@ -110,6 +110,14 @@
         // shows when info transition done
         transition-delay: .15s
         opacity: 1
+
+  &.have-no-info
+    cursor: pointer
+    box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
+    &:hover
+      &::after
+        height: 100%
+
 
   &__event-name
     font-size: 18px

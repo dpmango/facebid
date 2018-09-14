@@ -221,6 +221,43 @@
           "galThumb_3.jpg"
         ]
       }
+    },
+    {
+      "id": 2,
+      "avatar": "avatarBig_2.jpg",
+      "username": "Micheal",
+      "age": "20",
+      "fullname": "Илларионов Константин",
+      "isVerified": false,
+      "userLang": [
+        {
+          "value": "ru",
+          "label": "Русский"
+        }
+      ],
+      "description": "Второй пользователь",
+      "subscribers": "23",
+      "subscribed": "40",
+      "gallery": {
+        "thumbs": [
+          "galThumb_3.jpg",
+          "galThumb_4.jpg",
+          "galThumb_5.jpg",
+          "galThumb_6.jpg",
+          "galThumb_1.jpg",
+          "galThumb_2.jpg",
+          "galThumb_3.jpg"
+        ],
+        "full": [
+          "galThumb_3.jpg",
+          "galThumb_4.jpg",
+          "galThumb_5.jpg",
+          "galThumb_6.jpg",
+          "galThumb_1.jpg",
+          "galThumb_2.jpg",
+          "galThumb_3.jpg"
+        ]
+      }
     }
   ],
   "blacklist": [
@@ -420,6 +457,44 @@
       },
       "type": "profileview",
       "timestamp": "2018-09-03T03:25:43.511Z"
+    }
+  ],
+  "rocommendedProfiles": [
+    {
+      "id": 1,
+      "name": "Анастасия",
+      "age": "24",
+      "isVerified": true,
+      "distance": "19 км от Вас",
+      "date": "1409",
+      "image": "recommendedUser_1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Мария",
+      "age": "28",
+      "isVerified": true,
+      "distance": "5 км от Вас",
+      "date": "1810",
+      "image": "recommendedUser_2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Анастасия",
+      "age": "24",
+      "isVerified": true,
+      "distance": "19 км от Вас",
+      "date": "1409",
+      "image": "recommendedUser_3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Мария",
+      "age": "28",
+      "isVerified": true,
+      "distance": "5 км от Вас",
+      "date": "1810",
+      "image": "recommendedUser_4.jpg"
     }
   ]
 }

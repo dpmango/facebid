@@ -37,7 +37,6 @@ class Head extends Component{
       subscribedToUser: false
     }
 
-    this.profileId = props.profileID.id
   }
 
   componentDidMount(){
@@ -45,8 +44,9 @@ class Head extends Component{
   }
 
   getUserData = () => {
+
     api
-      .get('myProfile')
+      .get(`profiles/${this.props.urlParams.id}`)
       .then(res => {
 
         this.setState({
@@ -154,12 +154,15 @@ class Head extends Component{
         gallery,
 
         subscribedToUser
+      },
+      props: {
+        isMyProfile
       }
     } = this
 
     return(
       <div className={"p-head" +
-        ( this.profileId ? " is-guest-profile" : "" ) +
+        ( !isMyProfile ? " is-guest-profile" : "" ) +
         ( editMode ? " is-in-edit-mode" : "" )}>
         { !isLoaded ?
           <Loading type="user-profile" />
@@ -191,10 +194,9 @@ class Head extends Component{
                   { editMode &&
                     <HeadVerifications />
                   }
-                  { this.profileId &&
+                  { !isMyProfile &&
                     <button
-                      className={"p-head__top-cta btn btn-primary btn--iconed" +
-                      ( subscribedToUser ? " is-active" : "")}
+                      className={"p-head__top-cta btn "+( subscribedToUser ? " btn-outline" : " btn-primary")+" btn--iconed"}
                       onClick={this.subscribeToProfile}>
                       <SvgIcon name="user" />
                       <span>{!subscribedToUser ? "Подписаться" : "Отписаться"}</span>
@@ -212,10 +214,10 @@ class Head extends Component{
 
                     <HeadBottomButtons
                       onEnableEditMode={this.enableEditMode}
-                      isMyProfile={!this.profileId} />
+                      isMyProfile={isMyProfile} />
 
                     <HeadSettingsButtons
-                      isMyProfile={!this.profileId} />
+                      isMyProfile={isMyProfile} />
 
                   </Fragment>
 

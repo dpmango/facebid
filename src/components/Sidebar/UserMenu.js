@@ -85,7 +85,7 @@ class UserMenu extends Component {
     const {
       props: {activeModal}
     } = this
-    
+
     return(
       <ul className="user-menu">
         {menu.map((el, index) => {

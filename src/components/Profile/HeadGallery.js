@@ -81,7 +81,7 @@ class ProfileHeadGallery extends Component{
     // when slides change because of add/remove in edit mode
 
     console.log('refresh')
-    
+
     this.swiperThumbs.update() // updateSlides submethod of .update()
     this.swiperFull.update() // updateSlides submethod of .update()
   }
@@ -219,7 +219,7 @@ class ProfileHeadGallery extends Component{
                   <div
                     key={index}
                     className="p-head-gal__image">
-                    {RenderImage(slide)}
+                    {RenderImage(slide, "gallery")}
                   </div>
                 )
               }) }

@@ -29,7 +29,7 @@ class Thumb extends Component {
             <SvgIcon name="remove-attachment" />
           </div>
         }
-        {RenderImage(image)}
+        {RenderImage(image, "gallery")}
       </div>
     )
   }

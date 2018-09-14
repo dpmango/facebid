@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/Api';
-import FeaturedPeople from '../People/FeaturedPeople'
+import FeaturedCard from '../People/FeaturedCard'
 import Loading from '../Helpers/Loading';
 
 class Featured extends Component {
@@ -39,7 +39,7 @@ class Featured extends Component {
         { featuredPeople &&
           featuredPeople.map(person => {
             return (
-              <FeaturedPeople
+              <FeaturedCard
                 key={person.id}
                 data={person} />
             )

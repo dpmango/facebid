@@ -2,7 +2,7 @@ import React from 'react';
 import isBase64 from 'is-base64';
 import Image from '../components/Helpers/Image'
 
-const RenderImage = (img) => {
+const RenderImage = (img, imagefolder) => {
 
   if ( isBase64(img) ){
     return(
@@ -18,7 +18,7 @@ const RenderImage = (img) => {
   }
 
   return(
-    <Image file={img} />
+    <Image folder={imagefolder} file={img} />
   )
 }
 
