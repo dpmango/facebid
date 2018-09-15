@@ -63,7 +63,7 @@ class CreateComment extends Component {
   render(){
 
     const {
-      props: { userId },
+      props: { userId, isVisible },
       state: { text }
     } = this;
 
@@ -71,7 +71,7 @@ class CreateComment extends Component {
       return null
     }
     return(
-      <div className="e-card__c-comment create-comment">
+      <div className={"e-card__c-comment create-comment" + (isVisible ? " is-visible" : "")}>
         <div className="create-comment__wrapper">
           <div className="create-comment__avatar">
             <div className="avatar avatar--small">

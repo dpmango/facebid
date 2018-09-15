@@ -99,6 +99,7 @@
       display: flex
       flex-direction: column
       // padding-bottom: 65px
+      overflow: hidden
       &.should-stick
 
         .e-card__cta
@@ -314,3 +315,9 @@
 
   &__c-comment
     flex: 0 0 auto
+    transform: translate(0,100%)
+    opacity: 0
+    transition: .25s $ease
+    &.is-visible
+      opacity: 1
+      transform: translate(0,0)

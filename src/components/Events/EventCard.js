@@ -21,10 +21,10 @@ class EventCard extends Component {
 
     this.state = {
       comments: [],
-      userMention: null, // to be passed into create
       shouldCtaStick: false,
       computeSticky: {},
-      stickyPoint: null
+      stickyPoint: null,
+      isCommentsVisible: false
     }
 
     this.ctaRef = React.createRef();
@@ -55,7 +55,7 @@ class EventCard extends Component {
 
   onScroll = (container) => {
 
-    const { shouldCtaStick, stickyPoint } = this.state
+    const { shouldCtaStick, stickyPoint, isCommentsVisible } = this.state
 
     const scrollDistance = container.scrollTop
     const ctaPosTop = stickyPoint ? stickyPoint : this.ctaRef.current.offsetTop
@@ -86,6 +86,17 @@ class EventCard extends Component {
         stickyPoint: null,
         computeSticky: {}
       })
+    }
+
+    // show/hide comments logic
+    if ( scrollDistance > 20 ){
+      if ( !isCommentsVisible ) {
+        this.setState({ isCommentsVisible: true })
+      }
+    } else {
+      if ( isCommentsVisible ){
+        this.setState({ isCommentsVisible: false })
+      }
     }
 
   }
@@ -126,11 +137,9 @@ class EventCard extends Component {
   }
 
   onCommentReplyClick = (username) => {
+    console.log(username)
     this.createCommentRef.appendUserMention(username);
 
-    // this.setState({
-    //   userMention: username
-    // })
   }
 
   render(){
@@ -160,7 +169,7 @@ class EventCard extends Component {
         }
       },
       state: {
-        comments, userMention, shouldCtaStick, computeSticky
+        comments, shouldCtaStick, computeSticky, isCommentsVisible
       }
     } = this
 
@@ -229,8 +238,8 @@ class EventCard extends Component {
                   comments={comments} />
               </PerfectScrollbar>
               <CreateComment
+                isVisible={isCommentsVisible}
                 onRef={ref => (this.createCommentRef = ref)}
-                mentionUser={userMention}
                 onNewComment={this.getComments}
               />
             </div>
