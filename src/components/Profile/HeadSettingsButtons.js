@@ -25,7 +25,17 @@ class HeadSettingsButtons extends Component{
     this.props.openModal('settings')
   }
 
+  dislikeClick = () => {
+    // TODO - + API call
+  }
+
+  lockClick = () => {
+    // TODO - + API call
+  }
+
   render(){
+
+    const { moreMenuOpened } = this.state;
 
     if ( this.props.isMyProfile ){
       return(
@@ -39,8 +49,24 @@ class HeadSettingsButtons extends Component{
       return (
         <div
           onClick={this.toggleMoreBtn}
-          className="p-head__settings-btn btn btn-circle">
+          className={"p-head__settings-btn btn btn-circle dropdown" + (moreMenuOpened ? " is-active" : "")}>
           <SvgIcon name="more" />
+          <div className="dropdown__hidden">
+            <ul className="dropdown__menu">
+              <li onClick={this.dislikeClick}>
+                <div className="dropdown__menu-icon">
+                  <SvgIcon name="dislike" />
+                </div>
+                <span>Пожаловаться</span>
+              </li>
+              <li onClick={this.lockClick}>
+                <div className="dropdown__menu-icon">
+                  <SvgIcon name="lock" />
+                </div>
+                <span>Заблокировать</span>
+              </li>
+            </ul>
+          </div>
         </div>
       )
     }

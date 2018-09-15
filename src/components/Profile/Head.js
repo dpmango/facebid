@@ -236,6 +236,7 @@ class Head extends Component{
             <HeadGallery
               onRef={ref => (this.galleryRef = ref)}
               editMode={editMode}
+              isMyProfile={isMyProfile}
               gallery={gallery} />
 
           </Fragment>

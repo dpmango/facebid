@@ -21,8 +21,6 @@ class ProfileHeadGallery extends Component{
     this.swiperThumbs = null
     this.swiperFull = null
 
-    this.isPersonal = !props.profileID
-    // todo make some other type of detection server-side
   }
 
   componentDidMount(){
@@ -127,7 +125,7 @@ class ProfileHeadGallery extends Component{
   render(){
 
     const {
-      props: { editMode },
+      props: { editMode, isMyProfile },
       state: { gallery, isGaleryOpen, currentSlide }
     } = this
 
@@ -234,7 +232,7 @@ class ProfileHeadGallery extends Component{
               <span>{currentSlide + 1}/{gallery.full.length}</span>
             </div>
 
-            { !this.isPersonal &&
+            { !isMyProfile &&
               <div
                 onClick={this.abuseClicked}
                 className="p-head-gal__abuse btn btn-circle btn-circle--black50">

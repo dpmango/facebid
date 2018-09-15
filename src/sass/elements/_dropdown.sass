@@ -1,0 +1,66 @@
+.dropdown
+  // position: relative
+  &__toggle
+
+  &__hidden
+    position: absolute
+    top: calc(40px + 15px)
+    right: 0
+    z-index: 2
+    opacity: 0
+    transform: translate(0,10px)
+    pointer-events: none
+    transition: .25s $ease
+
+  &__menu
+    list-style: none
+    margin: 0
+    padding: 0
+    background: #FFFFFF
+    border: 1px solid #DDE1E6
+    box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
+    border-radius: 4px
+    li
+      position: relative
+      display: block
+      font-family: $roboto
+      color: #848E99
+      font-size: 14px
+      padding: 8px 16px
+      display: flex
+      align-items: center
+      &::after
+        // emulate border
+        display: inline-block
+        content: ' '
+        position: absolute
+        bottom: 0
+        left: 16px
+        right: 16px
+        height: 1px
+        background: #F4F7FB
+      &:last-child
+        &::after
+          display: none
+      span
+        display: inline-block
+        margin-left: 8px
+        white-space: nowrap
+        
+    &-icon
+      size: 24px
+      display: flex
+      align-items: center
+      justify-content: center
+      .ico
+        &-dislike
+          font-size: 16px
+        &-lock
+          font-size: 18px
+
+  &.is-active
+    .dropdown
+      &__hidden
+        opacity: 1
+        pointer-events: all
+        transform: translate(0,0)
