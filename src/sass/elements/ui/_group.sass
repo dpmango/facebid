@@ -1,0 +1,39 @@
+// group
+.ui-group
+  position: relative
+  > label:not(.ui-validation)
+    display: block
+    font-size: 14px
+    font-family: $roboto
+    margin-bottom: 10px
+  &--row
+    display: flex
+    align-items: center
+    margin-bottom: 25px
+    > label:not(.ui-validation)
+      flex: 0 0 25%
+      margin-bottom: 0
+      padding-right: 20px
+    .ui-input
+      flex: 1 1 auto
+    .Select
+      flex: 1 1 auto
+    .ui-toggle
+      flex: 1 1 auto
+
+
+.ui-date-selects
+  flex: 1 1 auto
+  display: flex
+  margin-left: -8px
+  margin-right: -8px
+  .Select
+    padding: 0 8px
+    &:first-child, &:last-child
+      flex: 0 1 110px
+    &:nth-child(2)
+      flex: 0 1 145px
+    .Select-menu-outer
+      left: 8px
+      right: 8px
+      width: calc(100% - 16px)

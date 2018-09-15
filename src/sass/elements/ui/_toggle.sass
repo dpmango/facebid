@@ -1,0 +1,88 @@
+
+// toggle
+.ui-toggle
+  display: flex
+  &__left, &__right
+    position: relative
+    z-index: 1
+    flex: 0 1 50%
+    max-width: 50%
+    min-width: 1px
+    min-height: 0
+    text-align: center
+    font-size: 14px
+    padding: 11px 20px
+    cursor: pointer
+    border: 1px solid #C6CCD2
+    transition: .25s $ease
+    &.is-active
+      z-index: 2
+      border-color: $colorBlue
+    &:hover
+      background-color: rgba($colorBlue, .05)
+  &__left
+    border-radius: 20px 0 0 20px
+  &__right
+    border-radius: 0 20px 20px 0
+    margin-left: -1px
+  &--big
+    .ui-toggle
+      &__left, &__right
+        color: $fontColorGray
+        font-weight: 700
+        &.is-active
+          color: $colorBlue
+
+
+.ui-toggle-row
+  width: 100%
+  display: flex
+  align-items: center
+  min-height: 58px
+  align-items: center
+  border-bottom: 1px solid #DDE1E6
+  label
+    flex: 0 1 auto
+    padding-right: 20px
+    font-size: 14px
+    font-family: $roboto
+  .ui-tumbler
+    flex: 0 0 auto
+    margin-left: auto
+    cursor: pointer
+
+.ui-tumbler
+  position: relative
+  size: 40px 20px
+  background: #DCE1E7
+  border-radius: 20px
+  transition: .25s $ease
+  &::after
+    display: inline-block
+    content: ' '
+    position: absolute
+    z-index: 2
+    left: 2px
+    top: 50%
+    size: 16px
+    border-radius: 50%
+    transform: translate(0,-50%)
+    background: white
+    font-size: 0
+    transition: transform .25s $ease
+  &.is-active
+    background-color: $colorBlue
+    &::after
+      transform: translate(20px, -50%)
+  .ico
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    &-checkmark
+      font-size: 8px
+      left: 7px
+      fill: rgba(white, .5)
+    &-close
+      right: 8px
+      font-size: 8px
+      fill: #848E99
