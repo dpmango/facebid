@@ -94,7 +94,6 @@
     "json-server-pure": "json-server --watch api/db.json -p 8000",
     "social-server": "nodemon social-api/server.js",
     "build": "gulp build --production && yarn build-scripts",
-    "postbuild": "react-snap",
     "deploy-json-server": "git subtree push --prefix api heroku master",
     "deploy-social-server": "git subtree push --prefix social-api heroku-social master",
     "deploy-all": "mv build/index.html build/200.html && surge --domain facebid.surge.sh --project ./build && yarn deploy-json-server"
