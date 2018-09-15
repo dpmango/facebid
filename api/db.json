@@ -492,5 +492,45 @@
       "distance": "5 км от Вас",
       "image": "recommendedUser_4.jpg"
     }
+  ],
+  "totalSubscribers": {
+    "subscribers": "14 056",
+    "subscribed": "1 421"
+  },
+  "subscribers": [
+    {
+      "id": 1,
+      "name": "Evdokya",
+      "age": "14",
+      "distance": "16 км от Вас",
+      "avatar": "userAvatar_2.jpg",
+      "subscribed": false
+    },
+    {
+      "id": 2,
+      "name": "Vlampira",
+      "age": "27",
+      "distance": "16 км от Вас",
+      "avatar": "userAvatar_3.jpg",
+      "subscribed": true
+    }
+  ],
+  "subscribed": [
+    {
+      "id": 1,
+      "name": "Vlampira",
+      "age": "27",
+      "distance": "16 км от Вас",
+      "avatar": "userAvatar_3.jpg",
+      "subscribed": false
+    },
+    {
+      "id": 2,
+      "name": "Evdokya",
+      "age": "14",
+      "distance": "16 км от Вас",
+      "avatar": "userAvatar_2.jpg",
+      "subscribed": false
+    }
   ]
 }

@@ -143,6 +143,9 @@
     padding: 12px 20px
     display: flex
     align-items: center
+    &:hover
+      .e-card__user-name
+        color: $colorBlue
 
   &__user
     display: flex
@@ -176,6 +179,7 @@
     font-size: 18px
     font-weight: 700
     margin-right: 8px
+    transition: .25s $ease
 
   &__user-status
     font-size: 0

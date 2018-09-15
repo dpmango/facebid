@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { notify } from 'reapop';
 import SvgIcon from '../Helpers/SvgIcon';
@@ -72,7 +73,9 @@ class EventCardTop extends Component {
 
     return(
       <div className="e-card__top">
-        <div className="e-card__user">
+        <Link
+          to="/profile/2" 
+          className="e-card__user">
           <div className="e-card__user-avatar">
             <Image file="userAvatar.jpg" />
           </div>
@@ -89,7 +92,7 @@ class EventCardTop extends Component {
             </div>
             <div className="e-card__user-distance">{user.distance}</div>
           </div>
-        </div>
+        </Link>
         <div className="e-card__actions">
           <div
             onClick={this.bookmarkAction}

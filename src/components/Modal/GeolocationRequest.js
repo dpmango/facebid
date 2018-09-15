@@ -83,7 +83,6 @@ class GeolocationRequest extends Component{
     await axios
       .get(`https://ipapi.co/json/`)
       .then(res => {
-        console.log(res)
         let result = res.data
         result.timestamp = new Date();
         this.props.setIpLookup(result)
