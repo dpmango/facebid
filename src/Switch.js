@@ -21,6 +21,9 @@ class RenderSwitch extends React.Component {
       easing: 'ease-in-sine',
       once: true
     })
+
+    // set the page class when returning from service pages
+    this.props.setPageClass('')
   }
   componentDidUpdate(prevProps) {
     const curPathSplit = this.props.location.pathname.split('/');
