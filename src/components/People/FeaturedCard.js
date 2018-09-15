@@ -2,28 +2,16 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Image from '../../components/Helpers/Image';
 import SvgIcon from '../../components/Helpers/SvgIcon';
+import EventCardDate from '../Events/EventCardDate';
 import ConvertMonthNumToName from '../../services/ConvertMonthNumToName';
 
 class FeaturedPeople extends Component {
-
   constructor(){
     super()
 
     this.state = {
 
     }
-  }
-
-  convertDate = (str) => {
-    const date = str.substring(0,2)
-    const month = ConvertMonthNumToName(str.substring(2))
-
-    return (
-      <React.Fragment>
-        <span>{date}</span>
-        <span>{month}</span>
-      </React.Fragment>
-    )
   }
 
   onCardClick = () => {
@@ -77,7 +65,9 @@ class FeaturedPeople extends Component {
             <div className="f-people__distance">{distance}</div>
           </div>
           { !noEvent &&
-            <div className="f-people__date">{this.convertDate(date)}</div>
+            <EventCardDate
+              date={date}
+              baseClass="f-people__date" />
           }
         </div>
         { !noEvent &&

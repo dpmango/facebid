@@ -5,11 +5,11 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import throttle from 'lodash/throttle'
 import SvgIcon from '../Helpers/SvgIcon';
 import api from '../../services/Api';
-import ConvertMonthNumToName from '../../services/ConvertMonthNumToName';
 import GetCoordsOnDocument from '../../services/GetCoordsOnDocument';
 import GetWindowScroll from '../../services/GetWindowScroll';
 import EventCardMedia from './EventCardMedia';
 import EventCardTop from './EventCardTop';
+import EventCardDate from './EventCardDate';
 import AvatarList from '../People/AvatarList';
 import Comments from './Comments';
 import CreateComment from './CreateComment'
@@ -51,18 +51,6 @@ class EventCard extends Component {
       .catch(err => {
         console.log('some error happens', err)
       })
-  }
-
-  convertDate = (str) => {
-    const date = str.substring(0,2)
-    const month = ConvertMonthNumToName(str.substring(2))
-
-    return (
-      <React.Fragment>
-        <span>{date}</span>
-        <span>{month}</span>
-      </React.Fragment>
-    )
   }
 
   onScroll = (container) => {
@@ -206,9 +194,9 @@ class EventCard extends Component {
                     <i className="icon icon-plane"></i>
                     <span>{to}</span>
                   </div>
-                  <div className="e-card__date">
-                    {this.convertDate(date)}
-                  </div>
+                  <EventCardDate
+                    baseClass="e-card__date"
+                    date={date} />
                 </div>
                 <div className="e-card__desc">{desc}</div>
                 {/* cta (sticky on scroll) */}

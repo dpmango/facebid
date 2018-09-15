@@ -15,7 +15,7 @@
   background-repeat: no-repeat
   background-position: center center
   background-size: cover
-  
+
 .avatar
   position: relative
   z-index: 1
@@ -94,3 +94,53 @@
       background-repeat: no-repeat
       background-position: center center
       background-size: cover
+
+
+.card-date
+  flex: 0 0 40px
+  size: 40px
+  margin-left: auto
+  display: flex
+  flex-direction: column
+  border-radius: 8px
+  span
+    display: block
+    &:first-child
+      font-family: $defaultFamily
+      font-weight: 700
+      font-size: 18px
+    &:last-child
+      font-size: 11px
+
+  &__wrapper
+    flex: 1 1 auto
+    position: relative
+    display: flex
+    flex-direction: column
+    border: 1px solid #DDE1E6
+    border-radius: 8px
+    // overflow: hidden
+    &::after
+      display: inline-block
+      content: ''
+      position: absolute -1px
+      z-index: 1
+      border-radius: 8px
+      background: $gradient
+      opacity: 0
+      transition: .25s $ease
+  &__content
+    position: absolute 0px
+    z-index: 2
+    background: white
+    border-radius: 7px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    text-align: center
+
+  &.is-tomorrow
+    .card-date__wrapper
+      &::after
+        opacity: 1

@@ -60,27 +60,20 @@
     color: $colorWhite70
 
   &__date
-    flex: 0 0 40px
-    size: 40px
-    margin-left: auto
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    text-align: center
-    border-radius: 8px
-    border: 1px solid #DDE1E6
+    // modifier for card date
     opacity: 0
     transition: .25s $ease
     span
-      display: block
       &:first-child
-        font-family: $defaultFamily
-        font-weight: 700
         font-size: 16px
       &:last-child
         font-size: 10px
         color: $colorWhite70
+    .card-date__wrapper
+      &::after
+        display: none
+    .card-date__content
+      background: transparent
 
 
   &__info
