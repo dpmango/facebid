@@ -7,9 +7,11 @@ const SvgIcon = (props) => {
   if ( name === null ){
     return null
   }
-  
+
   return(
-    <svg className={"ico ico-" + name}>
+    <svg
+      onClick={props.clickHandler}
+      className={"ico ico-" + name}>
       <use xlinkHref={sprite + "#ico-" + name}></use>
     </svg>
   )

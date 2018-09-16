@@ -29,6 +29,8 @@
   &__right
     position: relative
     flex: 1 1 auto
+    display: flex
+    flex-direction: column
     padding-left: 16px
 
   &__name-row
@@ -54,7 +56,7 @@
 
   &__row
     display: flex
-    margin: 16px 0
+    margin: 16px 0 0
 
   &__row-title
     flex: 0 0 auto
@@ -84,6 +86,7 @@
   &__description
     font-size: 16px
     padding-left: 16px
+    margin-top: 16px
     font-family: $roboto
     line-height: 1.5
     position: relative
@@ -102,6 +105,7 @@
     display: flex
     justify-content: space-around
     // margin-top: 18px
+    padding-top: 15px
     margin-top: auto
 
   &__metric
@@ -121,7 +125,9 @@
     line-height: 1.45
 
   &__bottom-cta
-    margin-top: 18px
+    padding-top: 18px
+    // margin-top: 18px
+    margin-top: auto
     display: flex
     justify-content: flex-end
     .btn + .btn
@@ -149,6 +155,47 @@
       margin-right: 16px
       &:last-child
         margin-right: 0
+
+  &__mini-chat
+    display: flex
+    align-items: center
+    margin-right: 24px
+    .ui-input
+      &::after
+        display: inline-block
+        content: ' '
+        position: absolute -1px
+        z-index: 1
+        border-radius: 20px
+        background: $gradient
+      input
+        position: relative
+        z-index: 2
+        background: white
+        border: 0
+      .ico
+        z-index: 3
+        cursor: pointer
+        fill: $colorBlue
+
+  &__mini-chat-close
+    size: 24px
+    margin-left: 8px
+    padding: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    color: #D8D8D8
+    font-size: 0
+    cursor: pointer
+    border: 0
+    background: transparent
+    transition: .25s $ease
+    .ico
+      font-size: 12px
+    &:hover
+      color: $colorBlue
+
 
   &.is-in-edit-mode, &.is-guest-profile
     .p-head__name-row

@@ -52,7 +52,7 @@ class SimpleInput extends Component {
           onFocus={this.onFocusHandler}
           onKeyPress={this.props.onKeyHandler}
           value={value} />
-        { icon && <SvgIcon name={icon} /> }
+        { icon && <SvgIcon clickHandler={this.props.iconClickHandler} name={icon} /> }
       </div>
     )
 

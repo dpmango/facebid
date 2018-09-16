@@ -26,7 +26,6 @@ class SubscribersList extends Component {
     const { type } = this.props
     const endPoint = (type === "subscribers") ? "subscribers" : "subscribed"
 
-    console.log('getting users')
     api
       .get(endPoint)
       .then(res => {
@@ -38,7 +37,7 @@ class SubscribersList extends Component {
 
         this.setState({
           list: data
-        }, () => console.log(this.state.list))
+        })
       })
       .catch(err => {
         console.log(err)
