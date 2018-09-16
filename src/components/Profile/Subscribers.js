@@ -45,11 +45,17 @@ class Subscribers extends Component{
 
   onScrollContainer = (container) => {
     const scrollDistance = container.scrollTop
-    const containerHeight = container.offsetHeight
+    const containerHeight = container.querySelector('.is-active').offsetHeight
 
-    console.log(scrollDistance, containerHeight)
-    // get scroll from bottom and load more
-    // this.getUserList()
+    const almostBottom = scrollDistance > (containerHeight - window.innerHeight - 300)
+
+    if ( almostBottom ){
+      if ( this.state.currentTab === 1 ){
+        this.subscribersRef.getUserList()
+      } else {
+        this.subscribedRef.getUserList()
+      }
+    }
   }
 
   render(){
