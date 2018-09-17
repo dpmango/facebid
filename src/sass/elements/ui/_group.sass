@@ -6,7 +6,7 @@
     font-size: 14px
     font-family: $roboto
     margin-bottom: 10px
-  &--row, &--row-with-info
+  &--row, &--row-with-plugin
     display: flex
     align-items: center
     margin-bottom: 25px
@@ -23,7 +23,7 @@
   &--row
     > label:not(.ui-validation)
       // flex: 0 0 25%
-  &--row-with-info
+  &--row-with-plugin
 
 
 .ui-group-plugin
@@ -38,9 +38,11 @@
   .Select
     padding: 0 8px
     &:first-child, &:last-child
-      flex: 0 1 110px
+      flex: 0 1 30%
+      // flex: 0 1 110px
     &:nth-child(2)
-      flex: 0 1 145px
+      flex: 0 1 40%
+      // flex: 0 1 145px
     .Select-menu-outer
       left: 8px
       right: 8px

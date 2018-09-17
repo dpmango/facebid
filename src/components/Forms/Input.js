@@ -120,7 +120,8 @@ class FormInput extends Component {
           </div>
           <span className="ui-validation">{errorMessage}</span>
 
-          { sidePlugin &&
+          { //sidePlugin &&
+            extraClass === "ui-group--row-with-plugin" &&
             <div className="ui-group-plugin">
               { sidePlugin === "availableNickname" &&
                 <AvailableName

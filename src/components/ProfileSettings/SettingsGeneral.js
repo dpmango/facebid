@@ -5,8 +5,10 @@ import { connect } from 'react-redux';
 import Select from 'react-select';
 import moment from 'moment';
 import FormInput from '../Forms/Input';
+import Checkbox from '../Forms/Checkbox';
 import Toggle from '../Forms/Toggle';
 import SvgIcon from '../Helpers/SvgIcon';
+import Tooltip from '../Helpers/Tooltip';
 import Logout from '../Signup/Logout';
 import DeleteAccount from '../Signup/DeleteAccount';
 import { openModal, closeModal } from '../../actions/modal'
@@ -16,17 +18,21 @@ import MapArrToSelect from '../../helpers/MapArrToSelect';
 
 class Settings extends Component{
   constructor(props){
-    super(props)
+    super(props);
+
     this.state = {
       nickname: '',
+      gender: null,
       birth_day: '',
       birth_month: '',
       birth_year: '',
-      gender: null,
       city: '',
       email: '',
+      phone: '',
       password: '',
-      password_repeat: '',
+      new_password: '',
+      new_password_repeat: '',
+      recommendation: false,
       daySelect: daySelect,
       monthSelect: monthSelect,
       yearSelect: yearSelect
@@ -123,6 +129,13 @@ class Settings extends Component{
     })
   }
 
+  // checkbox functions
+  toggleCheckbox = () => {
+    this.setState({
+      recommendation: !this.state.recommendation
+    })
+  }
+
   signupUser = () => {
     // auth
     const {
@@ -149,10 +162,11 @@ class Settings extends Component{
   render(){
     const {
       state: {
-        nickname,
+        nickname, gender,
         birth_day, birth_month, birth_year,
-        gender, city, email, password, password_repeat,
-        daySelect, monthSelect, yearSelect
+        city, email, phone, password, new_password, new_password_repeat,
+        daySelect, monthSelect, yearSelect,
+        recommendation
       }
     } = this
 
@@ -169,7 +183,7 @@ class Settings extends Component{
           type="text"
           label="Никнейм:"
           placeholder="Например, Adelina491"
-          extraClass="ui-group--row-with-info"
+          extraClass="ui-group--row-with-plugin"
           value={nickname}
           validationErrors={{
             isDefaultRequiredValue: 'Заполните никнейм'
@@ -177,7 +191,19 @@ class Settings extends Component{
           onChangeHandler={this.handleChange}
           onKeyHandler={this.keyPressHandler}
           required />
-        <div className="ui-group ui-group--row">
+        <div className="ui-group ui-group--row-with-plugin">
+          <label htmlFor="">Пол</label>
+          <Toggle
+            value={gender}
+            modifierClass="ui-toggle--big"
+            options={{
+              left: "Женский",
+              right: "Мужской"
+            }}
+            clickHandler={this.selectToggle} />
+          <div className="ui-group-plugin"></div>
+        </div>
+        <div className="ui-group ui-group--row-with-plugin">
           <label htmlFor="">Дата рождения</label>
           <div className="ui-date-selects">
             <Select
@@ -210,19 +236,9 @@ class Settings extends Component{
               placeholder="год"
               options={MapArrToSelect(yearSelect)}/>
           </div>
+          <div className="ui-group-plugin"></div>
         </div>
-        <div className="ui-group ui-group--row">
-          <label htmlFor="">Пол</label>
-          <Toggle
-            value={gender}
-            modifierClass="ui-toggle--big"
-            options={{
-              left: "Женский",
-              right: "Мужской"
-            }}
-            clickHandler={this.selectToggle} />
-        </div>
-        <div className="ui-group ui-group--row">
+        <div className="ui-group ui-group--row-with-plugin">
           <label htmlFor="">Город</label>
           <Select
             name="city"
@@ -232,19 +248,14 @@ class Settings extends Component{
             value={city}
             onChange={(e) => this.handleSelectChange(e, "city")}
             placeholder="Укажите местоположение"
-            options={MapArrToSelect(
-              [
-                "Москва", "Санкт-Питербург"
-              ]
-            )
-            }
-          />
+            options={MapArrToSelect(["Москва", "Санкт-Питербург"])} />
+          <div className="ui-group-plugin"></div>
         </div>
         <FormInput
           name="email"
           label="Email:"
           placeholder="Введите e-mail"
-          extraClass="ui-group--row"
+          extraClass="ui-group--row-with-plugin"
           value={email}
           validations="isEmail"
           validationErrors={{
@@ -255,11 +266,23 @@ class Settings extends Component{
           onKeyHandler={this.keyPressHandler}
           required />
         <FormInput
+          name="phone"
+          label="Телефон:"
+          placeholder="+7 (925) ***-**-16"
+          extraClass="ui-group--row-with-plugin"
+          value={phone}
+          validationErrors={{
+            isDefaultRequiredValue: 'Заполните телефон'
+          }}
+          onChangeHandler={this.handleChange}
+          onKeyHandler={this.keyPressHandler}
+          required />
+        <FormInput
           name="password"
           type="password"
           label="Пароль:"
-          placeholder="Введите пароль"
-          extraClass="ui-group--row"
+          placeholder=""
+          extraClass="ui-group--row-with-plugin"
           value={password}
           validationErrors={{
             isDefaultRequiredValue: 'Заполните пароль'
@@ -267,13 +290,27 @@ class Settings extends Component{
           onChangeHandler={this.handleChange}
           onKeyHandler={this.keyPressHandler}
           required />
+
         <FormInput
-          name="password_repeat"
+          name="new_password"
           type="password"
           label="Повторите пароль:"
-          placeholder="Введите пароль"
-          extraClass="ui-group--row"
-          value={password_repeat}
+          placeholder=""
+          extraClass="ui-group--row-with-plugin"
+          value={new_password}
+          validationErrors={{
+            isDefaultRequiredValue: 'Заполните пароль'
+          }}
+          onChangeHandler={this.handleChange}
+          onKeyHandler={this.keyPressHandler}
+          required />
+        <FormInput
+          name="new_password_repeat"
+          type="password"
+          label="Повторите пароль:"
+          placeholder=""
+          extraClass="ui-group--row-with-plugin"
+          value={new_password_repeat}
           validationErrors={{
             isDefaultRequiredValue: 'Заполните пароль'
           }}
@@ -281,7 +318,24 @@ class Settings extends Component{
           onKeyHandler={this.keyPressHandler}
           required />
 
-        <div className="ui-group ui-group--row">
+        <div className="ui-group ui-group--row-with-plugin">
+          <label htmlFor="">Рекомендации похожих  аккаунтов:</label>
+          <Checkbox
+            name="recommendation"
+            value={recommendation}
+            clickHandler={this.toggleCheckbox}
+            text={
+              <React.Fragment>
+                Рекомендовать Ваш аккаунт в числе тех, на которые люди, возможно захотят подписаться
+                <Tooltip
+                  content="Контент тултипа"
+                  position="top" />
+              </React.Fragment>
+            } />
+          <div className="ui-group-plugin"></div>
+        </div>
+
+        <div className="ui-group ui-group--row-with-plugin">
           <label htmlFor="">Действия с аккаунтом:</label>
           <button
             onClick={this.props.openModal.bind(this, 'logout')}
