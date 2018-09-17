@@ -6,21 +6,29 @@
     font-size: 14px
     font-family: $roboto
     margin-bottom: 10px
-  &--row
+  &--row, &--row-with-info
     display: flex
     align-items: center
     margin-bottom: 25px
     > label:not(.ui-validation)
       flex: 0 0 25%
       margin-bottom: 0
-      padding-right: 20px
+      padding-right: 16px
     .ui-input
       flex: 1 1 auto
     .Select
       flex: 1 1 auto
     .ui-toggle
       flex: 1 1 auto
+  &--row
+    > label:not(.ui-validation)
+      // flex: 0 0 25%
+  &--row-with-info
 
+
+.ui-group-plugin
+  flex: 0 0 25%
+  padding-left: 16px
 
 .ui-date-selects
   flex: 1 1 auto

@@ -4,6 +4,7 @@ import MaskedInput from 'react-text-mask';
 import Textarea from 'react-textarea-autosize';
 import { withFormsy } from 'formsy-react';
 import SvgIcon from '../Helpers/SvgIcon';
+import AvailableName from './Plugins/AvailableName';
 
 class FormInput extends Component {
   static propTypes = {
@@ -38,7 +39,7 @@ class FormInput extends Component {
   }
 
   render(){
-    const { name, id, placeholder, extraClass, icon, mask, label, rows } = this.props
+    const { name, id, placeholder, extraClass, icon, mask, label, rows, sidePlugin } = this.props
 
     const type = this.props.type ? this.props.type : "text"
 
@@ -118,11 +119,20 @@ class FormInput extends Component {
             }
           </div>
           <span className="ui-validation">{errorMessage}</span>
+
+          { sidePlugin &&
+            <div className="ui-group-plugin">
+              { sidePlugin === "availableNickname" &&
+                <AvailableName
+                  value={this.props.getValue() || ''} />
+              }
+            </div>
+          }
         </div>
       )
     }
-
   }
 }
+
 
 export default withFormsy(FormInput);

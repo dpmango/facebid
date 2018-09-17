@@ -33,12 +33,8 @@ class Settings extends Component{
     }
 
     this.formRef = React.createRef();
-
   }
 
-  hide = () => {
-    this.props.closeModal()
-  }
 
   formInvalid = () => {
     this.setState({ formIsValid: false });
@@ -153,7 +149,6 @@ class Settings extends Component{
   render(){
     const {
       state: {
-        modalName,
         nickname,
         birth_day, birth_month, birth_year,
         gender, city, email, password, password_repeat,
@@ -169,11 +164,12 @@ class Settings extends Component{
         onInvalid={this.formInvalid}
         ref={this.formRef} >
         <FormInput
+          sidePlugin="availableNickname"
           name="nickname"
           type="text"
           label="Никнейм:"
           placeholder="Например, Adelina491"
-          extraClass="ui-group--row"
+          extraClass="ui-group--row-with-info"
           value={nickname}
           validationErrors={{
             isDefaultRequiredValue: 'Заполните никнейм'

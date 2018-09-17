@@ -1,0 +1,30 @@
+.ui-available-name
+  display: flex
+  align-items: center
+  span
+    display: inline-block
+    color: $colorGreen
+    font-size: 14px
+    font-family: $roboto
+    padding-left: 8px
+    transition: .25s $ease
+  &__icon
+    background: $colorGreen
+    size: 16px
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 0
+    color: white
+    transition: .25s $ease
+    .ico
+      font-size: 7px
+      transform: translateY(1px)
+
+  &.is-failed
+    span
+      color: $colorRed
+    .ui-available-name
+      &__icon
+        background-color: $colorRed
