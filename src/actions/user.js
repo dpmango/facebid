@@ -1,8 +1,9 @@
 import api from '../services/Api';
 
-export const LOG_IN = 'LOG_IN';
+export const AUTHORIZATION_REQUEST = 'AUTHORIZATION_REQUEST';
 export const AUTHORIZATION_SUCCESS = 'AUTHORIZATION_SUCCESS';
 export const AUTHORIZATION_FAIL = 'AUTHORIZATION_FAIL';
+export const AUTHORIZATION_CLEAR_ERROR = 'AUTHORISZATION_CLEAR_ERROR'
 export const LOG_OUT = 'LOG_OUT';
 
 export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
@@ -11,7 +12,7 @@ export const SIGNUP_FAIL = 'SIGNUP_FAIL';
 
 export const loginRequest = (data) => {
   return {
-    type: LOG_IN,
+    type: AUTHORIZATION_REQUEST,
     payload: data
   }
 }
@@ -20,6 +21,12 @@ export const signupRequest = (data) => {
   return {
     type: SIGNUP_REQUEST,
     payload: data
+  }
+}
+
+export const clearAuthError = () => {
+  return {
+    type: AUTHORIZATION_CLEAR_ERROR
   }
 }
 
@@ -38,7 +45,7 @@ export const logIn = (payload) => (
         }
       })
       .catch(err => {
-        reject(new Error('Incorrect username or password.'));
+        reject(new Error('Неверное имя пользователя или пароль'));
       })
   })
 );

@@ -6,6 +6,7 @@ import Modal from '../Modal/Modal';
 import FormInput from '../Forms/Input';
 import Checkbox from '../Forms/Checkbox';
 import SocialLogin from './SocialLogin';
+import { loginRequest, clearAuthError } from '../../actions/user';
 import { openModal, closeModal } from '../../actions/modal'
 
 class Login extends Component{
@@ -19,6 +20,10 @@ class Login extends Component{
     }
 
     this.formRef = React.createRef();
+  }
+
+  componentDidMount(){
+    this.props.clearError()
   }
 
   hide = () => {
@@ -51,6 +56,10 @@ class Login extends Component{
     let fieldName = e.target.name;
     let fleldVal = e.target.value;
     this.setState({...this.state, [fieldName]: fleldVal});
+
+    if ( this.props.loginError ){
+      this.props.clearError()
+    }
   }
 
   keyPressHandler = (e) => {
@@ -80,7 +89,7 @@ class Login extends Component{
         modalName, email, password, remember
       },
       props: {
-        activeModal
+        activeModal, loginError
       }
     } = this
 
@@ -95,7 +104,7 @@ class Login extends Component{
             </div>
           </div>
           <div className="modal__content">
-            <div className="t-primary">Введите свои данные или зарегистрируйтесь, <br /> если вы здесь впервые.</div>
+            <div className="t-primary">Введите свои данные или <a onClick={this.props.openModal.bind(this, 'signup')}>зарегистрируйтесь</a>, <br /> если вы здесь впервые.</div>
             <div className="modal-auth">
               <div className="modal-auth__left">
                 <Formsy
@@ -105,6 +114,12 @@ class Login extends Component{
                   onInvalid={this.formInvalid}
                   ref={this.formRef}
                 >
+                  {loginError &&
+                    <div className="ui-group ui-group--row">
+                      <label htmlFor=""></label>
+                      <div className="ui-error-message">{loginError}</div>
+                    </div>
+                  }
                   <FormInput
                     name="email"
                     label="Логин:"
@@ -169,13 +184,15 @@ Login.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  activeModal: state.modal.activeModal
+  activeModal: state.modal.activeModal,
+  loginError: state.user.loginError
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  logIn: (credentials) => dispatch({ type: 'LOG_IN', payload: credentials }),
+  logIn: (data) => dispatch(loginRequest(data)),
   openModal: (data) => dispatch(openModal(data)),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  clearError: () => dispatch(clearAuthError())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

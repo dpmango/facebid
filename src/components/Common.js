@@ -6,6 +6,7 @@ import theme from '../theme/reapop'
 import Gradients from './Helpers/Gradients'
 import GeolocationRequest from './Modal/GeolocationRequest';
 import ShareModal from './Modal/ShareModal';
+import CreateEvent from './Events/Create';
 import Settings from './ProfileSettings/Settings';
 import Notifications from './Notifications/Notifications';
 
@@ -17,6 +18,7 @@ class Common extends Component {
         <Gradients />
         <GeolocationRequest />
         <ShareModal />
+        <CreateEvent />
         {this.props.userId &&
           <React.Fragment>
             <Notifications />

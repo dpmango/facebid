@@ -2,7 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { logIn, signUp } from '../actions/user';
 import { openModal, closeModal } from '../actions/modal';
 
-import { LOG_IN, AUTHORIZATION_SUCCESS, AUTHORIZATION_FAIL,
+import { AUTHORIZATION_REQUEST, AUTHORIZATION_SUCCESS, AUTHORIZATION_FAIL,
   SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAIL } from '../actions/user'
 
 function* logInSaga({ payload }) {
@@ -28,6 +28,6 @@ function* signUpSaga({ payload }) {
 }
 
 export default function* () {
-  yield takeLatest(LOG_IN, logInSaga);
+  yield takeLatest(AUTHORIZATION_REQUEST, logInSaga);
   yield takeLatest(SIGNUP_REQUEST, signUpSaga);
 }

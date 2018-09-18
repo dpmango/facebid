@@ -4,20 +4,22 @@ import PropTypes from 'prop-types';
 import { Collapse } from 'react-collapse';
 import Slider from 'rc-slider';
 import Select from 'react-select';
-import CreateEvent from './Create';
 import FilterSlider from './FilterSlider';
 import SvgIcon from '../Helpers/SvgIcon';
 import SimpleInput from '../Forms/SimpleInput';
 import Toggle from '../Forms/Toggle';
 import MultipleSelectToTotal from '../../helpers/MultipleSelectToTotal';
 import { setFilterParams } from '../../actions/event-filter';
-import { openModal, closeModal } from '../../actions/modal'
+import { openModal } from '../../actions/modal'
 
 class Filters extends Component {
   constructor(props){
     super(props)
 
-    this.initialState = props.eventFilterRedux
+    this.initialState = {
+      ...props.eventFilterRedux,
+      isOpened: true
+    }
     // {
     //   eventName: props.eventFilterRedux.eventName,
     //   gender: props.eventFilterRedux.gender,
@@ -29,10 +31,6 @@ class Filters extends Component {
 
     this.state = this.initialState
 
-  }
-
-  createEventClick = () => {
-    this.props.openModal('create-event');
   }
 
   clearFiltersClick = () => {
@@ -93,17 +91,19 @@ class Filters extends Component {
     const {
       state: {
         isOpened, gender, range, age, languages, categories, eventName
+      },
+      props: {
+        openModal
       }
     } = this
 
     return(
       <div className={"filters" + ( isOpened ? " is-active" : "" )}>
         <div className="filters__top">
-          <button onClick={this.createEventClick} className="btn btn-primary btn--iconed">
+          <button onClick={openModal.bind(this, 'create-event')} className="btn btn-primary btn--iconed">
             <SvgIcon name="plus" />
             <span>Создать событие</span>
           </button>
-          <CreateEvent />
           <SimpleInput
             name="eventName"
             placeholder="Чем ты хочешь заняться?"
@@ -210,14 +210,19 @@ class Filters extends Component {
   }
 }
 
+Filters.propTypes = {
+  eventFilterRedux: PropTypes.object,
+  setFilterParams: PropTypes.func,
+  openModal: PropTypes.func
+}
+
 const mapStateToProps = (state) => ({
   eventFilterRedux: state.eventFilter
 });
 
 const mapDispatchToProps = (dispatch) => ({
   setFilterParams: (data) => dispatch(setFilterParams(data)),
-  openModal: (data) => dispatch(openModal(data)),
-  closeModal: () => dispatch(closeModal())
+  openModal: (data) => dispatch(openModal(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);
