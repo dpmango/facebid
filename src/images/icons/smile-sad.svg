@@ -4,13 +4,13 @@
     <title>smile-sad</title>
     <desc>Created with Sketch.</desc>
     <g id="Marvel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Marvel_My_Events_Empty" transform="translate(-766.000000, -274.000000)">
+        <g id="Marvel_My_Events_Empty" transform="translate(-766.000000, -274.000000)" fill="#C7CCD1" fill-rule="nonzero">
             <g id="Group-2" transform="translate(629.000000, 274.000000)">
                 <g id="smile-sad" transform="translate(137.000000, 0.000000)">
-                    <circle id="Oval-8" stroke="#C7CCD1" stroke-width="4" cx="74" cy="74" r="72"></circle>
-                    <circle stroke="#C7CCD1" stroke-width="8" cx="50" cy="58" r="4" fill="#D8D8D8" id="Oval-14"></circle>
-                    <circle stroke="#C7CCD1" stroke-width="8" cx="98" cy="58" r="4" fill="#D8D8D8" id="Oval-14-Copy"></circle>
-                    <path d="M98,113 C98,99.745166 87.254834,89 74,89 C60.745166,89 50,99.745166 50,113" id="Oval-15" stroke="#C7CCD1" stroke-width="4" stroke-linecap="round"></path>
+                    <path d="M74,144 C112.659932,144 144,112.659932 144,74 C144,35.3400675 112.659932,4 74,4 C35.3400675,4 4,35.3400675 4,74 C4,112.659932 35.3400675,144 74,144 Z M74,148 C33.1309285,148 0,114.869071 0,74 C0,33.1309285 33.1309285,0 74,0 C114.869071,0 148,33.1309285 148,74 C148,114.869071 114.869071,148 74,148 Z" id="Oval-8"></path>
+                    <path d="M50,66 C45.581722,66 42,62.418278 42,58 C42,53.581722 45.581722,50 50,50 C54.418278,50 58,53.581722 58,58 C58,62.418278 54.418278,66 50,66 Z" id="Oval-14"></path>
+                    <path d="M98,66 C93.581722,66 90,62.418278 90,58 C90,53.581722 93.581722,50 98,50 C102.418278,50 106,53.581722 106,58 C106,62.418278 102.418278,66 98,66 Z" id="Oval-14-Copy"></path>
+                    <path d="M100,113 C100,114.104569 99.1045695,115 98,115 C96.8954305,115 96,114.104569 96,113 C96,100.849736 86.1502645,91 74,91 C61.8497355,91 52,100.849736 52,113 C52,114.104569 51.1045695,115 50,115 C48.8954305,115 48,114.104569 48,113 C48,98.6405965 59.6405965,87 74,87 C88.3594035,87 100,98.6405965 100,113 Z" id="Oval-15"></path>
                 </g>
             </g>
         </g>

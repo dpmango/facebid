@@ -532,5 +532,39 @@
       "avatar": "userAvatar_2.jpg",
       "subscribed": false
     }
+  ],
+  "myEventsCounter": {
+    "counter": 100
+  },
+  "myEvents": [
+    {
+      "id": 1,
+      "images": [
+        "eventImage_1.jpg",
+        "eventImage_2.jpg",
+        "eventImage_3.jpg",
+        "eventImage_1.jpg"
+      ],
+      "user": {
+        "name": "Анастасия",
+        "age": "30",
+        "isVerified": true,
+        "distance": "19 км от Вас"
+      },
+      "name": "Путешествие, групповое, комментарии",
+      "from": "Санкт–Петербург",
+      "to": "Москва",
+      "date": "2018-09-16",
+      "desc": "В июне состоится масштабное мероприятие одного из самых известных российских современных художников. Собираю группу из 20 человек для вылета из Санкт-Петербурга в Москву.",
+      "flags": {
+        "isModerationPening": true,
+        "isModerationFailed": false,
+        "isDeclined": false,
+        "isPublishedFree": false,
+        "isPublishedPremium": false,
+        "isPublishedShareBonus": false,
+        "isPublishedTop": false
+      }
+    }
   ]
 }

@@ -1,19 +1,21 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import api from '../../services/Api';
 import EventCard from './EventCard';
 import Loading from '../Helpers/Loading';
 import SvgIcon from '../Helpers/SvgIcon';
+import { openModal } from '../../actions/modal';
 
 class EventsGrid extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
 
     this.state = {
       data: null,
       filter: 'all'
     }
 
-    this.loadBy = 2
+    this.loadBy = props.type === "my-events" ? 100 : 2
   }
 
   componentDidMount(){
@@ -21,12 +23,24 @@ class EventsGrid extends Component {
   }
 
   getInitialEvents = () => {
+    const { type } = this.props
+
+    // endpoint router
+    let endpoint
+    switch (type) {
+      case "my-events":
+        endpoint = `myEvents?_limit=${this.loadBy}`
+        break;
+      default:
+        endpoint = `events?_limit=${this.loadBy}`
+    }
+
+    // api request
+    console.log(`requesting to ${endpoint}`)
     api
-      .get(`events?_limit=${this.loadBy}`)
+      .get(endpoint)
       .then(res => {
-        this.setState({
-          data: res.data
-        })
+        this.setState({data: res.data})
       })
       .catch(err => {
         console.log(`Something wrong happens - ${err.data}`, err)
@@ -82,6 +96,20 @@ class EventsGrid extends Component {
           </div>
         </React.Fragment>
       )
+    } else if ( type === "my-events" ){
+      return (
+        <React.Fragment>
+          <h3 className="h3-title">Мои события</h3>
+          <div className="events__header-cta">
+            <button
+              onClick={this.props.openModal.bind(this, 'create-event')}
+              className="btn btn-primary btn--iconed">
+              <SvgIcon name="plus" />
+              <span>Создать событие</span>
+            </button>
+          </div>
+        </React.Fragment>
+      )
     } else {
       return(
         <React.Fragment>
@@ -94,6 +122,7 @@ class EventsGrid extends Component {
 
   render(){
     const {
+      props: {type},
       state: {data}
     } = this
 
@@ -110,6 +139,7 @@ class EventsGrid extends Component {
             data.map(event => {
               return (
                 <EventCard
+                  type={type}
                   key={event.id}
                   data={event} />
               )
@@ -132,4 +162,8 @@ class EventsGrid extends Component {
   }
 }
 
-export default EventsGrid
+const mapDispatchToProps = (dispatch) => ({
+  openModal: (data) => dispatch(openModal(data))
+})
+
+export default connect(null, mapDispatchToProps)(EventsGrid)

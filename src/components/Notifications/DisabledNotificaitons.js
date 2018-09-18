@@ -7,8 +7,8 @@ class DisabledNotificaitons extends Component{
   render(){
     return(
       <div className="modal__content">
-        <div className="ntf-info">
-          <div className="ntf-info__holder t-center">
+        <div className="centered-info centered-info--modal">
+          <div className="centered-info__holder t-center">
             <SvgIcon name="notification-disabled" />
             <div className="h4-title">Уведомления выключены</div>
             <p className="t-primary">В настройках профиля отстуствуют включенные уведомления. Для получения уведомлений включите необходимые оповещения</p>

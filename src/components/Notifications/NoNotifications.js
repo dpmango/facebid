@@ -7,8 +7,8 @@ class NoNotifications extends Component{
   render(){
     return(
       <div className="modal__content">
-        <div className="ntf-info">
-          <div className="ntf-info__holder t-center">
+        <div className="centered-info centered-info--modal">
+          <div className="centered-info__holder t-center">
             <SvgIcon name="notification-blank" />
             <div className="h4-title">Уведомления отсутствуют</div>
             <p className="t-primary">Подписывайтесь на людей, отправляйте заявки на события и создавайте свои для получения новых уведомлений</p>

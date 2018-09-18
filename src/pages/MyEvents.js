@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import api from '../services/Api';
+import EventsGrid from '../components/Events/EventsGrid';
 import NoEvents from '../components/Events/NoEvents';
 
 class MyEvents extends Component {
@@ -9,7 +10,7 @@ class MyEvents extends Component {
     super()
 
     this.state = {
-      events: []
+      eventsCounter: null
     }
   }
 
@@ -19,26 +20,50 @@ class MyEvents extends Component {
   }
 
   getEvents = () => {
-    // api
-    //   .get('my-events')
-    //   .then(res => {
-    //
-    //   })
-    //   .catch(err => {
-    //     console.log('error fetching my events'))
-    //   }
+    api
+      .get('myEventsCounter')
+      .then(res => {
+        this.setState({
+          eventsCounter: res.data.counter
+        })
+      })
+      .catch(err => {
+        console.log('error fetching my events')
+      })
+  }
+
+  // just an temporary toggle to show different states
+  _tempToggleCounter = () => {
+    const {eventsCounter} = this.state;
+
+    if ( eventsCounter ){
+      this.setState({eventsCounter: null})
+    } else {
+      this.getEvents()
+    }
   }
 
   render() {
 
     const {
-      state: {events}
+      state: {eventsCounter}
     } = this
 
     return (
       <React.Fragment>
-        { events.length === 0 &&
+        <div className="t-center">
+          <button
+            onClick={this._tempToggleCounter}
+            className="btn btn-primary">
+            <small>(tmp)</small> Показать {eventsCounter ? "пустое" : "события"}
+          </button>
+        </div>
+        { !eventsCounter &&
           <NoEvents />
+        }
+        { eventsCounter &&
+          <EventsGrid
+            type="my-events" />
         }
       </React.Fragment>
     );

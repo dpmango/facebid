@@ -95,7 +95,7 @@ class UserMenu extends Component {
                 <NavLink
                   onClick={this.props.closeModal}
                   to={el.link}
-                  activeClassName={!activeModal ? "is-active" : ""}>
+                  activeClassName="is-active">
                   {this.renderNavEl(el)}
                 </NavLink>
                 :
@@ -128,4 +128,4 @@ const mapDispatchToProps = (dispatch) => ({
   openModal: (data) => dispatch(openModal(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(UserMenu);
+export default connect(mapStateToProps, mapDispatchToProps, undefined, {pure:false})(UserMenu);

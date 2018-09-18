@@ -7,11 +7,11 @@ class NoEvents extends Component {
   render(){
     return(
       <div className="no-events">
-        <div className="ntf-info">
-          <div className="ntf-info__holder t-center">
+        <div className="centered-info">
+          <div className="centered-info__holder t-center">
             <SvgIcon name="smile-sad" />
-            <div className="h4-title">У Вас нет событий</div>
-            <p className="t-primary">Находите людей по интересам со всей планеты в считанные секунды</p>
+            <div className="h3-title">У Вас нет событий</div>
+            <p className="t-primary">Находите людей по интересам со всей планеты  <br/>в считанные секунды</p>
             <button
               onClick={this.props.openModal.bind(this, 'create-event')}
               className="btn btn-primary">

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import anime from 'animejs'
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import throttle from 'lodash/throttle'
@@ -16,8 +17,8 @@ import CreateComment from './CreateComment'
 
 class EventCard extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
 
     this.state = {
       comments: [],
@@ -31,6 +32,8 @@ class EventCard extends Component {
 
     // this.scrollWindow = throttle(this.handleWindowScroll, 10);
     this.scrollWindow = this.handleWindowScroll
+
+    this.isMyEvent = props.type === "my-events"
   }
 
   componentDidMount(){
@@ -136,10 +139,9 @@ class EventCard extends Component {
     }
   }
 
+  // outside method via onRef
   onCommentReplyClick = (username) => {
-    console.log(username)
     this.createCommentRef.appendUserMention(username);
-
   }
 
   render(){
@@ -166,7 +168,8 @@ class EventCard extends Component {
           date,
           to,
           desc
-        }
+        },
+        type
       },
       state: {
         comments, shouldCtaStick, computeSticky, isCommentsVisible
@@ -174,7 +177,7 @@ class EventCard extends Component {
     } = this
 
     return(
-      <div className="e-card">
+      <div className={"e-card" + (this.isMyEvent ? " e-card--my-event" : "")}>
         <div className="e-card__wrapper">
 
           <EventCardMedia data={images} />
@@ -248,6 +251,10 @@ class EventCard extends Component {
       </div>
     )
   }
+}
+
+EventCard.propTypes = {
+  data: PropTypes.array.isRequired
 }
 
 export default EventCard
