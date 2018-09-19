@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Image from '../Helpers/Image';
-import SvgIcon from '../Helpers/SvgIcon';
+import Image from 'components/Helpers/Image';
+import SvgIcon from 'components/Helpers/SvgIcon';
 
 class Comment extends Component{
   constructor(){

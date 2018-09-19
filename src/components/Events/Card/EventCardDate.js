@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import moment from 'moment';
-import ConvertMonthNumToName from '../../services/ConvertMonthNumToName';
+import ConvertMonthNumToName from 'services/ConvertMonthNumToName';
 
 class EventCardDate extends Component {
 

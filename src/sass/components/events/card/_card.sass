@@ -1,5 +1,8 @@
 .e-card
   position: relative
+  z-index: 1
+  border-radius: 4px
+  overflow: hidden
   margin-bottom: 25px
   &:last-child
     margin-bottom: 0
@@ -129,7 +132,7 @@
           // 50 is cta padding: 24px 0
           margin-top: calc(41px + 48px)
 
-        .e-card__partisipants
+        .e-card__participants
           transform: translate(-55px, 0)
 
         .e-card__scrolltop
@@ -286,7 +289,7 @@
       display: flex
       align-items: center
 
-  &__partisipants
+  &__participants
     margin-left: auto
     transition: .25s $ease
     will-change: transform
@@ -330,4 +333,23 @@
   // modifiers
   &--my-event
     // for the /my-events page
-    
+    background: white
+    box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
+
+    .e-card
+      &__top
+        background: white
+        // TODO posibly refactor to ::after, ::before (height diff)
+        border-top: 1px solid #EBEBEB
+        border-bottom: 1px solid #EBEBEB
+
+  &--declined
+    .e-card
+      &__wrapper
+        &::after
+          display: inline-block
+          content: ' '
+          position: absolute 0
+          z-index: 2
+          background: rgba(black, .2)
+          user-select: none

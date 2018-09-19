@@ -7,6 +7,7 @@ class ToolTip extends Component{
     const {content, position} = this.props
     return(
       <Tooltip
+        className="tooltip"
         title={content}
         position={position ? position : "top"}
         arrow={true}

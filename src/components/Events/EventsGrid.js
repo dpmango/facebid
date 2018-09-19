@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import api from '../../services/Api';
-import EventCard from './EventCard';
+import EventCard from './Card/EventCard';
 import Loading from '../Helpers/Loading';
 import SvgIcon from '../Helpers/SvgIcon';
 import { openModal } from '../../actions/modal';

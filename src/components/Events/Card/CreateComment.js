@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Textarea from 'react-textarea-autosize';
-import Image from '../Helpers/Image';
-import SvgIcon from '../Helpers/SvgIcon';
-import api from '../../services/Api';
+import Image from 'components/Helpers/Image';
+import SvgIcon from 'components/Helpers/SvgIcon';
+import api from 'services/Api';
 
 class CreateComment extends Component {
   constructor(){
@@ -22,8 +22,6 @@ class CreateComment extends Component {
   }
 
   appendUserMention = (username) => {
-    console.log(username)
-
     this.setState({
       text: this.state.text + " @" + username
     })
@@ -63,11 +61,11 @@ class CreateComment extends Component {
   render(){
 
     const {
-      props: { userId, isVisible },
+      props: { userId, isVisible, haveComments },
       state: { text }
     } = this;
 
-    if ( !userId ){
+    if ( !userId || !haveComments){
       return null
     }
     return(

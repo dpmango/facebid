@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Collapse } from 'react-collapse';
-import Slider from 'rc-slider';
+import Slider, {Range} from 'rc-slider';
 import Select from 'react-select';
 import FilterSlider from './FilterSlider';
 import SvgIcon from '../Helpers/SvgIcon';
 import SimpleInput from '../Forms/SimpleInput';
-import Toggle from '../Forms/Toggle';
+// import Toggle from '../Forms/Toggle';
 import MultipleSelectToTotal from '../../helpers/MultipleSelectToTotal';
 import { setFilterParams } from '../../actions/event-filter';
 import { openModal } from '../../actions/modal'
@@ -56,9 +56,9 @@ class Filters extends Component {
   }
 
   // slider functions
-  rangeSliderChange = (val) => {
+  rangeSliderChange = (name) => (val) => {
     this.setState({
-      range: val
+      [name]: val
     })
   };
 
@@ -66,11 +66,11 @@ class Filters extends Component {
 
   }
 
-  selectToggle = (val) => {
-    this.setState({
-      age: val
-    })
-  }
+  // selectToggle = (val) => {
+  //   this.setState({
+  //     age: val
+  //   })
+  // }
 
   selectCategory = (id) => {
     const options = this.state.categories
@@ -153,22 +153,37 @@ class Filters extends Component {
                   min={5}
                   step={5}
                   max={100}
-                  onChange={this.rangeSliderChange}
-                  onAfterChange={this.rangeSliderAfterChange}
-                />
+                  onChange={this.rangeSliderChange('range')}
+                  onAfterChange={this.rangeSliderAfterChange} />
               </div>
             </div>
           </div>
           <div className="filters__options-col filters__options-col--age">
             <div className="ui-group">
               <label htmlFor="">Возраст</label>
-              <Toggle
-                value={age}
-                options={{
-                  left: "26",
-                  right: "32"
-                }}
-                clickHandler={this.selectToggle} />
+              <div className="ui-slider">
+                <div className="ui-slider__info">
+                  <div className="ui-slider__val">{age[0]}</div>
+                  <div className="ui-slider__val ui-slider__val--right">{age[1] === 50 ? "50+" : age[1]}</div>
+                  {/* <div className="ui-slider__name">км</div> */}
+                </div>
+                <Range
+                  defaultValue={[24, 32]}
+                  value={age}
+                  min={18}
+                  step={1}
+                  max={50}
+                  pushable={true}
+                  onChange={this.rangeSliderChange('age')}
+                  onAfterChange={this.rangeSliderAfterChange} />
+                {/* <Toggle
+                  value={age}
+                  options={{
+                    left: "26",
+                    right: "32"
+                  }}
+                  clickHandler={this.selectToggle} /> */}
+              </div>
             </div>
           </div>
           <div className="filters__options-col filters__options-col--languages">

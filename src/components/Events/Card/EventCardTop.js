@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { notify } from 'reapop';
-import SvgIcon from '../Helpers/SvgIcon';
-import Image from '../Helpers/Image';
-import { openModal } from '../../actions/modal'
+import SvgIcon from 'components/Helpers/SvgIcon';
+import Image from 'components/Helpers/Image';
+import { openModal } from 'actions/modal'
 
 class EventCardTop extends Component {
 
@@ -20,7 +20,7 @@ class EventCardTop extends Component {
   bookmarkAction = () => {
 
     const { isBookmarked } = this.state;
-    const { notify } = this.props;
+    const { notify, actionFlag } = this.props;
 
     if ( !isBookmarked ){
       this.setState({
@@ -55,7 +55,6 @@ class EventCardTop extends Component {
   }
 
   shareAction = () => {
-    console.log('trigger from EventCardTop')
     this.props.openModal('share-event')
   }
 
@@ -67,14 +66,14 @@ class EventCardTop extends Component {
 
   render(){
     const {
-      props: { id, user },
+      props: { id, user, actionFlag},
       state: { isBookmarked }
     } = this;
 
     return(
       <div className="e-card__top">
         <Link
-          to="/profile/2" 
+          to="/profile/2"
           className="e-card__user">
           <div className="e-card__user-avatar">
             <Image file="userAvatar.jpg" />
@@ -94,11 +93,13 @@ class EventCardTop extends Component {
           </div>
         </Link>
         <div className="e-card__actions">
-          <div
-            onClick={this.bookmarkAction}
-            className={"e-card__action e-card__bookmark" + ( isBookmarked ? " is-active" : "" )}>
-            <SvgIcon name="bookmark" />
-          </div>
+          { !actionFlag &&
+            <div
+              onClick={this.bookmarkAction}
+              className={"e-card__action e-card__bookmark" + ( isBookmarked ? " is-active" : "" )}>
+              <SvgIcon name="bookmark" />
+            </div>
+          }
           <div
             onClick={this.shareAction}
             className="e-card__action e-card__share">

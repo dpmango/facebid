@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import Loading from '../Helpers/Loading';
+import Loading from 'components/Helpers/Loading';
 import Comment from './Comment';
 
 class Comments extends Component {

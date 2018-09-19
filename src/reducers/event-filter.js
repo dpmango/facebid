@@ -5,7 +5,7 @@ const initialState = {
   eventName: '',
   gender: null,
   range: 20,
-  age: null,
+  age: [24, 32],
   languages: [],
   categories: [1]
 }

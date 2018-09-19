@@ -17,7 +17,8 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        { this.props.userId ? <Filters /> : <GuestFilters /> }
+        <Filters /> 
+        {/* { this.props.userId ? <Filters /> : <GuestFilters /> } */}
         <EventsGrid />
       </React.Fragment>
     );

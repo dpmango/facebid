@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Swiper from 'react-id-swiper';
-import Image from '../Helpers/Image';
-import SvgIcon from '../Helpers/SvgIcon';
+import Image from 'components/Helpers/Image';
+import SvgIcon from 'components/Helpers/SvgIcon';
 
 class EventCardMedia extends Component {
   render(){

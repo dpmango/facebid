@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Image from '../../components/Helpers/Image';
 import SvgIcon from '../../components/Helpers/SvgIcon';
-import EventCardDate from '../Events/EventCardDate';
+import EventCardDate from '../Events/Card/EventCardDate';
 import ConvertMonthNumToName from '../../services/ConvertMonthNumToName';
 
 class FeaturedPeople extends Component {

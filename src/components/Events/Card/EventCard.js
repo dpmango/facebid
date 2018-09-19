@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import anime from 'animejs'
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import throttle from 'lodash/throttle'
-import SvgIcon from '../Helpers/SvgIcon';
-import api from '../../services/Api';
-import GetCoordsOnDocument from '../../services/GetCoordsOnDocument';
-import GetWindowScroll from '../../services/GetWindowScroll';
+import api from 'services/Api';
+import GetCoordsOnDocument from 'services/GetCoordsOnDocument';
+import GetWindowScroll from 'services/GetWindowScroll';
 import EventCardMedia from './EventCardMedia';
 import EventCardTop from './EventCardTop';
+import EventCardCta from './EventCardCta';
 import EventCardDate from './EventCardDate';
-import AvatarList from '../People/AvatarList';
+import EventCardAction from './EventCardAction';
 import Comments from './Comments';
 import CreateComment from './CreateComment'
 
@@ -20,12 +20,17 @@ class EventCard extends Component {
   constructor(props){
     super(props);
 
+    this.actionFlag = props.data.flags ?
+      Object.keys(props.data.flags).filter(x => props.data.flags[x])[0]
+      : null
+
     this.state = {
       comments: [],
       shouldCtaStick: false,
       computeSticky: {},
       stickyPoint: null,
-      isCommentsVisible: false
+      isCommentsVisible: false,
+      actionFlag: this.actionFlag
     }
 
     this.ctaRef = React.createRef();
@@ -34,6 +39,8 @@ class EventCard extends Component {
     this.scrollWindow = this.handleWindowScroll
 
     this.isMyEvent = props.type === "my-events"
+
+    this.isDeclined = this.actionFlag === "isDeclined"
   }
 
   componentDidMount(){
@@ -46,6 +53,17 @@ class EventCard extends Component {
   };
 
   getComments = (id) => {
+
+    // TODO
+    // REMOVE WHEN API WILL RETURN ACTUALL COMMENTS
+    if (
+      this.state.actionFlag === "isModerationPening" ||
+      this.state.actionFlag === "isModerationFailed" ||
+      this.state.actionFlag === "isDeclined"
+    ){
+      return
+    }
+
     api
       .get('comments')
       .then(res => {
@@ -146,17 +164,6 @@ class EventCard extends Component {
 
   render(){
 
-    const avatars = {
-      more: 14,
-      list: [
-        { id: 1, file: "userAvatar_2.jpg" },
-        { id: 2, file: "userAvatar_3.jpg" },
-        { id: 3, file: "userAvatar_4.jpg" },
-        { id: 4, file: "userAvatar_5.jpg" },
-        { id: 5, file: "userAvatar_6.jpg" }
-      ]
-    }
-
     const {
       props: {
         data: {
@@ -172,20 +179,32 @@ class EventCard extends Component {
         type
       },
       state: {
-        comments, shouldCtaStick, computeSticky, isCommentsVisible
+        comments,
+        shouldCtaStick,
+        computeSticky,
+        isCommentsVisible,
+        actionFlag
       }
     } = this
 
     return(
-      <div className={"e-card" + (this.isMyEvent ? " e-card--my-event" : "")}>
-        <div className="e-card__wrapper">
+      <div
+        className={"e-card" +
+          (this.isMyEvent ? " e-card--my-event" : "") +
+          (this.isDeclined ? " e-card--declined" : "")
+        }>
+        <EventCardAction
+          actionFlag={actionFlag} />
 
-          <EventCardMedia data={images} />
+        <div className="e-card__wrapper">
+          <EventCardMedia
+            data={images} />
 
           <div className="e-card__contents">
             <div className={"e-card__contents-wrapper" + (shouldCtaStick ? " should-stick" : "") }>
 
               <EventCardTop
+                actionFlag={actionFlag}
                 id={id}
                 user={user} />
 
@@ -220,27 +239,16 @@ class EventCard extends Component {
                   } : null }
                   className="e-card__cta"
                   ref={this.ctaRef}>
-                  <div className="e-card__cta-wrapper">
-                    <button className="btn btn-primary btn--iconed">
-                      <SvgIcon name="checkmark" />
-                      <span>Участвовать</span>
-                    </button>
-                    <div className="e-card__partisipants">
-                      <AvatarList
-                        avatars={avatars} />
-                    </div>
-                    <div
-                      onClick={this.scrollToTop}
-                      className="e-card__scrolltop">
-                      <SvgIcon name="up-arrow" />
-                    </div>
-                  </div>
+                  <EventCardCta
+                    actionFlag={actionFlag}
+                    onScrollTopClick={this.scrollToTop} />
                 </div>
                 <Comments
                   onReplyClick={this.onCommentReplyClick}
                   comments={comments} />
               </PerfectScrollbar>
               <CreateComment
+                haveComments={comments.length > 0}
                 isVisible={isCommentsVisible}
                 onRef={ref => (this.createCommentRef = ref)}
                 onNewComment={this.getComments}

@@ -1,0 +1,58 @@
+// ec is a shorthand for .event-card
+.ec-action
+  display: flex
+  align-items: center
+  padding: 16px 24px
+
+  &__icon
+    position: relative
+    z-index: 1
+    flex: 0 0 40px
+    size: 40px
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 50%
+    overflow: hidden
+    font-size: 0
+    color: $colorBlue
+    border: 1px solid #3397FF
+    .ico
+      &-time
+        fill: $colorBlue
+        font-size: 17px
+      &-eye
+        fill: $fontColorGray
+        font-size: 12px
+      &-close
+        fill: $colorRed
+        font-size: 12px
+      &-checkmark
+        font-size: 8px
+        fill: $colorGreen
+
+  &__content
+    flex: 0 1 auto
+    padding-left: 16px
+  &__title
+    font-size: 16px
+    line-height: 1.5
+
+  &__description
+    font-size: 13px
+    font-family: $roboto
+    color: $fontColorGray
+    line-height: 1.5
+
+  &__cta
+    margin-left: auto
+    .btn
+      flex: 0 0 auto
+    &-wrapper
+      display: flex
+      align-items: center
+    &-name
+      display: inline-block
+      font-size: 16px
+      padding-right: 16px
+      flex: 0 1 auto
