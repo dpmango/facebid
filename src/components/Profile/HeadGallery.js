@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Swiper from 'react-id-swiper';
 import { Collapse } from 'react-collapse';
-import Image from '../Helpers/Image';
 import SvgIcon from '../Helpers/SvgIcon';
 import Thumb from './GalleryThumb'
 import AddImage from './AddImage';

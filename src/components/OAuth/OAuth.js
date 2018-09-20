@@ -49,7 +49,6 @@ class OAuth extends Component {
   }
 
   startAuth = () => {
-    console.log(this.state)
     if (!this.state.disabled) {
       this.popup = this.openPopup()
       this.checkPopup()
@@ -62,9 +61,9 @@ class OAuth extends Component {
   }
 
   render() {
-    const { name, photo} = this.state.user
+    // const { name, photo} = this.state.user
     const { provider } = this.props
-    const { disabled } = this.state
+    // const { disabled } = this.state
 
     return (
       <div

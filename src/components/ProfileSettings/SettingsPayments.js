@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import SvgIcon from '../Helpers/SvgIcon'
 
 class SettingsPayments extends Component {
-  constructor(){
-    super()
-
-    this.state = {
-
-    }
-  }
 
   editPayment = (name) => {
 
@@ -93,7 +86,7 @@ class SettingsPayments extends Component {
 
 class Payment extends Component {
   render(){
-    const {name, value, label} = this.props
+    const {name, value} = this.props
 
     return(
       <div className="p-pay">

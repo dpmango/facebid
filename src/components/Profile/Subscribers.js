@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import throttle from 'lodash/throttle'
 import Modal from '../Modal/Modal';
-import SvgIcon from '../Helpers/SvgIcon';
 import SubscribersList from './SubscribersList';
 import api from '../../services/Api';
 import { closeModal } from '../../actions/modal';
@@ -67,11 +66,6 @@ class Subscribers extends Component{
         activeModal
       }
     } = this
-
-    const tabs = [
-      {id: 1, name: "Подписчики"},
-      {id: 2, name: "Подписки"},
-    ]
 
     const tabPanels = [
       {id: 1, component: <SubscribersList onRef={ref => (this.subscribersRef = ref)} type="subscribers" />},

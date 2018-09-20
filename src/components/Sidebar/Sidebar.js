@@ -5,15 +5,9 @@ import PropTypes from 'prop-types';
 import NewUser from './NewUser';
 import AuthUser from './AuthUser';
 import Featured from './Featured';
-import GeolocationRequest from '../Modal/GeolocationRequest';
 
 class Sidebar extends Component {
-  constructor(){
-    super()
-  }
-
   render() {
-
     const {
       props: { menuOpened, userId },
     } = this;
@@ -32,9 +26,9 @@ class Sidebar extends Component {
             </div>
             <Featured />
             <div className="sidebar__footer">
-              <a href="#">О компании</a>
-              <a href="#">Правила</a>
-              <a href="#">О компании</a>
+              <Link to="/">О компании</Link>
+              <Link to="/">Правила</Link>
+              <Link to="/">О компании</Link>
             </div>
           </div>
         </div>
@@ -45,7 +39,7 @@ class Sidebar extends Component {
 
 Sidebar.propTypes = {
   menuOpened: PropTypes.bool,
-  // userId: PropTypes.number
+  userId: PropTypes.number
 }
 
 const mapStateToProps = (state) => ({
@@ -53,8 +47,4 @@ const mapStateToProps = (state) => ({
   userId: state.user.userId
 });
 
-const mapDispatchToProps = (dispatch) => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(Sidebar);
+export default connect(mapStateToProps, null, null, {pure:false})(Sidebar);

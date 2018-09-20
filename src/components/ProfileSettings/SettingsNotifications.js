@@ -40,11 +40,11 @@ class SettingsNotifications extends Component{
     if (("Notification" in window)) {
 
       if (Notification.permission === "granted") {
-        var notification = new Notification("Тест уведомления");
+        new Notification("Тест уведомления");
       } else if (Notification.permission !== "denied") {
         Notification.requestPermission((permission) => {
           if (permission === "granted") {
-            var notification = new Notification("Спасибо, уведомления включены!");
+            new Notification("Спасибо, уведомления включены!");
           }
         });
       }

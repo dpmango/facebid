@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 import Select from 'react-select';
 import { notify } from 'reapop';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import axios from 'axios';
 import Modal from '../Modal/Modal';
 import SvgIcon from '../Helpers/SvgIcon';
-import { closeModal } from '../../actions/modal';
-import MapArrToSelect from '../../helpers/MapArrToSelect';
+import { closeModal } from 'actions/modal';
+import MapArrToSelect from 'helpers/MapArrToSelect';
 
 // TODO
 // refresh the request every `1 hour` or so ?

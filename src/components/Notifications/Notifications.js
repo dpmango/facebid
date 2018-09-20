@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { notify } from 'reapop';
 import Modal from '../Modal/Modal';
-import SvgIcon from '../Helpers/SvgIcon';
+// import SvgIcon from '../Helpers/SvgIcon';
 import Notification from './Notification';
 import NoNotifications from './NoNotifications';
-import api from '../../services/Api';
+import api from 'services/Api';
 import DisabledNotificaitons from './DisabledNotificaitons';
-import { closeModal } from '../../actions/modal';
+import { closeModal } from 'actions/modal';
 
 class Notifications extends Component{
   constructor(props){

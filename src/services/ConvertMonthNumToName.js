@@ -4,7 +4,7 @@ const ConvertMonthNumToName = (str) => {
     "Июля", "Авг", "Сент", "Окт", "Нояб", "Дек"
   ];
 
-  return monthNames[parseInt(str) - 1]
+  return monthNames[parseInt(str, 10) - 1]
 }
 
 export default ConvertMonthNumToName

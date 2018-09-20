@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import SvgIcon from '../../Helpers/SvgIcon';
-import api from '../../../services/Api';
+import SvgIcon from 'components/Helpers/SvgIcon';
+// import api from 'services/Api';
 import debounce from 'lodash/debounce';
 
 class AvailableName extends Component {

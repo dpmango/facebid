@@ -6,13 +6,11 @@ import Select from 'react-select';
 import Modal from '../Modal/Modal';
 import FormInput from '../Forms/Input';
 import Toggle from '../Forms/Toggle';
-import Checkbox from '../Forms/Checkbox';
 import CreateMiniUploader from './CreateMiniUploader';
-import { openModal, closeModal } from '../../actions/modal';
-import { setCreateEvent } from '../../actions/create-event';
-import { daySelect, monthSelect, yearSelect } from '../../helpers/CalendarSelectArrays';
-import GetCalendarDays from '../../helpers/GetCalendarDays';
-import MapArrToSelect from '../../helpers/MapArrToSelect';
+import { openModal, closeModal } from 'actions/modal';
+import { setCreateEvent } from 'actions/create-event';
+import { daySelect, monthSelect, yearSelect } from 'helpers/CalendarSelectArrays';
+import MapArrToSelect from 'helpers/MapArrToSelect';
 
 class Create extends Component{
   constructor(props){
@@ -399,7 +397,8 @@ class Create extends Component{
 
 Create.propTypes = {
   openModal: PropTypes.func,
-  closeModal: PropTypes.func
+  closeModal: PropTypes.func,
+  setCreateEvent: PropTypes.func
 }
 
 const mapStateToProps = (state) => ({

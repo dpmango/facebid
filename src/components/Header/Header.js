@@ -4,9 +4,6 @@ import PropTypes from 'prop-types';
 import { openMenu, closeMenu } from '../../actions/header';
 
 class Header extends Component {
-  static propTypes = {
-
-  };
 
   toggleMenu = () => {
     const { menuOpened, openMenu, closeMenu } = this.props
@@ -48,6 +45,12 @@ class Header extends Component {
       </header>
     )
   }
+}
+
+Header.propTypes = {
+  openMenu: PropTypes.func,
+  closeMenu: PropTypes.func,
+  menuOpened: PropTypes.bool
 }
 
 const mapStateToProps = (state) => ({

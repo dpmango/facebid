@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
-import moment from 'moment';
 import Modal from '../Modal/Modal';
 import FormInput from '../Forms/Input';
 import Toggle from '../Forms/Toggle';
 import SocialLogin from './SocialLogin';
-import { openModal, closeModal } from '../../actions/modal'
-import { signupRequest } from '../../actions/user';
-import GetCalendarDays from '../../helpers/GetCalendarDays';
-import { daySelect, monthSelect, yearSelect } from '../../helpers/CalendarSelectArrays';
-import MapArrToSelect from '../../helpers/MapArrToSelect';
+import { openModal, closeModal } from 'actions/modal'
+import { signupRequest } from 'actions/user';
+import GetCalendarDays from 'helpers/GetCalendarDays';
+import { daySelect, monthSelect, yearSelect } from 'helpers/CalendarSelectArrays';
+import MapArrToSelect from 'helpers/MapArrToSelect';
 
 class Signup extends Component{
   constructor(props){
@@ -323,7 +322,8 @@ class Signup extends Component{
 
 Signup.propTypes = {
   openModal: PropTypes.func,
-  closeModal: PropTypes.func
+  closeModal: PropTypes.func,
+  signupRequest: PropTypes.func
 }
 
 const mapStateToProps = (state) => ({

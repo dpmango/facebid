@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
-import PropTypes from 'prop-types';
 
 class Invite extends Component {
   render() {

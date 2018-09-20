@@ -2,12 +2,9 @@ import React, {Component} from 'react';
 import Image from '../Helpers/Image';
 import SvgIcon from '../Helpers/SvgIcon';
 import AvatarList from '../People/AvatarList';
-import ConvertTimestampToStr from '../../helpers/ConvertTimestampToStr'
+import ConvertTimestampToStr from 'helpers/ConvertTimestampToStr'
 
 class Notification extends Component {
-  constructor(){
-    super()
-  }
 
   // type invited
   acceptInvite = () => {
@@ -21,7 +18,8 @@ class Notification extends Component {
   render(){
 
     const {
-      props: { id, user, type, timestamp }
+      // also id if required in api calls
+      props: { user, type, timestamp }
     } = this
 
     return(
@@ -193,7 +191,6 @@ class Notification extends Component {
         return null
     }
   }
-
 
 }
 

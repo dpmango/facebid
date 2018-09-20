@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
-import moment from 'moment';
 import FormInput from '../Forms/Input';
 import Checkbox from '../Forms/Checkbox';
 import Toggle from '../Forms/Toggle';
@@ -11,10 +10,10 @@ import SvgIcon from '../Helpers/SvgIcon';
 import Tooltip from '../Helpers/Tooltip';
 import Logout from '../Signup/Logout';
 import DeleteAccount from '../Signup/DeleteAccount';
-import { openModal, closeModal } from '../../actions/modal'
-import GetCalendarDays from '../../helpers/GetCalendarDays';
-import { daySelect, monthSelect, yearSelect } from '../../helpers/CalendarSelectArrays';
-import MapArrToSelect from '../../helpers/MapArrToSelect';
+import { openModal, closeModal } from 'actions/modal'
+import GetCalendarDays from 'helpers/GetCalendarDays';
+import { daySelect, monthSelect, yearSelect } from 'helpers/CalendarSelectArrays';
+import MapArrToSelect from 'helpers/MapArrToSelect';
 
 class Settings extends Component{
   constructor(props){
@@ -138,9 +137,9 @@ class Settings extends Component{
 
   signupUser = () => {
     // auth
-    const {
-      nickname, birth_day, birth_month, birth_year, gender, city, email, password
-    } = this.state;
+    // const {
+    //   nickname, birth_day, birth_month, birth_year, gender, city, email, password
+    // } = this.state;
 
     // const date = {
     //   day: birth_day ? birth_day.value : "",

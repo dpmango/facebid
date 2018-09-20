@@ -59,11 +59,11 @@ class Recover extends Component{
 
   // auth passed to redux
   reocoverPassword = () => {
-    const { email } = this.state;
-
+    // const { email } = this.state;
     // api call with recover
     // api
     //   .post(`/recover?email=${email}`)
+
     this.hide()
 
     this.props.notify({

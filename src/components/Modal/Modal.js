@@ -3,15 +3,11 @@ import { Portal } from 'react-portal';
 import SvgIcon from '../Helpers/SvgIcon';
 
 class Modal extends Component{
-  constructor(){
-    super()
-
-  }
 
   render(){
     const {
       props: {
-        isActive, show, onHide, children, containerClass
+        isActive, onHide, children, containerClass
       }
     } = this
 

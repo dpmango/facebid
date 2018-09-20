@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { notify } from 'reapop';
 import Modal from '../Modal/Modal';
 import SvgIcon from '../Helpers/SvgIcon';
-import { logOut } from '../../actions/user';
-import { closeModal, openModal } from '../../actions/modal';
+import { logOut } from 'actions/user';
+import { closeModal, openModal } from 'actions/modal';
 
 class DeleteAccount extends Component{
   constructor(){
@@ -19,13 +19,12 @@ class DeleteAccount extends Component{
     // todo refactor throug redux saving prev value and pass exra flag
     // redirectBack
     this.props.openModal('settings')
-    // this.props.closeModal()
   }
 
   // auth passed to redux
   DeleteAccount = () => {
     // TODO - descroy cookie on server
-    // this.props.logOut();
+    this.props.logOut();
     this.hide()
 
     // TODO - account removal
@@ -75,7 +74,10 @@ class DeleteAccount extends Component{
 
 
 DeleteAccount.propTypes = {
-  closeModal: PropTypes.func
+  closeModal: PropTypes.func,
+  openModal: PropTypes.func,
+  notify: PropTypes.func,
+  logout: PropTypes.func
 }
 
 const mapStateToProps = (state) => ({
@@ -84,8 +86,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   closeModal: () => dispatch(closeModal()),
-  openModal: (data) => dispatch(openModal(data)), 
+  openModal: (data) => dispatch(openModal(data)),
   notify: (data) => dispatch(notify(data)),
+  logOut: () => dispatch(logOut())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeleteAccount);

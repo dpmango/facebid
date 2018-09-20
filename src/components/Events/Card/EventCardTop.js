@@ -68,7 +68,7 @@ class EventCardTop extends Component {
 
   render(){
     const {
-      props: { id, user, actionFlag},
+      props: { user, actionFlag},
       state: { isBookmarked }
     } = this;
 

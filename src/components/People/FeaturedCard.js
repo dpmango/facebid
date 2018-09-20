@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Image from '../../components/Helpers/Image';
-import SvgIcon from '../../components/Helpers/SvgIcon';
-import EventCardDate from '../Events/Card/EventCardDate';
-import ConvertMonthNumToName from '../../services/ConvertMonthNumToName';
+import Image from 'components/Helpers/Image';
+import SvgIcon from 'components/Helpers/SvgIcon';
+import EventCardDate from 'components/Events/Card/EventCardDate';
 
 class FeaturedPeople extends Component {
-  constructor(){
-    super()
-
-    this.state = {
-
-    }
-  }
 
   onCardClick = () => {
     // act as a link for noEvent types
@@ -27,7 +19,6 @@ class FeaturedPeople extends Component {
 
     const {
       data: {
-        id,
         name,
         age,
         isVerified,
