@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -14,6 +15,9 @@ class NotFound extends Component {
   render() {
     return (
       <div className="not-found">
+        <Helmet>
+          <title>Ошибка - страница не найдена (404)</title>
+        </Helmet>
         <div className="container">
           <div className="not-found__wrapper">
             <div className="not-found__picture">

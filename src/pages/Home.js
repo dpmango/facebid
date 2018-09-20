@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Filters from '../components/Events/Filters';
-import GuestFilters from '../components/Events/GuestFilters';
-import EventsGrid from '../components/Events/EventsGrid';
+import Filters from 'components/Events/Filters';
+import GuestFilters from 'components/Events/GuestFilters';
+import EventsGrid from 'components/Events/EventsGrid';
 
 class Home extends Component {
-  static propTypes = {
-
-  };
 
   componentDidMount(){
     this.props.aosInst.refreshHard()
@@ -17,7 +15,10 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        <Filters /> 
+        <Helmet>
+          <title>Facebid</title>
+        </Helmet>
+        <Filters />
         {/* { this.props.userId ? <Filters /> : <GuestFilters /> } */}
         <EventsGrid />
       </React.Fragment>
@@ -29,8 +30,4 @@ const mapStateToProps = (state) => ({
   userId: state.user.userId
 });
 
-const mapDispatchToProps = (dispatch) => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, null)(Home);

@@ -12,10 +12,11 @@ class EventsGrid extends Component {
 
     this.state = {
       data: null,
-      filter: 'all'
+      profileFilter: 'all',
+      searchFilter: 'date'
     }
 
-    this.loadBy = props.type === "my-events" ? 100 : 2
+    this.loadBy = props.type === "my-events" ? 100 : 10
   }
 
   componentDidMount(){
@@ -36,7 +37,6 @@ class EventsGrid extends Component {
     }
 
     // api request
-    console.log(`requesting to ${endpoint}`)
     api
       .get(endpoint)
       .then(res => {
@@ -61,63 +61,13 @@ class EventsGrid extends Component {
       })
   }
 
-  setFilter = (id) => {
+  setFilter = (id, name) => {
     this.setState({
       data: null, // TODO remove on prod - it change nothing now on new filter
-      filter: id
+      [name]: id
     }, () => {
       this.getInitialEvents();
     })
-  }
-
-  renderHeader = () => {
-    const { type, isMyProfile } = this.props
-    const { filter } = this.state
-
-    const filters = [
-      { id: 'all', name: 'Все' },
-      { id: 'my', name: 'Личные' },
-      { id: 'groups', name: 'Групповые' }
-    ]
-
-    if ( type === "profile" ){
-      return (
-        <React.Fragment>
-          <h3 className="h3-title">{isMyProfile? "Вы участвует в событиях" : "События"}</h3>
-          <div className="events__header-filter">
-            { filters.map((f, i) => (
-              <span
-                key={i}
-                className={filter === f.id ? "is-active" : ""}
-                onClick={this.setFilter.bind(this, f.id)}>
-                {f.name}
-              </span>
-            ))}
-          </div>
-        </React.Fragment>
-      )
-    } else if ( type === "my-events" ){
-      return (
-        <React.Fragment>
-          <h3 className="h3-title">Мои события</h3>
-          <div className="events__header-cta">
-            <button
-              onClick={this.props.openModal.bind(this, 'create-event')}
-              className="btn btn-primary btn--iconed">
-              <SvgIcon name="plus" />
-              <span>Создать событие</span>
-            </button>
-          </div>
-        </React.Fragment>
-      )
-    } else {
-      return(
-        <React.Fragment>
-          <h3 className="h3-title">Результаты поиска</h3>
-          <div className="events__header-total">Найдено 148 событий</div>
-        </React.Fragment>
-      )
-    }
   }
 
   render(){
@@ -160,6 +110,86 @@ class EventsGrid extends Component {
       </div>
     )
   }
+
+
+  renderHeader = () => {
+    const { type, isMyProfile } = this.props
+    const { profileFilter, searchFilter } = this.state
+
+    const profileFilters = [
+      { id: 'all', name: 'Все' },
+      { id: 'my', name: 'Личные' },
+      { id: 'groups', name: 'Групповые' }
+    ]
+
+    const searchFilters = [
+      { id: 'date', name: 'Время начала' },
+      { id: 'relevance', name: 'Актуальность' },
+    ]
+
+    if ( type === "profile" ){
+      return (
+        <React.Fragment>
+          <h3 className="h3-title">{isMyProfile? "Вы участвует в событиях" : "События"}</h3>
+          <div className="events__header-filter">
+            { profileFilters.map((f, i) => (
+              <span
+                key={i}
+                className={profileFilter === f.id ? "is-active" : ""}
+                onClick={this.setFilter.bind(this, f.id, 'profileFilter')}>
+                {f.name}
+              </span>
+            ))}
+          </div>
+        </React.Fragment>
+      )
+    } else if ( type === "search" ){
+      return (
+        <React.Fragment>
+          <h3 className="h3-title">Результаты поиска</h3>
+          <div className="events__header-filter">
+            { searchFilters.map((f, i) => (
+              <span
+                key={i}
+                className={searchFilter === f.id ? "is-active" : ""}
+                onClick={this.setFilter.bind(this, f.id, 'searchFilter')}>
+                {f.name}
+              </span>
+            ))}
+          </div>
+        </React.Fragment>
+      )
+    } else if ( type === "my-events" ){
+      return (
+        <React.Fragment>
+          <h3 className="h3-title">Мои события</h3>
+          <div className="events__header-cta">
+            <button
+              onClick={this.props.openModal.bind(this, 'create-event')}
+              className="btn btn-primary btn--iconed">
+              <SvgIcon name="plus" />
+              <span>Создать событие</span>
+            </button>
+          </div>
+        </React.Fragment>
+      )
+    } else if ( type === "bookmarks" ){
+      return(
+        <React.Fragment>
+          <h3 className="h3-title">Закладки</h3>
+        </React.Fragment>
+      )
+    } else {
+      return(
+        <React.Fragment>
+          <h3 className="h3-title">Результаты поиска</h3>
+          <div className="events__header-total">Найдено 148 событий</div>
+        </React.Fragment>
+      )
+    }
+  }
+
+
 }
 
 const mapDispatchToProps = (dispatch) => ({

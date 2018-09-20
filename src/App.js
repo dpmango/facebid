@@ -3,9 +3,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import svg4everybody from 'svg4everybody';
 import RenderSwitch from './Switch';
-import Sidebar from './components/Sidebar/Sidebar';
-import Header from './components/Header/Header'; // for tablet
-import Common from './components/Common';
+import Sidebar from 'components/Sidebar/Sidebar';
+import Header from 'components/Header/Header'; // for tablet
+import Common from 'components/Common';
 
 class App extends Component {
   componentDidMount(){

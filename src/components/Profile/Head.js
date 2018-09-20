@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from "react-helmet";
 import { connect } from 'react-redux';
 import { notify } from 'reapop';
 import api from '../../services/Api';
@@ -168,6 +169,9 @@ class Head extends Component{
           <Loading type="user-profile" />
           :
           <Fragment>
+            <Helmet>
+              <title>Профиль {username}</title>
+            </Helmet>
             <div className="p-head__top">
               <div className="p-head__left">
                 <HeadAvatar

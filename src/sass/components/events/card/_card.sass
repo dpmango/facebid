@@ -329,6 +329,23 @@
       opacity: 1
       transform: translate(0,0)
 
+  &__removed
+    flex-direction: column
+    align-items: center
+    position: absolute
+    z-index: 3
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    color: white
+    text-align: center
+    .ico
+      font-size: 48px
+    span
+      display: block
+      font-size: 24px
+      font-weight: 700
+      margin-top: 15px
 
   // modifiers
   &--my-event
@@ -343,7 +360,7 @@
         border-top: 1px solid #EBEBEB
         border-bottom: 1px solid #EBEBEB
 
-  &--declined
+  &--declined, &--removed
     .e-card
       &__wrapper
         &::after
@@ -353,3 +370,11 @@
           z-index: 2
           background: rgba(black, .2)
           user-select: none
+
+  &--removed
+    .e-card
+      &__wrapper
+        &::after
+          background: rgba(black, .5)
+      &__removed
+        display: flex

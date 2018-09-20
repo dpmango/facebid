@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { Helmet } from "react-helmet";
+import EventsGrid from 'components/Events/EventsGrid';
 
 class Bookmarks extends Component {
   componentDidMount(){
@@ -10,18 +10,14 @@ class Bookmarks extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Bookmarks</h1>
+        <Helmet>
+          <title>Мои Закладки</title>
+        </Helmet>
+        <EventsGrid
+          type="bookmarks" />
       </React.Fragment>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-
-});
-
-const mapDispatchToProps = (dispatch) => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Bookmarks);
+export default Bookmarks;

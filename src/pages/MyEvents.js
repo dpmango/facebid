@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import api from '../services/Api';
@@ -51,6 +52,9 @@ class MyEvents extends Component {
 
     return (
       <React.Fragment>
+        <Helmet>
+          <title>Мои события</title>
+        </Helmet>
         <div className="t-center">
           <button
             onClick={this._tempToggleCounter}

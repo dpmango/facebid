@@ -8,11 +8,11 @@ import { openModal } from 'actions/modal'
 
 class EventCardTop extends Component {
 
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
     this.state = {
-      isBookmarked: false,
+      isBookmarked: props.type === "bookmarks" ? true : false, // TODO - tmp, change to API resp
       showMore: false
     }
   }

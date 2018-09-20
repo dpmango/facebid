@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import anime from 'animejs'
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import throttle from 'lodash/throttle'
+import throttle from 'lodash/throttle';
 import api from 'services/Api';
+import SvgIcon from 'components/Helpers/SvgIcon';
 import GetCoordsOnDocument from 'services/GetCoordsOnDocument';
 import GetWindowScroll from 'services/GetWindowScroll';
 import EventCardMedia from './EventCardMedia';
@@ -174,7 +175,8 @@ class EventCard extends Component {
           from,
           date,
           to,
-          desc
+          desc,
+          isRemoved
         },
         type
       },
@@ -191,12 +193,19 @@ class EventCard extends Component {
       <div
         className={"e-card" +
           (this.isMyEvent ? " e-card--my-event" : "") +
-          (this.isDeclined ? " e-card--declined" : "")
+          (this.isDeclined ? " e-card--declined" : "") +
+          (isRemoved ? " e-card--removed" : "")
         }>
         <EventCardAction
           actionFlag={actionFlag} />
 
         <div className="e-card__wrapper">
+          { isRemoved &&
+            <div className="e-card__removed">
+              <SvgIcon name="removed" />
+              <span>Событие удалено</span>
+            </div>
+          }
           <EventCardMedia
             data={images} />
 
@@ -204,6 +213,7 @@ class EventCard extends Component {
             <div className={"e-card__contents-wrapper" + (shouldCtaStick ? " should-stick" : "") }>
 
               <EventCardTop
+                type={type}
                 actionFlag={actionFlag}
                 id={id}
                 user={user} />

@@ -2,10 +2,106 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import SvgIcon from '../Helpers/SvgIcon';
-import { openModal, closeModal } from '../../actions/modal';
+import SvgIcon from 'components/Helpers/SvgIcon';
+import api from 'services/Api'
+import { openModal, closeModal } from 'actions/modal';
 
 class UserMenu extends Component {
+
+  constructor(props){
+    super(props)
+
+    this.state = {
+      menu: [
+        {
+          id: 1,
+          link: "/events",
+          name: "Поиск встреч",
+          icon: "menu-events",
+          plusIcon: {
+            type: 'modal',
+            target: 'create-event'
+          },
+          counter: null
+        },
+        {
+          id: 2,
+          link: "/invite",
+          name: "Пригласить",
+          icon: "menu-invite",
+          counter: null
+        },
+        {
+          id: 3,
+          link: "/my-events",
+          name: "Мои события",
+          icon: "menu-my-events",
+          counter: null
+        },
+        {
+          id: 4,
+          link: "/messages",
+          name: "Сообщения",
+          icon: "menu-messages",
+          counter: null
+        },
+        {
+          id: 5,
+          modal: 'notifications',
+          name: "Уведомления",
+          icon: "menu-notifications",
+          counter: null
+        },
+        {
+          id: 6,
+          link: "/news",
+          name: "Новости",
+          icon: "menu-news",
+          counter: null
+        },
+        {
+          id: 7,
+          link: "/bookmarks",
+          name: "Закладки",
+          icon: "menu-bookmarks",
+          counter: null
+        }
+      ]
+    }
+  }
+
+  componentDidMount(){
+    this.getCounters();
+  }
+
+  getCounters = () => {
+    api
+      .get('menuCounters')
+      .then(res => {
+        let menuState = this.state.menu;
+
+        res.data.forEach(x => {
+          menuState
+            .find(y => y.id === x.id).counter = x.counter
+        })
+
+        this.setState({
+          ...this.state, menu: menuState
+        })
+      })
+      .catch(err => {
+        console.log('Something wrong with menuCounters request')
+      })
+  }
+
+  plusIconClick = (e,obj) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if ( obj.type === "modal" ){
+      this.props.openModal(obj.target)
+    }
+  }
 
   renderNavEl = (el) => (
     <React.Fragment>
@@ -13,89 +109,58 @@ class UserMenu extends Component {
        <SvgIcon name={el.icon} />
       </div>
       <span className="user-menu__name">{el.name}</span>
-      { el.haveAdd &&
-       <div className="user-menu__add">
-         <div className="icon-add">
-           <SvgIcon name="plus" />
-         </div>
-       </div>
+      { (el.plusIcon && !el.counter) &&
+        <div
+          onClick={(e) => this.plusIconClick(e, el.plusIcon)}
+          className="user-menu__add">
+          <div className="icon-add">
+            <SvgIcon name="plus" />
+          </div>
+        </div>
       }
       { el.counter &&
-       <div className="user-menu__counter">
-         <span>{el.counter}</span>
-       </div>
+        <div className="user-menu__counter">
+          <span>{el.counter}</span>
+        </div>
       }
     </React.Fragment>
   )
 
+  isActiveLink = (linkPath) => {
+    // TODO
+    // NavLink doesn't update activeClass even with {pure:false} on connect
+    // Wait till React redux router v4 support and refactor
+    const { activeModal } = this.props;
+
+    if ( activeModal ){
+      // return false to activeRoute if some "modal-route" is active
+      // i.e. when notifications are opened
+      return !this.state.menu.some(x => x.modal === activeModal)
+    }
+
+    // search for simplified "starts with" type
+    return window.location.pathname.indexOf(linkPath) !== -1
+  }
+
+
   render(){
-
-    const menu = [
-      {
-        link: "/events",
-        name: "Поиск встреч",
-        icon: "menu-events",
-        haveAdd: true,
-        counter: false
-      },
-      {
-        link: "/invite",
-        name: "Пригласить",
-        icon: "menu-invite",
-        haveAdd: false,
-        counter: false
-      },
-      {
-        link: "/my-events",
-        name: "Мои события",
-        icon: "menu-my-events",
-        haveAdd: false,
-        counter: false
-      },
-      {
-        link: "/messages",
-        name: "Сообщения",
-        icon: "menu-messages",
-        haveAdd: false,
-        counter: false
-      },
-      {
-        modal: 'notifications',
-        name: "Уведомления",
-        icon: "menu-notifications",
-        haveAdd: false,
-        counter: 9
-      },
-      {
-        link: "/news",
-        name: "Новости",
-        icon: "menu-news",
-        haveAdd: false,
-        counter: false
-      },
-      {
-        link: "/bookmarks",
-        name: "Закладки",
-        icon: "menu-bookmarks",
-        haveAdd: false,
-        counter: 14
-      }
-    ]
-
     const {
-      props: {activeModal}
+      props: {activeModal},
+      state: {menu}
     } = this
 
     return(
       <ul className="user-menu">
-        {menu.map((el, index) => {
+        {menu.map(el => {
           return (
-            <li key={index}>
+            <li key={el.id}>
               {!el.modal ?
                 <NavLink
+                  className={this.isActiveLink(el.link) ? "is-active ": ""}
                   onClick={this.props.closeModal}
                   to={el.link}
-                  activeClassName="is-active">
+                  // activeClassName="is-active"
+                  >
                   {this.renderNavEl(el)}
                 </NavLink>
                 :
@@ -116,7 +181,7 @@ class UserMenu extends Component {
 
 UserMenu.propTypes = {
   openModal: PropTypes.func,
-  closeModal: PropTypes.func
+  closeModal: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({
@@ -128,4 +193,4 @@ const mapDispatchToProps = (dispatch) => ({
   openModal: (data) => dispatch(openModal(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, undefined, {pure:false})(UserMenu);
+export default connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(UserMenu);

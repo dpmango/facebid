@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { Helmet } from "react-helmet";
+import EventsGrid from 'components/Events/EventsGrid';
 
 class News extends Component {
   componentDidMount(){
@@ -10,18 +10,14 @@ class News extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>News</h1>
+        <Helmet>
+          <title>Мои новости</title>
+        </Helmet>
+        <EventsGrid
+          type="news" />
       </React.Fragment>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-
-});
-
-const mapDispatchToProps = (dispatch) => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(News);
+export default News;

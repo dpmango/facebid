@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { Helmet } from "react-helmet";
+import EventsGrid from 'components/Events/EventsGrid';
+import Filters from 'components/Events/Filters';
 
 class Events extends Component {
   componentDidMount(){
@@ -10,18 +11,15 @@ class Events extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Events</h1>
+        <Helmet>
+          <title>Поиск событий</title>
+        </Helmet>
+        <Filters />
+        <EventsGrid
+          type="search" />
       </React.Fragment>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-
-});
-
-const mapDispatchToProps = (dispatch) => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Events);
+export default Events;
