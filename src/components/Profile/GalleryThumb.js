@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SvgIcon from '../Helpers/SvgIcon';
-import Image from '../Helpers/Image';
-import RenderImage from '../../helpers/RenderImage'
+import RenderImage from 'helpers/RenderImage';
 
 class Thumb extends Component {
   // avatar uploader

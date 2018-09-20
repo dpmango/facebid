@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import SvgIcon from '../Helpers/SvgIcon';
-import Image from '../Helpers/Image';
 
 class CreateMiniUploader extends Component{
   constructor(){

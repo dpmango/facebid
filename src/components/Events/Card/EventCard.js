@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import anime from 'animejs'
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -272,7 +272,7 @@ class EventCard extends Component {
 }
 
 EventCard.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.obj.isRequired
 }
 
 export default EventCard

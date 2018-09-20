@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { notify } from 'reapop';
+// import DefaultNotification from '/helpers/DefaultNotification';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import Image from 'components/Helpers/Image';
 import { openModal } from 'actions/modal'
@@ -20,7 +22,7 @@ class EventCardTop extends Component {
   bookmarkAction = () => {
 
     const { isBookmarked } = this.state;
-    const { notify, actionFlag } = this.props;
+    const { notify } = this.props;
 
     if ( !isBookmarked ){
       this.setState({
@@ -117,13 +119,14 @@ class EventCardTop extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-
-});
+EventCardTop.propTypes = {
+  notify: PropTypes.func,
+  openModal: PropTypes.func
+}
 
 const mapDispatchToProps = (dispatch) => ({
   notify: (data) => dispatch(notify(data)),
   openModal: (data) => dispatch(openModal(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventCardTop);
+export default connect(null, mapDispatchToProps)(EventCardTop);

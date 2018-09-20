@@ -7,11 +7,6 @@ import GuestFilters from 'components/Events/GuestFilters';
 import EventsGrid from 'components/Events/EventsGrid';
 
 class Home extends Component {
-
-  componentDidMount(){
-    this.props.aosInst.refreshHard()
-  }
-
   render() {
     return (
       <React.Fragment>

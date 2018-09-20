@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import api from '../services/Api';
-import EventsGrid from '../components/Events/EventsGrid';
-import NoEvents from '../components/Events/NoEvents';
+import api from 'services/Api';
+import EventsGrid from 'components/Events/EventsGrid';
+import NoEvents from 'components/Events/NoEvents';
 
 class MyEvents extends Component {
   constructor(){
@@ -16,7 +14,6 @@ class MyEvents extends Component {
   }
 
   componentDidMount(){
-    this.props.aosInst.refreshHard()
     this.getEvents()
   }
 
@@ -74,12 +71,4 @@ class MyEvents extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-
-});
-
-const mapDispatchToProps = (dispatch) => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(MyEvents);
+export default MyEvents

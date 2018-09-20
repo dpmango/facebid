@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from "react-helmet";
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import { setClass } from '../actions/page'
+import { setClass } from 'actions/page';
 
 class NotFound extends Component {
 
   componentDidMount(){
-    this.props.aosInst.refreshHard();
     this.props.setPageClass('no-sidebar')
   }
 
@@ -47,12 +46,13 @@ class NotFound extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+NotFound.propTypes = {
+  setPageClass: PropTypes.func
+}
 
-});
 
 const mapDispatchToProps = (dispatch) => ({
   setPageClass: (data) => dispatch(setClass(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NotFound);
+export default connect(null, mapDispatchToProps)(NotFound);

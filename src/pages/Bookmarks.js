@@ -3,10 +3,6 @@ import { Helmet } from "react-helmet";
 import EventsGrid from 'components/Events/EventsGrid';
 
 class Bookmarks extends Component {
-  componentDidMount(){
-    this.props.aosInst.refreshHard()
-  }
-
   render() {
     return (
       <React.Fragment>

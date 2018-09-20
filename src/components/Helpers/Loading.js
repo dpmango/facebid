@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 const Loading = (props) => {
 
@@ -25,11 +25,6 @@ const Loading = (props) => {
 
   return(
     <div className="loading-container">
-      {/* <div class="loading-default">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div> */}
       <div className="sk-cube-grid">
         <div className="sk-cube sk-cube1"></div>
         <div className="sk-cube sk-cube2"></div>

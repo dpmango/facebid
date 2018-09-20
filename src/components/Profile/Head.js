@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { notify } from 'reapop';
 import api from '../../services/Api';
 import Loading from '../Helpers/Loading';
-import Image from '../Helpers/Image';
 import SvgIcon from '../Helpers/SvgIcon';
 import HeadAvatar from './HeadAvatar';
 import HeadMetrics from './HeadMetrics';
@@ -250,6 +249,9 @@ class Head extends Component{
   }
 }
 
+Head.propTypes = {
+  notify: PropTypes.func
+}
 
 const mapStateToProps = (state) => ({
 

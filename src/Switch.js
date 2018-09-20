@@ -7,35 +7,19 @@ import PropTypes from 'prop-types';
 import Authorization from './hoc/Authorization';
 import ScrollTo from './services/ScrollTo';
 import { setClass } from './actions/page'
-import AOS from 'aos';
 
 class RenderSwitch extends React.Component {
-  constructor(){
-    super()
-    this.aos = AOS
-  }
-  componentDidMount(){
-    this.aos.init({
-      duration: 400,
-      offset: 0,
-      easing: 'ease-in-sine',
-      once: true
-    })
 
+  componentDidMount(){
     // set the page class when returning from service pages
     this.props.setPageClass('')
   }
-  componentDidUpdate(prevProps) {
-    const curPathSplit = this.props.location.pathname.split('/');
-    const prevPathSplit = prevProps.location.pathname.split('/');
 
+  componentDidUpdate(prevProps) {
     // disallow transition when switching between the tabs
     if (this.props.location.pathname !== prevProps.location.pathname) {
       ScrollTo(0, 300);
     }
-
-    // refresh AOS
-    this.aos.refresh();
 
     // set the page class when returning from service pages
     this.props.setPageClass('')
@@ -43,18 +27,20 @@ class RenderSwitch extends React.Component {
 
 
   render(){
-    const PropsRoute = ({ component: Component, ...rest }) => (
-      <Route {...rest} render={props => (
-        <Component aosInst={this.aos} {...props}/>
-      )}/>
-    )
+    // to pass extra props
+    // <Component aosInst={this.aos} {...props}/>
+    // const PropsRoute = ({ component: Component, ...rest }) => (
+    //   <Route {...rest} render={props => (
+    //     <Component {...props}/>
+    //   )}/>
+    // )
 
     return(
       <Switch>
         {routes.map(route => {
           const component = route.protected ? Authorization(route.component) : route.component;
           return (
-            <PropsRoute
+            <Route
               key={route.path}
               exact={route.isExact}
               path={route.path}
@@ -68,11 +54,10 @@ class RenderSwitch extends React.Component {
 }
 
 RenderSwitch.propTypes = {
-  setClass: PropTypes.func
+  setPageClass: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
-
 });
 
 const mapDispatchToProps = (dispatch) => ({

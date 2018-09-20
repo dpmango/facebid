@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Formsy from 'formsy-react';
 import { connect } from 'react-redux';
 import Geolocation from 'react-geolocation';
 import axios from 'axios';

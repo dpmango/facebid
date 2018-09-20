@@ -4,10 +4,6 @@ import EventsGrid from 'components/Events/EventsGrid';
 import Filters from 'components/Events/Filters';
 
 class Events extends Component {
-  componentDidMount(){
-    this.props.aosInst.refreshHard()
-  }
-
   render() {
     return (
       <React.Fragment>

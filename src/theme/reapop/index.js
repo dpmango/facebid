@@ -1,5 +1,3 @@
-'use strict';
-
 var css = require('./styles.css');
 
 // media breakpoint - small screen min width
