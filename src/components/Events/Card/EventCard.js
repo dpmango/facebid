@@ -272,7 +272,7 @@ class EventCard extends Component {
 }
 
 EventCard.propTypes = {
-  data: PropTypes.obj.isRequired
+  data: PropTypes.object.isRequired
 }
 
 export default EventCard
