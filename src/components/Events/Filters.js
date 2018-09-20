@@ -8,9 +8,10 @@ import FilterSlider from './FilterSlider';
 import SvgIcon from '../Helpers/SvgIcon';
 import SimpleInput from '../Forms/SimpleInput';
 // import Toggle from '../Forms/Toggle';
-import MultipleSelectToTotal from '../../helpers/MultipleSelectToTotal';
-import { setFilterParams } from '../../actions/event-filter';
-import { openModal } from '../../actions/modal'
+import MultipleSelectToTotal from 'helpers/MultipleSelectToTotal';
+import SelectLanguageOption from 'helpers/SelectLanguageOption';
+import { setFilterParams } from 'actions/event-filter';
+import { openModal } from 'actions/modal'
 
 class Filters extends Component {
   constructor(props){
@@ -190,16 +191,19 @@ class Filters extends Component {
             <div className="ui-group">
               <label htmlFor="">Языки</label>
               <Select
+                className="Select--country"
                 name="languages"
                 multi={true}
                 removeSelected={false}
                 simpleValue={false}
                 clearable={false}
                 searchable={false}
+                closeOnSelect={false}
                 autosize={false}
                 value={languages}
                 onChange={(e) => this.handleSelectChange(e, "languages")}
                 placeholder="Выберите языки"
+                optionRenderer={SelectLanguageOption}
                 valueComponent={MultipleSelectToTotal.bind(this, languages)}
                 options={[
                   { value: 'ru', label: 'Русский' },

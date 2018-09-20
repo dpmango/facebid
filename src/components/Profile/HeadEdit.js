@@ -3,7 +3,8 @@ import Formsy from 'formsy-react';
 import Select from 'react-select';
 import FormInput from '../Forms/Input';
 import SvgIcon from '../Helpers/SvgIcon';
-import MultipleSelectToTotal from '../../helpers/MultipleSelectToTotal';
+import MultipleSelectToTotal from 'helpers/MultipleSelectToTotal';
+import SelectLanguageOption from 'helpers/SelectLanguageOption';
 
 class HeadEdit extends Component {
   constructor(props){
@@ -87,16 +88,19 @@ class HeadEdit extends Component {
         <div className="ui-group">
           <label htmlFor="">Языки:</label>
           <Select
+            className="Select--country"
             name="userLang"
             multi={true}
             removeSelected={false}
             simpleValue={false}
             clearable={false}
             searchable={false}
+            closeOnSelect={false}
             autosize={false}
             value={userLang}
             onChange={(e) => this.handleSelectChange(e, "userLang")}
             placeholder="Выберите языки"
+            optionRenderer={SelectLanguageOption}
             valueComponent={MultipleSelectToTotal.bind(this, userLang)}
             options={[
               { value: 'ru', label: 'Русский' },

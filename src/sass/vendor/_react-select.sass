@@ -248,6 +248,8 @@
 
 .Select-menu
   max-height: 198px
+  width: 100%
+  overflow-x: hidden
   overflow-y: auto
 
 .Select-option
@@ -383,3 +385,48 @@
     padding: 0
     vertical-align: baseline
     +text-overflow
+
+.Select--country
+  .Select-option
+    padding-bottom: 0
+    padding-top: 0
+    &.is-selected
+      background-color: transparent !important
+      color: $fontColor !important
+      .Select-country
+        // emulate active state to reduces passed options
+        // in optionRenderer
+        .ui-checkbox
+          .ui-checkbox__label
+            &::before
+              border-color: $colorBlue
+              background-color: $colorBlue
+            &::after
+              transform: translateY(-50%) scale(1)
+    &:last-child
+      .Select-country
+        border-bottom: 0
+
+.Select-country
+  position: relative
+  z-index: 1
+  max-width: 100%
+  min-width: 1px
+  display: flex
+  align-items: center
+  padding-top: 16px
+  padding-bottom: 16px
+  border-bottom: 1px solid #F4F7FB
+  .flag-r50
+    flex: 0 0 auto
+  > span
+    display: inline-block
+    font-size: 16px
+    color: $fontColor
+    padding-left: 8px
+    padding-right: 8px
+    flex: 1 1 auto
+    +text-overflow
+  .ui-checkbox
+    margin-left: auto
+    flex: 0 0 auto
