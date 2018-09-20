@@ -132,10 +132,11 @@ class UserMenu extends Component {
     // Wait till React redux router v4 support and refactor
     const { activeModal } = this.props;
 
-    if ( activeModal ){
+    const isModalActiveFromMenu = this.state.menu.some(x => x.modal === activeModal)
+    if ( isModalActiveFromMenu ){
       // return false to activeRoute if some "modal-route" is active
       // i.e. when notifications are opened
-      return !this.state.menu.some(x => x.modal === activeModal)
+      return false
     }
 
     // search for simplified "starts with" type
