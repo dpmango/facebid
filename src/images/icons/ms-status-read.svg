@@ -1,14 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="18px" height="10px" viewBox="0 0 18 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
-    <title>ms-status-read</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Elements-/-Chat-/-Messages-/-Status-/-03" fill="#00ADFF" fill-rule="nonzero">
-            <g id="ms-status-read">
-                <path d="M9.35350475,5.40200936 L10.3153024,6.48085075 L15.9158411,0.326934817 C16.2875686,-0.0815222206 16.920033,-0.111297438 17.3284901,0.260430008 C17.7369471,0.632157453 17.7667223,1.26462194 17.3949949,1.67307898 L10.2999869,9.46912948 L8,6.88925101 L9.35350475,5.40200936 Z" id="Path-9-Copy"></path>
-                <path d="M4.67634417,6.46278565 L1.76066709,3.04638898 C1.40214337,2.62629471 0.77094879,2.57638192 0.350854524,2.93490563 C-0.0692397414,3.29342934 -0.119152536,3.92462393 0.239371177,4.34471819 L4.62814741,9.48719458 L11.739596,1.67307898 C12.1113235,1.26462194 12.0815482,0.632157453 11.6730912,0.260430008 C11.2646342,-0.111297438 10.6321697,-0.0815222206 10.2604422,0.326934817 L4.67634417,6.46278565 Z" id="Path-9"></path>
-            </g>
-        </g>
+<svg width="18" height="10" viewBox="0 0 18 10" xmlns="http://www.w3.org/2000/svg">
+    <title>
+        ms-status-read
+    </title>
+    <g fill="#00ADFF" fill-rule="nonzero">
+        <path d="M9.354 5.402l.961 1.079 5.6-6.154a1 1 0 0 1 1.48 1.346L10.3 9.47 8 6.89l1.354-1.487z"/>
+        <path d="M4.676 6.463L1.761 3.046A1 1 0 0 0 .239 4.345l4.39 5.142 7.11-7.814A1 1 0 1 0 10.26.327L4.676 6.463z"/>
     </g>
 </svg>

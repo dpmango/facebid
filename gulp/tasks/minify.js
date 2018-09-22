@@ -1,7 +1,7 @@
 var gulp        = require('gulp');
 var plumber     = require('gulp-plumber');
 var svgmin      = require('gulp-svgmin');
-var config      = require('../../config');
+var config      = require('../config');
 
 gulp.task('minify:svg', function() {
   return gulp

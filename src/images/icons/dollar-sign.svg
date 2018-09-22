@@ -1,13 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="11px" height="18px" viewBox="0 0 11 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
-    <title>dollar-sign</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Marvel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Marvel_Profile_Edit_Parts_01" transform="translate(-691.000000, -117.000000)" fill="#00A9FF" fill-rule="nonzero">
-            <g id="Group-6-Copy-3" transform="translate(667.000000, 106.000000)">
-                <path d="M29.48,18.9 C27.21,18.31 26.48,17.7 26.48,16.75 C26.48,15.66 27.49,14.9 29.18,14.9 C30.96,14.9 31.62,15.75 31.68,17 L33.89,17 C33.82,15.28 32.77,13.7 30.68,13.19 L30.68,11 L27.68,11 L27.68,13.16 C25.74,13.58 24.18,14.84 24.18,16.77 C24.18,19.08 26.09,20.23 28.88,20.9 C31.38,21.5 31.88,22.38 31.88,23.31 C31.88,24 31.39,25.1 29.18,25.1 C27.12,25.1 26.31,24.18 26.2,23 L24,23 C24.12,25.19 25.76,26.42 27.68,26.83 L27.68,29 L30.68,29 L30.68,26.85 C32.63,26.48 34.18,25.35 34.18,23.3 C34.18,20.46 31.75,19.49 29.48,18.9 Z" id="dollar-sign"></path>
-            </g>
-        </g>
-    </g>
+<svg width="11" height="18" viewBox="0 0 11 18" xmlns="http://www.w3.org/2000/svg">
+    <title>
+        dollar-sign
+    </title>
+    <path d="M5.48 7.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V0h-3v2.16C1.74 2.58.18 3.84.18 5.77c0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1H0c.12 2.19 1.76 3.42 3.68 3.83V18h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" fill="#00A9FF" fill-rule="nonzero"/>
 </svg>

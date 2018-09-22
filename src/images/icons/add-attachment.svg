@@ -1,22 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
-    <title>add-attachment</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Marvel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Marvel_Create" transform="translate(-912.000000, -994.000000)" fill="#00A9FF">
-            <g id="Chat" transform="translate(369.000000, 7.000000)">
-                <g id="Чат" transform="translate(0.000000, 17.000000)">
-                    <g id="Group-4" transform="translate(24.000000, 897.000000)">
-                        <g id="Group-25" transform="translate(446.000000, 0.000000)">
-                            <g id="Group-22-Copy-8" transform="translate(68.000000, 68.000000)">
-                                <path d="M13.1022816,13.1022816 L13.1022816,17.5086817 C13.1022816,18.1189607 12.6130176,18.6136896 12,18.6136896 C11.3912267,18.6136896 10.8977184,18.1113127 10.8977184,17.5086817 L10.8977184,13.1022816 L6.49131827,13.1022816 C5.88103928,13.1022816 5.38631041,12.6130176 5.38631041,12 C5.38631041,11.3912267 5.88868732,10.8977184 6.49131827,10.8977184 L10.8977184,10.8977184 L10.8977184,6.49131827 C10.8977184,5.88103928 11.3869824,5.38631041 12,5.38631041 C12.6087733,5.38631041 13.1022816,5.88868732 13.1022816,6.49131827 L13.1022816,10.8977184 L17.5086817,10.8977184 C18.1189607,10.8977184 18.6136896,11.3869824 18.6136896,12 C18.6136896,12.6087733 18.1113127,13.1022816 17.5086817,13.1022816 L13.1022816,13.1022816 Z" id="add-attachment"></path>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+    <title>
+        add-attachment
+    </title>
+    <path d="M8.102 8.102v4.407A1.1 1.1 0 0 1 7 13.614a1.109 1.109 0 0 1-1.102-1.105V8.102H1.49A1.1 1.1 0 0 1 .386 7c0-.609.503-1.102 1.105-1.102h4.407V1.49A1.1 1.1 0 0 1 7 .386c.609 0 1.102.503 1.102 1.105v4.407h4.407A1.1 1.1 0 0 1 13.614 7c0 .609-.503 1.102-1.105 1.102H8.102z" fill="#00A9FF" fill-rule="evenodd"/>
 </svg>
