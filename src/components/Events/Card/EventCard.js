@@ -196,13 +196,13 @@ class EventCard extends Component {
         className={"e-card" +
           (this.isMyEvent ? " e-card--my-event" : "") +
           (this.isDeclined ? " e-card--declined" : "") +
-          (isRemoved ? " e-card--removed" : "")
+          (type === "bookmarks" && isRemoved ? " e-card--removed" : "")
         }>
         <EventCardAction
           actionFlag={actionFlag} />
 
         <div className="e-card__wrapper">
-          { isRemoved &&
+          { type === "bookmarks" && isRemoved &&
             <div className="e-card__removed">
               <SvgIcon name="removed" />
               <span>Событие удалено</span>
