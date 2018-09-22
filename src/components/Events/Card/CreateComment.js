@@ -42,11 +42,23 @@ class CreateComment extends Component {
   }
 
   submitComment = () => {
+    const {
+      state: {text},
+      props: {userDetails}
+    } = this
+
+    // prevent submiting blank messages
+    // any other validations ?
+    if ( this.state.text.replace(/\s/g, '').length === 0 ){
+      return null
+    }
+
     api
       .post('comments', {
         user: {
-          "avatar": "userAvatar_2.jpg",
-          "name": "currentUser"
+          "username": userDetails.username,
+          "avatar": userDetails.avatar,
+          "name": userDetails.fullname
         },
         text: this.state.text
       })
@@ -101,7 +113,8 @@ class CreateComment extends Component {
 
 
 const mapStateToProps = (state) => ({
-  userId: state.user.userId
+  userId: state.user.userId,
+  userDetails: state.user.userDetails
 });
 
 const mapDispatchToProps = (dispatch) => ({

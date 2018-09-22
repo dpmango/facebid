@@ -124,11 +124,13 @@ class EventCard extends Component {
   }
 
   scrollToTop = (instant) => {
+    // instant could be an event or flag
+    // that's why duration is checked against flag
     anime({
       targets: this._scrollRef,
       scrollTop: 0,
       easing: [0.77, 0, 0.175, 1],
-      duration: instant ? 0 : 500
+      duration: instant === true ? 0 : 500
     });
 
     // this._scrollRef.scrollTop = 0;

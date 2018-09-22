@@ -19,6 +19,16 @@
       "counter": 14
     }
   ],
+  "users": [
+    {
+      "id": 1,
+      "email": "test@mail.com",
+      "password": "123456",
+      "avatar": "userAvatar_logined.jpg",
+      "username": "Agneshka",
+      "fullname": "Maggie Walton"
+    }
+  ],
   "featuredPeople": [
     {
       "id": 1,
@@ -114,14 +124,6 @@
       "to": "Москва",
       "date": "1810",
       "desc": "В июне состоится масштабное мероприятие одного из самых известных российских современных художников. Собираю группу из 20 человек для вылета из Санкт-Петербурга в Москву."
-    }
-  ],
-  "users": [
-    {
-      "id": 1,
-      "email": "test@mail.com",
-      "password": "123456",
-      "avatar": "userAvatar_2.jpg"
     }
   ],
   "comments": [
@@ -423,17 +425,32 @@
         "username": "Anton"
       },
       "type": "application",
-      "data":{
+      "data": {
         "id": 223,
         "event": "Название события",
         "applicants": {
           "more": 14,
           "list": [
-            { "id": 1, "file": "userAvatar_2.jpg" },
-            { "id": 2, "file": "userAvatar_3.jpg" },
-            { "id": 3, "file": "userAvatar_4.jpg" },
-            { "id": 4, "file": "userAvatar_5.jpg" },
-            { "id": 5, "file": "userAvatar_6.jpg" }
+            {
+              "id": 1,
+              "file": "userAvatar_2.jpg"
+            },
+            {
+              "id": 2,
+              "file": "userAvatar_3.jpg"
+            },
+            {
+              "id": 3,
+              "file": "userAvatar_4.jpg"
+            },
+            {
+              "id": 4,
+              "file": "userAvatar_5.jpg"
+            },
+            {
+              "id": 5,
+              "file": "userAvatar_6.jpg"
+            }
           ]
         }
       },
@@ -445,7 +462,7 @@
         "avatar": "userAvatar_3.jpg",
         "username": "StasStas"
       },
-      "data":{
+      "data": {
         "photos": [
           "galThumb_1.jpg",
           "galThumb_2.jpg",

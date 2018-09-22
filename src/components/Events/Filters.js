@@ -134,6 +134,7 @@ class Filters extends Component {
                 onChange={(e) => this.handleSelectChange(e, "gender")}
                 placeholder="Выберите пол"
                 options={[
+                  { value: 'all', label: 'Всех' },
                   { value: 'female', label: 'Девушек' },
                   { value: 'male', label: 'Парней' }
                 ]}

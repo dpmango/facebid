@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Image from '../Helpers/Image';
@@ -18,7 +19,7 @@ class AuthUser extends Component{
             <Image file={userDetails.avatar} />
           </div>
           <div className="user-panel__scope-contents">
-            <div className="user-panel__name">Agneshka, 24</div>
+            <div className="user-panel__name">{userDetails.username}, 24</div>
             <div className="user-panel__location">
               <SvgIcon name="location" />
               <span>Moscow, Russia</span>
@@ -51,6 +52,11 @@ class AuthUser extends Component{
       </div>
     )
   }
+}
+
+AuthUser.propTypes = {
+  userId: PropTypes.number,
+  userDetails: PropTypes.object
 }
 
 const mapStateToProps = (state) => ({

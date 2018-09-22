@@ -321,11 +321,15 @@
 
 
   &__c-comment
+    height: 0
     flex: 0 0 auto
     transform: translate(0,100%)
     opacity: 0
-    transition: .25s $ease
+    transition-property: opacity, transform
+    transition-duration: .25s
+    transition-timing-function: $ease
     &.is-visible
+      height: auto
       opacity: 1
       transform: translate(0,0)
 

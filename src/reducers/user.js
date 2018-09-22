@@ -1,4 +1,4 @@
-import { AUTHORIZATION_REQUEST, AUTHORIZATION_SUCCESS, AUTHORIZATION_FAIL, AUTHORIZATION_CLEAR_ERROR, 
+import { AUTHORIZATION_REQUEST, AUTHORIZATION_SUCCESS, AUTHORIZATION_FAIL, AUTHORIZATION_CLEAR_ERROR,
   SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAIL, LOG_OUT } from '../actions/user';
 
 export const initialState = {
@@ -25,7 +25,9 @@ const user = (state = initialState, action) => {
         userId: action.payload.id,
         userDetails: {
           email: action.payload.email,
-          avatar: action.payload.avatar
+          avatar: action.payload.avatar,
+          username: action.payload.username,
+          fullname: action.payload.fullname
         },
         // loginError: ''
       };

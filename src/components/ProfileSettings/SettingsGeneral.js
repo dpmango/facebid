@@ -336,19 +336,21 @@ class Settings extends Component{
 
         <div className="ui-group ui-group--row-with-plugin">
           <label htmlFor="">Действия с аккаунтом:</label>
-          <button
-            onClick={this.props.openModal.bind(this, 'logout')}
-            className="btn btn-outline btn-outline--muted btn--iconed">
-            <SvgIcon name="logout" />
-            <span>Выйти из аккаунта</span>
-          </button>
-          <Logout />
-          <button
-            onClick={this.props.openModal.bind(this, 'delete-account')}
-            className="btn btn-outline btn-outline--red btn--iconed">
-            <SvgIcon name="close" />
-            <span>Удалить аккаунт</span>
-          </button>
+          <div className="ui-buttons-group">
+            <button
+              onClick={this.props.openModal.bind(this, 'logout')}
+              className="btn btn-outline btn-outline--muted btn--iconed">
+              <SvgIcon name="logout" />
+              <span>Выйти из аккаунта</span>
+            </button>
+            <Logout />
+            <button
+              onClick={this.props.openModal.bind(this, 'delete-account')}
+              className="btn btn-outline btn-outline--red btn--iconed">
+              <SvgIcon name="close" />
+              <span>Удалить аккаунт</span>
+            </button>
+          </div>
           <DeleteAccount />
         </div>
 
