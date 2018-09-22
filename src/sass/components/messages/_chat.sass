@@ -1,0 +1,68 @@
+
+// chat
+.ms-chat
+  position: relative
+  z-index: 2
+  flex: 1 1 auto
+  max-width: 100%
+  min-width: 1px
+  display: flex
+  flex-direction: column
+  &__header
+    position: relative
+    height: 72px
+    flex: 0 0 72px
+    height: 72px
+    display: flex
+    align-items: center
+    padding: 0 24px
+    // grow and overflow from the sidebar
+    // background-image: linear-gradient(90deg, rgba(#25A5D2, .1) 1%, rgba(#C48DF1, .1) 32%, rgba(#9B35F0, .1) 100%)
+    border-bottom: 1px solid #DDE1E6
+
+  &__user
+    display: flex
+    align-items: center
+  &__user-avatar
+    flex: 0 0 auto
+    margin-right: 16px
+
+  &__user-name
+    font-size: 16px
+    font-weight: 600
+
+  &__actions
+    margin-left: auto
+
+  &__action-more
+    size: 24px
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    color: $fontColorGray
+    transition: .25s $ease
+    .ico-more
+      font-size: 18px
+      transform: rotate(90deg)
+    .dropdown__hidden
+      // relative to header
+      top: 71px
+    &:hover, &.is-active
+      color: $colorBlue
+
+  &__messages
+    flex: 1 1 auto
+    display: flex
+    flex-direction: column
+    padding: 24px
+    justify-content: flex-end
+  &__scrollable
+    position: relative
+    flex: 1 1 auto
+    display: flex
+    flex-direction: column
+    overflow-y: scroll
+
+  &__create
+    border-top: 1px solid #DDE1E6

@@ -40,7 +40,7 @@ class UserMenu extends Component {
         },
         {
           id: 4,
-          link: "/messages",
+          modal: "messages",
           name: "Сообщения",
           icon: "menu-messages",
           counter: null

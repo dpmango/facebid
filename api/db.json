@@ -4,6 +4,11 @@
   },
   "menuCounters": [
     {
+      "id": 4,
+      "name": "messages",
+      "counter": 3
+    },
+    {
       "id": 5,
       "name": "notifications",
       "counter": 9
@@ -752,6 +757,122 @@
         "isPublishedShareBonus": false,
         "isPublishedTop": true
       }
+    }
+  ],
+  "messageDialogs": [
+    {
+      "id": 1,
+      "type": "private",
+      "user": {
+        "avatar": "userAvatar_2.jpg",
+        "name": "Vasilissa, 19"
+      },
+      "content": "Пример текста сообщения"
+    },
+    {
+      "id": 2,
+      "type": "private",
+      "user": {
+        "avatar": "userAvatar_3.jpg",
+        "name": "Vasilissa, 19"
+      },
+      "content": "Пример очень длинного текста сообщения"
+    },
+    {
+      "id": 3,
+      "type": "private",
+      "user": {
+        "avatar": "userAvatar_4.jpg",
+        "name": "MurMur, 23"
+      },
+      "content": "Ты тут?"
+    },
+    {
+      "id": 4,
+      "type": "private",
+      "user": {
+        "avatar": "userAvatar_5.jpg",
+        "name": "OlgaMsc, 23"
+      },
+      "content": "Пойдем в кино?"
+    },
+    {
+      "id": 5,
+      "type": "private",
+      "user": {
+        "avatar": "userAvatar_2.jpg",
+        "name": "Vasilissa, 19"
+      },
+      "content": "Пример текста сообщения"
+    },
+    {
+      "id": 6,
+      "type": "private",
+      "user": {
+        "avatar": "userAvatar_3.jpg",
+        "name": "Vasilissa, 19"
+      },
+      "content": "Пример очень длинного текста сообщения"
+    },
+    {
+      "id": 7,
+      "type": "private",
+      "user": {
+        "avatar": "userAvatar_4.jpg",
+        "name": "MurMur, 23"
+      },
+      "content": "Ты тут?"
+    },
+    {
+      "id": 8,
+      "type": "private",
+      "user": {
+        "avatar": "userAvatar_5.jpg",
+        "name": "OlgaMsc, 23"
+      },
+      "content": "Пойдем в кино?"
+    }
+  ],
+  "messageChat": [
+    {
+      "id": 1,
+      "type": "private",
+      "user": {
+        "avatar": "userAvatar_2.jpg",
+        "name": "Vasilissa, 19"
+      },
+      "messages": [
+        {
+          "id": 1,
+          "origin": "incoming",
+          "content": {
+            "type": "text",
+            "text": "Я пишу тебе по поводу Миши, я его сестра. Он хочет извиниться"
+          },
+          "timestamp": "2018-09-13T21:25:43.511Z",
+          "isRead": true
+        },
+        {
+          "id": 2,
+          "origin": "outgoing",
+          "content": {
+            "type": "text",
+            "text": "Так пусть сам напишет. Я не злюсь на него больше"
+          },
+          "timestamp": "2018-09-13T21:25:43.511Z",
+          "isRead": true
+        },
+        {
+          "id": 3,
+          "origin": "incoming",
+          "content": {
+            "type": "text",
+            "text": "Ты его заблокировала. А пришли свои фотографии, посмотрю хоть"
+          },
+          "timestamp": "2018-09-13T21:25:43.511Z",
+          "isRead": true
+        }
+      ]
     }
   ]
 }

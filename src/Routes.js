@@ -34,11 +34,6 @@ export const Profile = MyLoadable({
   modules: ['./pages/Profile'],
   webpack: () => [require.resolveWeak('./pages/Profile')]
 });
-export const Messages = MyLoadable({
-  loader: () => import("./pages/Messages"),
-  modules: ['./pages/Messages'],
-  webpack: () => [require.resolveWeak('./pages/Messages')]
-});
 export const News = MyLoadable({
   loader: () => import("./pages/News"),
   modules: ['./pages/News'],
@@ -85,12 +80,6 @@ export const routes = [
     protected: true,
     path: '/profile/:id',
     component: Profile
-  },
-  {
-    isExact: false,
-    protected: true,
-    path: '/messages',
-    component: Messages
   },
   {
     isExact: false,

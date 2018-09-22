@@ -1,0 +1,47 @@
+
+// message
+.ms-message
+  max-width: 540px
+  margin-bottom: 12px
+  &:last-child
+    margin-bottom: 0
+
+  &__content
+    font-family: $roboto
+    font-size: 16px
+    line-height: 1.5
+    // content types
+    &--text
+      padding: 8px 16px
+
+  &__meta
+    margin-top: 5px
+    display: flex
+    align-items: center
+
+  &__timestamp
+    color: $colorPlatinum
+    font-size: 12px
+    font-weight: 500
+
+  &__status
+    color: $colorBlue
+    margin-right: 5px
+    font-size: 10px
+
+  &--incoming
+    margin-right: auto
+    .ms-message
+      &__content
+        background-color: #F3F7FB
+        border-radius: 20px 20px 20px 0
+
+  &--outgoing
+    margin-left: auto
+    .ms-message
+      &__content
+        background-color: $colorBlue
+        color: white
+        border-radius: 20px 20px 0 20px
+      &__status
+        margin-left: auto

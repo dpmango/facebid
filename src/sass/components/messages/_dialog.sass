@@ -1,0 +1,172 @@
+
+
+.ms-dialogs
+  position: relative
+  z-index: 2
+  flex: 0 0 305px
+  max-width: 305px
+  min-width: 1px
+  min-height: 0
+  display: flex
+  flex-direction: column
+  border-right: 1px solid #DDE1E6
+  &__header
+    padding: 16px 0px
+    flex: 0 0 72px
+    height: 72px
+    border-bottom: 1px solid #DDE1E6
+  &__tabs
+    display: flex
+    align-items: center
+
+  &__tab
+    position: relative
+    flex: 0 1 50%
+    max-width: 50%
+    padding: 12px 0px
+    text-align: center
+    font-size: 14px
+    font-weight: 500
+    cursor: pointer
+    transition: color .25s $ease
+    &.is-active
+      color: $colorBlue
+    &:first-child
+      padding-right: 35px
+      text-align: right
+    &:last-child
+      text-align: left
+      padding-left: 35px
+    &:first-child
+      // border right first child
+      &::after
+        display: inline-block
+        content: ' '
+        position: absolute
+        top: 0
+        bottom: 0
+        right: 0
+        background: #DDE1E6
+        width: 1px
+
+  &__tab-name
+    display: inline-block
+    position: relative
+
+  &__tab-counter
+    position: absolute
+    top: calc(3px - 16px)
+    right: -26px
+    background: $colorBlue
+    color: white
+    min-size: 16px
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    font-size: 10px
+    font-weight: 600
+    border-radius: 50%
+
+  &__search
+    flex: 0 0 auto
+    position: relative
+    background: white
+    border-bottom: 1px solid #DDE1E6
+    input
+      -webkit-appearance: none
+      display: block
+      width: 100%
+      font-family: $defaultFamily
+      font-size: 14px
+      background: white
+      border: 0
+      // icon offset left
+      padding: 15px 20px 15px 48px
+      border-radius: 20px
+      transition: .25s $ease
+      &::placeholder
+        color: #828E9A
+      &:focus
+        border-color: $colorBlue
+
+  &__search-btn
+    size: 24px
+    position: absolute
+    z-index: 2
+    top: 50%
+    left: 16px
+    transform: translate(0,-50%)
+    font-size: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    color: $grayColor
+    transition: color .25s $ease
+    cursor: pointer
+    .ico
+      font-size: 17.5px
+
+    &:hover
+      color: $colorBlue
+
+
+  &__scrollable
+    flex: 1 1 auto
+    width: 100%
+    background: rgba(#828E9A, .03)
+    overflow-y: scroll
+
+
+
+
+.ms-dialog
+  position: relative
+  display: flex
+  align-items: center
+  min-height: 72px
+  width: 100%
+  cursor: pointer
+  background: rgba(#828E9A, .03)
+  transition: .25s $ease
+  &::after
+    display: inline-block
+    content: ' '
+    position: absolute
+    bottom: 0
+    right: 0
+    left: calc(16px + 16px + 48px )
+    height: 1px
+    background: #DDE1E6
+  &:last-child
+    &::after
+      display: none
+
+  &__avatar
+    position: relative
+    padding: 0 16px
+    // position marks there
+
+  &__content
+    flex: 1 1 auto
+    min-width: 1px
+
+  &__user-name
+    font-size: 16px
+    line-height: 1.5
+    transition: .2s $ease
+
+  &__short-text
+    +text-overflow
+    font-size: 13px
+    color: #6A7581
+    line-height: 1.38
+    font-family: $roboto
+
+
+  &.is-current, &:hover
+    background: rgba($colorBlue, .03)
+  &:hover
+    .ms-dialog__user-name
+      color: $colorBlue

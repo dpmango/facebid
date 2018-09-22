@@ -9,6 +9,7 @@ import ShareModal from './Modal/ShareModal';
 import CreateEvent from './Events/Create';
 import Settings from './ProfileSettings/Settings';
 import Notifications from './Notifications/Notifications';
+import Messages from './Messages/Messages';
 
 class Common extends Component {
   render(){
@@ -23,6 +24,7 @@ class Common extends Component {
           <React.Fragment>
             <Notifications />
             <Settings />
+            <Messages />
           </React.Fragment>
         }
       </Fragment>
