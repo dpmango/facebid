@@ -140,7 +140,7 @@ class ProfileHeadGallery extends Component{
       // http://idangero.us/swiper/api/
       watchOverflow: true,
       setWrapperSize: false,
-      spaceBetween: 17,
+      spaceBetween: 10,
       slidesPerView: 'auto',
       normalizeSlideIndex: true,
       freeMode: true,
@@ -156,7 +156,7 @@ class ProfileHeadGallery extends Component{
       // react specific params
       // https://github.com/kidjp85/react-id-swiper
       containerClass: 'p-head-gal__full swiper-container',
-      slideClass: 'p-head-gal__iamge',
+      slideClass: 'p-head-gal__image',
       renderPrevButton: () => <button className="p-head-gal__full-prev"><SvgIcon name="arrow-left" /></button>,
       renderNextButton: () => <button className="p-head-gal__full-next"><SvgIcon name="arrow-right" /></button>,
 
@@ -184,19 +184,16 @@ class ProfileHeadGallery extends Component{
         <Swiper
           ref={node => this.swiperThumbs = node ? node.swiper : null }
           {...SwiperParamsThumbs}>
-          { gallery.thumbs.map((thumb, index) => {
-            return (
-              <Thumb
-                key={index}
-                image={thumb}
-                index={index}
-                currentSlide={currentSlide}
-                editMode={editMode}
-                clickHandler={this.thumbClick}
-                fileRemoveHandler={this.fileRemoved}
-              />
-            )
-          }) }
+          { gallery.thumbs.map((thumb, index) => (
+            <Thumb
+              key={index}
+              image={thumb}
+              index={index}
+              currentSlide={currentSlide}
+              editMode={editMode}
+              clickHandler={this.thumbClick}
+              fileRemoveHandler={this.fileRemoved} />
+          ))}
           { editMode &&
             <AddImage
               clickHandler={this.thumbClick}
@@ -216,7 +213,8 @@ class ProfileHeadGallery extends Component{
                   <div
                     key={index}
                     className="p-head-gal__image">
-                    {RenderImage(slide, "gallery")}
+                    <div className="p-head-gal__image-blur">{RenderImage(slide, "gallery")}</div>
+                    <div className="p-head-gal__image-main">{RenderImage(slide, "gallery")}</div>
                   </div>
                 )
               }) }

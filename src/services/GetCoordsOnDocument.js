@@ -1,4 +1,4 @@
-import isRetinaDisplay from './isRetinaDisplay';
+import isRetinaDisplay from 'helpers/isRetinaDisplay';
 
 const GetCoordsOnDocument = (elem) => {
   var box = elem.getBoundingClientRect();

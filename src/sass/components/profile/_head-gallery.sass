@@ -35,8 +35,8 @@
       right: 32px
 
   &__thumb
-    flex: 0 0 135px
-    size: 135px
+    flex: 0 0 110px
+    size: 110px
     position: relative
     z-index: 1
     overflow: hidden
@@ -53,7 +53,12 @@
       transition: .25s $ease
       pointer-events: none
     img
-      width: 100%
+      position: absolute
+      top: 0
+      left: 0
+      min-height: 100%
+      min-width: 100%
+      // width: 100%
 
     &-remove, &-add
       position: absolute
@@ -110,63 +115,112 @@
     border-radius: 4px
     overflow: hidden
     color: white
+    background: #333333
+    box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
+    border-radius: 4px
   &__full
-    margin-top: 16px
+    position: relative
+    // margin-top: 16px
+    // max-height: 500px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      z-index: 1
+      top: 0
+      left: 0
+      right: 0
+      opacity: 0.5
+      height: 110px
+      background-image: linear-gradient(0deg, rgba(0,0,0,0.00) 0%, #000000 100%)
     &-prev, &-next
       position: absolute
       z-index: 2
-      top: 50%
-      size: 32px
       background: transparent
-      // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.10)
-      display: flex
-      align-items: center
-      justify-content: center
-      text-align: center
-      color: white
+      top: 0
+      bottom: 0
+      width: 50%
       font-size: 0
-      transform: translateY(-50%)
+      opacity: 0
+      color: white
+      display: flex
+      flex-direction: column
+      justify-content: center
+      padding: 10px 32px
       transition: .25s $ease
       .ico
-        font-size: 10px
-      &:hover
-        background: rgba(black, .75)
+        font-size: 11px
+        filter: drop-shadow(0 2px 4px 0 rgba(0,0,0,0.30))
       &.swiper-button-disabled
         opacity: .5
 
     &-prev
-      left: 32px
-
+      left: 0px
+      align-items: flex-start
+      transform: translateX(-8px)
     &-next
-      right: 32px
+      right: 0px
+      align-items: flex-end
+      transform: translateX(8px)
+
+    &:hover
+      .p-head-gal__full
+        &-next, &-prev
+          opacity: 1
+          transform: translateX(0)
+
 
   &__image
     position: relative
     flex: 0 0 auto
     font-size: 0
+    height: 500px
+  &__image-main
     img
-      width: 100%
+      position: absolute
+      z-index: 2
+      top: 50%
+      left: 50%
+      height: 100%
+      transform: translate(-50%,-50%)
+  &__image-blur
+    pointer-events: none
+    user-select: none
+    opacity: .5
+    // filter: blur(8px)
+    filter: blur(15px)
+    img
+      position: absolute
+      z-index: 1
+      top: 50%
+      left: 50%
+      // width: 100%
+      height: 150%
+      transform: translate(-50%,-50%)
 
   &__close-full
     position: absolute
     top: 30px
     right: 20px
-    z-index: 2
+    z-index: 3
     size: 24px
     display: flex
     align-items: center
     justify-content: center
     font-size: 0
     cursor: pointer
+    transition: .25s $ease
     .ico
       font-size: 11px
+    &:hover
+      transform: scale(1.2)
 
   &__counter
     position: absolute
     display: flex
     align-items: center
     text-align: center
-    z-index: 2
+    z-index: 3
     bottom: 30px
     left: 24px
     background: rgba(black, .5)
@@ -183,7 +237,7 @@
 
   &__abuse
     position: absolute
-    z-index: 2
+    z-index: 3
     right: 24px
     bottom: 30px
 

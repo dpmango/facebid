@@ -3,8 +3,6 @@ import SvgIcon from '../Helpers/SvgIcon';
 import RenderImage from 'helpers/RenderImage';
 
 class Thumb extends Component {
-  // avatar uploader
-
   removeFile = () => {
     this.props.fileRemoveHandler(this.props.index)
   }
@@ -28,7 +26,7 @@ class Thumb extends Component {
             <SvgIcon name="remove-attachment" />
           </div>
         }
-        {RenderImage(image, "gallery")}
+        {RenderImage(image, "gallery", true)}
       </div>
     )
   }

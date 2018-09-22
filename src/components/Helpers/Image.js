@@ -8,7 +8,7 @@ const Image = (props) => {
   const folderName = folder ? folder + "/" : ""
   return (
     <React.Fragment>
-      <img src={require(`../../images/${folderName}${imgName}.${imgExt}`)} srcSet={require(`../../images/${folderName}${imgName}@2x.${imgExt}`)  + ' 2x'} alt=""/>
+      <img src={require(`images/${folderName}${imgName}.${imgExt}`)} srcSet={require(`images/${folderName}${imgName}@2x.${imgExt}`)  + ' 2x'} alt=""/>
     </React.Fragment>
   )
 }
