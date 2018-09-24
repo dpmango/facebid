@@ -891,6 +891,45 @@
           "isRead": true
         }
       ]
+    },
+    {
+      "id": 11,
+      "type": "request",
+      "welcomeMessage": "Привет, Аделина! Мы вместе отдыхали в Греции, Помнишь? \nКак на счет того, чтобы съездить снова?",
+      "user": {
+        "avatar": "userAvatar_2.jpg",
+        "name": "MurMur, 19",
+        "userId": 2
+      }
+    }
+  ],
+  "messageRequests": [
+    {
+      "id": 11,
+      "type": "private",
+      "user": {
+        "avatar": "userAvatar_2.jpg",
+        "name": "Vasilissa, 31"
+      },
+      "content": "Новый запрос"
+    },
+    {
+      "id": 12,
+      "type": "private",
+      "user": {
+        "avatar": "userAvatar_3.jpg",
+        "name": "Vasilissa, 19"
+      },
+      "content": "Новый запрос"
+    },
+    {
+      "id": 13,
+      "type": "private",
+      "user": {
+        "avatar": "userAvatar_4.jpg",
+        "name": "MurMur, 23"
+      },
+      "content": "Новый запрос"
     }
   ]
 }

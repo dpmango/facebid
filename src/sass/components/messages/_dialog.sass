@@ -130,17 +130,23 @@
   cursor: pointer
   background: rgba(#828E9A, .03)
   transition: .25s $ease
-  &::after
+  &::after, &::before
     display: inline-block
     content: ' '
     position: absolute
     bottom: 0
     right: 0
-    left: calc(16px + 16px + 48px )
     height: 1px
+  &::before
+    left: calc(16px + 16px + 48px )
     background: #DDE1E6
+  &::after
+    left: 100%
+    background: $gradient
+    transition: .25s $ease
+
   &:last-child
-    &::after
+    &::before
       display: none
 
   &__avatar
@@ -164,9 +170,12 @@
     line-height: 1.38
     font-family: $roboto
 
-
-  &.is-current, &:hover
-    background: rgba($colorBlue, .03)
   &:hover
+    background: rgba($colorBlue, .03)
     .ms-dialog__user-name
       color: $colorBlue
+
+  &.is-current
+    background: rgba($colorBlue, .03)
+    &::after
+      left: calc(16px + 16px + 48px )

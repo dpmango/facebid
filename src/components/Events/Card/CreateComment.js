@@ -49,7 +49,7 @@ class CreateComment extends Component {
 
     // prevent submiting blank messages
     // any other validations ?
-    if ( this.state.text.replace(/\s/g, '').length === 0 ){
+    if ( text.replace(/\s/g, '').length === 0 ){
       return null
     }
 
@@ -60,7 +60,7 @@ class CreateComment extends Component {
           "avatar": userDetails.avatar,
           "name": userDetails.fullname
         },
-        text: this.state.text
+        text: text
       })
       .then(res => {
         this.props.onNewComment()

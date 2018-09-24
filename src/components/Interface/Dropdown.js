@@ -12,8 +12,9 @@ class Dropdown extends Component{
   }
 
   clickHandler = () => {
-    if ( this.props.clickHandler )
-      this.props.clickHandler
+    if ( this.props.clickHandler ){
+      this.props.clickHandler()
+    }
 
     this.setState({
       opened: !this.state.opened

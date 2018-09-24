@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import api from 'services/Api';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import Image from 'components/Helpers/Image';
@@ -11,6 +11,7 @@ class Sidebar extends Component {
     this.state = {
       activeTab: 1,
       dialogs: [],
+      requests: [],
       search: ''
     }
   }
@@ -29,8 +30,34 @@ class Sidebar extends Component {
       })
   }
 
+  getDialogs = () => {
+    api
+      .get("messageDialogs")
+      .then(res => {
+        this.setState({
+          dialogs: res.data
+        })
+      })
+  }
+
+  getRequests = () => {
+    api
+      .get("messageRequests")
+      .then(res => {
+        this.setState({
+          requests: res.data
+        })
+      })
+  }
+
   selectTab = (id) => {
     this.setState({activeTab: id})
+
+    if ( id !== this.state.activeTab ){
+      console.log(id)
+      id === 1 && this.getDialogs()
+      id === 2 && this.getRequests()
+    }
   }
 
   searchChanged = (e) => {
@@ -56,10 +83,32 @@ class Sidebar extends Component {
     this.props.onDialogClick(id)
   }
 
+  renderDialog = (dialog) => {
+    return(
+      <Fragment>
+        <div className="ms-dialog__avatar">
+          {dialog.type === "private" &&
+            <div className="avatar avatar--medium">
+              <Image file={dialog.user.avatar} />
+            </div>
+          }
+          {dialog.type === "group" &&
+            <div className="avatar avatar--medium">
+              <Image file={dialog.user.avatar} />
+            </div>
+          }
+        </div>
+        <div className="ms-dialog__content">
+          <div className="ms-dialog__user-name">{dialog.user.name}</div>
+          <div className="ms-dialog__short-text">{dialog.content}</div>
+        </div>
+      </Fragment>
+    )
+  }
   render(){
     const {
       props: {activeDialog},
-      state: {activeTab, search, dialogs}
+      state: {activeTab, search, dialogs, requests}
     } = this;
 
     return(
@@ -81,43 +130,38 @@ class Sidebar extends Component {
           </div>
         </div>
 
-        <div className="ms-dialogs__search">
-          <div className="ms-dialogs__search-btn">
-            <SvgIcon
-              onClick={this.searchDialogis}
-              name="search" />
+        { activeTab === 1 &&
+          <div className="ms-dialogs__search">
+            <div className="ms-dialogs__search-btn">
+              <SvgIcon
+                onClick={this.searchDialogis}
+                name="search" />
+            </div>
+            <input
+              type="text"
+              name="search"
+              placeholder="Введите фразу для поиска"
+              onChange={this.searchChanged}
+              onKeyPress={this.searchKeyPressed}
+              value={search} />
           </div>
-          <input
-            type="text"
-            name="search"
-            placeholder="Введите фразу для поиска"
-            onChange={this.searchChanged}
-            onKeyPress={this.searchKeyPressed}
-            value={search} />
-        </div>
+        }
 
         <div className="ms-dialogs__scrollable">
-          {dialogs.map(dialog => (
+          {activeTab === 1 && dialogs.map(dialog => (
             <div
               key={dialog.id}
               onClick={this.dialogClick.bind(this, dialog.id)}
               className={"ms-dialog" + (activeDialog === dialog.id ? " is-current" : "")}>
-              <div className="ms-dialog__avatar">
-                {dialog.type === "private" &&
-                  <div className="avatar avatar--medium">
-                    <Image file={dialog.user.avatar} />
-                  </div>
-                }
-                {dialog.type === "group" &&
-                  <div className="avatar avatar--medium">
-                    <Image file={dialog.user.avatar} />
-                  </div>
-                }
-              </div>
-              <div className="ms-dialog__content">
-                <div className="ms-dialog__user-name">{dialog.user.name}</div>
-                <div className="ms-dialog__short-text">{dialog.content}</div>
-              </div>
+              {this.renderDialog(dialog)}
+            </div>
+          ))}
+          {activeTab === 2 && requests.map(dialog => (
+            <div
+              key={dialog.id}
+              onClick={this.dialogClick.bind(this, dialog.id)}
+              className={"ms-dialog" + (activeDialog === dialog.id ? " is-current" : "")}>
+              {this.renderDialog(dialog)}
             </div>
           ))}
         </div>

@@ -13,6 +13,7 @@
     transition: .25s $ease
 
   &__menu
+    position: relative
     list-style: none
     display: flex
     flex-direction: column
@@ -22,17 +23,32 @@
     border: 1px solid #DDE1E6
     box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
     border-radius: 4px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      z-index: 1
+      top: -8px
+      right: calc(35px - 8px)
+      size: 16px
+      border: 1px solid #DDE1E6
+      background: white
+      transform: rotate(45deg)
 
   // as the items could be a pure li wrapper
   // or styled link with class inside
   li, &__menu-item
     width: 100%
+    position: relative
+    z-index: 2
+    background: white
 
   &__menu-item
     position: relative
     font-family: $roboto
     color: #848E99
     font-size: 14px
+    font-weight: 500
     padding: 8px 16px
     display: flex
     align-items: center

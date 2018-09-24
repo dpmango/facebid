@@ -8,16 +8,20 @@ import EmptyChat from './EmptyChat';
 import ChatHeader from './ChatHeader';
 import ChatMessages from './ChatMessages';
 import ChatCreate from './ChatCreate';
+import ChatRequestMessage from './ChatRequestMessage';
 
 class Chat extends Component {
   constructor(){
     super()
 
-    this.state = {
+    this.blankState = {
       type: null,
       user: null,
-      messages: []
+      messages: [],
+      welcomeMessage: null
     }
+
+    this.state = this.blankState
   }
 
   // static getDerivedStateFromProps(nextProps, prevState){
@@ -37,17 +41,26 @@ class Chat extends Component {
 
   getMessages = () => {
     api
-      // ?id=${this.props.activeDialog}
-      .get(`messageChat?id=1`)
+      .get(`messageChat?id=${this.props.activeDialog}`)
       .then(res => {
         setTimeout(() => {
+          // TODO - on real server blank error should not happens
+          // in test env we have only couple chats with messages
+          if ( res.data.length === 0 ){
+            this.setState(this.blankState)
+            return false
+          }
+          // TODO - refactor to json object responce with real server
+          const resp = res.data[0];
+
           this.setState({
             ...this.state,
-            type: res.data[0].type,
-            user: res.data[0].user,
-            messages: res.data[0].messages
+            type: resp.type,
+            user: resp.user,
+            messages: resp.messages,
+            welcomeMessage: resp.welcomeMessage
           })
-        }, 500)
+        }, 100) // emulate timeout - TODO - remove
       })
       .catch(err => {
         console.log('something wrong happens when fetching messageChat', err)
@@ -69,7 +82,7 @@ class Chat extends Component {
   render(){
     const {
       props: { activeDialog },
-      state: { user, messages } // + type
+      state: { user, messages, type, welcomeMessage }
     } = this;
 
     return(
@@ -81,11 +94,19 @@ class Chat extends Component {
             <ChatHeader
               user={user} />
 
-            <ChatMessages
-              messages={messages} />
+            { type !== "request" ?
+              <Fragment>
+                <ChatMessages
+                  messages={messages} />
 
-            <ChatCreate
-              onSend={this.createSubmit} />
+                <ChatCreate
+                  onSend={this.createSubmit} />
+              </Fragment>
+              :
+              <ChatRequestMessage
+                message={welcomeMessage}
+                user={user} />
+            }
           </Fragment>
         }
       </div>

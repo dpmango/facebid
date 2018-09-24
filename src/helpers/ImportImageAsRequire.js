@@ -5,7 +5,6 @@ const ImportImageAsRequire = (img, folder) => {
   const imgExt = img.split('.').pop()
   const imgName = img.slice(0, img.length - imgExt.length - 1)
 
-  console.log(isRetinaDisplay())
   let requiredImage = isRetinaDisplay() ?
     require(`images/${folderName}${imgName}@2x.${imgExt}`) :
     require(`images/${folderName}${imgName}.${imgExt}`)
