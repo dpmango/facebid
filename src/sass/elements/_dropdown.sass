@@ -14,49 +14,67 @@
 
   &__menu
     list-style: none
+    display: flex
+    flex-direction: column
     margin: 0
     padding: 0
     background: #FFFFFF
     border: 1px solid #DDE1E6
     box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
     border-radius: 4px
-    li
-      position: relative
-      display: block
-      font-family: $roboto
-      color: #848E99
-      font-size: 14px
-      padding: 8px 16px
-      display: flex
-      align-items: center
+
+  // as the items could be a pure li wrapper
+  // or styled link with class inside
+  li, &__menu-item
+    width: 100%
+
+  &__menu-item
+    position: relative
+    font-family: $roboto
+    color: #848E99
+    font-size: 14px
+    padding: 8px 16px
+    display: flex
+    align-items: center
+    transition: .25s $ease
+    &::after
+      // emulate border
+      display: inline-block
+      content: ' '
+      position: absolute
+      bottom: 0
+      left: 16px
+      right: 16px
+      height: 1px
+      background: #F4F7FB
+    &:last-child
       &::after
-        // emulate border
-        display: inline-block
-        content: ' '
-        position: absolute
-        bottom: 0
-        left: 16px
-        right: 16px
-        height: 1px
-        background: #F4F7FB
-      &:last-child
-        &::after
-          display: none
-      span
-        display: inline-block
-        margin-left: 8px
-        white-space: nowrap
-        
-    &-icon
-      size: 24px
-      display: flex
-      align-items: center
-      justify-content: center
-      .ico
-        &-dislike
-          font-size: 16px
-        &-lock
-          font-size: 18px
+        display: none
+    span
+      display: inline-block
+      margin-left: 8px
+      white-space: nowrap
+    &:hover
+      color: $colorBlue
+
+  &__menu-icon
+    size: 24px
+    display: flex
+    align-items: center
+    justify-content: center
+    .ico
+      // default is 1rem
+      font-size: 16px
+      &-dislike
+      &-lock
+        font-size: 18px
+      &-profile-thin
+      &-bell-thin
+        font-size: 18px
+      &-trashbin
+      &-flag
+
+
 
   &.is-active
     .dropdown

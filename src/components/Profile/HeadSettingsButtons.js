@@ -1,24 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import SvgIcon from '../Helpers/SvgIcon';
-import { openModal } from '../../actions/modal';
+import SvgIcon from 'components/Helpers/SvgIcon';
+import Dropdown from 'components/Interface/Dropdown';
+import { openModal } from 'actions/modal';
 
 class HeadSettingsButtons extends Component{
-
-  constructor(){
-    super()
-
-    this.state = {
-      moreMenuOpened: false,
-    }
-  }
-
-  toggleMoreBtn = () => {
-    this.setState({
-      moreMenuOpened: !this.state.moreMenuOpened
-    })
-  }
 
   settingsClick = () => {
     // open settings modal page
@@ -35,8 +22,6 @@ class HeadSettingsButtons extends Component{
 
   render(){
 
-    const { moreMenuOpened } = this.state;
-
     if ( this.props.isMyProfile ){
       return(
         <div
@@ -47,27 +32,27 @@ class HeadSettingsButtons extends Component{
       )
     } else {
       return (
-        <div
-          onClick={this.toggleMoreBtn}
-          className={"p-head__settings-btn btn btn-circle dropdown" + (moreMenuOpened ? " is-active" : "")}>
-          <SvgIcon name="more" />
-          <div className="dropdown__hidden">
-            <ul className="dropdown__menu">
-              <li onClick={this.dislikeClick}>
-                <div className="dropdown__menu-icon">
-                  <SvgIcon name="dislike" />
-                </div>
-                <span>Пожаловаться</span>
-              </li>
-              <li onClick={this.lockClick}>
-                <div className="dropdown__menu-icon">
-                  <SvgIcon name="lock" />
-                </div>
-                <span>Заблокировать</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <Dropdown
+          extraClass="p-head__settings-btn btn btn-circle">
+          <ul className="dropdown__menu">
+            <li
+              className="dropdown__menu-item"
+              onClick={this.dislikeClick}>
+              <div className="dropdown__menu-icon">
+                <SvgIcon name="dislike" />
+              </div>
+              <span>Пожаловаться</span>
+            </li>
+            <li
+              className="dropdown__menu-item"
+              onClick={this.lockClick}>
+              <div className="dropdown__menu-icon">
+                <SvgIcon name="lock" />
+              </div>
+              <span>Заблокировать</span>
+            </li>
+          </ul>
+        </Dropdown>
       )
     }
   }

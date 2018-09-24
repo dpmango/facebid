@@ -856,7 +856,8 @@
       "type": "private",
       "user": {
         "avatar": "userAvatar_2.jpg",
-        "name": "Vasilissa, 19"
+        "name": "Vasilissa, 19",
+        "userId": 2
       },
       "messages": [
         {

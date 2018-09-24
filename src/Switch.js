@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 
 import Authorization from './hoc/Authorization';
 import ScrollTo from './services/ScrollTo';
-import { setClass } from './actions/page'
+import { setClass } from './actions/page';
+import { closeModal } from './actions/modal'
 
 class RenderSwitch extends React.Component {
 
@@ -19,6 +20,7 @@ class RenderSwitch extends React.Component {
     // disallow transition when switching between the tabs
     if (this.props.location.pathname !== prevProps.location.pathname) {
       ScrollTo(0, 300);
+      this.props.closeModal()
     }
 
     // set the page class when returning from service pages
@@ -61,7 +63,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setPageClass: (data) => dispatch(setClass(data))
+  setPageClass: (data) => dispatch(setClass(data)),
+  closeModal: () => dispatch(closeModal())
 });
 
 export default withRouter(

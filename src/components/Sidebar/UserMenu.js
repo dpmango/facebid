@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import api from 'services/Api'
-import { openModal, closeModal } from 'actions/modal';
+import { openModal } from 'actions/modal';
 
 class UserMenu extends Component {
 
@@ -158,7 +158,6 @@ class UserMenu extends Component {
               {!el.modal ?
                 <NavLink
                   className={this.isActiveLink(el.link) ? "is-active ": ""}
-                  onClick={this.props.closeModal}
                   to={el.link}
                   // activeClassName="is-active"
                   >
@@ -181,8 +180,7 @@ class UserMenu extends Component {
 }
 
 UserMenu.propTypes = {
-  openModal: PropTypes.func,
-  closeModal: PropTypes.func,
+  openModal: PropTypes.func
 }
 
 const mapStateToProps = (state) => ({
@@ -190,7 +188,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  closeModal: () => dispatch(closeModal()),
   openModal: (data) => dispatch(openModal(data))
 });
 

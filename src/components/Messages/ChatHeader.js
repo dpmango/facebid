@@ -1,28 +1,19 @@
 import React, {Component, Fragment} from 'react';
+import {Link} from 'react-router-dom';
 import Image from 'components/Helpers/Image';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import Loading from 'components/Helpers/Loading';
+import Dropdown from 'components/Interface/Dropdown';
 
 class ChatHead extends Component{
-  constructor(){
-    super();
-
-    this.state = {
-      moreMenuOpened: false
-    }
-  }
-
-  toggleMoreBtn = () => {
-    this.setState({
-      moreMenuOpened: !this.state.moreMenuOpened
-    })
-  }
-
+  // constructor(){
+  //   super();
+  //
+  // }
 
   render(){
     const {
-      props: {user},
-      state: {moreMenuOpened}
+      props: {user}
     } = this;
 
     return(
@@ -40,27 +31,45 @@ class ChatHead extends Component{
               <div className="ms-chat__user-name">{user.name}</div>
             </div>
             <div className="ms-chat__actions">
-              <div
-                onClick={this.toggleMoreBtn}
-                className={"ms-chat__action-more dropdown" + (moreMenuOpened ? " is-active" : "")}>
-                <SvgIcon name="more" />
-                <div className="dropdown__hidden">
-                  <ul className="dropdown__menu">
-                    <li>
+              <Dropdown
+                extraClass="ms-chat__action-more">
+                <ul className="dropdown__menu">
+                  <li>
+                    <Link
+                      className="dropdown__menu-item"
+                      to={`/profile/${user.userId}`}>
                       <div className="dropdown__menu-icon">
-                        <SvgIcon name="dislike" />
+                        <SvgIcon name="profile-thin" />
                       </div>
                       <span>Перейти в профиль</span>
-                    </li>
-                    <li>
-                      <div className="dropdown__menu-icon">
-                        <SvgIcon name="lock" />
-                      </div>
-                      <span>Заблокировать</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                    </Link>
+                  </li>
+                  <li className="dropdown__menu-item">
+                    <div className="dropdown__menu-icon">
+                      <SvgIcon name="bell-thin" />
+                    </div>
+                    <span>Отключить уведомления</span>
+                  </li>
+                  <li className="dropdown__menu-item">
+                    <div className="dropdown__menu-icon">
+                      <SvgIcon name="trashbin" />
+                    </div>
+                    <span>Очистить историю</span>
+                  </li>
+                  <li className="dropdown__menu-item">
+                    <div className="dropdown__menu-icon">
+                      <SvgIcon name="lock" />
+                    </div>
+                    <span>Заблокировать</span>
+                  </li>
+                  <li className="dropdown__menu-item">
+                    <div className="dropdown__menu-icon">
+                      <SvgIcon name="flag" />
+                    </div>
+                    <span>Пожаловаться</span>
+                  </li>
+                </ul>
+              </Dropdown>
             </div>
           </Fragment>
         }
