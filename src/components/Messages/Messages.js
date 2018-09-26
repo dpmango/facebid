@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Modal from '../Modal/Modal';
 import Sidebar from './Sidebar';
 import Chat from './Chat';
+import EmptyMessages from './EmptyMessages'
 import {closeModal} from 'actions/modal';
 
 class Messages extends Component {
@@ -11,7 +12,8 @@ class Messages extends Component {
     super(props)
     this.state = {
       modalName: 'messages',
-      activeDialog: null
+      activeDialog: null,
+      dialogsEmpty: false
     }
   }
 
@@ -23,10 +25,15 @@ class Messages extends Component {
     this.setState({activeDialog: id})
   }
 
+  dialogsEmpty = () => {
+    console.log("dialogsEmpty")
+    this.setState({dialogsEmpty: true})
+  }
+
   render(){
     const {
       state: {
-        modalName, activeDialog
+        modalName, activeDialog, dialogsEmpty
       },
       props: {
         activeModal
@@ -37,13 +44,18 @@ class Messages extends Component {
       <Modal
         isActive={activeModal === modalName}
         onHide={this.hide}>
-        <div className={"ms" + (activeDialog ? " ms--dialog-opened" : "")}>
-          <Sidebar
-            onDialogClick={this.dialogClick}
-            activeDialog={activeDialog} />
-          <Chat
-            activeDialog={activeDialog} />
-        </div>
+        { dialogsEmpty ?
+          <EmptyMessages />
+          :
+          <div className={"ms" + (activeDialog ? " ms--dialog-opened" : "")}>
+            <Sidebar
+              onDialogClick={this.dialogClick}
+              onEmpty={this.dialogsEmpty}
+              activeDialog={activeDialog} />
+            <Chat
+              activeDialog={activeDialog} />
+          </div>
+        }
       </Modal>
     )
   }

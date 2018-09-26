@@ -5,7 +5,7 @@ var config      = require('../config');
 
 gulp.task('minify:svg', function() {
   return gulp
-    .src(config.src.iconsSvg + '/**/*.svg')
+    .src(config.src.root + '/images/minifyme/**/*.svg')
     .pipe(plumber({
         errorHandler: config.errorHandler
     }))
@@ -25,5 +25,5 @@ gulp.task('minify:svg', function() {
 });
 
 gulp.task('minify:svg:watch', function() {
-    gulp.watch(config.src.iconsSvg + '/**/*.svg', ['sprite:svg']);
+    gulp.watch(config.src.root + '/images/minifyme/**/*.svg', ['minify:svg']);
 });

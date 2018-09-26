@@ -30,16 +30,6 @@ class Sidebar extends Component {
       })
   }
 
-  getDialogs = () => {
-    api
-      .get("messageDialogs")
-      .then(res => {
-        this.setState({
-          dialogs: res.data
-        })
-      })
-  }
-
   getRequests = () => {
     api
       .get("messageRequests")
@@ -48,6 +38,11 @@ class Sidebar extends Component {
           requests: res.data
         })
       })
+  }
+
+  noDialogs = () => {
+    // show empty window if nothing is present
+    this.props.onEmpty()
   }
 
   selectTab = (id) => {
@@ -105,9 +100,16 @@ class Sidebar extends Component {
       </Fragment>
     )
   }
+
+  getDialogClass = (dialog) => {
+    const {activeDialog} = this.props
+
+    return "ms-dialog"
+      + (activeDialog === dialog.id ? " is-current" : "")
+      + (dialog.haveUnread ? " is-unread" : "")
+  }
   render(){
     const {
-      props: {activeDialog},
       state: {activeTab, search, dialogs, requests}
     } = this;
 
@@ -152,7 +154,7 @@ class Sidebar extends Component {
             <div
               key={dialog.id}
               onClick={this.dialogClick.bind(this, dialog.id)}
-              className={"ms-dialog" + (activeDialog === dialog.id ? " is-current" : "")}>
+              className={this.getDialogClass(dialog)}>
               {this.renderDialog(dialog)}
             </div>
           ))}
@@ -160,11 +162,15 @@ class Sidebar extends Component {
             <div
               key={dialog.id}
               onClick={this.dialogClick.bind(this, dialog.id)}
-              className={"ms-dialog" + (activeDialog === dialog.id ? " is-current" : "")}>
+              className={this.getDialogClass(dialog)}>
               {this.renderDialog(dialog)}
             </div>
           ))}
         </div>
+
+        <button
+          className="ms-dialogs__blank-temp btn btn-primary"
+          onClick={this.noDialogs}>(tmp) "нет диалогов"</button>
       </div>
     )
   }
