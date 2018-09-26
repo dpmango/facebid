@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { notify } from 'reapop';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import Modal from '../Modal/Modal';
 // import SvgIcon from '../Helpers/SvgIcon';
 import Notification from './Notification';
@@ -54,6 +55,7 @@ class Notifications extends Component{
     return(
       <Modal
         isActive={activeModal === modalName}
+        containerClass="modal__container--scroller"
         onHide={this.hide}
         >
         {notifications.length > 0 &&
@@ -63,7 +65,12 @@ class Notifications extends Component{
                 Уведомления
               </div>
             </div>
-            <div className="modal__content">
+            <PerfectScrollbar
+              className="scrollbar-blue scrollbar-blue--modal modal__content modal__content--scrollable"
+              option={{
+                wheelSpeed: 1,
+                wheelPropagation: false,
+                suppressScrollX: true}}>
               <div className="ntf">
                 {notifications.map(ntf => (
                   <Notification
@@ -75,7 +82,7 @@ class Notifications extends Component{
                     timestamp={ntf.timestamp} />
                 ))}
               </div>
-            </div>
+            </PerfectScrollbar>
           </React.Fragment>
         }
         {notifications.length === 0 &&
