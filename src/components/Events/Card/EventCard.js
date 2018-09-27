@@ -13,6 +13,7 @@ import EventCardTop from './EventCardTop';
 import EventCardCta from './EventCardCta';
 import EventCardDate from './EventCardDate';
 import EventCardAction from './EventCardAction';
+import EventCardAdmin from './EventCardAdmin';
 import Comments from './Comments';
 import CreateComment from './CreateComment'
 
@@ -39,7 +40,7 @@ class EventCard extends Component {
     // this.scrollWindow = throttle(this.handleWindowScroll, 10);
     this.scrollWindow = this.handleWindowScroll
 
-    this.isMyEvent = props.type === "my-events"
+    this.isMyEvent = props.type === "my-events";
 
     this.isDeclined = this.actionFlag === "isDeclined"
   }
@@ -268,6 +269,10 @@ class EventCard extends Component {
             </div>
           </div>
         </div>
+
+        { (this.isMyEvent && actionFlag === "isPublishedFree") &&
+          <EventCardAdmin />
+        }
       </div>
     )
   }

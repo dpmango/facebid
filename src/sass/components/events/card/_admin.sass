@@ -1,0 +1,97 @@
+.ec-admin
+  // card management in my-events
+  background: white
+  &__header
+    display: flex
+    align-items: center
+    padding-left: 24px
+    padding-right: 24px
+  &__nav
+    flex: 1 1 auto
+    display: flex
+    align-items: center
+    padding: 16px 0
+    margin-left: -24px
+    margin-right: -24px
+  &__nav-el
+    // tmp fix
+    white-space: nowrap
+    flex: 0 0 auto
+    position: relative
+    display: flex
+    align-items: center
+    min-height: 40px
+    padding: 10px 24px
+    cursor: pointer
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      top: 0
+      bottom: 0
+      right: 0
+      width: 1px
+      background: #DDE1E6
+    &:first-child
+      // ewxtra space for the counter mark icon
+      padding-right: 40px
+    &:last-child
+      &::after
+        display: none
+    &:hover, &.is-active
+      .ec-admin
+        &__nav-title
+          color: $colorBlue
+    &.is-static
+      // for i.e event views are not clickable
+      cursor: default
+      &:hover
+        .ec-admin__nav-title
+          color: $fontColor
+
+  &__nav-icon
+    flex: 0 0 25px
+    max-width: 25px
+    .ico
+      &-checkmark
+        fill: white
+        font-size: 7px
+
+      &-bookmark
+        fill: $colorBlue
+        font-size: 18px
+      &-eye
+        font-size: 12px
+        fill: $fontColorGray
+
+  &__nav-title
+    display: inline-block
+    font-size: 14px
+    font-weight: 500
+    transition: .25s $ease
+  &__nav-counter
+    display: inline-block
+    color: #848E99
+    margin-left: 4px
+    font-size: 14px
+    font-weight: 500
+  &__nav-mark
+    position: absolute
+    top: 2px
+    right: calc(24px - 8px)
+
+    span
+      font-size: 10px
+      font-weight: 600
+
+  &__header-cta
+    flex: 0 0 auto
+    margin-left: auto
+
+  &__scrollable
+    height: 100vh
+
+  &__tab
+    display: none
+    &.is-active
+      display: block
