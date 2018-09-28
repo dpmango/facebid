@@ -1,1 +1,86 @@
+.ec-requests
+  padding: 16px 24px 24px
+  &__header
+    display: flex
+    align-items: center
+  &__filters
+    margin-left: auto
+    display: flex
+    align-items: center
+    margin-right: -24px
+  &__filter
+    position: relative
+    font-weight: 500
+    font-size: 14px
+    padding: 12px 24px
+    cursor: pointer
+    transition: .25s $ease
+    &:hover, &.is-active
+      color: $colorBlue
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      top: 0
+      bottom: 0
+      right: 0
+      width: 1px
+      background: #DDE1E6
+    &:last-child
+      &::after
+        display: none
+
 .ec-request
+  display: flex
+  padding: 24px 0
+  border-bottom: 1px solid #DDE1E6
+  &:last-child
+    border-bottom: 0
+    padding-bottom: 0
+  &__avatar
+    flex: 0 0 auto
+    padding-right: 16px
+  &__contents
+    flex: 1 1 auto
+  &__header
+    display: flex
+    align-items: center
+
+  &__user
+
+  &__user-row
+    display: flex
+    align-items: center
+  &__user-name
+    font-weight: 600
+    font-size: 16px
+    line-height: 1.5
+  &__user-status
+    margin-left: 8px
+  &__user-distance
+    font-size: 14px
+    font-family: $roboto
+    margin-top: 5px
+    color: #8894A3
+
+  &__timestamp
+    margin-left: auto
+    font-size: 14px
+    font-family: $roboto
+    color: $grayColor
+
+  &__message
+    margin: 1em 0
+    color: $grayColor
+    font-size: 16px
+    line-height: 1.5
+    font-family: $roboto
+
+  &__actions
+    display: flex
+    align-items: center
+
+  &__cta
+
+  &__sender
+    margin-left: auto

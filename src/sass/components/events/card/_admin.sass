@@ -2,10 +2,22 @@
   // card management in my-events
   background: white
   &__header
+    position: relative
     display: flex
     align-items: center
     padding-left: 24px
     padding-right: 24px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      bottom: 0
+      left: 24px
+      right: 24px
+      height: 1px
+      background: #DDE1E6
+      pointer-events: none
+
   &__nav
     flex: 1 1 auto
     display: flex
@@ -89,7 +101,7 @@
     margin-left: auto
 
   &__scrollable
-    height: 100vh
+    max-height: calc(100vh - 100px)
 
   &__tab
     display: none

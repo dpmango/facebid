@@ -776,6 +776,47 @@
       }
     }
   ],
+  "eventRequests": [
+    {
+      "id": 1,
+      "status": "acepted",
+      "timestamp": "2018-09-27T21:25:43.511Z",
+      "message": "Пример сообщения пользователя который он оставляет в заявке на участие в событии",
+      "user": {
+        "avatar": "userAvatar_2.jpg",
+        "username": "GeorgeWill",
+        "age": 24,
+        "isVerified": true,
+        "distance": "16 км от Вас"
+      }
+    },
+    {
+      "id": 2,
+      "status": "pending",
+      "timestamp": "2018-09-27T21:25:43.511Z",
+      "message": "Пример сообщения пользователя который он оставляет в заявке на участие в событии",
+      "user": {
+        "avatar": "userAvatar_3.jpg",
+        "username": "GeorgeWill",
+        "age": 24,
+        "isVerified": true,
+        "distance": "16 км от Вас"
+      }
+    },
+    {
+      "id": 3,
+      "status": "acepted",
+      "timestamp": "2018-09-27T23:25:43.511Z",
+      "message": "Пример сообщения пользователя который он оставляет в заявке на участие в событии",
+      "user": {
+        "avatar": "userAvatar_3.jpg",
+        "username": "GeorgeWill",
+        "age": 24,
+        "isVerified": true,
+        "distance": "16 км от Вас"
+      }
+    }
+  ],
   "messageDialogs": [
     {
       "id": 1,
