@@ -25,7 +25,6 @@ class HeadBottomButtons extends Component {
   }
 
   sendMessage = () => {
-    console.log('function triggered')
     this.toggleChat()
   }
 

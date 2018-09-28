@@ -84,3 +84,34 @@
 
   &__sender
     margin-left: auto
+
+  &__mini-chat
+    position: relative
+    display: flex
+    align-items: center
+    .avatar
+      position: absolute
+      top: 50%
+      left: 3px
+      transform: translateY(-50%)
+      z-index: 2
+    .ui-input
+      z-index: 1
+      &::after
+        display: inline-block
+        content: ' '
+        position: absolute -1px
+        z-index: 1
+        border-radius: 20px
+        background: $colorBlue
+      input
+        flex: 1 1 auto
+        position: relative
+        z-index: 2
+        background: white
+        border: 0
+        padding-left: 42px
+      .ico
+        z-index: 3
+        cursor: pointer
+        fill: $colorBlue

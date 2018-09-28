@@ -3,10 +3,20 @@ import { connect } from 'react-redux';
 import Image from 'components/Helpers/Image';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import ConvertTimestampToStr from 'helpers/ConvertTimestampToStr';
+import SimpleInput from 'components/Forms/SimpleInput';
 import { openModal } from 'actions/modal'
 
 class EventCardRequest extends Component {
+  constructor(){
+    super()
 
+    this.state = {
+      chatText: ""
+    }
+  }
+
+
+  // cta actions
   acceptRequest = () => {
 
   }
@@ -15,16 +25,40 @@ class EventCardRequest extends Component {
 
   }
 
+  // mini chat
+  handleChange = (e) => {
+    let fieldName = e.target.name;
+    let fleldVal = e.target.value;
+    this.setState({...this.state, [fieldName]: fleldVal});
+  }
+
+  sendMessage = () => {
+
+  }
+
+  // open chat with specific dialog
+  goToChat = () => {
+    this.props.openModal({
+      name: "messages",
+      "options": {
+        "activeDialog": 1
+      }
+    })
+  }
+
   render(){
     const {
-      request: {
-        id,
-        status,
-        timestamp,
-        message,
-        user
-      }
-    } = this.props
+      props: {
+        request: {
+          id,
+          status,
+          timestamp,
+          message,
+          user
+        }
+      },
+      // state: {chatText}
+    } = this
 
     return(
       <div className="ec-request">
@@ -100,19 +134,31 @@ class EventCardRequest extends Component {
   }
 
   renderSender = (status) => {
+    const { chatText } = this.state;
     switch(status){
       case "pending":
         return(
           <div className="ec-request__sender">
-
+            <div className="ec-request__mini-chat">
+              <div className="avatar avatar--small">
+                <Image file={this.props.userDetails.avatar} />
+              </div>
+              <SimpleInput
+                name="chatText"
+                placeholder="Написать сообщение"
+                icon="sent"
+                value={chatText}
+                iconClickHandler={this.sendMessage}
+                onChangeHandler={this.handleChange} />
+            </div>
           </div>
         )
-        break
+        break;
       default:
         return(
           <div className="ec-request__sender">
             <button
-              onClick={this.props.openModal.bind(this, 'messages')}
+              onClick={this.goToChat}
               className="btn btn-outline btn--iconed">
               <SvgIcon name="comments" />
               <span>перейти в чат</span>
@@ -124,8 +170,12 @@ class EventCardRequest extends Component {
 
 }
 
+const mapStateToProps = (state) => ({
+  userDetails: state.user.userDetails
+})
+
 const mapDispatchToProps = (dispatch) => ({
   openModal: (data) => dispatch(openModal(data))
 })
 
-export default connect(null, mapDispatchToProps)(EventCardRequest)
+export default connect(mapStateToProps, mapDispatchToProps)(EventCardRequest)

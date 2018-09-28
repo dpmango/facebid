@@ -1,20 +1,31 @@
 import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modal';
 
 const initialState = {
-  activeModal: null
+  activeModal: null,
+  modalOptions: null
 }
 
 const modal = (state = initialState, action) => {
   switch (action.type) {
 
     case OPEN_MODAL:
-      return {
-        activeModal: action.payload
+      const payloadType = typeof(action.payload)
+      if ( payloadType === "string" ){
+        return {
+          activeModal: action.payload,
+          modalOptions: null
+        }
+      } else if ( payloadType === "object" ){
+        return {
+          activeModal: action.payload.name,
+          modalOptions: action.payload.options
+        }
       }
 
     case CLOSE_MODAL:
       return {
-        activeModal: null
+        activeModal: null,
+        modalOptions: null
       }
 
     default:

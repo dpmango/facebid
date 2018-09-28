@@ -12,9 +12,21 @@ class Messages extends Component {
     super(props)
     this.state = {
       modalName: 'messages',
-      activeDialog: null,
+      activeDialog: null, // null
       dialogsEmpty: false
     }
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState){
+    if (nextProps.modalOptions && (nextProps.modalOptions.activeDialog !== prevState.activeDialog)) {
+      return { activeDialog: nextProps.modalOptions.activeDialog};
+    } else {
+      return null;
+    }
+  }
+
+  componentDidUpdate(){
+    console.log('messages a dialog', this.state.activeDialog)
   }
 
   hide = () => {
@@ -26,7 +38,6 @@ class Messages extends Component {
   }
 
   dialogsEmpty = () => {
-    console.log("dialogsEmpty")
     this.setState({dialogsEmpty: true})
   }
 
@@ -67,7 +78,8 @@ Messages.propTypes = {
 
 const mapStateToProps = (state) => ({
   userId: state.user.userId,
-  activeModal: state.modal.activeModal
+  activeModal: state.modal.activeModal,
+  modalOptions: state.modal.modalOptions
 })
 
 const mapDispatchToProps = (dispatch) => ({
