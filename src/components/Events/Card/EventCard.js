@@ -30,7 +30,7 @@ class EventCard extends Component {
       shouldCtaStick: false,
       computeSticky: {},
       stickyPoint: null,
-      isCommentsVisible: false,
+      isCommentingVisible: false,
       actionFlag: this.actionFlag
     }
 
@@ -77,7 +77,7 @@ class EventCard extends Component {
 
   onScroll = (container) => {
 
-    const { shouldCtaStick, stickyPoint, isCommentsVisible } = this.state
+    const { shouldCtaStick, stickyPoint } = this.state
 
     const scrollDistance = container.scrollTop
     const ctaPosTop = stickyPoint ? stickyPoint : this.ctaRef.current.offsetTop
@@ -109,18 +109,6 @@ class EventCard extends Component {
         computeSticky: {}
       })
     }
-
-    // show/hide comments logic
-    if ( scrollDistance > 20 ){
-      if ( !isCommentsVisible ) {
-        this.setState({ isCommentsVisible: true })
-      }
-    } else {
-      if ( isCommentsVisible ){
-        this.setState({ isCommentsVisible: false })
-      }
-    }
-
   }
 
   scrollToTop = (instant) => {
@@ -160,6 +148,14 @@ class EventCard extends Component {
     }
   }
 
+  scrollableMouseEnter = () => {
+    this.setState({isCommentingVisible: true})
+  }
+
+  scrollableMouseLeave = () => {
+    this.setState({isCommentingVisible: false})
+  }
+
   // outside method via onRef
   onCommentReplyClick = (username) => {
     this.createCommentRef.appendUserMention(username);
@@ -186,7 +182,7 @@ class EventCard extends Component {
         comments,
         shouldCtaStick,
         computeSticky,
-        isCommentsVisible,
+        isCommentingVisible,
         actionFlag
       }
     } = this
@@ -212,7 +208,10 @@ class EventCard extends Component {
             data={images} />
 
           <div className="e-card__contents">
-            <div className={"e-card__contents-wrapper" + (shouldCtaStick ? " should-stick" : "") }>
+            <div
+              onMouseEnter={this.scrollableMouseEnter}
+              onMouseLeave={this.scrollableMouseLeave}
+              className={"e-card__contents-wrapper" + (shouldCtaStick ? " should-stick" : "") }>
 
               <EventCardTop
                 type={type}
@@ -261,7 +260,7 @@ class EventCard extends Component {
               </PerfectScrollbar>
               <CreateComment
                 haveComments={comments.length > 0}
-                isVisible={isCommentsVisible}
+                isVisible={isCommentingVisible}
                 onRef={ref => (this.createCommentRef = ref)}
                 onNewComment={this.getComments}
               />

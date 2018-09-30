@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import Textarea from 'react-textarea-autosize';
 import Image from 'components/Helpers/Image';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import api from 'services/Api';
@@ -10,15 +9,25 @@ class CreateComment extends Component {
     super()
 
     this.state = {
+      isVisible: false,
       text: ""
     }
   }
+
 
   componentDidMount() {
     this.props.onRef(this)
   }
   componentWillUnmount() {
     this.props.onRef(undefined)
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState){
+    if ((nextProps.isVisible !== prevState.isVisible) && !prevState.text) {
+      return { isVisible: nextProps.isVisible};
+    } else {
+      return null;
+    }
   }
 
   appendUserMention = (username) => {
@@ -73,8 +82,8 @@ class CreateComment extends Component {
   render(){
 
     const {
-      props: { userId, isVisible, haveComments },
-      state: { text }
+      props: { userId, haveComments },
+      state: { text, isVisible }
     } = this;
 
     if ( !userId || !haveComments){
@@ -89,16 +98,11 @@ class CreateComment extends Component {
             </div>
           </div>
           <div className="create-comment__writable">
-            <Textarea
+            <input
               onChange={this.onChangeContent}
               value={text}
-              minRows={1}
-              maxRows={5}
-              placeholder="Введите текст комментария" />
-            {/* <textarea
-              onChange={this.onChangeContent}
-              rows="1"
-              placeholder="Введите текст комментария" /> */}
+              placeholder="Введите текст комментария"
+              type="text"/>
           </div>
           <div className="create-comment__cta">
             <button onClick={this.submitComment}>

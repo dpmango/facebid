@@ -27,6 +27,24 @@
       "avatar": "userAvatar_logined.jpg",
       "username": "Agneshka",
       "fullname": "Maggie Walton"
+    },
+    {
+      "nickname": "test",
+      "birth_date": "  ",
+      "gender": null,
+      "city": "Санкт-Питербург",
+      "email": "xs290@me.com",
+      "password": "112233",
+      "id": 2
+    },
+    {
+      "nickname": "test",
+      "birth_date": "  ",
+      "gender": null,
+      "city": "Санкт-Питербург",
+      "email": "xs290@me.com",
+      "password": "112233",
+      "id": 3
     }
   ],
   "featuredPeople": [

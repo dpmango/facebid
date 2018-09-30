@@ -1,0 +1,120 @@
+.onboarding
+  position: fixed 0
+  display: flex
+  flex-direction: column
+  z-index: 9999
+  background: rgba(black, .8)
+  color: white
+  .container
+    flex: 1 1 auto
+    display: flex
+    flex-direction: column
+
+  &__wrapper
+    margin-left: -16px
+    margin-right: -16px
+    margin-top: auto
+    margin-bottom: auto
+    display: flex
+    align-items: center
+    transition: .25s $ease
+    transform: translate(20px, 0)
+    opacity: 0
+    &.is-current
+      transform: translate(0,0)
+      opacity: 1
+      pointer-events: all
+    &.is-transitioning
+      transform: translate(-20px,0)
+      opacity: 0
+
+  &__left
+    flex: 0 1 500px
+    max-width: 500px
+    padding-left: 16px
+    padding-right: 16px
+    text-align: center
+
+  &__counter
+    // active step indicators
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-bottom: 35px
+    span
+      display: inline-block
+      size: 8px
+      margin-right: 16px
+      border-radius: 50%
+      background: rgba(white, .2)
+      &:last-child
+        margin-right: 0
+      &.is-active
+        background: $colorBlue
+
+  &__title
+    font-size: 40px
+    font-weight: 700
+    line-height: 1.2
+
+  &__description
+    margin: 32px 0
+    font-size: 18px
+    font-family: $roboto
+    line-height: 1.55
+
+  &__cta
+
+  &__right
+    flex: 1 1 auto
+    max-width: calc(100% - 500px)
+    padding-left: 16px
+    padding-right: 16px
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    text-align: right
+    img
+      max-width: 100%
+      max-width: 100%
+
+
+
+
+
+  // picture modes
+  &__wawy
+    position: relative
+    flex: 0 1 500px
+  &__wave
+    position: absolute
+    z-index: 1
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    border-radius: 50%
+    background: $colorBlue
+    opacity: .1
+    animation-name: waveAnim
+    animation-duration: 3.5s
+    animation-timing-function: ease
+    animation-iteration-count: infinite
+    &--middle
+      size: 380px
+    &--top
+      size: 500px
+
+  &__wawy-center
+    size: 260px
+    position: absolute
+    z-index: 2
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    border-radius: 50%
+    background: white
+    display: flex
+    align-items: center
+    justify-content: center
+    img
+      max-width: 100%

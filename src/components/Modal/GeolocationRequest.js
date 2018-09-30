@@ -5,8 +5,8 @@ import Geolocation from 'react-geolocation';
 import axios from 'axios';
 import Modal from '../Modal/Modal';
 import Image from '../Helpers/Image';
-import { setGeolocation, setIpLookup } from '../../actions/geolocation';
-import { openModal, closeModal } from '../../actions/modal'
+import { setGeolocation, setIpLookup } from 'actions/geolocation';
+import { openModal, closeModal } from 'actions/modal'
 
 // TODO
 // refresh the request every `1 hour` or so ?
@@ -54,7 +54,6 @@ class GeolocationRequest extends Component{
   hide = () => {
     this.props.closeModal()
   }
-
 
   // when geolocation is sucessfully fetched
   onSucessFetch = (pos) => {

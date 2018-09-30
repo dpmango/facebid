@@ -37,7 +37,7 @@ class Comment extends Component{
   abuseClick = (id) => {
     // API CALL
     this.setState({
-      isAbused: true
+      isAbused: !this.state.isAbused
     })
   }
 
@@ -65,7 +65,7 @@ class Comment extends Component{
             <div className="e-comment__actions">
               <div
                 onClick={this.abuseClick.bind(this, comment.id)}
-                className="e-comment__abuse">
+                className={"e-comment__abuse" + (isAbused ? " is-active" : "")}>
                 <SvgIcon name="bell" />
               </div>
               <div

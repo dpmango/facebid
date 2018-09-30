@@ -47,7 +47,7 @@
     transition: color .25s $ease
     .ico
 
-    &:hover
+    &:hover, &.is-active
       color: $colorBlue
 
   &__abuse
@@ -75,6 +75,7 @@
     align-items: center
     justify-content: center
     text-align: center
+    pointer-events: none
     p
       margin: 0
       font-size: 16px
@@ -87,6 +88,12 @@
         pointer-events: all
 
   &.is-abused
+    .avatar, .e-comment__contents, .e-comment__actions, .e-comment__text
+      pointer-events: none
+      user-select: none
+    .e-comment__abuse
+      pointer-events: all
+
     .e-comment__popover
       opacity: 1
-      pointer-events: all
+      // pointer-events: all

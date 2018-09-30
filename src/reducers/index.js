@@ -4,6 +4,7 @@ import {reducer as notificationsReducer} from 'reapop';
 import page from './page';
 import header from './header';
 import user from './user';
+import onboarding from './onboarding';
 import geolocation from './geolocation';
 import modal from './modal';
 import eventFilter from './event-filter';
@@ -13,6 +14,7 @@ export default combineReducers({
   page,
   header,
   user,
+  onboarding,
   geolocation,
   modal,
   eventFilter,

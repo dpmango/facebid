@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { logIn, signUp } from '../actions/user';
-import { openModal, closeModal } from '../actions/modal';
+import { logIn, signUp } from 'actions/user';
+import { openModal, closeModal } from 'actions/modal';
+import { openOnboarding } from 'actions/onboarding';
 
 import { AUTHORIZATION_REQUEST, AUTHORIZATION_SUCCESS, AUTHORIZATION_FAIL,
   SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAIL } from '../actions/user'
@@ -20,6 +21,7 @@ function* signUpSaga({ payload }) {
     yield [
       put({ type: SIGNUP_SUCCESS, payload: payload.email }),
       put(closeModal()),
+      put(openOnboarding()),
       put(openModal('login'))
     ]
   } catch (error) {

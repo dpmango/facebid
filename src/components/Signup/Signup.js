@@ -333,7 +333,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   openModal: (data) => dispatch(openModal(data)),
   closeModal: () => dispatch(closeModal()),
-  signupRequest: (data) => dispatch(signupRequest(data)),
+  signupRequest: (data) => dispatch(signupRequest(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
