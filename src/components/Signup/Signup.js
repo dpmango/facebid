@@ -29,11 +29,13 @@ class Signup extends Component{
       password_repeat: '',
       daySelect: daySelect,
       monthSelect: monthSelect,
-      yearSelect: yearSelect
+      yearSelect: yearSelect,
+      birth_error: null,
+      gender_error: null,
+      city_error: null
     }
 
-    this.formRef = React.createRef();
-
+    this.formRef = React.createRef()
   }
 
   hide = () => {
@@ -48,10 +50,38 @@ class Signup extends Component{
     this.setState({ formIsValid: true });
   }
 
+  // custom fields validation
+  validateBirth = () => {
+    const {birth_day, birth_month, birth_year} = this.state;
+
+    if ( birth_day && birth_month && birth_year ){
+      return true
+    } else {
+      return false
+    }
+  }
+
+  validateGender = () => {
+    if ( this.state.gender ){
+      return true
+    } else {
+      return false
+    }
+  }
+
+  validateCity = () => {
+    if ( this.state.city ){
+      return true
+    } else {
+      return false
+    }
+  }
+
   // submit handler from the form
   handleSubmit = (e) => {
     this.setState({isFormSubmitted: true})
-    if ( this.state.formIsValid ){
+    if ( this.state.formIsValid &&
+      this.validateBirth() && this.validateGender() && this.validateCity() ){
       this.signupUser();
       this.setState({isFormSubmitted: false}) // reset state here
     }
@@ -59,7 +89,26 @@ class Signup extends Component{
 
   // click handler for the button
   submitForm = () => {
-    this.formRef.current.submit();
+    // attach error handlers
+    if ( !this.validateBirth() ){
+      this.setState({birth_error: "Заполните дату рождения"})
+    } else {
+      this.setState({birth_error: null})
+    }
+
+    if ( !this.validateGender() ){
+      this.setState({gender_error: "Выберите пол"})
+    } else {
+      this.setState({gender_error: null})
+    }
+
+    if ( !this.validateCity() ){
+      this.setState({city_error: "Выберите город"})
+    } else {
+      this.setState({city_error: null})
+    }
+
+    // this.formRef.current.submit();
   }
 
   handleChange = (e) => {
@@ -70,7 +119,8 @@ class Signup extends Component{
 
   keyPressHandler = (e) => {
     if ( e.key === "Enter" ){
-      this.submitForm();
+      // this.submitForm();
+      this.formRef.current.submit();
     }
   }
 
@@ -158,7 +208,8 @@ class Signup extends Component{
         nickname,
         birth_day, birth_month, birth_year,
         gender, city, email, password, password_repeat,
-        daySelect, monthSelect, yearSelect
+        daySelect, monthSelect, yearSelect,
+        birth_error, gender_error, city_error
       },
       props: {
         activeModal
@@ -181,7 +232,8 @@ class Signup extends Component{
               <div className="modal-auth__left">
                 <Formsy
                   className="signup__form"
-                  onSubmit={this.handleSubmit}
+                  onSubmit={this.submitForm}
+                  onValidSubmit={this.handleSubmit}
                   onValid={this.formValid}
                   onInvalid={this.formInvalid}
                   ref={this.formRef}
@@ -232,6 +284,9 @@ class Signup extends Component{
                         placeholder="год"
                         options={MapArrToSelect(yearSelect)}/>
                     </div>
+                    { birth_error &&
+                      <span className="ui-validation">{birth_error}</span>
+                    }
                   </div>
                   <div className="ui-group ui-group--row">
                     <label htmlFor="">Пол</label>
@@ -243,6 +298,9 @@ class Signup extends Component{
                         right: "Мужской"
                       }}
                       clickHandler={this.selectToggle} />
+                    { gender_error &&
+                      <span className="ui-validation">{gender_error}</span>
+                    }
                   </div>
                   <div className="ui-group ui-group--row">
                     <label htmlFor="">Город</label>
@@ -255,12 +313,11 @@ class Signup extends Component{
                       onChange={(e) => this.handleSelectChange(e, "city")}
                       placeholder="Укажите местоположение"
                       options={MapArrToSelect(
-                        [
-                          "Москва", "Санкт-Питербург"
-                        ]
-                      )
-                      }
-                    />
+                        ["Москва", "Санкт-Питербург"])}
+                      />
+                    { city_error &&
+                      <span className="ui-validation">{city_error}</span>
+                    }
                   </div>
                   <FormInput
                     name="email"
