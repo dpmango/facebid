@@ -44,6 +44,11 @@ export const Bookmarks = MyLoadable({
   modules: ['./pages/Bookmarks'],
   webpack: () => [require.resolveWeak('./pages/Bookmarks')]
 });
+export const Static = MyLoadable({
+  loader: () => import("./pages/Static"),
+  modules: ['./pages/Static'],
+  webpack: () => [require.resolveWeak('./pages/Static')]
+});
 export const NotFound = MyLoadable({
   loader: () => import("./pages/NotFound"),
   modules: ['./pages/NotFound'],
@@ -92,6 +97,12 @@ export const routes = [
     protected: true,
     path: '/bookmarks',
     component: Bookmarks
+  },
+  {
+    isExact: false,
+    protected: false,
+    path: '/info/:id',
+    component: Static
   },
   {
     protected: false,

@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import api from 'services/Api';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import Image from 'components/Helpers/Image';
 
@@ -149,7 +150,13 @@ class Sidebar extends Component {
           </div>
         }
 
-        <div className="ms-dialogs__scrollable">
+        <PerfectScrollbar
+          className="ms-dialogs__scrollable"
+          option={{
+            wheelSpeed: 1,
+            wheelPropagation: false,
+            suppressScrollX: true,
+          }} >
           {activeTab === 1 && dialogs.map(dialog => (
             <div
               key={dialog.id}
@@ -166,7 +173,7 @@ class Sidebar extends Component {
               {this.renderDialog(dialog)}
             </div>
           ))}
-        </div>
+        </PerfectScrollbar>
 
         <button
           className="ms-dialogs__blank-temp btn btn-primary"

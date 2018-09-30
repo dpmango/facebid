@@ -8691,6 +8691,10 @@ react-copy-to-clipboard@^5.0.1:
     copy-to-clipboard "^3"
     prop-types "^15.5.8"
 
+react-custom-scroll@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-custom-scroll/-/react-custom-scroll-4.0.0.tgz#6594df171d46c11e295a7d61a6e743782b4515f9"
+
 react-dev-utils@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-5.0.2.tgz#7bb68d2c4f6ffe7ed1184c5b0124fcad692774d2"

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import NewUser from './NewUser';
 import AuthUser from './AuthUser';
 import Featured from './Featured';
@@ -9,13 +10,19 @@ import Featured from './Featured';
 class Sidebar extends Component {
   render() {
     const {
-      props: { menuOpened, userId },
+      props: { menuOpened, userId }
     } = this;
 
     return (
       <div
         className={"sidebar" + (menuOpened ? " is-active": "")}>
-        <div className="sidebar__scrollable">
+        <PerfectScrollbar
+          className="sidebar__scrollable"
+          option={{
+            wheelSpeed: 1,
+            wheelPropagation: false,
+            suppressScrollX: true,
+          }} >
           <div className="sidebar__wrapper">
             <Link to="/" className="sidebar__logo">
               <i className="icon icon-logo"></i>
@@ -26,12 +33,12 @@ class Sidebar extends Component {
             </div>
             <Featured />
             <div className="sidebar__footer">
-              <Link to="/">О компании</Link>
-              <Link to="/">Правила</Link>
-              <Link to="/">О компании</Link>
+              <Link to="/info/about">О компании</Link>
+              <Link to="/info/rules">Правила</Link>
+              <Link to="/info/about">О компании</Link>
             </div>
           </div>
-        </div>
+        </PerfectScrollbar>
       </div>
     );
   }

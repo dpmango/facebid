@@ -5,6 +5,7 @@ import Textarea from 'react-textarea-autosize';
 import { withFormsy } from 'formsy-react';
 import SvgIcon from '../Helpers/SvgIcon';
 import AvailableName from './Plugins/AvailableName';
+import SymbolLimit from './Plugins/SymbolLimit';
 
 class FormInput extends Component {
   static propTypes = {
@@ -39,7 +40,7 @@ class FormInput extends Component {
   }
 
   render(){
-    const { name, id, placeholder, extraClass, icon, mask, label, rows, sidePlugin } = this.props
+    const { name, id, placeholder, extraClass, icon, mask, label, rows, sidePlugin, plugin } = this.props
 
     const type = this.props.type ? this.props.type : "text"
 
@@ -69,6 +70,15 @@ class FormInput extends Component {
         <div className={parentClass}>
           {label &&
             <label htmlFor={name}>{label}</label>
+          }
+          { plugin &&
+            <div className="ui-label-plugin">
+              {plugin.name === "symbolLimit" &&
+                <SymbolLimit
+                  max={plugin.config.maxlength}
+                  value={this.props.getValue() || ''} />
+              }
+            </div>
           }
           <div className={"ui-input" + (icon ? "ui-input--iconed" : "") }>
             { type !== "textarea" &&

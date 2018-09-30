@@ -51,6 +51,7 @@
     "react-click-outside": "tj/react-click-outside",
     "react-collapse": "^4.0.3",
     "react-copy-to-clipboard": "^5.0.1",
+    "react-custom-scroll": "^4.0.0",
     "react-dom": "^16.4.2",
     "react-geolocation": "^1.0.4",
     "react-helmet": "^5.2.0",

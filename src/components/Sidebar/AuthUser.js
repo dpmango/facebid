@@ -6,6 +6,7 @@ import Image from '../Helpers/Image';
 import SvgIcon from '../Helpers/SvgIcon';
 import UserMenu from './UserMenu';
 import SearchPeople from './SearchPeople';
+import { openModal } from 'actions/modal';
 
 class AuthUser extends Component{
   render(){
@@ -28,14 +29,28 @@ class AuthUser extends Component{
         </Link>
 
         <div className="user-panel__actions">
-          <div className="panel-action panel-action--up">
+          <div
+            onClick={this.props.openModal.bind(this, {
+              name: "premium",
+              options: {
+                activeTab: "vip"
+              }
+            })}
+            className="panel-action panel-action--up">
             <div className="panel-action__icon">
               <div className="panel-action__counter"><span>12</span></div>
               <SvgIcon name="star-stroke" />
             </div>
             <div className="panel-action__name">Поднять  <br/>объявление</div>
           </div>
-          <div className="panel-action panel-action--vip">
+          <div
+            onClick={this.props.openModal.bind(this, {
+              name: "premium",
+              options: {
+                activeTab: "promote"
+              }
+            })}
+            className="panel-action panel-action--vip">
             <div className="panel-action__icon">
               <SvgIcon name="crown" />
             </div>
@@ -64,4 +79,8 @@ const mapStateToProps = (state) => ({
   userDetails: state.user.userDetails
 })
 
-export default connect(mapStateToProps, null)(AuthUser);
+const mapDispatchToProps = (dispatch) => ({
+  openModal: (data) => dispatch(openModal(data))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthUser);

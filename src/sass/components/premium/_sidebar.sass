@@ -1,0 +1,58 @@
+
+.p-sidebar
+  &__head
+    text-align: center
+    .t-secondary
+      margin-top: 24px
+  &__icon
+    .ico
+      font-size: 80px
+      &-vip-sidebar
+        fill: $colorOrange
+
+  &__list
+    margin: 40px 0 0
+    padding: 0
+    li
+      display: flex
+      margin-bottom: 16px
+      &:last-child
+        margin-bottom: 0
+    &-icon
+      flex: 0 0 40px
+      position: relative
+      size: 40px
+      background: white
+      border-radius: 50%
+      display: flex
+      align-items: center
+      justify-content: center
+      text-align: center
+      font-size: 0
+      box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
+      .ico
+        font-size: 16px
+        &-arrow-top
+          font-size: 15px
+        &-calendar
+          font-size: 18px
+        &-email-with-pen
+          font-size: 15px
+        &-alert-badge
+          font-size: 21px
+        &-to-top
+          font-size: 14px
+        &-email-event
+          font-size: 18px
+        &-stat-chart
+          font-size: 12px
+
+    &-text
+      font-size: 13px
+      font-family: $roboto
+      margin-left: 16px
+      line-height: 1.5
+      color: $fontColorGray
+    &--vip
+      .p-sidebar__list-icon
+        color: $colorOrange

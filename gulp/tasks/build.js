@@ -18,6 +18,7 @@ gulp.task('build:development', function(callback) {
 function build(callback) {
   runSequence(
     'sass',
+    'minify:svg',
     'sprite:svg',
     'sprite:png',
     callback

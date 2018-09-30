@@ -79,6 +79,12 @@ class HeadEdit extends Component {
           label="Имя:"
           placeholder="Введите имя"
           value={fullname}
+          plugin={{
+            name: "symbolLimit",
+            config: {
+              maxlength: 38
+            }
+          }}
           validationErrors={{
             isDefaultRequiredValue: "Заполните это поле"
           }}
@@ -116,10 +122,16 @@ class HeadEdit extends Component {
           type="textarea"
           rows={[5,10]}
           label="Описание:"
-          placeholder="Введите описание"
+          placeholder="Введите статус"
           value={description}
           validationErrors={{
             isDefaultRequiredValue: "Заполните это поле"
+          }}
+          plugin={{
+            name: "symbolLimit",
+            config: {
+              maxlength: 150
+            }
           }}
           onChangeHandler={this.handleChange}
           onKeyHandler={this.keyPressHandler}

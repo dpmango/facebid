@@ -1,7 +1,7 @@
 .sidebar
   // flex: 0 0 225px
   max-width: calc(225px + 20px)
-  min-width: 1px
+  min-width: 0px
   min-height: 0
   // get stretched from the page component
   display: flex
@@ -9,12 +9,14 @@
   position: fixed
   top: 0
   bottom: 0
-  &__scrollable
+  max-height: 100vh
+  &__scrollable, .rcs-custom-scroll
     flex: 1 1 auto
-    overflow-y: scroll
     display: flex
     flex-direction: column
     padding-right: 20px
+  &__scrollable
+    overflow-y: scroll
   &__wrapper
     flex: 1 1 auto
     display: flex

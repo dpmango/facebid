@@ -5,7 +5,6 @@ import SvgIcon from 'components/Helpers/SvgIcon';
 import EventCardDate from 'components/Events/Card/EventCardDate';
 
 class FeaturedPeople extends Component {
-
   constructor(){
     super()
 
@@ -13,7 +12,7 @@ class FeaturedPeople extends Component {
       haveRedirect: null
     }
   }
-  
+
   onCardClick = () => {
     // act as a link for noEvent types
     if ( this.props.noEvent ){

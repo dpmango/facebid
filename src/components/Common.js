@@ -10,6 +10,7 @@ import CreateEvent from './Events/Create';
 import Settings from './ProfileSettings/Settings';
 import Notifications from './Notifications/Notifications';
 import Messages from './Messages/Messages';
+import Premium from './Premium/Premium';
 
 class Common extends Component {
   render(){
@@ -25,6 +26,7 @@ class Common extends Component {
             <Notifications />
             <Settings />
             <Messages />
+            <Premium />
           </React.Fragment>
         }
       </Fragment>

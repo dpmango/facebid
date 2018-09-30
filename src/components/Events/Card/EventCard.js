@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import anime from 'animejs'
 import PerfectScrollbar from 'react-perfect-scrollbar';
