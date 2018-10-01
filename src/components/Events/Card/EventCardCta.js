@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import AvatarList from 'components/People/AvatarList';
 import SvgIcon from 'components/Helpers/SvgIcon';
+import { openModal } from 'actions/modal';
 
 class EventCardCta extends Component {
 
@@ -18,6 +21,15 @@ class EventCardCta extends Component {
 
     this.state = {
       shouldRenderParticipants: shouldRenderParticipants
+    }
+  }
+
+  enrollEvent = () => {
+    const { userId } = this.props;
+
+    if ( !userId ){
+      this.props.openModal('signup');
+      return
     }
   }
 
@@ -44,7 +56,9 @@ class EventCardCta extends Component {
     if ( !actionFlag ) {
       // regular card
       return(
-        <button className="btn btn-primary btn--iconed">
+        <button
+          onClick={this.enrollEvent}
+          className="btn btn-primary btn--iconed">
           <SvgIcon name="checkmark" />
           <span>Участвовать</span>
         </button>
@@ -90,4 +104,17 @@ class EventCardCta extends Component {
   }
 }
 
-export default EventCardCta
+EventCardCta.propTypes = {
+  openModal: PropTypes.func,
+  userId: PropTypes.number
+}
+
+const mapStateToProps = (state) => ({
+  userId: state.user.userId
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  openModal: (data) => dispatch(openModal(data))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventCardCta);

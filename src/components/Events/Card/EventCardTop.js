@@ -20,9 +20,13 @@ class EventCardTop extends Component {
   }
 
   bookmarkAction = () => {
-
     const { isBookmarked } = this.state;
-    const { notify } = this.props;
+    const { notify, userId } = this.props;
+
+    if ( !userId ){
+      this.props.openModal('signup');
+      return
+    }
 
     if ( !isBookmarked ){
       this.setState({
@@ -124,9 +128,13 @@ EventCardTop.propTypes = {
   openModal: PropTypes.func
 }
 
+const mapStateToProps = (state) => ({
+  userId: state.user.userId
+})
+
 const mapDispatchToProps = (dispatch) => ({
   notify: (data) => dispatch(notify(data)),
   openModal: (data) => dispatch(openModal(data))
 });
 
-export default connect(null, mapDispatchToProps)(EventCardTop);
+export default connect(mapStateToProps, mapDispatchToProps)(EventCardTop);
