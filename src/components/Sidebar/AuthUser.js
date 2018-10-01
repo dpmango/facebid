@@ -33,7 +33,7 @@ class AuthUser extends Component{
             onClick={this.props.openModal.bind(this, {
               name: "premium",
               options: {
-                activeTab: "vip"
+                activeTab: "promote"
               }
             })}
             className="panel-action panel-action--up">
@@ -47,7 +47,7 @@ class AuthUser extends Component{
             onClick={this.props.openModal.bind(this, {
               name: "premium",
               options: {
-                activeTab: "promote"
+                activeTab: "vip"
               }
             })}
             className="panel-action panel-action--vip">

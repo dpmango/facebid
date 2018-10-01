@@ -91,6 +91,7 @@
         "eventImage_1.jpg"
       ],
       "user": {
+        "id": 1,
         "name": "Анастасия",
         "age": "30",
         "isVerified": true,
@@ -111,6 +112,7 @@
         "eventImage_1.jpg"
       ],
       "user": {
+        "id": 22,
         "name": "Анастасия",
         "age": "30",
         "isVerified": true,
@@ -132,6 +134,7 @@
         "eventImage_1.jpg"
       ],
       "user": {
+        "id": 211,
         "name": "Анастасия",
         "age": "30",
         "isVerified": true,
@@ -148,6 +151,7 @@
     {
       "id": 1,
       "user": {
+        "id": 25,
         "username": "susie32",
         "avatar": "userAvatar_3.jpg",
         "name": "Susie Holt"
@@ -157,6 +161,7 @@
     {
       "id": 2,
       "user": {
+        "id": 26,
         "username": "maggie",
         "avatar": "userAvatar_2.jpg",
         "name": "Maggie Walton"
@@ -166,6 +171,7 @@
     {
       "id": 3,
       "user": {
+        "id": 31,
         "username": "hester",
         "avatar": "userAvatar_4.jpg",
         "name": "Hester Hopkins"
@@ -175,6 +181,7 @@
     {
       "id": 4,
       "user": {
+        "id": 252,
         "username": "claudia",
         "avatar": "userAvatar_5.jpg",
         "name": "Claudia Mathis"
@@ -184,6 +191,7 @@
     {
       "id": 5,
       "user": {
+        "id": 25,
         "username": "susie32",
         "avatar": "userAvatar.jpg",
         "name": "Susie Holt"
@@ -193,6 +201,7 @@
     {
       "id": 6,
       "user": {
+        "id": 25,
         "username": "susie32",
         "avatar": "userAvatar.jpg",
         "name": "Susie Holt"
@@ -202,6 +211,7 @@
     {
       "id": 7,
       "user": {
+        "id": 25,
         "username": "susie32",
         "avatar": "userAvatar.jpg",
         "name": "Susie Holt"

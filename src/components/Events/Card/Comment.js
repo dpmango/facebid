@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import Image from 'components/Helpers/Image';
 import SvgIcon from 'components/Helpers/SvgIcon';
 
@@ -49,9 +50,16 @@ class Comment extends Component{
 
   }
 
+  removeAvailable = () => {
+    const { userId, eventAuthor, data } = this.props;
+    // show remove action only if user owns whole event or specific comment
+    return (userId === data.user.id) || ( userId === eventAuthor )
+  }
+
   render(){
 
     const comment = this.props.data
+    const { userId } = this.props;
     const { isAbused } = this.state
 
     return(
@@ -73,11 +81,13 @@ class Comment extends Component{
                 className="e-comment__reply">
                 <SvgIcon name="reply" />
               </div>
-              <div
-                onClick={this.removeClick.bind(this, comment.id)}
-                className="e-comment__remove">
-                <SvgIcon name="close" />
-              </div>
+              { this.removeAvailable() &&
+                <div
+                  onClick={this.removeClick.bind(this, comment.id)}
+                  className="e-comment__remove">
+                  <SvgIcon name="close" />
+                </div>
+              }
             </div>
           </div>
           <div className="e-comment__text">
@@ -92,4 +102,8 @@ class Comment extends Component{
   }
 }
 
-export default Comment
+const mapStateToProps = (state) => ({
+  userId: state.user.userId
+});
+
+export default connect(mapStateToProps, null)(Comment);

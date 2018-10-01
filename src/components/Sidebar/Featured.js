@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import api from '../../services/Api';
+import {connect} from 'react-redux';
+import api from 'services/Api';
 import FeaturedCard from '../People/FeaturedCard'
 import Loading from '../Helpers/Loading';
+import { openModal } from 'actions/modal';
 
 class Featured extends Component {
   constructor(){
@@ -12,7 +14,17 @@ class Featured extends Component {
   }
 
   onFeaturedClick = () => {
+    if ( !this.props.userId ){
+      this.props.openModal('signup');
+      return
+    }
 
+    this.props.openModal({
+      name: "premium",
+      options: {
+        activeTab: "vip"
+      }
+    })
   }
 
   componentDidMount(){
@@ -53,4 +65,12 @@ class Featured extends Component {
   }
 }
 
-export default Featured
+const mapStateToProps = (state) => ({
+  userId: state.user.userId
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  openModal: (data) => dispatch(openModal(data))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Featured)

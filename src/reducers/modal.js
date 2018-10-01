@@ -1,4 +1,4 @@
-import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modal';
+import { OPEN_MODAL, CLOSE_MODAL, SET_MODAL_OPTIONS } from '../actions/modal';
 
 const initialState = {
   activeModal: null,
@@ -20,6 +20,12 @@ const modal = (state = initialState, action) => {
           activeModal: action.payload.name,
           modalOptions: action.payload.options
         }
+      }
+
+    case SET_MODAL_OPTIONS:
+      return {
+        ...state,
+        modalOptions: action.payload
       }
 
     case CLOSE_MODAL:

@@ -6,7 +6,7 @@ import Comment from './Comment';
 class Comments extends Component {
 
   render(){
-    const { comments, userId } = this.props
+    const { comments, userId, eventAuthor } = this.props
 
     if ( !comments ){
       return <Loading />
@@ -17,6 +17,7 @@ class Comments extends Component {
           <Comment
             onReplyClick={this.props.onReplyClick}
             key={comment.id}
+            eventAuthor={eventAuthor}
             data={comment} />
         ))}
       </div>

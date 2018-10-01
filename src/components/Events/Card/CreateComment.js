@@ -53,7 +53,7 @@ class CreateComment extends Component {
   submitComment = () => {
     const {
       state: {text},
-      props: {userDetails}
+      props: {userDetails, userId}
     } = this
 
     // prevent submiting blank messages
@@ -65,6 +65,7 @@ class CreateComment extends Component {
     api
       .post('comments', {
         user: {
+          "id": userId,
           "username": userDetails.username,
           "avatar": userDetails.avatar,
           "name": userDetails.fullname

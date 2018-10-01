@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import api from '../../services/Api';
+import api from 'services/Api';
 import EventCard from './Card/EventCard';
 import Loading from '../Helpers/Loading';
 import SvgIcon from '../Helpers/SvgIcon';
-import { openModal } from '../../actions/modal';
+import { openModal } from 'actions/modal';
 
 class EventsGrid extends Component {
   constructor(props){
@@ -82,18 +82,15 @@ class EventsGrid extends Component {
           {this.renderHeader()}
         </div>
         <div className="events__grid">
-          { !data &&
+          { !data ?
             <Loading type="events" />
-          }
-          { data &&
-            data.map(event => {
-              return (
-                <EventCard
-                  type={type}
-                  key={event.id}
-                  data={event} />
-              )
-            })
+            :
+            data.map(event => (
+              <EventCard
+                type={type}
+                key={event.id}
+                data={event} />
+            ))
           }
           { data &&
             <div className="events__load-more">

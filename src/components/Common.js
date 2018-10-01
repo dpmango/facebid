@@ -7,11 +7,13 @@ import Gradients from './Helpers/Gradients';
 import Onboarding from './Onboarding/Onboarding';
 import GeolocationRequest from './Modal/GeolocationRequest';
 import ShareModal from './Modal/ShareModal';
+import EventModal from './Events/EventModal';
 import CreateEvent from './Events/Create';
 import Settings from './ProfileSettings/Settings';
 import Notifications from './Notifications/Notifications';
 import Messages from './Messages/Messages';
 import Premium from './Premium/Premium';
+import Subscribers from './People/Subscribers';
 
 class Common extends Component {
   render(){
@@ -24,6 +26,7 @@ class Common extends Component {
         <Gradients />
         <GeolocationRequest />
         <ShareModal />
+        <EventModal />
         <CreateEvent />
         {userId &&
           <React.Fragment>
@@ -31,6 +34,7 @@ class Common extends Component {
             <Settings />
             <Messages />
             <Premium />
+            <Subscribers />
           </React.Fragment>
         }
         {onboarding.isActive &&

@@ -5,7 +5,7 @@ import Modal from '../Modal/Modal';
 import Sidebar from './Sidebar';
 import Chat from './Chat';
 import EmptyMessages from './EmptyMessages'
-import {closeModal} from 'actions/modal';
+import {closeModal, setModalOptions} from 'actions/modal';
 
 class Messages extends Component {
   constructor(props){
@@ -26,7 +26,7 @@ class Messages extends Component {
   }
 
   componentDidUpdate(){
-    console.log('messages a dialog', this.state.activeDialog)
+
   }
 
   hide = () => {
@@ -34,7 +34,8 @@ class Messages extends Component {
   }
 
   dialogClick = (id) => {
-    this.setState({activeDialog: id})
+    this.props.setModalOptions({activeDialog: id})
+    // this.setState({activeDialog: id})
   }
 
   dialogsEmpty = () => {
@@ -73,7 +74,9 @@ class Messages extends Component {
 }
 
 Messages.propTypes = {
-  userId: PropTypes.number
+  userId: PropTypes.number,
+  closeModal: PropTypes.func,
+  setModalOptions: PropTypes.func
 }
 
 const mapStateToProps = (state) => ({
@@ -83,7 +86,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  setModalOptions: (data) => dispatch(setModalOptions(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Messages)

@@ -141,14 +141,13 @@
           pointer-events: all
 
   &__top
+    position: relative
+    z-index: 8
     background: #F6F7FB
     flex: 0 0 auto
     padding: 12px 20px
     display: flex
     align-items: center
-    &:hover
-      .e-card__user-name
-        color: $colorBlue
 
   &__user
     display: flex
@@ -165,7 +164,9 @@
         left: 50%
         transform: translate(-50%,-50%)
         width: 102%
-
+    &:hover
+      .e-card__user-name
+        color: $colorBlue
   &__user-info
     flex: 1 1 auto
     margin-left: 18px
@@ -228,7 +229,7 @@
   &__more
     display: flex
     justify-content: center
-    .ico
+    > .ico
       // margin-left: auto
       // margin-right: auto
       font-size: 19px

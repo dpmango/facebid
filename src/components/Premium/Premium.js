@@ -6,7 +6,7 @@ import VipOptions from './VIP/VipOptions';
 import VipSidebar from './VIP/VipSidebar';
 import PremiumTabs from './PremiumTabs';
 import PaymentTypes from './PaymentTypes';
-import { closeModal } from 'actions/modal';
+import { closeModal, setModalOptions } from 'actions/modal';
 
 class Premium extends Component{
   constructor(){
@@ -37,13 +37,13 @@ class Premium extends Component{
   }
 
   selectTab = (name) => {
-    this.setState({
-      activeTab: name
-    })
+    this.props.setModalOptions({activeTab: name})
+    // this.setState({
+    //   activeTab: name
+    // })
   }
 
   selectPayment = (id, type) => {
-    console.log(id, type)
     this.setState({
       ...this.state,
       activePayment: {
@@ -96,6 +96,7 @@ class Premium extends Component{
 
     return(
       <Modal
+        protected={true}
         isActive={activeModal === modalName}
         onHide={this.hide}>
         <div className="premium">
@@ -142,16 +143,18 @@ class Premium extends Component{
 
 Premium.propTypes = {
   activeModal: PropTypes.string,
-  closeModal: PropTypes.func
+  closeModal: PropTypes.func,
+  setModalOptions: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
   activeModal: state.modal.activeModal,
-  modalOptions: state.modal.modalActions
+  modalOptions: state.modal.modalOptions
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  setModalOptions: (data) => dispatch(setModalOptions(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Premium);

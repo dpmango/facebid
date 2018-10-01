@@ -6,7 +6,8 @@ import { notify } from 'reapop';
 // import DefaultNotification from '/helpers/DefaultNotification';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import Image from 'components/Helpers/Image';
-import { openModal } from 'actions/modal'
+import Dropdown from 'components/Interface/Dropdown';
+import { openModal } from 'actions/modal';
 
 class EventCardTop extends Component {
 
@@ -112,11 +113,23 @@ class EventCardTop extends Component {
             <SvgIcon name="share" />
           </div>
 
-          <div
-            onClick={this.moreAction}
-            className="e-card__action e-card__more">
-            <SvgIcon name="more" />
-          </div>
+          <Dropdown
+            extraClass="e-card__action e-card__more">
+            <div className="dropdown__menu">
+              <li className="dropdown__menu-item">
+                <div className="dropdown__menu-icon">
+                  <SvgIcon name="dislike" />
+                </div>
+                <span>Скрыть из новостей</span>
+              </li>
+              <li className="dropdown__menu-item">
+                <div className="dropdown__menu-icon">
+                  <SvgIcon name="dislike" />
+                </div>
+                <span>Пожаловаться</span>
+              </li>
+            </div>
+          </Dropdown>
         </div>
       </div>
     )

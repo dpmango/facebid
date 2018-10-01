@@ -255,6 +255,7 @@ class EventCard extends Component {
                     onScrollTopClick={this.scrollToTop} />
                 </div>
                 <Comments
+                  eventAuthor={user.id}
                   onReplyClick={this.onCommentReplyClick}
                   comments={comments} />
               </PerfectScrollbar>
