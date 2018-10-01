@@ -1,24 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { openModal } from '../actions/modal'
 
 const Athorization = (WrappedComponent) => {
-  class WithAuthorization extends React.Component {
-
-    openLoginModal = () => {
-      this.props.openModal('login');
-    }
+  class WithAuthorization extends Component {
 
     render() {
       const { userId } = this.props;
 
       if (!userId) {
         return (
-          <React.Fragment>
-            <Redirect to='/' />
-            {this.openLoginModal()}
-          </React.Fragment>
+          <Redirect
+            to={{
+              pathname: "/",
+              state: { fromProtected: true }
+            }} />
         )
       }
 
@@ -30,11 +26,7 @@ const Athorization = (WrappedComponent) => {
     userId: state.user.userId
   });
 
-  const mapDispatchToProps = (dispatch) => ({
-    openModal: (data) => dispatch(openModal(data))
-  })
-
-  return connect(mapStateToProps, mapDispatchToProps)(WithAuthorization);
+  return connect(mapStateToProps, null)(WithAuthorization);
 };
 
 export default Athorization;

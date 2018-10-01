@@ -145,6 +145,7 @@ class Create extends Component{
 
     return(
       <Modal
+        protected={true}
         isActive={activeModal === modalName}
         onHide={this.hide}>
         <div className="modal__header">
