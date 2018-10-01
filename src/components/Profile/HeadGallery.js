@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Swiper from 'react-id-swiper';
-import {SortableContainer, SortableElement} from 'react-sortable-hoc';
+import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import { Collapse } from 'react-collapse';
 import SvgIcon from '../Helpers/SvgIcon';
 import Thumb from './GalleryThumb'
@@ -36,7 +36,6 @@ class ProfileHeadGallery extends Component{
   // allow freemode swiping on change NO slides here
   thumbClick = (index) => {
 
-    console.log('thumb clicked', index)
     if ( this.props.editMode ){
       return false
     }
@@ -120,6 +119,17 @@ class ProfileHeadGallery extends Component{
     // TODO - + API call
   }
 
+  // sorting functions
+  onSortEnd = ({oldIndex, newIndex}) => {
+    this.setState({
+      ...this.state,
+      gallery: {
+        thumbs: arrayMove(this.state.gallery.thumbs, oldIndex, newIndex),
+        full: arrayMove(this.state.gallery.full, oldIndex, newIndex),
+      }
+    });
+  }
+
   render(){
 
     const {
@@ -180,33 +190,32 @@ class ProfileHeadGallery extends Component{
 
     return(
       <div className="p-head-gal">
-        <Swiper
-          ref={node => this.swiperThumbs = node ? node.swiper : null }
-          {...SwiperParamsThumbs}>
-          { !editMode && gallery.thumbs.map((thumb, index) => (
-            <Thumb
-              key={index}
-              image={thumb}
-              index={index}
-              currentSlide={currentSlide}
-              editMode={editMode}
-              clickHandler={this.thumbClick}
-              fileRemoveHandler={this.fileRemoved} />
-          ))}
-        </Swiper>
-        { editMode &&
-          <Fragment>
-            <SortableList
-              axis="xy"
-              clickHandler={this.thumbClick}
-              fileRemoveHandler={this.fileRemoved}
-              items={gallery.thumbs}
-              // onSortEnd={this.onSortEnd}
-            />
-            <AddImage
-              clickHandler={this.thumbClick}
-              fileChangeHandler={this.imageAdded} />
-          </Fragment>
+        { !editMode ?
+          <Swiper
+            ref={node => this.swiperThumbs = node ? node.swiper : null }
+            {...SwiperParamsThumbs}>
+            { gallery.thumbs.map((thumb, index) => (
+              <Thumb
+                key={index}
+                image={thumb}
+                index={index}
+                currentSlide={currentSlide}
+                editMode={editMode}
+                clickHandler={this.thumbClick}
+                fileRemoveHandler={this.fileRemoved} />
+            ))}
+          </Swiper>
+          :
+          <SortableList
+            axis="xy"
+            clickHandler={this.thumbClick}
+            fileRemoveHandler={this.fileRemoved}
+            items={gallery.thumbs}
+            onSortEnd={this.onSortEnd}
+            // add file options
+            clickHandler={this.thumbClick}
+            fileChangeHandler={this.imageAdded}
+          />
         }
 
         <Collapse
@@ -259,9 +268,9 @@ const SortableItem = SortableElement(({value, elIndex, fileRemoveHandler}) => (
     fileRemoveHandler={fileRemoveHandler} />
 ));
 
-const SortableList = SortableContainer(({items, fileRemoveHandler}) => {
+const SortableList = SortableContainer(({items, fileRemoveHandler, clickHandler, fileChangeHandler}) => {
   return (
-    <ul>
+    <div className="p-head-gal__thumbs-editable">
       {items.map((value, index) => (
         <SortableItem
           key={`item-${index}`}
@@ -270,7 +279,10 @@ const SortableList = SortableContainer(({items, fileRemoveHandler}) => {
           fileRemoveHandler={fileRemoveHandler}
           value={value} />
       ))}
-    </ul>
+      <AddImage
+        clickHandler={clickHandler}
+        fileChangeHandler={fileChangeHandler} />
+    </div>
   )
 });
 
