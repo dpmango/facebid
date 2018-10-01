@@ -30,7 +30,7 @@ class HeadBottomButtons extends Component {
 
   render(){
     const {
-      props: { isMyProfile },
+      props: { isMyProfile, isBlackListed },
       state: { chatEnabled, chatText }
     } = this
 
@@ -63,6 +63,7 @@ class HeadBottomButtons extends Component {
               </div>
               :
               <button
+                disabled={isBlackListed}
                 onClick={this.toggleChat}
                 className="btn btn-primary btn--iconed">
                 <SvgIcon name="comments" />
@@ -71,6 +72,7 @@ class HeadBottomButtons extends Component {
             }
             <button
               // onClick={}
+              disabled={isBlackListed}
               className="btn btn-primary btn--iconed">
               <SvgIcon name="plus" />
               <span>Пригласить</span>

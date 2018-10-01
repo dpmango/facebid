@@ -306,21 +306,29 @@
           "galThumb_3.jpg"
         ]
       }
+    },
+    {
+      "id": 3,
+      "avatar": "avatarBig_2.jpg",
+      "username": "SantaMonica",
+      "age": "20",
+      "fullname": "Константинопольская Аделина",
+      "isVerified": false,
+      "userLang": [
+        {
+          "value": "ru",
+          "label": "Русский"
+        }
+      ],
+      "description": "Заблокированный пользователь",
+      "subscribers": "23",
+      "subscribed": "40",
+      "isBlackListed": true
     }
   ],
   "blacklist": [
     {
       "id": 2,
-      "name": "Illaria, 24",
-      "avatar": "userAvatar_3.jpg"
-    },
-    {
-      "id": 5,
-      "name": "Illaria, 24",
-      "avatar": "userAvatar_2.jpg"
-    },
-    {
-      "id": 6,
       "name": "Illaria, 24",
       "avatar": "userAvatar_3.jpg"
     },

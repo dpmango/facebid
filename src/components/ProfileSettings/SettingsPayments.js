@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import SvgIcon from '../Helpers/SvgIcon'
+import {openModal} from 'actions/modal';
 
 class SettingsPayments extends Component {
 
@@ -28,7 +30,14 @@ class SettingsPayments extends Component {
               </div>
               <div className="p-btn__label">12 объявлений</div>
             </div>
-            <button className="btn btn-primary">Приобрести еще</button>
+            <button
+              onClick={this.props.openModal.bind(this, {
+                name: "premium",
+                options: {
+                  activeTab: "promote"
+                }
+              })}
+              className="btn btn-primary">Приобрести еще</button>
           </div>
         </div>
         <div className="ui-group ui-group--row">
@@ -105,4 +114,8 @@ class Payment extends Component {
   }
 }
 
-export default SettingsPayments
+const mapDispatchToProps = (dispatch) => ({
+  openModal: (data) => dispatch(openModal(data))
+})
+
+export default connect(null, mapDispatchToProps)(SettingsPayments)

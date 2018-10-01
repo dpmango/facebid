@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import api from 'services/Api';
 import Head from 'components/Profile/Head';
 import EventsGrid from 'components/Events/EventsGrid';
 import RecommendedProfiles from 'components/People/RecommendedProfiles';
@@ -17,7 +18,7 @@ class Profile extends Component {
       <Fragment>
         <Head
           urlParams={this.props.match.params}
-          isMyProfile={this.isMyProfile} />
+          isMyHead={this.isMyProfile} />
         <EventsGrid
           type="profile"
           isMyProfile={this.isMyProfile} />

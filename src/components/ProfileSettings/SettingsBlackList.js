@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import Image from '../Helpers/Image';
 import SvgIcon from '../Helpers/SvgIcon';
 import Loading from '../Helpers/Loading';
-import api from '../../services/Api';
+import api from 'services/Api';
 
 class SettingsBlackList extends Component {
   constructor(){
@@ -30,7 +31,11 @@ class SettingsBlackList extends Component {
       })
   }
 
-  removePerson = (id) => {
+  removePerson = (e, id) => {
+    console.log(e, id)
+    e.preventDefault();
+    e.stopPropagation();
+
     api
       .delete(`blacklist/${id}`)
       .then(res => {
@@ -55,19 +60,21 @@ class SettingsBlackList extends Component {
             <div className="face-list__grid">
               {blacklist.map(person => (
                 <div key={person.id} className="face-list__col">
-                  <div className="face-list__card">
+                  <Link
+                    to="/profile/2"
+                    className="face-list__card">
                     <div className="face-list__card-wrapper">
                       <div className="face-list__avatar avatar avatar--big">
                         <Image file={person.avatar} />
                       </div>
                       <div className="face-list__name">{person.name}</div>
                       <div
-                        onClick={this.removePerson.bind(this, person.id)}
+                        onClick={(e) => this.removePerson(e, person.id)}
                         className="face-list__remove">
                         <SvgIcon name="close" />
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
             </div>

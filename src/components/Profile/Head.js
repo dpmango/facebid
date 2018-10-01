@@ -14,6 +14,7 @@ import HeadSettingsButtons from './HeadSettingsButtons';
 import HeadGallery from './HeadGallery';
 import HeadVerifications from './HeadVerifications';
 import HeadEdit from './HeadEdit';
+import HeadBlacklisted from './HeadBlacklisted';
 
 class Head extends Component{
 
@@ -33,7 +34,7 @@ class Head extends Component{
       subscribers: "",
       subscribed: "",
       gallery: {},
-
+      isBlackListed: null,
       subscribedToUser: false
     }
 
@@ -60,7 +61,8 @@ class Head extends Component{
           description: res.data.description,
           subscribers: res.data.subscribers,
           subscribed: res.data.subscribed,
-          gallery: res.data.gallery
+          gallery: res.data.gallery,
+          isBlackListed: res.data.isBlackListed
 
           // subscribedToUser
         })
@@ -152,7 +154,7 @@ class Head extends Component{
         subscribers,
         subscribed,
         gallery,
-
+        isBlackListed,
         subscribedToUser
       },
       props: {
@@ -199,6 +201,7 @@ class Head extends Component{
                   }
                   { !isMyProfile &&
                     <button
+                      disabled={isBlackListed}
                       className={"p-head__top-cta btn "+( subscribedToUser ? " btn-outline" : " btn-primary")+" btn--iconed"}
                       onClick={this.subscribeToProfile}>
                       <SvgIcon name="user" />
@@ -209,23 +212,20 @@ class Head extends Component{
                 <div className="p-head__profile-link">Ваш профиль</div>
                 { !editMode ?
                   <Fragment>
-
                     <HeadInfo
                       fullname={fullname}
                       userLang={userLang}
                       description={description} />
 
                     <HeadBottomButtons
+                      isBlackListed={isBlackListed}
                       onEnableEditMode={this.enableEditMode}
                       isMyProfile={isMyProfile} />
 
                     <HeadSettingsButtons
                       isMyProfile={isMyProfile} />
-
                   </Fragment>
-
                   :
-
                   <HeadEdit
                     fullname={fullname}
                     userLang={userLang}
@@ -236,11 +236,17 @@ class Head extends Component{
               </div>
             </div>
 
-            <HeadGallery
-              onRef={ref => (this.galleryRef = ref)}
-              editMode={editMode}
-              isMyProfile={isMyProfile}
-              gallery={gallery} />
+            { gallery &&
+              <HeadGallery
+                onRef={ref => (this.galleryRef = ref)}
+                editMode={editMode}
+                isMyProfile={isMyProfile}
+                gallery={gallery} />
+            }
+            { isBlackListed &&
+              <HeadBlacklisted
+                username={username} />
+            }
 
           </Fragment>
         }
