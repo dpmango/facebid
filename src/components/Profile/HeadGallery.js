@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Swiper from 'react-id-swiper';
+import {SortableContainer, SortableElement} from 'react-sortable-hoc';
 import { Collapse } from 'react-collapse';
 import SvgIcon from '../Helpers/SvgIcon';
 import Thumb from './GalleryThumb'
@@ -35,6 +36,7 @@ class ProfileHeadGallery extends Component{
   // allow freemode swiping on change NO slides here
   thumbClick = (index) => {
 
+    console.log('thumb clicked', index)
     if ( this.props.editMode ){
       return false
     }
@@ -76,9 +78,6 @@ class ProfileHeadGallery extends Component{
 
   refreshSliders = () => {
     // when slides change because of add/remove in edit mode
-
-    console.log('refresh')
-
     this.swiperThumbs.update() // updateSlides submethod of .update()
     this.swiperFull.update() // updateSlides submethod of .update()
   }
@@ -184,7 +183,7 @@ class ProfileHeadGallery extends Component{
         <Swiper
           ref={node => this.swiperThumbs = node ? node.swiper : null }
           {...SwiperParamsThumbs}>
-          { gallery.thumbs.map((thumb, index) => (
+          { !editMode && gallery.thumbs.map((thumb, index) => (
             <Thumb
               key={index}
               image={thumb}
@@ -194,12 +193,21 @@ class ProfileHeadGallery extends Component{
               clickHandler={this.thumbClick}
               fileRemoveHandler={this.fileRemoved} />
           ))}
-          { editMode &&
+        </Swiper>
+        { editMode &&
+          <Fragment>
+            <SortableList
+              axis="xy"
+              clickHandler={this.thumbClick}
+              fileRemoveHandler={this.fileRemoved}
+              items={gallery.thumbs}
+              // onSortEnd={this.onSortEnd}
+            />
             <AddImage
               clickHandler={this.thumbClick}
               fileChangeHandler={this.imageAdded} />
-          }
-        </Swiper>
+          </Fragment>
+        }
 
         <Collapse
           isOpened={!editMode && isGaleryOpen}>
@@ -243,5 +251,27 @@ class ProfileHeadGallery extends Component{
   }
 }
 
+const SortableItem = SortableElement(({value, elIndex, fileRemoveHandler}) => (
+  <Thumb
+    image={value}
+    index={elIndex}
+    editMode={true}
+    fileRemoveHandler={fileRemoveHandler} />
+));
+
+const SortableList = SortableContainer(({items, fileRemoveHandler}) => {
+  return (
+    <ul>
+      {items.map((value, index) => (
+        <SortableItem
+          key={`item-${index}`}
+          index={index}
+          elIndex={index}
+          fileRemoveHandler={fileRemoveHandler}
+          value={value} />
+      ))}
+    </ul>
+  )
+});
 
 export default ProfileHeadGallery

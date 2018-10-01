@@ -18,7 +18,7 @@ class Profile extends Component {
       <Fragment>
         <Head
           urlParams={this.props.match.params}
-          isMyHead={this.isMyProfile} />
+          isMyProfile={this.isMyProfile} />
         <EventsGrid
           type="profile"
           isMyProfile={this.isMyProfile} />

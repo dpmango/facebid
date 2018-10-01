@@ -127,7 +127,7 @@ class EventsGrid extends Component {
     if ( type === "profile" ){
       return (
         <React.Fragment>
-          <h3 className="h3-title">{isMyProfile? "Вы участвует в событиях" : "События"}</h3>
+          <h3 className="h3-title">{isMyProfile? "Вы участвуете в событиях" : "События"}</h3>
           <div className="events__header-filter">
             { profileFilters.map((f, i) => (
               <span

@@ -13,9 +13,11 @@ class Thumb extends Component {
       props: { currentSlide, index, editMode, clickHandler, image }
     } = this;
 
+    // console.log(this.props)
+
     return (
       <div
-        onClick={clickHandler.bind(this, index)}
+        onClick={clickHandler ? clickHandler.bind(this, index) : undefined}
         className={"p-head-gal__thumb" +
         (currentSlide === index ? " is-active": "") +
         ( editMode ? " has-image is-editable" : "" ) }>
