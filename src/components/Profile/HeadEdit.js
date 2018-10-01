@@ -144,7 +144,7 @@ class HeadEdit extends Component {
             <span>Сохранить</span>
           </button>
           <button
-            onClick={this.onCancel}
+            onClick={this.props.onCancel}
             className="btn btn-outline">
             Отменить
           </button>
