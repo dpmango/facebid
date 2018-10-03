@@ -4,7 +4,8 @@ import ClickOutside from 'react-click-outside';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
-import EmojiMartLangs from 'i18n/EmojiMartLangs'
+import EmojiMartLangs from 'i18n/EmojiMartLangs';
+
 class ChatCreate extends Component {
   constructor(props){
     super()

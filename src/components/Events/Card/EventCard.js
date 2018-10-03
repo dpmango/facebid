@@ -263,8 +263,7 @@ class EventCard extends Component {
                 haveComments={comments.length > 0}
                 isVisible={isCommentingVisible}
                 onRef={ref => (this.createCommentRef = ref)}
-                onNewComment={this.getComments}
-              />
+                onNewComment={this.getComments} />
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Image from 'components/Helpers/Image';
+import Avatar from 'components/Shared/Avatar';
 import SvgIcon from 'components/Helpers/SvgIcon';
 
 class Comment extends Component{
@@ -64,9 +65,9 @@ class Comment extends Component{
 
     return(
       <div className={"e-comment" + (isAbused ? " is-abused" : "")}>
-        <div className="avatar">
-          <Image file={comment.user.avatar} />
-        </div>
+        <Avatar
+          user={comment.user}
+          className="avatar" />
         <div className="e-comment__contents">
           <div className="e-comment__top">
             <div className="e-comment__name">{comment.user.name}</div>

@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import Image from 'components/Helpers/Image';
 import SvgIcon from 'components/Helpers/SvgIcon';
+import Avatar from 'components/Shared/Avatar';
 import Loading from 'components/Helpers/Loading';
 import Dropdown from 'components/Interface/Dropdown';
 
@@ -24,9 +25,9 @@ class ChatHead extends Component{
           <Fragment>
             <div className="ms-chat__user">
               <div className="ms-chat__user-avatar">
-                <div className="avatar avatar--medium">
-                <Image file={user.avatar} />
-              </div>
+                <Avatar
+                  className="avatar avatar--medium"
+                  user={user} />
               </div>
               <div className="ms-chat__user-name">{user.name}</div>
             </div>

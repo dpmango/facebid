@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Image from 'components/Helpers/Image';
 import SvgIcon from 'components/Helpers/SvgIcon';
+import Avatar from 'components/Shared/Avatar';
 import api from 'services/Api';
 
 class CreateComment extends Component {
@@ -13,7 +14,6 @@ class CreateComment extends Component {
       text: ""
     }
   }
-
 
   componentDidMount() {
     this.props.onRef(this)
@@ -35,14 +35,6 @@ class CreateComment extends Component {
       text: this.state.text + " @" + username
     })
   }
-
-  // static getDerivedStateFromProps(props, state) {
-  //   console.log(props, state)
-  //
-  //   this.setState({
-  //     text: this.state.text + props.mentionUser
-  //   })
-  // }
 
   onChangeContent = (e) => {
     this.setState({
@@ -83,7 +75,7 @@ class CreateComment extends Component {
   render(){
 
     const {
-      props: { userId, haveComments },
+      props: { userId, userDetails, haveComments },
       state: { text, isVisible }
     } = this;
 
@@ -94,9 +86,9 @@ class CreateComment extends Component {
       <div className={"e-card__c-comment create-comment" + (isVisible ? " is-visible" : "")}>
         <div className="create-comment__wrapper">
           <div className="create-comment__avatar">
-            <div className="avatar avatar--small">
-              <Image file="userAvatar.jpg" />
-            </div>
+            <Avatar
+              className="avatar avatar--small"
+              user={userDetails} />
           </div>
           <div className="create-comment__writable">
             <input

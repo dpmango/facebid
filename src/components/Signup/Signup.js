@@ -18,7 +18,7 @@ class Signup extends Component{
     super(props)
     this.state = {
       modalName: 'signup',
-      nickname: '',
+      username: '',
       birth_day: '',
       birth_month: '',
       birth_year: '',
@@ -180,7 +180,7 @@ class Signup extends Component{
   signupUser = () => {
     // auth
     const {
-      nickname, birth_day, birth_month, birth_year, gender, city, email, password
+      username, birth_day, birth_month, birth_year, gender, city, email, password
     } = this.state;
 
     const date = {
@@ -190,7 +190,7 @@ class Signup extends Component{
     }
 
     const leadObj = {
-      nickname: nickname,
+      username: username,
       birth_date: `${date.day} ${date.month} ${date.year}`,
       gender: gender,
       city: city ? city.value : "",
@@ -205,7 +205,7 @@ class Signup extends Component{
     const {
       state: {
         modalName,
-        nickname,
+        username,
         birth_day, birth_month, birth_year,
         gender, city, email, password, password_repeat,
         daySelect, monthSelect, yearSelect,
@@ -239,12 +239,12 @@ class Signup extends Component{
                   ref={this.formRef}
                 >
                   <FormInput
-                    name="nickname"
+                    name="username"
                     type="text"
                     label="Никнейм:"
                     placeholder="Например, Adelina491"
                     extraClass="ui-group--row"
-                    value={nickname}
+                    value={username}
                     validationErrors={{
                       isDefaultRequiredValue: 'Заполните никнейм'
                     }}

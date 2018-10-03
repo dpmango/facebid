@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import api from 'services/Api';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import SvgIcon from 'components/Helpers/SvgIcon';
+import Avatar from 'components/Shared/Avatar'
 import Image from 'components/Helpers/Image';
 
 
@@ -84,14 +85,14 @@ class Sidebar extends Component {
       <Fragment>
         <div className="ms-dialog__avatar">
           {dialog.type === "private" &&
-            <div className="avatar avatar--medium">
-              <Image file={dialog.user.avatar} />
-            </div>
+            <Avatar
+              className="avatar avatar--medium"
+              user={dialog.user} />
           }
           {dialog.type === "group" &&
-            <div className="avatar avatar--medium">
-              <Image file={dialog.user.avatar} />
-            </div>
+            <Avatar
+              className="avatar avatar--medium"
+              user={dialog.user} />
           }
         </div>
         <div className="ms-dialog__content">

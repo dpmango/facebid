@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { notify } from 'reapop';
 // import DefaultNotification from '/helpers/DefaultNotification';
 import SvgIcon from 'components/Helpers/SvgIcon';
+import Avatar from 'components/Shared/Avatar';
 import Image from 'components/Helpers/Image';
 import Dropdown from 'components/Interface/Dropdown';
 import { openModal } from 'actions/modal';
@@ -82,9 +83,8 @@ class EventCardTop extends Component {
         <Link
           to="/profile/2"
           className="e-card__user">
-          <div className="e-card__user-avatar">
-            <Image file="userAvatar.jpg" />
-          </div>
+          <Avatar
+            user={user} />
           <div className="e-card__user-info">
             <div className="e-card__user-line">
               <div className="e-card__user-name">{user.name}, {user.age}</div>

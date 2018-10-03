@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Image from 'components/Helpers/Image';
 import SvgIcon from 'components/Helpers/SvgIcon';
+import Avatar from 'components/Shared/Avatar';
 import ConvertTimestampToStr from 'helpers/ConvertTimestampToStr';
 import SimpleInput from 'components/Forms/SimpleInput';
 import { openModal } from 'actions/modal'
@@ -63,9 +64,9 @@ class EventCardRequest extends Component {
     return(
       <div className="ec-request">
         <div className="ec-request__avatar">
-          <div className="avatar avatar--64">
-            <Image file={user.avatar} />
-          </div>
+          <Avatar
+            className="avatar avatar--64"
+            user={user} />
         </div>
         <div className="ec-request__contents">
           <div className="ec-request__header">
