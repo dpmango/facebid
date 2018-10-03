@@ -32,6 +32,10 @@ class Chat extends Component {
   //   }
   // }
 
+  componentDidMount(){
+    this.getMessages();
+  }
+  
   componentDidUpdate(prevProps, prevState) {
     // when selected dialog in sidebar
     if (prevProps.activeDialog !== this.props.activeDialog){

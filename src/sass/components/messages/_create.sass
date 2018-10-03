@@ -1,8 +1,11 @@
 .ms-create
+  position: relative
   display: flex
   padding: 12px 24px
   &__textarea
     flex: 1 1 auto
+    display: flex
+    align-items: center
     textarea
       display: block
       width: 100%
@@ -35,7 +38,7 @@
     transition: .25s $ease
     .ico
       font-size: 18px
-    &:hover
+    &:hover, &.is-active
       color: $colorBlue
 
     &--smile
@@ -49,3 +52,16 @@
       color: $colorBlue
       .ico
         font-size: 16px
+
+  &__emoji
+    position: absolute
+    right: 2px
+    // bottom to be set automatically
+    bottom: 49px
+    opacity: 0
+    pointer-events: none
+    transition: opacity .25s $ease
+    &.is-visible
+      opacity: 1
+      pointer-events: all
+      transition-property: opacity, bottom
