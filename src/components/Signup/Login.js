@@ -14,8 +14,8 @@ class Login extends Component{
     super()
     this.state = {
       modalName: 'login',
-      email: '',
-      password: '',
+      email: 'test@mail.com',
+      password: '123456',
       remember: false
     }
 

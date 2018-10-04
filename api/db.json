@@ -30,7 +30,7 @@
     },
     {
       "username": "khmelevskoy",
-      "birth_date": "03 02 2009",
+      "birth_date": "2009-02-03",
       "gender": "Мужской",
       "city": "Москва",
       "email": "xs290@me.com",
@@ -93,7 +93,15 @@
       "from": "Санкт–Петербург",
       "to": "Москва",
       "date": "2018-09-16",
-      "desc": "В июне состоится масштабное мероприятие одного из самых известных российских современных художников. Собираю группу из 20 человек для вылета из Санкт-Петербурга в Москву."
+      "desc": "В июне состоится масштабное мероприятие одного из самых известных российских современных художников. Собираю группу из 20 человек для вылета из Санкт-Петербурга в Москву.",
+      "notification": {
+        "user": {
+          "avatar": "userAvatar_4.jpg",
+          "username": "Vasilisa"
+        },
+        "event": "приняла участие в событии",
+        "timestamp": "2018-09-13T21:25:43.511Z"
+      }
     },
     {
       "id": 2,
@@ -116,7 +124,15 @@
       "to": "Москва",
       "date": "2018-09-09",
       "desc": "В июне состоится масштабное мероприятие одного из самых известных российских современных художников. Собираю группу из 20 человек для вылета из Санкт-Петербурга в Москву.",
-      "isRemoved": true
+      "isRemoved": true,
+      "notification": {
+        "user": {
+          "avatar": "userAvatar_4.jpg",
+          "username": "Vasilisa"
+        },
+        "event": "приняла участие в событии",
+        "timestamp": "2018-09-13T21:25:43.511Z"
+      }
     },
     {
       "id": 3,
@@ -138,7 +154,15 @@
       "from": "Санкт–Петербург",
       "to": "Москва",
       "date": "1810",
-      "desc": "В июне состоится масштабное мероприятие одного из самых известных российских современных художников. Собираю группу из 20 человек для вылета из Санкт-Петербурга в Москву."
+      "desc": "В июне состоится масштабное мероприятие одного из самых известных российских современных художников. Собираю группу из 20 человек для вылета из Санкт-Петербурга в Москву.",
+      "notification": {
+        "user": {
+          "avatar": "userAvatar_4.jpg",
+          "username": "Vasilisa"
+        },
+        "event": "приняла участие в событии",
+        "timestamp": "2018-09-13T21:25:43.511Z"
+      }
     }
   ],
   "comments": [
@@ -612,6 +636,7 @@
       ],
       "user": {
         "name": "Анастасия",
+        "avatar": "userAvatar.jpg",
         "age": "30",
         "isVerified": true,
         "distance": "19 км от Вас"
@@ -641,6 +666,7 @@
       ],
       "user": {
         "name": "Анастасия",
+        "avatar": "userAvatar.jpg",
         "age": "30",
         "isVerified": true,
         "distance": "19 км от Вас"
@@ -670,6 +696,7 @@
       ],
       "user": {
         "name": "Анастасия",
+        "avatar": "userAvatar.jpg",
         "age": "30",
         "isVerified": true,
         "distance": "19 км от Вас"
@@ -699,6 +726,7 @@
       ],
       "user": {
         "name": "Анастасия",
+        "avatar": "userAvatar.jpg",
         "age": "30",
         "isVerified": true,
         "distance": "19 км от Вас"
@@ -728,6 +756,7 @@
       ],
       "user": {
         "name": "Анастасия",
+        "avatar": "userAvatar.jpg",
         "age": "30",
         "isVerified": true,
         "distance": "19 км от Вас"
@@ -757,6 +786,7 @@
       ],
       "user": {
         "name": "Анастасия",
+        "avatar": "userAvatar.jpg",
         "age": "30",
         "isVerified": true,
         "distance": "19 км от Вас"
@@ -786,6 +816,7 @@
       ],
       "user": {
         "name": "Анастасия",
+        "avatar": "userAvatar.jpg",
         "age": "30",
         "isVerified": true,
         "distance": "19 км от Вас"
@@ -1016,6 +1047,32 @@
       "slug": "rules",
       "title": "Правила",
       "content": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p><h3 class=\"h3-title\">Подзаголовок</h3><p>t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>"
+    }
+  ],
+  "recommendedEvents": [
+    {
+      "id": 1,
+      "user": {
+        "avatar": "userAvatar_3.jpg",
+        "username": "Marusia",
+        "firstname": "Алиса"
+      },
+      "event": {
+        "id": 1,
+        "type": "Путешествие"
+      }
+    },
+    {
+      "id": 2,
+      "user": {
+        "avatar": "userAvatar_2.jpg",
+        "username": "Marusia",
+        "firstname": "Лариса"
+      },
+      "event": {
+        "id": 1,
+        "type": "В кино"
+      }
     }
   ]
 }

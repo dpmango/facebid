@@ -44,6 +44,7 @@ class EventCardAdmin extends Component{
 
   }
 
+
   render(){
     const {
       state: {activeTab, requests, requestFilter}

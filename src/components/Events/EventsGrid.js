@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import api from 'services/Api';
 import EventCard from './Card/EventCard';
@@ -31,6 +31,9 @@ class EventsGrid extends Component {
     switch (type) {
       case "my-events":
         endpoint = `myEvents?_limit=${this.loadBy}`
+        break;
+      case "news":
+        endpoint = `events?_limit=${this.loadBy}`
         break;
       default:
         endpoint = `events?_limit=${this.loadBy}`
@@ -110,8 +113,10 @@ class EventsGrid extends Component {
 
 
   renderHeader = () => {
-    const { type, isMyProfile } = this.props
-    const { profileFilter, searchFilter } = this.state
+    const {
+      props: {type, isMyProfile},
+      state: {profileFilter, searchFilter}
+    } = this
 
     const profileFilters = [
       { id: 'all', name: 'Все' },
@@ -126,7 +131,7 @@ class EventsGrid extends Component {
 
     if ( type === "profile" ){
       return (
-        <React.Fragment>
+        <Fragment>
           <h3 className="h3-title">{isMyProfile? "Вы участвуете в событиях" : "События"}</h3>
           <div className="events__header-filter">
             { profileFilters.map((f, i) => (
@@ -138,11 +143,11 @@ class EventsGrid extends Component {
               </span>
             ))}
           </div>
-        </React.Fragment>
+        </Fragment>
       )
     } else if ( type === "search" ){
       return (
-        <React.Fragment>
+        <Fragment>
           <h3 className="h3-title">Результаты поиска</h3>
           <div className="events__header-filter">
             { searchFilters.map((f, i) => (
@@ -154,11 +159,11 @@ class EventsGrid extends Component {
               </span>
             ))}
           </div>
-        </React.Fragment>
+        </Fragment>
       )
     } else if ( type === "my-events" ){
       return (
-        <React.Fragment>
+        <Fragment>
           <h3 className="h3-title">Мои события</h3>
           <div className="events__header-cta">
             <button
@@ -168,20 +173,22 @@ class EventsGrid extends Component {
               <span>Создать событие</span>
             </button>
           </div>
-        </React.Fragment>
+        </Fragment>
       )
     } else if ( type === "bookmarks" ){
       return(
-        <React.Fragment>
+        <Fragment>
           <h3 className="h3-title">Закладки</h3>
-        </React.Fragment>
+        </Fragment>
       )
+    } else if ( type === "news" ){
+      return null
     } else {
       return(
-        <React.Fragment>
+        <Fragment>
           <h3 className="h3-title">Результаты поиска</h3>
           <div className="events__header-total">Найдено 148 событий</div>
-        </React.Fragment>
+        </Fragment>
       )
     }
   }

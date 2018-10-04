@@ -13,6 +13,7 @@ import EventCardCta from './EventCardCta';
 import EventCardDate from './EventCardDate';
 import EventCardAction from './EventCardAction';
 import EventCardAdmin from './EventCardAdmin';
+import EventCardNotificaiton from './EventCardNotificaiton';
 import Comments from './Comments';
 import CreateComment from './CreateComment'
 
@@ -39,7 +40,8 @@ class EventCard extends Component {
     // this.scrollWindow = throttle(this.handleWindowScroll, 10);
     this.scrollWindow = this.handleWindowScroll
 
-    this.isMyEvent = props.type === "my-events";
+    this.isMyEvents = props.type === "my-events";
+    this.isNews = props.type === "news";
 
     this.isDeclined = this.actionFlag === "isDeclined"
   }
@@ -157,8 +159,15 @@ class EventCard extends Component {
   }
 
   // outside method via onRef
-  onCommentReplyClick = (username) => {
+  commentReplyClick = (username) => {
     this.createCommentRef.appendUserMention(username);
+  }
+
+  commentRemove = (id) => {
+    this.setState({
+      ...this.state,
+      comments: this.state.comments.filter(x => x.id !== id)
+    })
   }
 
   render(){
@@ -174,6 +183,7 @@ class EventCard extends Component {
           date,
           to,
           desc,
+          notification,
           isRemoved
         },
         type
@@ -190,10 +200,14 @@ class EventCard extends Component {
     return(
       <div
         className={"e-card" +
-          (this.isMyEvent ? " e-card--my-event" : "") +
+          ((this.isMyEvents || this.isNews) ? " e-card--white-head" : "") +
           (this.isDeclined ? " e-card--declined" : "") +
           (type === "bookmarks" && isRemoved ? " e-card--removed" : "")
         }>
+        { type === "news" &&
+          <EventCardNotificaiton
+            notification={notification} />
+        }
         <EventCardAction
           actionFlag={actionFlag} />
 
@@ -256,7 +270,8 @@ class EventCard extends Component {
                 </div>
                 <Comments
                   eventAuthor={user.id}
-                  onReplyClick={this.onCommentReplyClick}
+                  onReplyClick={this.commentReplyClick}
+                  onCommentRemove={this.commentRemove}
                   comments={comments} />
               </PerfectScrollbar>
               <CreateComment
@@ -268,7 +283,7 @@ class EventCard extends Component {
           </div>
         </div>
 
-        { (this.isMyEvent && actionFlag === "isPublishedFree") &&
+        { (this.isMyEvents && actionFlag === "isPublishedFree") &&
           <EventCardAdmin />
         }
       </div>

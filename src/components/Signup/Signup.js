@@ -191,7 +191,7 @@ class Signup extends Component{
 
     const leadObj = {
       username: username,
-      birth_date: `${date.day} ${date.month} ${date.year}`,
+      birth_date: `${date.year}-${date.month}-${date.day}`,
       gender: gender,
       city: city ? city.value : "",
       email: email,

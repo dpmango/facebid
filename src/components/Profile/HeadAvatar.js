@@ -69,7 +69,7 @@ class HeadAvatar extends Component{
                   className="p-head__avatar-btn btn btn-circle btn-circle--white">
                   <SvgIcon name="camera-add" />
                 </button>
-            </React.Fragment>
+              </React.Fragment>
             }
           </div>
         </div>

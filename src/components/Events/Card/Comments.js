@@ -17,6 +17,7 @@ class Comments extends Component {
           <Comment
             onReplyClick={this.props.onReplyClick}
             key={comment.id}
+            onCommentRemove={this.props.onCommentRemove}
             eventAuthor={eventAuthor}
             data={comment} />
         ))}
