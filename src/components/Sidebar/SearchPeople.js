@@ -46,7 +46,6 @@ class SearchPeople extends Component {
   render(){
     const { searchValue, people } = this.state;
 
-    console.log(people)
     return (
       <div className="user-panel__search ui-search-wrapper">
         <SimpleInput

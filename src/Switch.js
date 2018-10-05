@@ -18,10 +18,11 @@ class RenderSwitch extends React.Component {
 
   componentDidUpdate(prevProps) {
 
+    // some routes pass Redirect state
     if ( this.props.location.state && this.props.location.state.fromProtected ){
       this.props.openModal('signup');
     } else {
-      // disallow transition when switching between the tabs
+      // when path has changed
       if (this.props.location.pathname !== prevProps.location.pathname) {
         ScrollTo(0, 300);
         this.props.closeModal()

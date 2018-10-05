@@ -45,9 +45,10 @@ class Head extends Component{
   }
 
   getUserData = () => {
+    const {profileId} = this.props;
 
     api
-      .get(`profiles/${this.props.urlParams.id}`)
+      .get(`profiles/${profileId}`)
       .then(res => {
 
         this.setState({

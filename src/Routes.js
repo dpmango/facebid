@@ -58,7 +58,6 @@ export const NotFound = MyLoadable({
 export const routes = [
   {
     isExact: true,
-    protected: false,
     path: '/',
     component: Home
   },
@@ -67,6 +66,12 @@ export const routes = [
     protected: true,
     path: '/events',
     component: Events
+  },
+  {
+    isExact: false,
+    protected: true,
+    path: '/event/:id',
+    component: Profile
   },
   {
     isExact: false,
@@ -100,12 +105,10 @@ export const routes = [
   },
   {
     isExact: false,
-    protected: false,
     path: '/info/:id',
     component: Static
   },
   {
-    protected: false,
     path: '',
     component: NotFound
   },
