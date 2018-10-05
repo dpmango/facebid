@@ -18,8 +18,7 @@ class Filters extends Component {
     super(props)
 
     this.initialState = {
-      ...props.eventFilterRedux,
-      isOpened: true
+      ...props.eventFilterRedux
     }
     // {
     //   eventName: props.eventFilterRedux.eventName,
@@ -31,7 +30,6 @@ class Filters extends Component {
     // }
 
     this.state = this.initialState
-
   }
 
   clearFiltersClick = () => {
@@ -74,12 +72,17 @@ class Filters extends Component {
   // }
 
   selectCategory = (id) => {
-    const options = this.state.categories
+    let options = this.state.categories
     const index = options.indexOf(id)
     if ( index !== -1 ){
       options.splice(index, 1);
     } else {
       options.push(id)
+    }
+
+    // reserve first category (all) as default
+    if ( options.length === 0 ){
+      options = [1]
     }
 
     this.setState({

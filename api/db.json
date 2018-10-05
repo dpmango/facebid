@@ -19,6 +19,56 @@
       "counter": 14
     }
   ],
+  "peopleSearch": [
+    {
+      "id": 1,
+      "user": {
+        "id": 2,
+        "avatar": "userAvatar.jpg",
+        "name": "Agneshka"
+      }
+    },
+    {
+      "id": 2,
+      "user": {
+        "id": 2,
+        "avatar": "userAvatar_2.jpg",
+        "name": "Maria"
+      }
+    },
+    {
+      "id": 3,
+      "user": {
+        "id": 2,
+        "avatar": "userAvatar.jpg",
+        "name": "Marusia"
+      }
+    },
+    {
+      "id": 4,
+      "user": {
+        "id": 2,
+        "avatar": "userAvatar_4.jpg",
+        "name": "Ivan"
+      }
+    },
+    {
+      "id": 5,
+      "user": {
+        "id": 2,
+        "avatar": "userAvatar_2.jpg",
+        "name": "George"
+      }
+    },
+    {
+      "id": 6,
+      "user": {
+        "id": 2,
+        "avatar": "userAvatar_3.jpg",
+        "name": "Margo"
+      }
+    }
+  ],
   "users": [
     {
       "id": 1,
@@ -47,10 +97,10 @@
       "distance": "19 км от Вас",
       "date": "2018-09-14",
       "image": "featuredPeople.jpg",
-      "featuredEvent": {
+      "event": {
         "name": "Путешествие сегодня",
         "text": "В июне состоится масштабное мероприятие одного из самых известных российских современных художников. Собираю группу из 20 человек для вылета из Санкт-Петербурга в Москву.",
-        "link": "#",
+        "id": "1",
         "from": "Санкт–Петербург",
         "to": "Москва"
       }
@@ -63,10 +113,10 @@
       "distance": "5 км от Вас",
       "date": "2018-10-18",
       "image": "featuredPeople.jpg",
-      "featuredEvent": {
+      "event": {
         "name": "Путешествие сегодня",
         "text": "В июне состоится масштабное мероприятие  Собираю группу из 20 человек для вылета из Санкт-Петербурга в Москву.",
-        "link": "#",
+        "id": "1",
         "from": "Санкт–Петербург",
         "to": "Москва"
       }

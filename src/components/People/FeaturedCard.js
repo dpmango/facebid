@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Image from 'components/Helpers/Image';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import EventCardDate from 'components/Events/Card/EventCardDate';
+import {openModal} from 'actions/modal';
 
 class FeaturedPeople extends Component {
   constructor(){
@@ -22,6 +24,15 @@ class FeaturedPeople extends Component {
     }
   }
 
+  onMoreClick = (id) => {
+    this.props.openModal({
+      name: "event",
+      options: {
+        eventId: id
+      }
+    })
+  }
+
   render(){
 
     const {
@@ -32,7 +43,7 @@ class FeaturedPeople extends Component {
         distance,
         date,
         image,
-        featuredEvent
+        event
       },
       noEvent
     } = this.props;
@@ -70,15 +81,19 @@ class FeaturedPeople extends Component {
         </div>
         { !noEvent &&
           <div className="f-people__info">
-            <div className="f-people__event-name">{featuredEvent.name}</div>
+            <div className="f-people__event-name">{event.name}</div>
             <div className="f-people__event-line">
-              <span>{featuredEvent.from}</span>
+              <span>{event.from}</span>
               <i className="icon icon-plane"></i>
-              <span>{featuredEvent.to}</span>
+              <span>{event.to}</span>
             </div>
-            <div className="f-people__event-description">{featuredEvent.text}</div>
+            <div className="f-people__event-description">{event.text}</div>
             <div className="f-people__event-cta">
-              <a href={featuredEvent.link} className="btn btn-outline btn-outline--white btn--block">Узнать больше</a>
+              <button
+                onClick={this.onMoreClick.bind(this, event.id)}
+                className="btn btn-outline btn-outline--white btn--block">
+                Узнать больше
+              </button>
             </div>
           </div>
         }
@@ -87,4 +102,9 @@ class FeaturedPeople extends Component {
   }
 }
 
-export default FeaturedPeople
+
+const mapDispatchToProps = (dispatch) => ({
+  openModal: (data) => dispatch(openModal(data))
+})
+
+export default connect(null, mapDispatchToProps)(FeaturedPeople)

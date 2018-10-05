@@ -3,14 +3,6 @@ import Swiper from 'react-id-swiper';
 import SvgIcon from '../Helpers/SvgIcon';
 
 class FilterSlider extends Component {
-  constructor(){
-    super()
-
-    this.state = {
-      selectedCategories: []
-    }
-  }
-
   render(){
     const SwiperParams = {
       // react specific params
