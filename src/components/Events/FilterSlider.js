@@ -61,17 +61,15 @@ class FilterSlider extends Component {
     return(
       <div className="filters__slider">
         <Swiper {...SwiperParams}>
-          { slides.map(slide => {
-            return (
-              <FilterCategory
-                key={slide.id}
-                values={this.props.values}
-                clickHandler={this.props.clickHandler}
-                id={slide.id}
-                icon={slide.icon}
-                name={slide.name} />
-            )
-          }) }
+          { slides.map(slide => (
+            <FilterCategory
+              key={slide.id}
+              values={this.props.values}
+              clickHandler={this.props.clickHandler}
+              id={slide.id}
+              icon={slide.icon}
+              name={slide.name} />
+          ))}
         </Swiper>
       </div>
     )

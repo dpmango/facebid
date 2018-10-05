@@ -1059,7 +1059,8 @@
       },
       "event": {
         "id": 1,
-        "type": "Путешествие"
+        "type": "Путешествие",
+        "isNew": true
       }
     },
     {
@@ -1071,7 +1072,80 @@
       },
       "event": {
         "id": 1,
+        "type": "В кино",
+        "isNew": true
+      }
+    },
+    {
+      "id": 3,
+      "user": {
+        "avatar": "userAvatar_4.jpg",
+        "username": "Marusia",
+        "firstname": "Валерия"
+      },
+      "event": {
+        "id": 1,
+        "type": "Свидание"
+      }
+    },
+    {
+      "id": 4,
+      "user": {
+        "avatar": "userAvatar_5.jpg",
+        "username": "Marusia",
+        "firstname": "Таня"
+      },
+      "event": {
+        "id": 1,
+        "type": "Спорт"
+      }
+    },
+    {
+      "id": 5,
+      "user": {
+        "avatar": "userAvatar_3.jpg",
+        "username": "Marusia",
+        "firstname": "Алиса"
+      },
+      "event": {
+        "id": 1,
+        "type": "Путешествие"
+      }
+    },
+    {
+      "id": 6,
+      "user": {
+        "avatar": "userAvatar_2.jpg",
+        "username": "Marusia",
+        "firstname": "Лариса"
+      },
+      "event": {
+        "id": 1,
         "type": "В кино"
+      }
+    },
+    {
+      "id": 7,
+      "user": {
+        "avatar": "userAvatar_4.jpg",
+        "username": "Marusia",
+        "firstname": "Валерия"
+      },
+      "event": {
+        "id": 1,
+        "type": "Свидание"
+      }
+    },
+    {
+      "id": 8,
+      "user": {
+        "avatar": "userAvatar_5.jpg",
+        "username": "Marusia",
+        "firstname": "Таня"
+      },
+      "event": {
+        "id": 1,
+        "type": "Спорт"
       }
     }
   ]

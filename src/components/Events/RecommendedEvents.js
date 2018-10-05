@@ -14,8 +14,12 @@ class RecommendedEvents extends Component{
     super();
 
     this.state = {
-      events: []
+      events: [],
+      isFirstSlide: true,
+      isLastSlide: false
     }
+
+    this.swiperRef = null
   }
 
   componentDidMount(){
@@ -42,29 +46,53 @@ class RecommendedEvents extends Component{
     })
   }
 
+  nextSlide = () => {
+    if (!this.swiperRef) return
+
+    this.swiperRef.slideNext()
+  }
+
+  prevSlide = () => {
+    if (!this.swiperRef) return
+    this.swiperRef.slidePrev()
+  }
+
+  slideChanged = () => {
+    if ( !this.swiperRef ) return
+
+    // convert swiper ref to state
+    this.setState({
+      isFirstSlide: this.swiperRef.isBeginning,
+      isLastSlide: this.swiperRef.isEnd
+    })
+  }
+
   render(){
     const SwiperParams = {
       // react specific params
       slideClass: 'r-event',
-      // renderPrevButton: () => <button className="filters__slider-prev"><SvgIcon name="arrow-left" /></button>,
-      // renderNextButton: () => <button className="filters__slider-next"><SvgIcon name="arrow-right" /></button>,
+      // renderPrevButton: () => <button className="r-events__slider-prev"><SvgIcon name="arrow-left" /></button>,
+      // renderNextButton: () => <button className="r-events__slider-next"><SvgIcon name="arrow-right" /></button>,
 
       direction: 'horizontal',
-      watchOverflow: false,
+      watchOverflow: true,
       setWrapperSize: false,
       spaceBetween: 16,
       slidesPerView: 'auto',
       normalizeSlideIndex: true,
       freeMode: true,
-      // navigation: {
-      //   nextEl: '.filters__slider-next',
-      //   prevEl: '.filters__slider-prev',
-      // },
+      navigation: {
+        nextEl: '.r-events__slider-next',
+        prevEl: '.r-events__slider-prev',
+      },
       slidesOffsetBefore: 24,
-      slidesOffsetAfter: 24
+      slidesOffsetAfter: 24,
+      on: {
+        slideChange: this.slideChanged,
+      },
     }
 
-    const {events} = this.state
+    const {events, isFirstSlide, isLastSlide} = this.state
 
     return(
       <div className="r-events">
@@ -73,19 +101,32 @@ class RecommendedEvents extends Component{
           <Link
             to="/events"
             className="r-events__link-more">Показать все</Link>
-          <div className="r-events__nav"></div>
+          <div className="r-events__nav">
+            <button
+              onClick={this.prevSlide}
+              className={"r-events__slider-prev" + (isFirstSlide ? " swiper-button-disabled" : "")}>
+              <SvgIcon name="arrow-left" />
+            </button>
+            <button
+              onClick={this.nextSlide}
+              className={"r-events__slider-next" + (isLastSlide ? " swiper-button-disabled" : "")}>
+              <SvgIcon name="arrow-right" />
+            </button>
+          </div>
         </div>
         <div className="r-events__grid">
-          { !events ?
+          { events.length === 0 ?
             <Loading />
             :
             <div className="r-events__slider">
-              <Swiper {...SwiperParams}>
+              <Swiper
+                ref={node => this.swiperRef = node ? node.swiper : null }
+                {...SwiperParams}>
                 {events.map(event => (
                   <div
                     onClick={this.openEvent.bind(this, event.event.id)}
                     key={event.id}
-                    className="r-event">
+                    className={"r-event" + (event.event.isNew ? " is-new" : "")}>
                     <div className="r-event__wrapper">
                       <div className="r-event__avatar">
                         <Avatar

@@ -78,6 +78,11 @@
     transition: .25s $ease
     &:hover
       color: $fontColor
+    &.swiper-button-disabled
+      opacity: .5
+      cursor: not-allowed
+      &:hover
+        color: $colorBlue
   &__slider-next
     right: 5px
   &__slider-prev
