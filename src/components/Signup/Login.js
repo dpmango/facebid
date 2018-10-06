@@ -6,8 +6,8 @@ import Modal from '../Modal/Modal';
 import FormInput from '../Forms/Input';
 import Checkbox from '../Forms/Checkbox';
 import SocialLogin from './SocialLogin';
-import { loginRequest, clearAuthError } from '../../actions/user';
-import { openModal, closeModal } from '../../actions/modal'
+import { loginRequest, clearAuthError } from 'actions/user';
+import { openModal, closeModal } from 'actions/modal';
 
 class Login extends Component{
   constructor(){
@@ -112,8 +112,7 @@ class Login extends Component{
                   onSubmit={this.handleSubmit}
                   onValid={this.formValid}
                   onInvalid={this.formInvalid}
-                  ref={this.formRef}
-                >
+                  ref={this.formRef} >
                   {loginError &&
                     <div className="ui-group ui-group--row">
                       <label htmlFor=""></label>

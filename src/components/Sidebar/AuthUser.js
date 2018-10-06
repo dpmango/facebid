@@ -11,7 +11,7 @@ import { openModal } from 'actions/modal';
 class AuthUser extends Component{
   render(){
 
-    const { userId, userDetails } = this.props
+    const { userId, userDetails, userBalance } = this.props
 
     return(
       <div className="user-panel">
@@ -38,7 +38,9 @@ class AuthUser extends Component{
             })}
             className="panel-action panel-action--up">
             <div className="panel-action__icon">
-              <div className="panel-action__counter"><span>12</span></div>
+              {userBalance.promote &&
+                <div className="panel-action__counter"><span>{userBalance.promote}</span></div>
+              }
               <SvgIcon name="star-stroke" />
             </div>
             <div className="panel-action__name">Поднять  <br/>объявление</div>
@@ -76,7 +78,8 @@ AuthUser.propTypes = {
 
 const mapStateToProps = (state) => ({
   userId: state.user.userId,
-  userDetails: state.user.userDetails
+  userDetails: state.user.userDetails,
+  userBalance: state.user.userBalance
 })
 
 const mapDispatchToProps = (dispatch) => ({

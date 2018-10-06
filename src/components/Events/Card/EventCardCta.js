@@ -44,9 +44,15 @@ class EventCardCta extends Component {
       )
     }
 
-    if ( actionFlag === "isModerationFailed" ){
+    if ( actionFlag === "isModerationFailed" ||
+        actionFlag === "isPublished" ||
+        actionFlag === "isPublishedAdvertised" ||
+        actionFlag === "isPublishedTop"
+      ){
       return (
-        <button className="btn btn-primary btn--iconed">
+        <button
+          onClick={this.props.onEditModeClick}
+          className="btn btn-primary btn--iconed">
           <SvgIcon name="checkmark" />
           <span>Редактировать</span>
         </button>

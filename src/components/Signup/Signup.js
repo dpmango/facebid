@@ -195,7 +195,10 @@ class Signup extends Component{
       gender: gender,
       city: city ? city.value : "",
       email: email,
-      password: password
+      password: password,
+      "balance": { // TODO - remove on prod
+        "promote": 0
+      }
     }
 
     this.props.signupRequest(leadObj)

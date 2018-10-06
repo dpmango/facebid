@@ -1,4 +1,4 @@
-import api from '../services/Api';
+import api from 'services/Api';
 
 export const AUTHORIZATION_REQUEST = 'AUTHORIZATION_REQUEST';
 export const AUTHORIZATION_SUCCESS = 'AUTHORIZATION_SUCCESS';
@@ -35,9 +35,8 @@ export const logIn = (payload) => (
     api
       .get(`users?email=${payload.email}`)
       .then(res => {
-
         // TODO
-        // should get flag from server on production
+        // should get flag and cookies from server on production
         const userData = res.data[res.data.length - 1]
         if ( payload.password.toString() ===
              userData.password ){

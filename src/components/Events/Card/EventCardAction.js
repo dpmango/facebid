@@ -1,19 +1,20 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import Tooltip from 'components/Helpers/Tooltip';
+import {openModal} from 'actions/modal';
 
 class EventCardAction extends Component {
 
   // render different actions from "my-events" page
 
-  // props
+  // flags
   // "isModerationPening": false,
   // "isModerationFailed": false,
   // "isDeclined": false,
-  // "isPublishedFree": false,
-  // "isPublishedPremium": false,
-  // "isPublishedShareBonus": false,
+  // "isPublished": false,
+  // "isPublishedAdvertised": false,
   // "isPublishedTop": false
 
 
@@ -77,28 +78,22 @@ class EventCardAction extends Component {
             <SvgIcon name="close" />
           </div>
         )
-      case "isPublishedFree":
+      case "isPublished":
         return (
           <div className="ec-action__icon">
             <SvgIcon name="checkmark" />
           </div>
         )
-      case "isPublishedPremium":
+      case "isPublishedAdvertised":
         return (
-          <div className="ec-action__icon">
-            <SvgIcon name="" />
-          </div>
-        )
-      case "isPublishedShareBonus":
-        return (
-          <div className="ec-action__icon">
-            <SvgIcon name="" />
+          <div className="ec-action__icon ec-action__icon--purple">
+            <SvgIcon name="dollar-sign" />
           </div>
         )
       case "isPublishedTop":
         return (
-          <div className="ec-action__icon">
-            <SvgIcon name="" />
+          <div className="ec-action__icon ec-action__icon--purple">
+            <SvgIcon name="arrow-top" />
           </div>
         )
       default:
@@ -112,61 +107,61 @@ class EventCardAction extends Component {
     switch(this.props.actionFlag){
       case "isModerationPening":
         return (
-          <React.Fragment>
+          <Fragment>
             <div className="ec-action__title">Объявление находится на модерации</div>
             <div className="ec-action__description">
               Статус: ожидает проверки
               <Tooltip
                 content="Контент" />
             </div>
-          </React.Fragment>
+          </Fragment>
         )
       case "isModerationFailed":
         return (
-          <React.Fragment>
+          <Fragment>
             <div className="ec-action__title">Событие не прошло модерацию</div>
             <div className="ec-action__description">
               Зачем это нужно?
               <Tooltip
                 content="Контент" />
             </div>
-          </React.Fragment>
+          </Fragment>
 
         )
       case "isDeclined":
         return (
-          <React.Fragment>
+          <Fragment>
             <div className="ec-action__title">Отклонено</div>
             <div className="ec-action__description">
               Причина отклонения
               <Tooltip
                 content="Контент" />
             </div>
-          </React.Fragment>
+          </Fragment>
         )
-      case "isPublishedFree":
+      case "isPublished":
         return (
-          <React.Fragment>
+          <Fragment>
             <div className="ec-action__title">Опубликовано</div>
-          </React.Fragment>
+          </Fragment>
         )
-      case "isPublishedPremium":
+      case "isPublishedAdvertised":
         return (
-          <div className="ec-action__icon">
-            <SvgIcon name="" />
-          </div>
-        )
-      case "isPublishedShareBonus":
-        return (
-          <div className="ec-action__icon">
-            <SvgIcon name="" />
-          </div>
+          <Fragment>
+            <div className="ec-action__title">Опубликовано</div>
+            <div className="ec-action__description">
+              Рекламное объявление
+            </div>
+          </Fragment>
         )
       case "isPublishedTop":
         return (
-          <div className="ec-action__icon">
-            <SvgIcon name="" />
-          </div>
+          <Fragment>
+            <div className="ec-action__title">В ТОП</div>
+            <div className="ec-action__description">
+              Событие находится в ТОП до 21.02
+            </div>
+          </Fragment>
         )
       default:
         return null
@@ -204,38 +199,31 @@ class EventCardAction extends Component {
             <span>Разместить платно</span>
           </button>
         )
-      case "isPublishedFree":
+      case "isPublished":
         return (
           <div className="ec-action__cta-wrapper">
-            <span className="ec-action__cta-name">
-              Доступен бесплатный boost
-            </span>
-            <button
-              onClick={this.promoteFree}
-              className="btn btn-primary btn-primary--violet btn--iconed">
-              <SvgIcon name="rocket" />
-              <span>Поднять бесплатно</span>
-            </button>
+            { this.props.userBalance.promote ?
+              <Fragment>
+                <span className="ec-action__cta-name">
+                  Доступен бесплатный boost
+                </span>
+                <button
+                  onClick={this.promoteFree}
+                  className="btn btn-primary btn-primary--violet btn--iconed">
+                  <SvgIcon name="rocket" />
+                  <span>Поднять бесплатно</span>
+                </button>
+              </Fragment>
+              :
+              <span>Недостаточно денег на балансе</span>
+            }
+
           </div>
         )
-      case "isPublishedPremium":
-        return (
-          <div className="ec-action__icon">
-            <SvgIcon name="" />
-          </div>
-        )
-      case "isPublishedShareBonus":
-        return (
-          <div className="ec-action__icon">
-            <SvgIcon name="" />
-          </div>
-        )
+      case "isPublishedAdvertised":
+        return null
       case "isPublishedTop":
-        return (
-          <div className="ec-action__icon">
-            <SvgIcon name="" />
-          </div>
-        )
+        return null
       default:
         return null
     }
@@ -244,7 +232,17 @@ class EventCardAction extends Component {
 }
 
 EventCardAction.propTypes = {
-  actionFlag: PropTypes.string
+  actionFlag: PropTypes.string,
+  openModal: PropTypes.func
 }
 
-export default EventCardAction
+const mapStateToProps = (state) => ({
+  userId: state.user.userId,
+  userBalance: state.user.userBalance
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  openModal: (data) => dispatch(openModal(data))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventCardAction)

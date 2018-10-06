@@ -6,14 +6,16 @@ const Athorization = (WrappedComponent) => {
   class WithAuthorization extends Component {
 
     render() {
-      const { userId } = this.props;
-
+      const { userId, match } = this.props;
       if (!userId) {
         return (
           <Redirect
             to={{
               pathname: "/",
-              state: { fromProtected: true }
+              state: {
+                fromProtected: true,
+                prevRoute: match.url
+              }
             }} />
         )
       }

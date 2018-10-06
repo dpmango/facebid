@@ -1,7 +1,10 @@
 import React, {Component, Fragment} from 'react';
+import { Link } from 'react-router-dom';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import api from 'services/Api';
 import SvgIcon from 'components/Helpers/SvgIcon';
+import Avatar from 'components/Shared/Avatar';
+import Loading from 'components/Helpers/Loading';
 import EventCardRequest from './EventCardRequest';
 
 class EventCardAdmin extends Component{
@@ -11,19 +14,51 @@ class EventCardAdmin extends Component{
     this.state = {
       activeTab: 1,
       requests: [],
-      requestFilter: 1
+      requestFilter: 1,
+      scope: {},
+      favorites: []
     }
   }
 
   componentDidMount(){
-    this.getRequest();
+    this.getScope();
+    this.getRequests();
   }
 
-  getRequest = () => {
+  getScope = () => {
+    api
+      .get("eventAdminScope") // TODO - refactor with id
+      .then(res => {
+        this.setState({scope: res.data})
+        // "totalRequests": 81,
+        // "totalFavorites": 244,
+        // "totalViews": 1455
+      })
+      .catch(err => {
+        console.log('some erorr happends when fetching eventScopAdmin');
+      })
+  }
+
+  getRequests = () => {
     api
       .get('eventRequests')
       .then(res => {
         this.setState({requests: res.data})
+      })
+      .catch(err => {
+        console.log('some error happens when fetching eventRequests')
+      })
+  }
+
+  getFavorites = () => {
+    api
+      .get('eventFavorites')
+      .then(res => {
+        this.setState({favorites: res.data.concat(res.data)
+          .concat(res.data).concat(res.data).concat(res.data)})
+      })
+      .catch(err => {
+        console.log('some error happends when fetching eventRequests')
       })
   }
 
@@ -31,12 +66,17 @@ class EventCardAdmin extends Component{
     if ( id !== this.state.activeTab ){
       this.setState({activeTab: id})
     }
+
+    // first switch to favorites tabs
+    if ( id === 2 && this.state.favorites.length === 0 ){
+      this.getFavorites();
+    }
   }
 
   changeRequestFilter = (id) => {
     this.setState({
       requestFilter: id
-    }, () => this.getRequest())
+    }, () => this.getRequests())
   }
 
   // header cta button click
@@ -47,8 +87,16 @@ class EventCardAdmin extends Component{
 
   render(){
     const {
-      state: {activeTab, requests, requestFilter}
+      props: {actionFlag},
+      state: {scope, activeTab, requests, requestFilter, favorites}
     } = this;
+
+    if ( actionFlag !== "isPublished" &&
+         actionFlag !== "isPublishedAdvertised" &&
+         actionFlag !== "isPublishedTop"
+    ) {
+      return null
+    }
 
     return(
       <div className="ec-admin">
@@ -63,8 +111,10 @@ class EventCardAdmin extends Component{
                 </span>
               </div>
               <span className="ec-admin__nav-title">Заявки</span>
-              <span className="ec-admin__nav-counter">81</span>
-              <span className="ico-blue-circle ec-admin__nav-mark"><span>+3</span></span>
+              <span className="ec-admin__nav-counter">{scope.totalRequests}</span>
+              { scope.newRequests &&
+                <span className="ico-blue-circle ec-admin__nav-mark"><span>+{scope.newRequests}</span></span>
+              }
             </div>
             <div
               onClick={this.changeTab.bind(this, 2)}
@@ -73,7 +123,7 @@ class EventCardAdmin extends Component{
                 <SvgIcon name="bookmark" />
               </div>
               <span className="ec-admin__nav-title">В избранном</span>
-              <span className="ec-admin__nav-counter">81</span>
+              <span className="ec-admin__nav-counter">{scope.totalFavorites}</span>
             </div>
             <div
               className="ec-admin__nav-el is-static">
@@ -81,7 +131,7 @@ class EventCardAdmin extends Component{
                 <SvgIcon name="eye" />
               </div>
               <span className="ec-admin__nav-title">Просмотров</span>
-              <span className="ec-admin__nav-counter">1 412</span>
+              <span className="ec-admin__nav-counter">{scope.totalViews}</span>
             </div>
           </div>
           <div className="ec-admin__header-cta">
@@ -118,16 +168,36 @@ class EventCardAdmin extends Component{
                     className={"ec-requests__filter" + (requestFilter === 3 ? " is-active" : "")}>Отклоненные</div>
                 </div>
               </div>
-              {requests.length > 0 && requests.map(request => (
+              {requests.length > 0 ? requests.map(request => (
                 <EventCardRequest
                   key={request.id}
                   request={request} />
-              ))}
+                ))
+                : <Loading />
+              }
             </div>
           </div>
           <div
             className={"ec-admin__tab" + (activeTab === 2 ? " is-active" : "")}>
-
+            <div className="ec-favorites">
+              {favorites.length > 0 ? favorites.map((fav, index) => (
+                <div
+                  key={index}
+                  className="ec-favorites__col">
+                  <Link
+                    to={`/profile/${fav.user.id}`}
+                    className="ec-favorite">
+                    <Avatar
+                      className="ec-favorite__avatar avatar avatar--80"
+                      user={fav.user} />
+                    <div className="ec-favorite__name">{fav.user.username}</div>
+                    <div className="ec-favorite__location">{fav.user.location}</div>
+                  </Link>
+                </div>
+                ))
+                : <Loading />
+              }
+            </div>
           </div>
         </PerfectScrollbar>
       </div>

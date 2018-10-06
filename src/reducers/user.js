@@ -5,6 +5,7 @@ export const initialState = {
   randomId: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10),
   userId: null,
   userDetails: {},
+  userBalance: {},
   authToken: null,
   loginError: '',
   signupError: '',
@@ -24,11 +25,17 @@ const user = (state = initialState, action) => {
         ...state,
         userId: action.payload.id,
         userDetails: {
+          ...state.userDetails,
           email: action.payload.email,
           avatar: action.payload.avatar,
           username: action.payload.username,
           fullname: action.payload.fullname
         },
+        userBalance: action.payload.balance
+        // {
+        //   ...state.userBalance,
+        //   promote: action.payload.userBalance.promote
+        // }
         // loginError: ''
       };
     case AUTHORIZATION_FAIL:

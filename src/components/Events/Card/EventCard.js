@@ -27,6 +27,7 @@ class EventCard extends Component {
       : null
 
     this.state = {
+      editMode: false,
       comments: [],
       shouldCtaStick: false,
       computeSticky: {},
@@ -42,8 +43,6 @@ class EventCard extends Component {
 
     this.isMyEvents = props.type === "my-events";
     this.isNews = props.type === "news";
-
-    this.isDeclined = this.actionFlag === "isDeclined"
   }
 
   componentDidMount(){
@@ -170,6 +169,10 @@ class EventCard extends Component {
     })
   }
 
+  enableEditMode = () => {
+    this.setState({editMode: true})
+  }
+
   render(){
 
     const {
@@ -266,6 +269,7 @@ class EventCard extends Component {
                   ref={this.ctaRef}>
                   <EventCardCta
                     actionFlag={actionFlag}
+                    onEditModeClick={this.enableEditMode}
                     onScrollTopClick={this.scrollToTop} />
                 </div>
                 <Comments
@@ -283,8 +287,9 @@ class EventCard extends Component {
           </div>
         </div>
 
-        { (this.isMyEvents && actionFlag === "isPublishedFree") &&
-          <EventCardAdmin />
+        { this.isMyEvents &&
+          <EventCardAdmin
+            actionFlag={actionFlag}/>
         }
       </div>
     )

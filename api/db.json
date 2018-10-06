@@ -76,7 +76,10 @@
       "password": "123456",
       "avatar": "userAvatar_logined.jpg",
       "username": "Agneshka",
-      "fullname": "Maggie Walton"
+      "fullname": "Maggie Walton",
+      "balance": {
+        "promote": 9
+      }
     },
     {
       "username": "khmelevskoy",
@@ -85,7 +88,10 @@
       "city": "Москва",
       "email": "xs290@me.com",
       "password": "testtest",
-      "id": 4
+      "id": 4,
+      "balance": {
+        "promote": 12
+      }
     }
   ],
   "featuredPeople": [
@@ -436,11 +442,6 @@
       "avatar": "userAvatar_2.jpg"
     },
     {
-      "id": 14,
-      "name": "Illaria, 24",
-      "avatar": "userAvatar_3.jpg"
-    },
-    {
       "id": 15,
       "name": "Illaria, 24",
       "avatar": "userAvatar_4.jpg"
@@ -700,9 +701,8 @@
         "isModerationPening": true,
         "isModerationFailed": false,
         "isDeclined": false,
-        "isPublishedFree": false,
-        "isPublishedPremium": false,
-        "isPublishedShareBonus": false,
+        "isPublished": false,
+        "isPublishedAdvertised": false,
         "isPublishedTop": false
       }
     },
@@ -730,9 +730,8 @@
         "isModerationPening": false,
         "isModerationFailed": true,
         "isDeclined": false,
-        "isPublishedFree": false,
-        "isPublishedPremium": false,
-        "isPublishedShareBonus": false,
+        "isPublished": false,
+        "isPublishedAdvertised": false,
         "isPublishedTop": false
       }
     },
@@ -760,9 +759,8 @@
         "isModerationPening": false,
         "isModerationFailed": false,
         "isDeclined": true,
-        "isPublishedFree": false,
-        "isPublishedPremium": false,
-        "isPublishedShareBonus": false,
+        "isPublished": false,
+        "isPublishedAdvertised": false,
         "isPublishedTop": false
       }
     },
@@ -790,9 +788,8 @@
         "isModerationPening": false,
         "isModerationFailed": false,
         "isDeclined": false,
-        "isPublishedFree": true,
-        "isPublishedPremium": false,
-        "isPublishedShareBonus": false,
+        "isPublished": true,
+        "isPublishedAdvertised": false,
         "isPublishedTop": false
       }
     },
@@ -820,9 +817,8 @@
         "isModerationPening": false,
         "isModerationFailed": false,
         "isDeclined": false,
-        "isPublishedFree": false,
-        "isPublishedPremium": true,
-        "isPublishedShareBonus": false,
+        "isPublished": false,
+        "isPublishedAdvertised": true,
         "isPublishedTop": false
       }
     },
@@ -850,9 +846,8 @@
         "isModerationPening": false,
         "isModerationFailed": false,
         "isDeclined": false,
-        "isPublishedFree": false,
-        "isPublishedPremium": false,
-        "isPublishedShareBonus": true,
+        "isPublished": true,
+        "isPublishedAdvertised": false,
         "isPublishedTop": false
       }
     },
@@ -880,13 +875,18 @@
         "isModerationPening": false,
         "isModerationFailed": false,
         "isDeclined": false,
-        "isPublishedFree": false,
-        "isPublishedPremium": false,
-        "isPublishedShareBonus": false,
+        "isPublished": false,
+        "isPublishedAdvertised": false,
         "isPublishedTop": true
       }
     }
   ],
+  "eventAdminScope": {
+    "totalRequests": 81,
+    "newRequests": 3,
+    "totalFavorites": 244,
+    "totalViews": 1455
+  },
   "eventRequests": [
     {
       "id": 1,
@@ -925,6 +925,35 @@
         "age": 24,
         "isVerified": true,
         "distance": "16 км от Вас"
+      }
+    }
+  ],
+  "eventFavorites": [
+    {
+      "id": 1,
+      "user": {
+        "id": 1,
+        "avatar": "userAvatar_4.jpg",
+        "username": "Natalya, 26",
+        "location": "Москва, Россия"
+      }
+    },
+    {
+      "id": 2,
+      "user": {
+        "id": 1,
+        "avatar": "userAvatar_3.jpg",
+        "username": "Valerya, 19",
+        "location": "Москва, Россия"
+      }
+    },
+    {
+      "id": 3,
+      "user": {
+        "id": 1,
+        "avatar": "userAvatar_4.jpg",
+        "username": "Marysia, 19",
+        "location": "Москва, Россия"
       }
     }
   ],
