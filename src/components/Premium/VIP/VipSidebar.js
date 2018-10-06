@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import SvgIcon from 'components/Helpers/SvgIcon';
 
 class VipSidebar extends Component{

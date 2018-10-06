@@ -5,7 +5,7 @@ import api from 'services/Api';
 import Modal from '../Modal/Modal';
 import Loading from '../Helpers/Loading';
 import EventCard from './Card/EventCard';
-import { openModal, closeModal } from 'actions/modal';
+import { closeModal } from 'actions/modal';
 
 class EventModal extends Component{
   constructor(props){
@@ -28,7 +28,7 @@ class EventModal extends Component{
   componentDidMount(){
     this.getEvent(this.state.eventId)
   }
-  
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.eventId !== this.state.eventId){
       this.getEvent(this.state.eventId)

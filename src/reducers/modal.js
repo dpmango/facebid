@@ -21,6 +21,7 @@ const modal = (state = initialState, action) => {
           modalOptions: action.payload.options
         }
       }
+      break
 
     case SET_MODAL_OPTIONS:
       return {

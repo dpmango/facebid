@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import api from 'services/Api';
-import Image from 'components/Helpers/Image';
 import Avatar from 'components/Shared/Avatar';
 import SvgIcon from 'components/Helpers/SvgIcon';
 

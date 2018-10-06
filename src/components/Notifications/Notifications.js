@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { notify } from 'reapop';
@@ -17,12 +17,29 @@ class Notifications extends Component{
     this.state = {
       modalName: 'notifications',
       // state influence componenets render (not, blank, disabled)
-      notifications: false // types arr, [] arr, false
+      notifications: [] // types arr, [] arr, false
+      // TODO - parse initial
     }
   }
 
   componentDidMount(){
     this.getNotifications()
+  }
+
+  _tempToggleNotifications = (a) => {
+    switch (a) {
+      case 1:
+        this.getNotifications()
+        break;
+      case 2:
+        this.setState({notifications: []})
+        break;
+      case 3:
+        this.setState({notifications: false})
+        break;
+      default:
+        return null
+    }
   }
 
   getNotifications = () => {
@@ -56,10 +73,9 @@ class Notifications extends Component{
       <Modal
         isActive={activeModal === modalName}
         containerClass="modal__container--scroller"
-        onHide={this.hide}
-        >
+        onHide={this.hide}>
         {notifications.length > 0 &&
-          <React.Fragment>
+          <Fragment>
             <div className="modal__header">
               <div className="h4-title">
                 Уведомления
@@ -83,7 +99,7 @@ class Notifications extends Component{
                 ))}
               </div>
             </PerfectScrollbar>
-          </React.Fragment>
+          </Fragment>
         }
         {notifications.length === 0 &&
           <NoNotifications />
@@ -91,6 +107,23 @@ class Notifications extends Component{
         {notifications === false &&
           <DisabledNotificaitons />
         }
+        <div className="ntf__tmp-buttons ui-buttons-group">
+          <button
+            onClick={this._tempToggleNotifications.bind(this, 1)}
+            className="btn btn-primary">
+            Есть
+          </button>
+          <button
+            onClick={this._tempToggleNotifications.bind(this, 2)}
+            className="btn btn-primary">
+            Пусто
+          </button>
+          <button
+            onClick={this._tempToggleNotifications.bind(this, 3)}
+            className="btn btn-primary">
+            Отключены
+          </button>
+        </div>
       </Modal>
     )
   }

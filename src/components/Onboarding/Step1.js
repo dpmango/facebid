@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import SvgIcon from 'components/Helpers/SvgIcon';
 import Image from 'components/Helpers/Image';
 
 class Step1 extends Component{

@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
-import Image from 'components/Helpers/Image';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import Avatar from 'components/Shared/Avatar';
 import Loading from 'components/Helpers/Loading';

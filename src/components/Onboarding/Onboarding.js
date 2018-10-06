@@ -41,19 +41,15 @@ class Onboarding extends Component{
       case 1:
         return <Step1
           nextStep={this.nextStep}/>
-        break;
       case 2:
         return <Step2
           nextStep={this.nextStep}/>
-        break;
       case 3:
         return <Step3
           nextStep={this.nextStep}/>
-        break;
       case 4:
         return <Step4
           nextStep={this.nextStep}/>
-        break;
       default:
         return null
     }

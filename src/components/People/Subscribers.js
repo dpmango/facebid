@@ -5,7 +5,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import throttle from 'lodash/throttle'
 import Modal from '../Modal/Modal';
 import SubscribersList from 'components/Profile/SubscribersList';
-import api from 'services/Api';
+// import api from 'services/Api';
 import { closeModal } from 'actions/modal';
 
 class Subscribers extends Component{

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import Image from '../Helpers/Image';
 import SvgIcon from '../Helpers/SvgIcon';
 import AvatarList from '../People/AvatarList';
@@ -86,45 +86,45 @@ class Notification extends Component {
     switch(type){
       case "invited":
         return (
-          <React.Fragment>
+          <Fragment>
             <span>{user.username}</span> приглашает Вас на событие <a href={data.id}><span>«{data.event}»</span></a>
-          </React.Fragment>
+          </Fragment>
         )
       case "comment":
       return (
-        <React.Fragment>
+        <Fragment>
           <span>{user.username}</span> оставил комментарий под Вашим событием
-        </React.Fragment>
+        </Fragment>
       )
       case "eventcreated":
       return (
-        <React.Fragment>
+        <Fragment>
           <span>{user.username}</span> создал новое событие <a href={data.id}><span>«{data.event}»</span></a>
-        </React.Fragment>
+        </Fragment>
       )
       case "subscribed":
         return (
-          <React.Fragment>
+          <Fragment>
             <span>{user.username}</span> подписался на Ваши обновления
-          </React.Fragment>
+          </Fragment>
         )
       case "application":
         return (
-          <React.Fragment>
+          <Fragment>
             <span>{user.username} и еще {data.applicants.more + data.applicants.list.length}</span> оставили заявку на событие «Название события»
-          </React.Fragment>
+          </Fragment>
         )
       case "photo":
         return (
-          <React.Fragment>
+          <Fragment>
             <span>{user.username}</span> добавил <span>{data.counter} фотографий</span> в свой профиль
-          </React.Fragment>
+          </Fragment>
         )
       case "profileview":
         return (
-          <React.Fragment>
+          <Fragment>
             <span>{user.username}</span> посетил Ваш профиль
-          </React.Fragment>
+          </Fragment>
         )
       default:
         return null
@@ -137,7 +137,7 @@ class Notification extends Component {
     switch(type){
       case "invited":
         return(
-          <React.Fragment>
+          <Fragment>
             <button
               onClick={this.acceptInvite}
               className="btn btn-outline">
@@ -148,7 +148,7 @@ class Notification extends Component {
               className="btn btn-outline btn-outline--muted">
               Отказать
             </button>
-          </React.Fragment>
+          </Fragment>
         )
       case "subscribed":
         return(

@@ -51,7 +51,7 @@ class EventCardRequest extends Component {
     const {
       props: {
         request: {
-          id,
+          // id,
           status,
           timestamp,
           message,
@@ -116,7 +116,6 @@ class EventCardRequest extends Component {
             </button>
           </div>
         )
-        break;
       case "acepted":
         return(
           <div className="ec-request__cta">
@@ -154,7 +153,6 @@ class EventCardRequest extends Component {
             </div>
           </div>
         )
-        break;
       default:
         return(
           <div className="ec-request__sender">

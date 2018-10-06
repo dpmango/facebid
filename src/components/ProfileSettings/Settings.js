@@ -8,17 +8,24 @@ import SettingsGeneral from './SettingsGeneral';
 import SettingsNotifications from './SettingsNotifications';
 import SettingsPayments from './SettingsPayments';
 import SettingsBlackList from './SettingsBlackList';
-import { openModal, closeModal } from '../../actions/modal'
+import { closeModal, setModalOptions } from 'actions/modal'
 
 class Settings extends Component{
   constructor(props){
     super(props)
     this.state = {
       modalName: 'settings',
-      currentTab: 1 // TODO - refactor to redux as it
-      // could be opened from the Notificaitons with specific tab
+      currentTab: 1
     }
 
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState){
+    if (nextProps.modalOptions && (nextProps.modalOptions.currentTab !== prevState.currentTab)) {
+      return { currentTab: nextProps.modalOptions.currentTab};
+    } else {
+      return null;
+    }
   }
 
   hide = () => {
@@ -26,9 +33,11 @@ class Settings extends Component{
   }
 
   tabSelected = (index) => {
-    this.setState({
-      currentTab: index
-    })
+    // this.setState({
+    //   currentTab: index
+    // }) // refactored to redux
+
+    this.props.setModalOptions({currentTab: index})
   }
 
   // bottom cta clicked
@@ -114,17 +123,18 @@ class Settings extends Component{
 }
 
 Settings.propTypes = {
-  openModal: PropTypes.func,
-  closeModal: PropTypes.func
+  closeModal: PropTypes.func,
+  setModalOptions: PropTypes.func
 }
 
 const mapStateToProps = (state) => ({
-  activeModal: state.modal.activeModal
+  activeModal: state.modal.activeModal,
+  modalOptions: state.modal.modalOptions
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  openModal: (data) => dispatch(openModal(data)),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  setModalOptions: (data) => dispatch(setModalOptions(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings);

@@ -1,19 +1,29 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import i18n from 'i18n/Notifications';
 import SvgIcon from '../Helpers/SvgIcon';
-import { closeModal, openModal } from '../../actions/modal';
+import { openModal } from 'actions/modal';
 
 class DisabledNotificaitons extends Component{
+  openSettings = () => {
+    this.props.openModal({
+      name: "settings",
+      options: {
+        currentTab: 2 // open on notifications
+      }
+    })
+  }
+
   render(){
     return(
       <div className="modal__content">
         <div className="centered-info centered-info--modal">
           <div className="centered-info__holder t-center">
             <SvgIcon name="notification-disabled" />
-            <div className="h4-title">Уведомления выключены</div>
-            <p className="t-primary">В настройках профиля отстуствуют включенные уведомления. Для получения уведомлений включите необходимые оповещения</p>
+            <div className="h4-title">{i18n[this.props.lang].disabled.title}</div>
+            <p className="t-primary">{i18n[this.props.lang].disabled.description}</p>
             <button
-              onClick={this.props.openModal.bind(this, 'settings')}
+              onClick={this.openSettings}
               className="btn btn-primary">
               Перейти в настройки
             </button>
@@ -24,10 +34,12 @@ class DisabledNotificaitons extends Component{
   }
 }
 
+const mapStateToProps = (state) => ({
+  lang: state.lang.lang
+})
 
 const mapDispatchToProps = (dispatch) => ({
-  closeModal: () => dispatch(closeModal()),
   openModal: (data) => dispatch(openModal(data))
 });
 
-export default connect(null, mapDispatchToProps)(DisabledNotificaitons);
+export default connect(mapStateToProps, mapDispatchToProps)(DisabledNotificaitons);

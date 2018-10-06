@@ -3,7 +3,6 @@ import api from 'services/Api';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import Avatar from 'components/Shared/Avatar'
-import Image from 'components/Helpers/Image';
 
 
 class Sidebar extends Component {

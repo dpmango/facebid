@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Swiper from 'react-id-swiper';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import { Collapse } from 'react-collapse';
 import SvgIcon from '../Helpers/SvgIcon';
 import Thumb from './GalleryThumb'
 import AddImage from './AddImage';
-import RenderImage from '../../helpers/RenderImage'
+import RenderImage from 'helpers/RenderImage'
 
 class ProfileHeadGallery extends Component{
 
@@ -213,7 +213,6 @@ class ProfileHeadGallery extends Component{
             items={gallery.thumbs}
             onSortEnd={this.onSortEnd}
             // add file options
-            clickHandler={this.thumbClick}
             fileChangeHandler={this.imageAdded}
           />
         }

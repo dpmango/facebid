@@ -6,7 +6,6 @@ import { notify } from 'reapop';
 // import DefaultNotification from '/helpers/DefaultNotification';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import Avatar from 'components/Shared/Avatar';
-import Image from 'components/Helpers/Image';
 import Dropdown from 'components/Interface/Dropdown';
 import { openModal } from 'actions/modal';
 
