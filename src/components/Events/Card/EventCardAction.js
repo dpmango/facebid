@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import Tooltip from 'components/Helpers/Tooltip';
+import VerificationButton from 'components/Shared/VerificationButton';
 import {openModal} from 'actions/modal';
 
 class EventCardAction extends Component {
@@ -103,7 +104,6 @@ class EventCardAction extends Component {
 
   // content
   renderContent = () => {
-
     switch(this.props.actionFlag){
       case "isModerationPening":
         return (
@@ -200,9 +200,15 @@ class EventCardAction extends Component {
           </button>
         )
       case "isPublished":
+        const shareProviders = [
+          {status: true, name: "facebook"},
+          {status: false, name: "vkontakte"},
+          {status: false, name: "twitter"},
+        ]
         return (
           <div className="ec-action__cta-wrapper">
-            { this.props.userBalance.promote ?
+            { // this.props.userBalance.promote ?
+              Math.random() > 0.5 ?
               <Fragment>
                 <span className="ec-action__cta-name">
                   Доступен бесплатный boost
@@ -215,7 +221,18 @@ class EventCardAction extends Component {
                 </button>
               </Fragment>
               :
-              <span>Недостаточно денег на балансе</span>
+              <Fragment>
+                <span className="ec-action__cta-name">
+                  Получите бонус за share
+                </span>
+                <div className="verifications">
+                  { shareProviders.map(provider => (
+                    <VerificationButton
+                      verified={provider.status}
+                      provider={provider.name} />
+                  ))}
+                </div>
+              </Fragment>
             }
 
           </div>

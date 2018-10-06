@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SvgIcon from '../Helpers/SvgIcon';
+import VerificationButton from 'components/Shared/VerificationButton';
 
 class HeadVerifications extends Component{
   constructor(){
@@ -44,7 +45,9 @@ class HeadVerifications extends Component{
           :
           <div className="verifications">
             { providers.map(provider => (
-              <Provider verified={provider.status} provider={provider.name} />
+              <VerificationButton
+                verified={provider.status}
+                provider={provider.name} />
             ))}
             <button
               className="btn btn-circle"
@@ -59,41 +62,4 @@ class HeadVerifications extends Component{
   }
 }
 
-class Provider extends Component{
-  constructor(props){
-    super(props)
-
-    this.state = {
-      isVerified: props.verified
-    }
-  }
-
-  verifyProvider = () => {
-    // TODO API AUTH
-    // refactor to common componenet with oAuth
-
-    this.setState({isVerified: true})
-  }
-
-  render(){
-
-    const {
-      props: {provider},
-      state: {isVerified}
-    } = this
-
-    return(
-      <div
-        onClick={this.verifyProvider}
-        className={`v-btn v-btn--${provider}` + (isVerified ? " is-verified" : "")}>
-        <SvgIcon name={provider} />
-        {isVerified &&
-          <div className="v-btn__verified">
-            <SvgIcon name="checkmark" />
-          </div>
-        }
-      </div>
-    )
-  }
-}
 export default HeadVerifications

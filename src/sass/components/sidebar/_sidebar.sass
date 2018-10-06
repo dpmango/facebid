@@ -144,6 +144,7 @@
     font-family: $roboto
     font-size: 11px
     color: #6C7580
+    transition: .25s $ease
   &__counter
     position: absolute
     left: -5px
@@ -161,6 +162,11 @@
       font-size: 10px
       font-weight: 700
       text-align: center
+
+  &:hover
+    .panel-action
+      &__name
+        color: $colorBlue
 
   &--up
     .panel-action

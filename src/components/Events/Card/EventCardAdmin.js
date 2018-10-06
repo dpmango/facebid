@@ -6,6 +6,7 @@ import SvgIcon from 'components/Helpers/SvgIcon';
 import Avatar from 'components/Shared/Avatar';
 import Loading from 'components/Helpers/Loading';
 import EventCardRequest from './EventCardRequest';
+import FormatNumberWithSpaces from 'helpers/FormatNumberWithSpaces';
 
 class EventCardAdmin extends Component{
   constructor(){
@@ -131,14 +132,13 @@ class EventCardAdmin extends Component{
                 <SvgIcon name="eye" />
               </div>
               <span className="ec-admin__nav-title">Просмотров</span>
-              <span className="ec-admin__nav-counter">{scope.totalViews}</span>
+              <span className="ec-admin__nav-counter">{FormatNumberWithSpaces(scope.totalViews)}</span>
             </div>
           </div>
           <div className="ec-admin__header-cta">
             <button
               className="btn btn-primary btn--iconed"
-              onClick={this.promoteEventToTop}
-              >
+              onClick={this.promoteEventToTop} >
               <SvgIcon name="rocket" />
               <span>Поднять в топ</span>
             </button>
