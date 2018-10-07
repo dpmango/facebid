@@ -6,12 +6,10 @@ import { notify } from 'reapop';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Modal from '../Modal/Modal';
 import SvgIcon from '../Helpers/SvgIcon';
+import Loading from '../Helpers/Loading';
+import ShareButton from 'components/Shared/ShareButton';
 import { closeModal } from 'actions/modal';
 import MapArrToSelect from 'helpers/MapArrToSelect';
-
-// TODO
-// refresh the request every `1 hour` or so ?
-// (compare geolocationRedux.timestamp with Date.now()
 
 class ShareModal extends Component{
   constructor(props){
@@ -19,7 +17,16 @@ class ShareModal extends Component{
     this.state = {
       modalName: 'share-event',
       userSelect: {},
-      url: 'Https:\\facebid.com/234boy2b3uyb235b503'
+      eventId: null,
+      // copyUrl: 'Https:\\facebid.com/234boy2b3uyb235b503'
+    }
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState){
+    if (nextProps.modalOptions && (nextProps.modalOptions.eventId !== prevState.eventId)) {
+      return { eventId: nextProps.modalOptions.eventId};
+    } else {
+      return null;
     }
   }
 
@@ -30,10 +37,6 @@ class ShareModal extends Component{
   // select functions
   handleSelectChange = (value, name) => {
     this.setState({ [name]: value })
-  }
-
-  copyToClipboard = (url) => {
-
   }
 
   copiedToClipboard = () => {
@@ -49,19 +52,21 @@ class ShareModal extends Component{
   render(){
     const {
       state: {
-        modalName, url, userSelect
+        modalName, eventId, userSelect
       },
       props: {
-        activeModal
+        activeModal, id, modalOptions
       }
     } = this
 
+    const copyUrl = `https://facebid.surge.sh/event/${eventId}`
+
     const providers = [
-      { provider: 'vkontakte', name: "Вконтакте" },
-      { provider: 'facebook', name: "Facebook" },
-      { provider: 'odnoklassniki', name: "Одноклассники" },
-      { provider: 'twitter', name: "Twitter" },
-      { provider: 'gplus', name: "Google+" }
+      { provider: 'vkontakte', verbose: "Вконтакте" },
+      { provider: 'facebook', verbose: "Facebook" },
+      { provider: 'odnoklassniki', verbose: "Одноклассники" },
+      { provider: 'twitter', verbose: "Twitter" },
+      { provider: 'gplus', verbose: "Google+" }
     ]
 
     return(
@@ -97,24 +102,30 @@ class ShareModal extends Component{
           <div className="modal-share__section">
             <div className="share">
               <span className="share__title">Отправить ссылку</span>
-              <div className="share__grid">
-                { providers.map((el, i) => (
-                  <ShareProvider
-                    key={i}
-                    provider={el.provider}
-                    name={el.name} />
-                ))}
-              </div>
+              { !modalOptions ?
+                <Loading />
+                :
+                <div className="share__grid">
+                  { providers.map((el, i) => (
+                    <ShareButton
+                      type="withName"
+                      key={i}
+                      url={copyUrl}
+                      shareContents={modalOptions && modalOptions.shareContents}
+                      provider={el.provider}
+                      verbose={el.verbose} />
+                  ))}
+                </div>
+              }
               <div className="modal-share__copy">
                 <div className="ui-input ui-input--button">
                   <input
                     disabled
-                    value={url}
+                    value={copyUrl}
                     type="text"/>
-                  <CopyToClipboard text={url}
+                  <CopyToClipboard text={copyUrl}
                     onCopy={this.copiedToClipboard}>
                     <button
-                      // onClick={this.copyToClipboard.bind(this, url)}
                       className="btn btn-outline" >
                       Копировать ссылку
                     </button>
@@ -136,39 +147,14 @@ class ShareModal extends Component{
   }
 }
 
-class ShareProvider extends Component{
-
-  shareAction = () => {
-
-  }
-
-  render(){
-    const {
-      props: { provider, name }
-    } = this
-
-    return(
-      <div
-        onClick={this.shareAction}
-        className={`share__element share__element--${provider}`}>
-        <div className="share__icon">
-          <SvgIcon name={provider} />
-        </div>
-        <div className="share__name">
-          {name}
-        </div>
-      </div>
-    )
-  }
-}
-
 ShareModal.propTypes = {
   openModal: PropTypes.func,
   closeModal: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
-  activeModal: state.modal.activeModal
+  activeModal: state.modal.activeModal,
+  modalOptions: state.modal.modalOptions
 });
 
 const mapDispatchToProps = (dispatch) => ({

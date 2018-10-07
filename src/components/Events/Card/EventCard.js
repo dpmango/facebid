@@ -200,7 +200,25 @@ class EventCard extends Component {
         ...this.state.data,
         name: newState.e_name,
         desc: newState.e_desc
+      },
+      shareContents: {
+        ...this.state.shareContents,
+        facebook: {
+          ...this.state.shareContents.facebook,
+          quote: newState.e_name
+        },
+        vkontakte: {
+          ...this.state.shareContents.vkontakte,
+          title: newState.e_name,
+          description: newState.e_desc,
+          // image: props.data.images[0] // TODO
+        },
+        twitter: {
+          ...this.state.shareContents.twitter,
+          title: newState.e_name,
+        }
       }
+
     }, () => {
       this.disableEdit()
     })
@@ -299,7 +317,8 @@ class EventCard extends Component {
                 type={type}
                 actionFlag={actionFlag}
                 id={id}
-                user={user} />
+                user={user}
+                shareContents={shareContents} />
 
               <PerfectScrollbar
                 className="scrollbar-blue e-card__scrollable"

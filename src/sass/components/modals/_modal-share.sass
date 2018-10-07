@@ -5,7 +5,7 @@
 
   &__cta
     padding: 20px 25px
-    
+
   &__copy
     margin-top: 32px
 
@@ -18,11 +18,13 @@
     margin-bottom: 10px
 
   &__grid
+    margin-top: 20px
     display: flex
     justify-content: space-between
 
   &__element
     text-align: center
+    cursor: pointer
 
     &--vkontakte
       .share__icon
@@ -49,6 +51,9 @@
         background: #EC3131
         .ico
           font-size: 12px
+    &:hover
+      .share__name
+        color: $colorBlue
 
   &__icon
     position: relative
@@ -66,4 +71,6 @@
   &__name
     margin-top: 10px
     font-size: 14px
+    line-height: 1.35
     font-family: $roboto
+    transition: .25s $ease

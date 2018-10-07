@@ -58,11 +58,16 @@ class EventCardTop extends Component {
     // console.log(this.props.notify)
 
     // + API call
-
   }
 
   shareAction = () => {
-    this.props.openModal('share-event')
+    this.props.openModal({
+      name: 'share-event',
+      options: {
+        eventId: this.props.id,
+        shareContents: this.props.shareContents
+      }
+    })
   }
 
   moreAction = () => {
