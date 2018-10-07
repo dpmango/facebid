@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import { notify } from 'reapop';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import Dropdown from 'components/Interface/Dropdown';
 import { openModal } from 'actions/modal';
@@ -8,16 +9,27 @@ import { openModal } from 'actions/modal';
 class HeadSettingsButtons extends Component{
 
   settingsClick = () => {
-    // open settings modal page
     this.props.openModal('settings')
   }
 
-  dislikeClick = () => {
-    // TODO - + API call
+  abuseClick = () => {
+    this.props.openModal({
+      name: "abuse",
+      options: {
+        'url': `profile/${this.props.profileId}`
+      }
+    })
   }
 
   lockClick = () => {
     // TODO - + API call
+    this.props.notify({
+      title: 'Пользователь заблокирован',
+      message: `Вы успешно заблокировали ${this.props.username}`,
+      status: 'default', // default, info, success, warning, error
+      dismissible: true,
+      dismissAfter: 2000,
+    })
   }
 
   render(){
@@ -37,7 +49,7 @@ class HeadSettingsButtons extends Component{
           <ul className="dropdown__menu">
             <li
               className="dropdown__menu-item"
-              onClick={this.dislikeClick}>
+              onClick={this.abuseClick}>
               <div className="dropdown__menu-icon">
                 <SvgIcon name="dislike" />
               </div>
@@ -64,7 +76,8 @@ HeadSettingsButtons.propTypes = {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  openModal: (data) => dispatch(openModal(data))
+  openModal: (data) => dispatch(openModal(data)),
+  notify: (data) => dispatch(notify(data))
 });
 
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import Swiper from 'react-id-swiper';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import { Collapse } from 'react-collapse';
@@ -6,6 +7,7 @@ import SvgIcon from '../Helpers/SvgIcon';
 import Thumb from './GalleryThumb'
 import AddImage from './AddImage';
 import RenderImage from 'helpers/RenderImage'
+import {openModal} from 'actions/modal';
 
 class ProfileHeadGallery extends Component{
 
@@ -83,7 +85,12 @@ class ProfileHeadGallery extends Component{
 
 
   abuseClicked = () => {
-    // open modal with abuse
+    this.props.openModal({
+      name: "abuse",
+      options: {
+        'url': `profile/${this.props.profileId}/slide/${this.state.currentSlide}`
+      }
+    })
   }
 
   // close
@@ -285,4 +292,8 @@ const SortableList = SortableContainer(({items, fileRemoveHandler, clickHandler,
   )
 });
 
-export default ProfileHeadGallery
+const mapDispatchToProps = (dispatch) => ({
+  openModal: (data) => dispatch(openModal(data))
+})
+
+export default connect(null, mapDispatchToProps)(ProfileHeadGallery)

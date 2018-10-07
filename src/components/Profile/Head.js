@@ -159,7 +159,8 @@ class Head extends Component{
         subscribedToUser
       },
       props: {
-        isMyProfile
+        isMyProfile,
+        profileId
       }
     } = this
 
@@ -224,6 +225,8 @@ class Head extends Component{
                       isMyProfile={isMyProfile} />
 
                     <HeadSettingsButtons
+                      profileId={profileId}
+                      username={username}
                       isMyProfile={isMyProfile} />
                   </Fragment>
                   :
@@ -241,6 +244,7 @@ class Head extends Component{
               <HeadGallery
                 onRef={ref => (this.galleryRef = ref)}
                 editMode={editMode}
+                profileId={profileId}
                 isMyProfile={isMyProfile}
                 gallery={gallery} />
             }

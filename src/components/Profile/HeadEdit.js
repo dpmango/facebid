@@ -71,8 +71,7 @@ class HeadEdit extends Component {
         onSubmit={this.handleSubmit}
         onValid={this.formValid}
         onInvalid={this.formInvalid}
-        ref={this.formRef}
-      >
+        ref={this.formRef}>
         <FormInput
           name="fullname"
           type="text"

@@ -14,6 +14,7 @@ import Notifications from './Notifications/Notifications';
 import Messages from './Messages/Messages';
 import Premium from './Premium/Premium';
 import Subscribers from './People/Subscribers';
+import Abuse from './Modal/Abuse';
 
 class Common extends Component {
   render(){
@@ -35,6 +36,7 @@ class Common extends Component {
             <Messages />
             <Premium />
             <Subscribers />
+            <Abuse />
           </React.Fragment>
         }
         {onboarding.isActive &&
