@@ -91,7 +91,7 @@ class Head extends Component{
     this.setState({ editMode: true })
   }
 
-  disableEditMode = (e) => {
+  disableEditButtonClick = (e) => {
     e.preventDefault()
     e.stopPropagation();
 
@@ -232,7 +232,7 @@ class Head extends Component{
                     userLang={userLang}
                     description={description}
                     onSave={this.saveUserData}
-                    onCancel={this.disableEditMode} />
+                    onCancel={this.disableEditButtonClick} />
                 }
               </div>
             </div>

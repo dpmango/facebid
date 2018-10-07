@@ -74,11 +74,11 @@ class CreateComment extends Component {
   render(){
 
     const {
-      props: { userId, userDetails, haveComments },
+      props: { userId, userDetails, haveComments, editMode },
       state: { text, isVisible }
     } = this;
 
-    if ( !userId || !haveComments){
+    if ( !userId || !haveComments || editMode){
       return null
     }
     return(

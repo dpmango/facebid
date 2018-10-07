@@ -228,6 +228,7 @@ class EventCardAction extends Component {
                 <div className="verifications">
                   { shareProviders.map(provider => (
                     <VerificationButton
+                      key={provider.name}
                       verified={provider.status}
                       provider={provider.name} />
                   ))}

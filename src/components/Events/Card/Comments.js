@@ -6,7 +6,11 @@ import Comment from './Comment';
 class Comments extends Component {
 
   render(){
-    const { comments, userId, eventAuthor } = this.props
+    const { comments, userId, eventAuthor, editMode } = this.props
+
+    if (editMode){
+      return null
+    }
 
     if ( !comments ){
       return <Loading />

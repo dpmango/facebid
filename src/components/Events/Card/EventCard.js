@@ -8,17 +8,17 @@ import SvgIcon from 'components/Helpers/SvgIcon';
 import GetCoordsOnDocument from 'services/GetCoordsOnDocument';
 import GetWindowScroll from 'services/GetWindowScroll';
 import EventCardMedia from './EventCardMedia';
+import EventCardInfo from './EventCardInfo';
 import EventCardTop from './EventCardTop';
 import EventCardCta from './EventCardCta';
-import EventCardDate from './EventCardDate';
 import EventCardAction from './EventCardAction';
 import EventCardAdmin from './EventCardAdmin';
 import EventCardNotificaiton from './EventCardNotificaiton';
+import EditModeButtons from './EditModeButtons';
 import Comments from './Comments';
 import CreateComment from './CreateComment'
 
 class EventCard extends Component {
-
   constructor(props){
     super(props);
 
@@ -28,6 +28,11 @@ class EventCard extends Component {
 
     this.state = {
       editMode: false,
+      data: {
+        name: props.data.name,
+        desc: props.data.desc,
+        images: props.data.images
+      },
       comments: [],
       shouldCtaStick: false,
       computeSticky: {},
@@ -55,7 +60,6 @@ class EventCard extends Component {
   };
 
   getComments = (id) => {
-
     // TODO
     // REMOVE WHEN API WILL RETURN ACTUALL COMMENTS
     if (
@@ -145,16 +149,17 @@ class EventCard extends Component {
 
       // animation is still jerky - scrollTop for now
       this.scrollToTop(true);
-
     }
   }
 
   scrollableMouseEnter = () => {
-    this.setState({isCommentingVisible: true})
+    if ( !this.state.isCommentingVisible )
+      this.setState({isCommentingVisible: true})
   }
 
   scrollableMouseLeave = () => {
-    this.setState({isCommentingVisible: false})
+    if ( this.state.isCommentingVisible )
+      this.setState({isCommentingVisible: false})
   }
 
   // outside method via onRef
@@ -169,29 +174,71 @@ class EventCard extends Component {
     })
   }
 
+  // EDITFUNCTIONS
+
+  saveEventData = (newState) => {
+
+    // newState lifted up when form is saved
+    this.setState({
+      ...this.state,
+      data: {
+        ...this.state.data,
+        name: newState.e_name,
+        desc: newState.e_desc
+      }
+    }, () => {
+      this.disableEdit()
+    })
+
+  }
+
   enableEditMode = () => {
     this.setState({editMode: true})
   }
 
-  render(){
+  disableEditButtonClick = (e) => {
+    e.preventDefault()
+    e.stopPropagation();
 
+    this.disableEdit()
+  }
+
+  disableEdit = () => {
+    this.setState({ editMode: false }, () => {
+      // this.galleryRef.refreshSliders()
+    })
+  }
+
+  // function is called from buttons
+  // and trigger form submission in edit mode
+  triggerSave = () => {
+    this.cardInforef.submitForm()
+  }
+
+  render(){
     const {
       props: {
         data: {
           id,
-          images,
+          // images,
           user,
-          name,
+          // name,
           from,
           date,
           to,
-          desc,
+          // desc,
           notification,
           isRemoved
         },
         type
       },
       state: {
+        editMode,
+        data: {
+          name,
+          desc,
+          images
+        },
         comments,
         shouldCtaStick,
         computeSticky,
@@ -222,6 +269,7 @@ class EventCard extends Component {
             </div>
           }
           <EventCardMedia
+            editMode={editMode}
             data={images} />
 
           <div className="e-card__contents">
@@ -246,19 +294,16 @@ class EventCard extends Component {
                 onScrollY={throttle(this.onScroll, 20)}
                 containerRef={(ref) => { this._scrollRef = ref }} >
 
-                <div className="e-card__head">
-                  <div className="e-card__title">{name}</div>
-                  <div className="e-card__event-line">
-                    <span>{from}</span>
-                    <i className="icon icon-plane"></i>
-                    <span>{to}</span>
-                  </div>
-                  <EventCardDate
-                    baseClass="e-card__date"
-                    date={date} />
-                </div>
-                <div className="e-card__desc">{desc}</div>
-                {/* cta (sticky on scroll) */}
+                <EventCardInfo
+                  editMode={editMode}
+                  name={name}
+                  from={from}
+                  to={to}
+                  date={date}
+                  desc={desc}
+                  onRef={ref => (this.cardInforef = ref)}
+                  onSave={this.saveEventData} />
+
                 <div
                   style={shouldCtaStick ? {
                     top: `${computeSticky.top}px`,
@@ -268,17 +313,26 @@ class EventCard extends Component {
                   className="e-card__cta"
                   ref={this.ctaRef}>
                   <EventCardCta
+                    editMode={editMode}
                     actionFlag={actionFlag}
                     onEditModeClick={this.enableEditMode}
                     onScrollTopClick={this.scrollToTop} />
                 </div>
                 <Comments
+                  editMode={editMode}
                   eventAuthor={user.id}
                   onReplyClick={this.commentReplyClick}
                   onCommentRemove={this.commentRemove}
                   comments={comments} />
               </PerfectScrollbar>
+
+              <EditModeButtons
+                editMode={editMode}
+                onSave={this.triggerSave}
+                onCancel={this.disableEditButtonClick} />
+
               <CreateComment
+                editMode={editMode}
                 haveComments={comments.length > 0}
                 isVisible={isCommentingVisible}
                 onRef={ref => (this.createCommentRef = ref)}

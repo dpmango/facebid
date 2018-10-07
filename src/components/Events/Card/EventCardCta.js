@@ -85,10 +85,14 @@ class EventCardCta extends Component {
     }
 
     const {
-      props: { actionFlag },
+      props: { actionFlag, editMode },
       state: { shouldRenderParticipants }
     } = this
 
+    if ( editMode ){
+      return null
+    }
+    
     return(
       <div className="e-card__cta-wrapper">
         {this.renderCtaButton(actionFlag)}
