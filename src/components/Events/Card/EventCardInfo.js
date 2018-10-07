@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import Formsy from 'formsy-react';
 import FormInput from 'components/Forms/Input';
-import SvgIcon from 'components/Helpers/SvgIcon';
+// import SvgIcon from 'components/Helpers/SvgIcon';
 import EventCardDate from './EventCardDate';
 
 class EventCardInfo extends Component{

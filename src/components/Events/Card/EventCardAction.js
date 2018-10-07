@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import SvgIcon from 'components/Helpers/SvgIcon';
 import Tooltip from 'components/Helpers/Tooltip';
-import VerificationButton from 'components/Shared/VerificationButton';
+import ShareButton from 'components/Shared/ShareButton';
 import {openModal} from 'actions/modal';
 
 class EventCardAction extends Component {
@@ -37,7 +37,7 @@ class EventCardAction extends Component {
   }
 
   render(){
-    const { actionFlag } = this.props
+    const { actionFlag, shareContents } = this.props
 
     if ( !actionFlag ){
       return null
@@ -208,7 +208,8 @@ class EventCardAction extends Component {
         return (
           <div className="ec-action__cta-wrapper">
             { // this.props.userBalance.promote ?
-              Math.random() > 0.5 ?
+              // Math.random() > 0.5 ?
+              true === false ?
               <Fragment>
                 <span className="ec-action__cta-name">
                   Доступен бесплатный boost
@@ -227,8 +228,9 @@ class EventCardAction extends Component {
                 </span>
                 <div className="verifications">
                   { shareProviders.map(provider => (
-                    <VerificationButton
+                    <ShareButton
                       key={provider.name}
+                      shareContents={this.props.shareContents}
                       verified={provider.status}
                       provider={provider.name} />
                   ))}

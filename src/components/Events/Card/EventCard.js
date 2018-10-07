@@ -38,7 +38,23 @@ class EventCard extends Component {
       computeSticky: {},
       stickyPoint: null,
       isCommentingVisible: false,
-      actionFlag: this.actionFlag
+      actionFlag: this.actionFlag,
+      shareContents: {
+        facebook: {
+          quote: props.data.name,
+          hashtag: "facebid"
+        },
+        vkontakte: {
+          title: props.data.name,
+          description: props.data.desc,
+          image: props.data.images[0]
+        },
+        twitter: {
+          title: props.data.name,
+          hashtags: ["facebid"],
+          via: undefined
+        }
+      }
     }
 
     this.ctaRef = React.createRef();
@@ -174,10 +190,9 @@ class EventCard extends Component {
     })
   }
 
-  // EDITFUNCTIONS
+  // EDIT FUNCTIONS
 
   saveEventData = (newState) => {
-
     // newState lifted up when form is saved
     this.setState({
       ...this.state,
@@ -243,7 +258,8 @@ class EventCard extends Component {
         shouldCtaStick,
         computeSticky,
         isCommentingVisible,
-        actionFlag
+        actionFlag,
+        shareContents
       }
     } = this
 
@@ -259,6 +275,7 @@ class EventCard extends Component {
             notification={notification} />
         }
         <EventCardAction
+          shareContents={shareContents}
           actionFlag={actionFlag} />
 
         <div className="e-card__wrapper">
