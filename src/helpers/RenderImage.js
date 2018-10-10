@@ -8,12 +8,14 @@ const RenderImage = (img, folder, renderAsBackgroundImage) => {
   if ( !img ) {
     return null
   }
-  
+
   let resultImg
 
   if ( isBase64(img) ){
     resultImg = img
-  } else if ( renderAsBackgroundImage ){
+  }
+
+  if ( renderAsBackgroundImage ){
     resultImg = ImportImageAsRequire(img, folder)
   }
 
@@ -22,7 +24,7 @@ const RenderImage = (img, folder, renderAsBackgroundImage) => {
       <span
         className="cover-bg-image"
         style={{
-          backgroundImage: `url(${img})`
+          backgroundImage: `url(${resultImg})`
         }} />
     )
   }
