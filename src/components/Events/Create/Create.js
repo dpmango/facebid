@@ -17,6 +17,7 @@ class Create extends Component{
     this.state = {
       modalName: 'create-event',
       currentTab: props.createEventRedux.currentTab
+      // currentTab: 2 // testing only
     }
 
     this.formRef = React.createRef();
@@ -26,6 +27,7 @@ class Create extends Component{
     this.props.closeModal()
   }
 
+  // navigation functions
   changeStep = (num) => {
     this.setState({currentTab: num})
   }

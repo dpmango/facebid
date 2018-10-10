@@ -4,7 +4,8 @@ import Formsy from 'formsy-react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
 import FormInput from 'components/Forms/Input';
-import Toggle from 'components/Forms/Toggle';
+import Tumbler from 'components/Forms/Tumbler';
+import CreateUploader from './CreateUploader';
 import { setCreateEvent } from 'actions/create-event';
 import { daySelect, monthSelect, yearSelect } from 'helpers/CalendarSelectArrays';
 import MapArrToSelect from 'helpers/MapArrToSelect';
@@ -14,6 +15,7 @@ class CreateStep2 extends Component {
     super(props);
 
     this.state = {
+      images: props.createEventRedux.images,
       title: props.createEventRedux.title,
       description: props.createEventRedux.description,
 
@@ -70,12 +72,11 @@ class CreateStep2 extends Component {
   }
 
   // toggle functions
-  selectToggle = (val, name) => {
+  selectToggle = (name) => {
     this.setState({
-      [name]: val
+      [name]: !this.state[name]
     })
   }
-
 
   // auth passed to redux
   processNext = () => {
@@ -86,6 +87,7 @@ class CreateStep2 extends Component {
   saveState = () => {
     this.props.setCreateEvent({
       ...this.props.createEventRedux,
+      images: this.state.images,
       title: this.state.title,
       description: this.state.description,
 
@@ -94,10 +96,14 @@ class CreateStep2 extends Component {
     })
   }
 
+  changeImages = () => {
+    // todo
+  }
+
   render(){
     const {
       state: {
-        title, description,
+        images, title, description,
         privacyComments, privacyDisplayMembers
       },
       props: {
@@ -115,63 +121,79 @@ class CreateStep2 extends Component {
         {/* NEXT SECTION */}
         <div className="create-e__section">
           <div className="create-e__section-name h4-title">Основная информация</div>
-          <FormInput
-            name="title"
-            label="Заголовок:"
-            placeholder="Кто со мной в путешествие"
-            extraClass="ui-group--row"
-            value={title}
-            validationErrors={{
-              isDefaultRequiredValue: 'Заполните это поле'
-            }}
-            onChangeHandler={this.handleChange}
-            onKeyHandler={this.keyPressHandler}
-            required />
-          <FormInput
-            name="description"
-            type="textarea"
-            rows={[5, 10]}
-            label="Описание:"
-            placeholder="В июне состоится масштабное мероприятие одного из самых известных российских современных художников. Собираю группу из 20 человек. Сначала на выставку, потом гулять до утра."
-            extraClass="ui-group--row"
-            value={description}
-            validationErrors={{
-              isDefaultRequiredValue: 'Заполните это поле'
-            }}
-            onChangeHandler={this.handleChange}
-            onKeyHandler={this.keyPressHandler}
-            required />
-
+          <div className="create-e__row">
+            <div className="create-e__col">
+              <CreateUploader
+                onChangeImages={this.changeImages}
+                images={images} />
+            </div>
+            <div className="create-e__col">
+              <div className="ui-groups-margin">
+                <FormInput
+                  name="title"
+                  label="Заголовок:"
+                  placeholder="Кто со мной в путешествие"
+                  value={title}
+                  plugin={{
+                    name: "symbolLimit",
+                    config: {
+                      maxlength: 38
+                    }
+                  }}
+                  validationErrors={{
+                    isDefaultRequiredValue: 'Заполните это поле'
+                  }}
+                  onChangeHandler={this.handleChange}
+                  onKeyHandler={this.keyPressHandler}
+                  required />
+                <FormInput
+                  name="description"
+                  type="textarea"
+                  rows={[5, 10]}
+                  label="Описание:"
+                  placeholder="В июне состоится масштабное мероприятие одного из самых известных российских современных художников. Собираю группу из 20 человек. Сначала на выставку, потом гулять до утра."
+                  value={description}
+                  plugin={{
+                    name: "symbolLimit",
+                    config: {
+                      maxlength: 150
+                    }
+                  }}
+                  validationErrors={{
+                    isDefaultRequiredValue: 'Заполните это поле'
+                  }}
+                  onChangeHandler={this.handleChange}
+                  onKeyHandler={this.keyPressHandler}
+                  required />
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* NEXT SECTION - PRIVACY */}
         <div className="create-e__section">
           <div className="create-e__section-name h4-title">Приватность</div>
+          <div className="nt">
+            <div className="nt__grid">
+              <div className="nt__col">
+                <div className="ui-toggle-row">
+                  <label htmlFor="">Комментарии:</label>
+                  <Tumbler
+                    value={privacyComments}
+                    clickHandler={this.selectToggle.bind(this, "privacyComments")} />
+                </div>
+              </div>
+              <div className="nt__col">
+                <div className="ui-toggle-row">
+                  <label htmlFor="">Отображать участников:</label>
+                  <Tumbler
+                    value={privacyDisplayMembers}
+                    clickHandler={this.selectToggle.bind(this, "privacyDisplayMembers")} />
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <div className="ui-group ui-group--row">
-            <label htmlFor="">Комментарии:</label>
-            <Toggle
-              value={privacyComments}
-              name="privacyComments"
-              modifierClass="ui-toggle--big"
-              options={{
-                left: "Включены",
-                right: "Выключены"
-              }}
-              clickHandler={this.selectToggle} />
-          </div>
-          <div className="ui-group ui-group--row">
-            <label htmlFor="">Тип события:</label>
-            <Toggle
-              value={privacyDisplayMembers}
-              name="privacyDisplayMembers"
-              modifierClass="ui-toggle--big"
-              options={{
-                left: "Отображать",
-                right: "Скрыть"
-              }}
-              clickHandler={this.selectToggle} />
-          </div>
         </div>
 
       </Formsy>

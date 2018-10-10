@@ -11,10 +11,9 @@ const initialState = {
   event_month: '',
   event_year: '',
   isGroupEvent: false,
-
+  images: Array.from({length: 6}, (v, k) => ({id: k+1})),
   title: '',
   description: '',
-
   privacyComments: null,
   privacyDisplayMembers: null
 }

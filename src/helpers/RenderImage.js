@@ -5,7 +5,19 @@ import ImportImageAsRequire from './ImportImageAsRequire'
 
 const RenderImage = (img, folder, renderAsBackgroundImage) => {
 
+  if ( !img ) {
+    return null
+  }
+  
+  let resultImg
+
   if ( isBase64(img) ){
+    resultImg = img
+  } else if ( renderAsBackgroundImage ){
+    resultImg = ImportImageAsRequire(img, folder)
+  }
+
+  if ( isBase64(img) || renderAsBackgroundImage){
     return(
       <span
         className="cover-bg-image"
@@ -15,19 +27,8 @@ const RenderImage = (img, folder, renderAsBackgroundImage) => {
     )
   }
 
-  if ( renderAsBackgroundImage ){
-    return(
-      <span
-        className="cover-bg-image"
-        style={{
-          backgroundImage: `url(${ImportImageAsRequire(img, folder)})`
-        }} />
-    )
-  }
-
-  return(
-    <Image folder={folder} file={img} />
-  )
+  // default case
+  return <Image folder={folder} file={img} />
 }
 
 export default RenderImage
