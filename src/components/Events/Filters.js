@@ -10,6 +10,7 @@ import SimpleInput from '../Forms/SimpleInput';
 // import Toggle from '../Forms/Toggle';
 import MultipleSelectToTotal from 'helpers/MultipleSelectToTotal';
 import SelectLanguageOption from 'helpers/SelectLanguageOption';
+import LanguageOptions from 'helpers/LanguageOptions';
 import { setFilterParams } from 'actions/event-filter';
 import { openModal } from 'actions/modal'
 
@@ -209,13 +210,7 @@ class Filters extends Component {
                 placeholder="Выберите языки"
                 optionRenderer={SelectLanguageOption}
                 valueComponent={MultipleSelectToTotal.bind(this, languages)}
-                options={[
-                  { value: 'ru', label: 'Русский' },
-                  { value: 'us', label: 'Английский' },
-                  { value: 'ge', label: 'Немецкий' },
-                  { value: 'es', label: 'Испанский' },
-                  { value: 'fr', label: 'Французкий' }
-                ]}
+                options={LanguageOptions}
               />
             </div>
           </div>

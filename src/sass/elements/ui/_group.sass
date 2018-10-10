@@ -30,23 +30,31 @@
   flex: 0 0 25%
   padding-left: 16px
 
-.ui-date-selects
+
+.ui-date-selects, .ui-destination-selects
   flex: 1 1 auto
   display: flex
   margin-left: -8px
   margin-right: -8px
   .Select
     padding: 0 8px
-    &:first-child, &:last-child
-      flex: 0 1 30%
-      // flex: 0 1 110px
-    &:nth-child(2)
-      flex: 0 1 40%
-      // flex: 0 1 145px
     .Select-menu-outer
       left: 8px
       right: 8px
       width: calc(100% - 16px)
+      
+.ui-date-selects
+  .Select
+    &:first-child, &:last-child
+      flex: 0 1 30%
+    &:nth-child(2)
+      flex: 0 1 40%
+
+.ui-destination-selects
+  .Select
+    &:first-child, &:last-child
+      flex: 0 1 50%
+
 
 .ui-buttons-group
   margin: -8px -12px

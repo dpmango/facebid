@@ -2,13 +2,20 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
 import { connect } from 'react-redux';
+import isEqual from 'lodash/isEqual';
 import Select from 'react-select';
+import { Collapse } from 'react-collapse';
+import Tooltip from 'components/Helpers/Tooltip';
 import FormInput from 'components/Forms/Input';
-import Toggle from 'components/Forms/Toggle';
+import Tumbler from 'components/Forms/Tumbler';
+import CategoriesSlider from '../CategoriesSlider';
 import { setCreateEvent } from 'actions/create-event';
 import { daySelect, monthSelect, yearSelect } from 'helpers/CalendarSelectArrays';
 import MapArrToSelect from 'helpers/MapArrToSelect';
-import CategoriesSlider from '../CategoriesSlider';
+import SelectLanguageOption from 'helpers/SelectLanguageOption';
+import MultipleSelectToTotal from 'helpers/MultipleSelectToTotal';
+import LanguageOptions from 'helpers/LanguageOptions';
+import CityOptions from 'helpers/CityOptions';
 
 class CreateStep1 extends Component {
   constructor(props){
@@ -18,14 +25,15 @@ class CreateStep1 extends Component {
       categories: props.createEventRedux.categories,
       departure: props.createEventRedux.departure,
       destination: props.createEventRedux.destination,
+      languages: props.createEventRedux.languages,
+      city: props.createEventRedux.city,
       event_day: props.createEventRedux.event_day,
       event_month: props.createEventRedux.event_month,
       event_year: props.createEventRedux.event_year,
       daySelect: daySelect,
       monthSelect: monthSelect,
       yearSelect: yearSelect,
-      eventType: props.createEventRedux.eventType,
-      numberOfPeople: props.createEventRedux.numberOfPeople,
+      isGroupEvent: props.createEventRedux.isGroupEvent,
     }
 
     this.maxCategories = 3
@@ -78,11 +86,12 @@ class CreateStep1 extends Component {
   }
 
   // toggle functions
-  selectToggle = (val, name) => {
+  selectToggle = (name) => {
     this.setState({
-      [name]: val
+      [name]: !this.state[name]
     })
   }
+
 
   // slider category functions
   selectCategory = (id) => {
@@ -116,34 +125,31 @@ class CreateStep1 extends Component {
       categories: this.state.categories,
       departure: this.state.departure,
       destination: this.state.destination,
+      languages: this.state.languages,
+      city: this.state.city,
       event_day: this.state.event_day,
       event_month: this.state.event_month,
       event_year: this.state.event_year,
-      eventType: this.state.eventType,
-      numberOfPeople: this.state.numberOfPeople,
-
-      title: this.state.title,
-      description: this.state.description,
-
-      privacyComments: this.state.privacyComments,
-      privacyDisplayMembers: this.state.privacyDisplayMembers
+      isGroupEvent: this.state.isGroupEvent,
     })
   }
 
   render(){
     const {
       state: {
-        categories, departure, destination,
+        categories, departure, destination, languages, city,
         event_day, event_month, event_year,
         daySelect, monthSelect, yearSelect,
-        eventType, numberOfPeople,
-        title, description,
-        privacyComments, privacyDisplayMembers
+        isGroupEvent
       },
       props: {
 
       }
     } = this
+
+    const isTravelEvent = isEqual(categories, [3])
+    const isLangEvent = isEqual(categories, [7])
+
     return(
       <Formsy
         className="create-e"
@@ -152,6 +158,7 @@ class CreateStep1 extends Component {
         onInvalid={this.formInvalid}
         ref={this.formRef} >
 
+        {/* Categories selector */}
         <div className="create-e__section">
           <div className="create-e__section-name">
             <div className="h4-title">Выберите категорию события</div>
@@ -166,125 +173,135 @@ class CreateStep1 extends Component {
           </div>
         </div>
 
-        <div className="create-e__section">
-          <div className="create-e__section-name h4-title">Настройки события</div>
+        <Collapse
+          isOpened={categories.length > 0}>
 
-          <div className="ui-group ui-group--row">
-            <label htmlFor="">Откуда:</label>
-            <Select
-              name="departure"
-              multi={true}
-              removeSelected={false}
-              clearable={false}
-              searchable={true}
-              noResultsText="Не найдено"
-              autosize={false}
-              value={departure}
-              onChange={(e) => this.handleSelectChange(e, "departure")}
-              placeholder="Укажите город вылета"
-              options={MapArrToSelect(
-                [
-                  "Страна 1", "Страна 2"
-                ]
-              )
-              }
-            />
-          </div>
-          <div className="ui-group ui-group--row">
-            <label htmlFor="">Куда:</label>
-            <Select
-              name="destination"
-              multi={true}
-              removeSelected={false}
-              clearable={false}
-              searchable={true}
-              noResultsText="Не найдено"
-              autosize={false}
-              value={destination}
-              onChange={(e) => this.handleSelectChange(e, "destination")}
-              placeholder="Укажите город прилета"
-              options={MapArrToSelect(
-                [
-                  "Страна 1", "Страна 2"
-                ]
-              )
-              }
-            />
-          </div>
+          <div className="create-e__section">
+            <div className="create-e__section-name h4-title">Настройки события</div>
 
-          <div className="ui-group ui-group--row">
-            <label htmlFor="">Вылета:</label>
-            <div className="ui-date-selects">
-              <Select
-                name="event_day"
-                clearable={false}
-                searchable={true}
-                noResultsText="Не найдено"
-                autosize={false}
-                value={event_day}
-                onChange={(e) => this.handleSelectChange(e, "event_day")}
-                placeholder="день"
-                options={MapArrToSelect(daySelect)} />
-              <Select
-                name="event_month"
-                clearable={false}
-                searchable={false}
-                autosize={false}
-                value={event_month}
-                onChange={(e) => this.handleSelectChange(e, "event_month")}
-                placeholder="месяц"
-                options={monthSelect} />
-              <Select
-                name="event_year"
-                clearable={false}
-                searchable={true}
-                noResultsText="Не найдено"
-                autosize={false}
-                value={event_year}
-                onChange={(e) => this.handleSelectChange(e, "event_year")}
-                placeholder="год"
-                options={MapArrToSelect(yearSelect)}/>
+            { isTravelEvent &&
+              <div className="ui-group ui-group--row-with-plugin">
+                <label htmlFor="">Пункт назначения:</label>
+                <div className="ui-destination-selects">
+                  <Select
+                    name="departure"
+                    multi={false}
+                    removeSelected={false}
+                    clearable={false}
+                    searchable={true}
+                    noResultsText="Не найдено"
+                    autosize={false}
+                    value={departure}
+                    onChange={(e) => this.handleSelectChange(e, "departure")}
+                    placeholder="Откуда"
+                    options={MapArrToSelect(CityOptions)}/>
+                  <Select
+                    name="destination"
+                    multi={false}
+                    removeSelected={false}
+                    clearable={false}
+                    searchable={true}
+                    noResultsText="Не найдено"
+                    autosize={false}
+                    value={destination}
+                    onChange={(e) => this.handleSelectChange(e, "destination")}
+                    placeholder="Куда"
+                    options={MapArrToSelect(CityOptions)}/>
+                </div>
+                <div className="ui-group-plugin"></div>
+              </div>
+            }
+
+            { isLangEvent &&
+              <div className="ui-group ui-group--row-with-plugin">
+                <label htmlFor="">Выберите язык:</label>
+                <Select
+                  name="languages"
+                  multi={true}
+                  removeSelected={false}
+                  simpleValue={false}
+                  clearable={false}
+                  searchable={false}
+                  autosize={false}
+                  value={languages}
+                  onChange={(e) => this.handleSelectChange(e, "languages")}
+                  placeholder="Выберите языки"
+                  optionRenderer={SelectLanguageOption}
+                  valueComponent={MultipleSelectToTotal.bind(this, languages)}
+                  options={LanguageOptions}/>
+                <div className="ui-group-plugin"></div>
+              </div>
+            }
+
+            { (!isLangEvent && !isTravelEvent) &&
+              <div className="ui-group ui-group--row-with-plugin">
+                <label htmlFor="">Выберите город:</label>
+                <Select
+                  name="city"
+                  multi={false}
+                  removeSelected={false}
+                  clearable={false}
+                  searchable={true}
+                  noResultsText="Не найдено"
+                  autosize={false}
+                  value={city}
+                  onChange={(e) => this.handleSelectChange(e, "city")}
+                  placeholder="Выберите город"
+                  options={MapArrToSelect(CityOptions)}/>
+                <div className="ui-group-plugin"></div>
+              </div>
+            }
+
+            <div className="ui-group ui-group--row-with-plugin">
+              <label htmlFor="">Дата события:</label>
+              <div className="ui-date-selects">
+                <Select
+                  name="event_day"
+                  clearable={false}
+                  searchable={true}
+                  noResultsText="Не найдено"
+                  autosize={false}
+                  value={event_day}
+                  onChange={(e) => this.handleSelectChange(e, "event_day")}
+                  placeholder="день"
+                  options={MapArrToSelect(daySelect)} />
+                <Select
+                  name="event_month"
+                  clearable={false}
+                  searchable={false}
+                  autosize={false}
+                  value={event_month}
+                  onChange={(e) => this.handleSelectChange(e, "event_month")}
+                  placeholder="месяц"
+                  options={monthSelect} />
+                <Select
+                  name="event_year"
+                  clearable={false}
+                  searchable={true}
+                  noResultsText="Не найдено"
+                  autosize={false}
+                  value={event_year}
+                  onChange={(e) => this.handleSelectChange(e, "event_year")}
+                  placeholder="год"
+                  options={MapArrToSelect(yearSelect)}/>
+              </div>
+              <div className="ui-group-plugin"></div>
+            </div>
+
+            <div className="ui-group ui-group--row-with-plugin">
+              <label htmlFor="">
+                Тип события:
+                <Tooltip
+                  content="Контент" />
+              </label>
+              <Tumbler
+                preText="Групповое"
+                value={isGroupEvent}
+                clickHandler={this.selectToggle.bind(this, "isGroupEvent")} />
+              <div className="ui-group-plugin"></div>
             </div>
           </div>
-
-          <div className="ui-group ui-group--row">
-            <label htmlFor="">Тип события:</label>
-            <Toggle
-              value={eventType}
-              name="eventType"
-              modifierClass="ui-toggle--big"
-              options={{
-                left: "Групповое",
-                right: "Персональное"
-              }}
-              clickHandler={this.selectToggle} />
-          </div>
-
-          <div className="ui-group ui-group--row">
-            <label htmlFor="">Количество участников:</label>
-            <Select
-              name="numberOfPeople"
-              searchable={true}
-              noResultsText="Не найдено"
-              autosize={false}
-              value={numberOfPeople}
-              onChange={(e) => this.handleSelectChange(e, "numberOfPeople")}
-              placeholder="Выберите участников"
-              options={MapArrToSelect(
-                [
-                  "Неважно",
-                  "1-2",
-                  "2-5",
-                  "5-10",
-                  "10-20",
-                  "20+"
-                ]
-              )
-              }
-            />
-          </div>
-
-        </div>
+        </Collapse>
 
 
       </Formsy>

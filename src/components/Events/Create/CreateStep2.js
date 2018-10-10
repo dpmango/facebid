@@ -86,15 +86,6 @@ class CreateStep2 extends Component {
   saveState = () => {
     this.props.setCreateEvent({
       ...this.props.createEventRedux,
-      category: this.state.category,
-      departure: this.state.departure,
-      destination: this.state.destination,
-      event_day: this.state.event_day,
-      event_month: this.state.event_month,
-      event_year: this.state.event_year,
-      eventType: this.state.eventType,
-      numberOfPeople: this.state.numberOfPeople,
-
       title: this.state.title,
       description: this.state.description,
 
@@ -106,10 +97,6 @@ class CreateStep2 extends Component {
   render(){
     const {
       state: {
-        category, departure, destination,
-        event_day, event_month, event_year,
-        daySelect, monthSelect, yearSelect,
-        eventType, numberOfPeople,
         title, description,
         privacyComments, privacyDisplayMembers
       },

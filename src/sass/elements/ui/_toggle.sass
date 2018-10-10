@@ -51,11 +51,18 @@
     margin-left: auto
     cursor: pointer
 
+.ui-tumbler-wrapper
+  display: flex
+  align-items: center
+  cursor: pointer
+
+
 .ui-tumbler
   position: relative
   size: 40px 20px
   background: #DCE1E7
   border-radius: 20px
+  cursor: pointer
   transition: .25s $ease
   &::after
     display: inline-block
@@ -86,3 +93,13 @@
       right: 8px
       font-size: 8px
       fill: #848E99
+
+  &__text
+    font-size: 14px
+    display: inline-block
+    font-family: $roboto
+
+    &--pre
+      margin-right: 16px
+    &--post
+      margin-left: 16px

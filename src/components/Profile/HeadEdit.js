@@ -5,6 +5,7 @@ import FormInput from '../Forms/Input';
 import SvgIcon from '../Helpers/SvgIcon';
 import MultipleSelectToTotal from 'helpers/MultipleSelectToTotal';
 import SelectLanguageOption from 'helpers/SelectLanguageOption';
+import LanguageOptions from 'helpers/LanguageOptions';
 
 class HeadEdit extends Component {
   constructor(props){
@@ -107,13 +108,7 @@ class HeadEdit extends Component {
             placeholder="Выберите языки"
             optionRenderer={SelectLanguageOption}
             valueComponent={MultipleSelectToTotal.bind(this, userLang)}
-            options={[
-              { value: 'ru', label: 'Русский' },
-              { value: 'us', label: 'Английский' },
-              { value: 'ge', label: 'Немецкий' },
-              { value: 'es', label: 'Испанский' },
-              { value: 'fr', label: 'Французкий' }
-            ]}
+            options={LanguageOptions}
           />
         </div>
         <FormInput
