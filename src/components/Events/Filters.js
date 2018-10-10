@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Collapse } from 'react-collapse';
 import Slider, {Range} from 'rc-slider';
 import Select from 'react-select';
-import FilterSlider from './FilterSlider';
+import CategoriesSlider from './CategoriesSlider';
 import SvgIcon from '../Helpers/SvgIcon';
 import SimpleInput from '../Forms/SimpleInput';
 // import Toggle from '../Forms/Toggle';
@@ -224,7 +224,7 @@ class Filters extends Component {
           </div>
         </Collapse>
         <div className="filters__categories">
-          <FilterSlider
+          <CategoriesSlider
             values={categories}
             clickHandler={this.selectCategory}/>
         </div>

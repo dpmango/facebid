@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Swiper from 'react-id-swiper';
 import SvgIcon from '../Helpers/SvgIcon';
 
-class FilterSlider extends Component {
+class CategoriesSlider extends Component {
   render(){
     const SwiperParams = {
       // react specific params
@@ -31,7 +31,7 @@ class FilterSlider extends Component {
       slidesOffsetAfter: 20
     }
 
-    const slides = [
+    let slides = [
       {id: 1, icon: "filter-category-all", name: "Все"},
       {id: 2, icon: "filter-category-volonter", name: "Волонтерство"},
       {id: 3, icon: "filter-category-travel", name: "Путешествия"},
@@ -49,6 +49,9 @@ class FilterSlider extends Component {
       {id: 15, icon: "filter-category-activelife", name: "Активный отдых"},
       {id: 16, icon: "filter-category-couchserfing", name: "Каучсерфинг"}
     ]
+    if ( this.props.type === "create-event" ){
+      slides = slides.filter(x => x.name !== "Все" )
+    }
 
     return(
       <div className="filters__slider">
@@ -76,10 +79,15 @@ const FilterCategory = (props) => {
       className={"filter-category" + (values.indexOf(id) !== -1 ? " is-active" : "")}>
       <div className="filter-category__icon">
         <SvgIcon name={icon} />
+        <div className="filter-category__selected">
+          <span className="ico-blue-circle">
+            <SvgIcon name="checkmark" />
+          </span>
+        </div>
       </div>
       <div className="filter-category__name">{name}</div>
     </div>
   )
 }
 
-export default FilterSlider
+export default CategoriesSlider

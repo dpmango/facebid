@@ -8,7 +8,7 @@ import Onboarding from './Onboarding/Onboarding';
 import GeolocationRequest from './Modal/GeolocationRequest';
 import ShareModal from './Modal/ShareModal';
 import EventModal from './Events/EventModal';
-import CreateEvent from './Events/Create';
+import CreateEvent from './Events/Create/Create';
 import Settings from './ProfileSettings/Settings';
 import Notifications from './Notifications/Notifications';
 import Messages from './Messages/Messages';

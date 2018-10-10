@@ -92,7 +92,7 @@ class Abuse extends Component{
         modalName, reason, description
       },
       props: {
-        activeModal, modalOptions
+        activeModal
       }
     } = this
 

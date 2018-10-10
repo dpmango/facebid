@@ -1,7 +1,8 @@
 import { SET_CREATE_EVENT } from '../actions/create-event';
 
 const initialState = {
-  category: '',
+  currentTab: 1,
+  categories: [],
   departure: '',
   destination: '',
   event_day: '',

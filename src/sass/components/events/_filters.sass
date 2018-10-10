@@ -105,10 +105,12 @@
   max-width: 120px
   cursor: pointer
   &__icon
+    position: relative
     size: 80px
     margin-left: auto
     margin-right: auto
-    border: 2px solid #F3F7FB
+    // border: 2px solid #F3F7FB
+    background: #F3F7FB
     border-radius: 50%
     display: flex
     align-items: center
@@ -116,7 +118,28 @@
     color: $grayColor
     font-size: 0
     transition: .25s $ease
+    &::before
+      display: inline-block
+      content: ' '
+      position: absolute 0
+      border-radius: 50%
+      background: $gradient
+      z-index: 1
+      transition: .25s $ease
+      opacity: 0
+    &::after
+      // white bg emulation
+      display: inline-block
+      content: ' '
+      position: absolute 2px
+      z-index: 2
+      border-radius: 50%
+      background: white
+      transition: .25s $ease
     .ico
+      position: relative
+      z-index: 3
+      transform: translate3d(0,0,0)
       // like a default
       font-size: 40px
       &-filter-category
@@ -153,12 +176,41 @@
     font-weight: 500
     margin-top: 20px
     transition: .25s $ease
-  &:hover
+
+  &__selected
+    position: absolute
+    top: 2px
+    right: 2px
+    z-index: 3
+    font-size: 0
+    border: 2px solid white
+    border-radius: 50%
+    transition: .25s $ease
+    pointer-events: none
+    opacity: 0
+    .ico
+      font-size: 7px
+      fill: white !important
+  &:hover, &.is-active
     .filter-category
       &__name
-        color: $colorBlue
-  &.is-active
-    .filter-category
+        // color: $colorBlue
       &__icon
+        // hide gray border
+        // background: transparent
+        &::before
+          // show gadient
+          opacity: 1
+        &::after
+          transform: scale(1.02)
+          // top: 1px
+          // bottom: 1px
+          // right: 1px
+          // left: 1px
         .ico
           fill: url('#gradient1')
+
+  &.is-active
+    .filter-category
+      &__selected
+        opacity: 1

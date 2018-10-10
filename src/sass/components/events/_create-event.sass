@@ -1,10 +1,109 @@
 // create event modal contents
 .create-e
-  &__section
-    padding: 30px 25px 5px
-    border-bottom: 1px solid #DDE1E6
-  &__section-name
-    margin-bottom: 30px
+  &__steps
+    display: flex
+    align-items: center
+    margin-left: auto
+    user-select: none
+  &__steps-separator
+    display: inline-block
+    margin-left: 8px
+    margin-right: 8px
+    size: 13px 1px
+    background: #EBEBEB
+  &__step
+    position: relative
+    size: 32px
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 50%
+    transition: background .25s $ease
+    &::after
+      // white bg emulator
+      display: inline-block
+      content: ' '
+      position: absolute 1px
+      border-radius: 50%
+      z-index: 1
+      background: white
+    &-wrapper
+      position: relative
+      z-index: 2
+      size: 24px
+      display: flex
+      align-items: center
+      justify-content: center
+      text-align: center
+      background: #EBEBEB
+      color: white
+      border-radius: 50%
+      font-size: 0
+      span, .ico
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+        transition: opacity .25s $ease
+      span
+        font-size: 12px
+        font-weight: 700
+        opacity: 1
+      .ico
+        opacity: 0
+        font-size: 7px
 
-  &__cta
-    padding: 30px 25px
+    &.is-current
+      background: $gradient
+      .create-e__step-wrapper
+        background: $colorBlue
+
+    &.is-compleated
+      cursor: pointer
+      .create-e__step-wrapper
+        background: $colorBlue
+        .ico
+          opacity: 1
+        span
+          opacity: 0
+
+
+
+  &__section
+    position: relative
+    padding: 0px 0px 30px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      bottom: 0
+      left: -24px
+      right: -24px
+      height: 1px
+      background: #DDE1E6
+      // border-bottom: 1px solid #DDE1E6
+  &__section-name
+    margin: 30px 0
+    display: flex
+    align-items: center
+
+
+  &__categories
+    margin-top: -6px
+    .filters__slider
+      margin-left: -24px
+      margin-right: -24px
+
+  &__categories-counter
+    margin-left: auto
+    font-size: 14px
+    font-family: $roboto
+    color: #EBEBEB
+    transition: color .25s $ease
+    span
+      display: inline-block
+      transition: .25s $ease
+    &.is-maxed-out
+      color: $fontColorGray
+      span
+        color: $colorBlue
