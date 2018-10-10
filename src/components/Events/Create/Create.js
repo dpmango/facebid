@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { notify } from 'reapop';
 import Modal from 'components/Modal/Modal';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import api from 'services/Api';
-import { closeModal } from 'actions/modal';
-import { setCreateEvent } from 'actions/create-event';
+import { openModal, closeModal } from 'actions/modal';
+import { setCreateEvent, resetCreateEvent } from 'actions/create-event';
 import StepNav from './StepNav';
 import CreateStep1 from './CreateStep1';
 import CreateStep2 from './CreateStep2';
@@ -16,12 +17,21 @@ class Create extends Component{
 
     this.state = {
       modalName: 'create-event',
-      currentTab: props.createEventRedux.currentTab
+      currentTab: props.createEventRedux.currentTab // asume as initial
       // currentTab: 2 // testing only
     }
 
     this.formRef = React.createRef();
   }
+
+  // static getDerivedStateFromProps(nextProps, prevState){
+  //   if (nextProps.createEventRedux.currentTab !== prevState.currentTab) {
+  //     return { currentTab: nextProps.createEventRedux.currentTab};
+  //   } else {
+  //     return null;
+  //   }
+  // }
+
 
   hide = () => {
     this.props.closeModal()
@@ -55,6 +65,15 @@ class Create extends Component{
   postEvent = () => {
     // when clicked crate on last tab
 
+    this.props.resetCreateEvent();
+    this.props.openModal('event-created');
+    this.props.notify({
+      title: 'Событие создано',
+      message: 'Спасибо, событие находится на модерации',
+      status: 'default', // default, info, success, warning, error
+      dismissible: true,
+      dismissAfter: 2000,
+    })
     // + API post
     // api
     //   .post(`events`, {
@@ -128,6 +147,9 @@ class Create extends Component{
 
 Create.propTypes = {
   closeModal: PropTypes.func,
+  openModal: PropTypes.func,
+  resetCreateEvent: PropTypes.func,
+  notify: PropTypes.func
 }
 
 const mapStateToProps = (state) => ({
@@ -136,7 +158,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  openModal: (data) => dispatch(openModal(data)),
+  resetCreateEvent: () => dispatch(resetCreateEvent()),
+  notify: (data) => dispatch(notify(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Create);

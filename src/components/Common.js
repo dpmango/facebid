@@ -9,6 +9,7 @@ import GeolocationRequest from './Modal/GeolocationRequest';
 import ShareModal from './Modal/ShareModal';
 import EventModal from './Events/EventModal';
 import CreateEvent from './Events/Create/Create';
+import EventCreated from './Events/Create/EventCreated';
 import Settings from './ProfileSettings/Settings';
 import Notifications from './Notifications/Notifications';
 import Messages from './Messages/Messages';
@@ -37,6 +38,7 @@ class Common extends Component {
             <Premium />
             <Subscribers />
             <Abuse />
+            <EventCreated />
           </React.Fragment>
         }
         {onboarding.isActive &&

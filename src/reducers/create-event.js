@@ -1,4 +1,4 @@
-import { SET_CREATE_EVENT } from '../actions/create-event';
+import { SET_CREATE_EVENT, RESET_CREATE_EVENT } from 'actions/create-event';
 
 const initialState = {
   currentTab: 1,
@@ -23,6 +23,9 @@ const createEvent = (state = initialState, action) => {
 
     case SET_CREATE_EVENT:
       return action.payload
+
+    case RESET_CREATE_EVENT:
+      return initialState
 
     default:
       return state;
