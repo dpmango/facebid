@@ -1,0 +1,127 @@
+
+// invite card
+.i-card
+  position: relative
+  z-index: 1
+  border-radius: 4px
+  overflow: hidden
+  // make it as a box
+  padding-bottom: 100%
+  box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
+  &__slider
+    position: absolute 0
+    font-size: 0
+    &-prev, &-next
+      position: absolute
+      z-index: 3
+      background: transparent
+      top: 0
+      bottom: 0
+      width: 50%
+      font-size: 0
+      opacity: 0
+      color: white
+      display: flex
+      flex-direction: column
+      justify-content: center
+      padding: 10px 16px
+      transition: .25s $ease
+      .ico
+        font-size: 11px
+        filter: drop-shadow(0 2px 4px 0 rgba(0,0,0,0.30))
+
+    &-prev
+      left: 0px
+      align-items: flex-start
+      transform: translateX(-8px)
+    &-next
+      right: 0px
+      align-items: flex-end
+      transform: translateX(8px)
+
+    &:hover
+      .i-card__slider
+        &-next, &-prev
+          opacity: 1
+          transform: translateX(0)
+
+  &__image
+    flex: 0 0 auto
+    max-width: 100%
+    position: relative
+    z-index: 1
+    &::after
+      display: inline-block
+      content: ''
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
+      z-index: 1
+      height: 105px
+      opacity: 0.7
+      background-image: linear-gradient(180deg, rgba(0,0,0,0.01) 0%, #000000 100%)
+    img
+      width: 100%
+
+  &__contents
+    position: absolute
+    z-index: 3
+    bottom: 0
+    left: 0
+    right: 0
+    padding: 12px 16px
+    display: flex
+    align-items: center
+    color: white
+  &__user
+    flex: 1 1 auto
+    &-name
+      font-size: 18px
+      font-weight: 700
+
+    &-distance
+      font-family: $roboto
+      font-size: 14px
+      line-height: 1.35
+      margin-top: 5px
+      color: $colorWhite70
+
+  &__cta
+    flex: 0 0 auto
+    margin-left: auto
+
+  // loader state
+  &.is-loading
+    background: #EBEBEB
+    .i-card
+      &__user
+        flex: 0 1 50%
+      &__user-name
+        background: rgba(white, .5)
+        min-height: 16px
+        max-width: 115px
+        width: 100%
+      &__user-distance
+        background: rgba(white, .5)
+        min-height: 8px
+        max-width: 100px
+        width: 85%
+        margin-top: 8px
+      &__cta
+        flex: 0 1 50%
+        border-radius: 30px
+        margin-left: 12px
+        min-height: 40px
+        max-width: 145px
+        display: flex
+        justify-content: center
+        align-items: center
+        border: 1px solid rgba(white, .5)
+        span
+          display: block
+          margin-left: 24px
+          margin-right: 24px
+          width: 100%
+          min-height: 9px
+          background: rgba(white, .5)

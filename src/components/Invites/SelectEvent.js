@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { Link } from 'react-router-dom';
 import Swiper from 'react-id-swiper';
 import api from 'services/Api';
 import SvgIcon from 'components/Helpers/SvgIcon';
-import Avatar from 'components/Shared/Avatar'
+import Image from 'components/Helpers/Image';
 import Loading from 'components/Helpers/Loading';
 import {openModal} from 'actions/modal';
 
-class RecommendedEvents extends Component{
+class SelectEvent extends Component{
 
   constructor(){
     super();
@@ -28,7 +27,7 @@ class RecommendedEvents extends Component{
 
   getEvents = () => {
     api
-      .get('recommendedEvents')
+      .get('inviteEvents')
       .then(res => {
         this.setState({events: res.data})
       })
@@ -37,6 +36,7 @@ class RecommendedEvents extends Component{
       })
   }
 
+  // open event modal
   openEvent = (id) => {
     this.props.openModal({
       name: "event",
@@ -46,6 +46,7 @@ class RecommendedEvents extends Component{
     })
   }
 
+  // swiper custom controlls
   nextSlide = () => {
     if (!this.swiperRef) return
 
@@ -69,7 +70,7 @@ class RecommendedEvents extends Component{
 
   render(){
     const SwiperParams = {
-      slideClass: 'r-event',
+      slideClass: 'i-event',
       direction: 'horizontal',
       watchOverflow: true,
       setWrapperSize: false,
@@ -80,19 +81,19 @@ class RecommendedEvents extends Component{
       slidesOffsetBefore: 24,
       slidesOffsetAfter: 24,
       on: {
-        slideChange: this.slideChanged
+        slideChange: this.slideChanged,
       },
     }
 
-    const {events, isFirstSlide, isLastSlide} = this.state
+    const {
+      state: { events, isFirstSlide, isLastSlide },
+      props: { selected }
+    } = this
 
     return(
-      <div className="r-events">
+      <div className="r-events r-events--invite">
         <div className="r-events__head">
-          <div className="h4-title">Рекомендованные Вам</div>
-          <Link
-            to="/events"
-            className="r-events__link-more">Показать все</Link>
+          <div className="h4-title">Выберите событие</div>
           <div className="r-events__nav">
             <button
               onClick={this.prevSlide}
@@ -116,18 +117,23 @@ class RecommendedEvents extends Component{
                 {...SwiperParams}>
                 {events.map(event => (
                   <div
-                    onClick={this.openEvent.bind(this, event.event.id)}
+                    onClick={this.props.onSelectEvent.bind(this, event.id)}
                     key={event.id}
-                    className={"r-event" + (event.event.isNew ? " is-new" : "")}>
-                    <div className="r-event__wrapper">
-                      <div className="r-event__avatar">
-                        <Avatar
-                          className="avatar avatar--56"
-                          user={event.user} />
-                      </div>
-                      <div className="r-event__contents">
-                        <div className="r-event__name">{event.user.firstname}</div>
-                        <div className="r-event__type">{event.event.type}</div>
+                    className={"i-event" + ((selected === event.id) && " is-selected")}>
+                    <div className="i-event__image">
+                      <Image file={event.image} />
+                    </div>
+                    <div className="i-event__selector">
+                      <SvgIcon name="checkmark" />
+                    </div>
+                    <div className="i-event__contents">
+                      <div className="i-event__title">{event.title}</div>
+                      <div className="i-event__cta">
+                        <button
+                          onClick={this.openEvent.bind(this, event.id)}
+                          className="btn btn-outline btn-outline--white">
+                          Подробнее
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -145,4 +151,4 @@ const mapDispatchToProps = (dispatch) => ({
   openModal: (data) => dispatch(openModal(data))
 })
 
-export default connect(null, mapDispatchToProps)(RecommendedEvents)
+export default connect(null, mapDispatchToProps)(SelectEvent)

@@ -1,15 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Helmet } from "react-helmet";
+import SelectEvent from 'components/Invites/SelectEvent';
+import SearchResults from 'components/Invites/SearchResults';
 
 class Invite extends Component {
+  constructor(){
+    super()
+
+    this.state = {
+      selectedEvent: null
+    }
+  }
+
+  selectEvent = (id) => {
+    this.setState({selectedEvent: id})
+  }
+
   render() {
+    const {selectedEvent} = this.state;
+
     return (
-      <React.Fragment>
+      <Fragment>
         <Helmet>
           <title>Приглашения</title>
         </Helmet>
-        <h1>Invite</h1>
-      </React.Fragment>
+        <SelectEvent
+          onSelectEvent={this.selectEvent}
+          selected={selectedEvent} />
+        <SearchResults
+          selected={selectedEvent} />
+      </Fragment>
     );
   }
 }

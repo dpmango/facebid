@@ -1227,5 +1227,113 @@
         "type": "Спорт"
       }
     }
+  ],
+  "inviteEvents": [
+    {
+      "id": 1,
+      "title": "Кто со мной в путешествие",
+      "image": "inviteEvent_1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Заголовок длинного объявления в ленте",
+      "image": "inviteEvent_2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Заголовок длинного объявления в ленте",
+      "image": "inviteEvent_3.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Заголовок длинного объявления в ленте",
+      "image": "inviteEvent_4.jpg"
+    }
+  ],
+  "invitePeople": [
+    {
+      "id": 1,
+      "images": [
+        {"id": 1, "url": "invitePerson_1.jpg"},
+        {"id": 2, "url": "invitePerson_2.jpg"},
+        {"id": 3, "url": "invitePerson_3.jpg"}
+      ],
+      "user": {
+        "id": 1,
+        "name": "Evgenya",
+        "age": 29,
+        "distance": "18 км от Вас"
+      }
+    },
+    {
+      "id": 2,
+      "images": [
+        {"id": 1, "url": "invitePerson_2.jpg"},
+        {"id": 2, "url": "invitePerson_3.jpg"},
+        {"id": 3, "url": "invitePerson_4.jpg"}
+      ],
+      "user": {
+        "id": 1,
+        "name": "Anabelle",
+        "age": 29,
+        "distance": "18 км от Вас"
+      }
+    },
+    {
+      "id": 3,
+      "images": [
+        {"id": 1, "url": "invitePerson_3.jpg"},
+        {"id": 2, "url": "invitePerson_4.jpg"},
+        {"id": 3, "url": "invitePerson_5.jpg"}
+      ],
+      "user": {
+        "id": 1,
+        "name": "Froshka",
+        "age": 29,
+        "distance": "18 км от Вас"
+      }
+    },
+    {
+      "id": 4,
+      "images": [
+        {"id": 1, "url": "invitePerson_4.jpg"},
+        {"id": 2, "url": "invitePerson_5.jpg"},
+        {"id": 3, "url": "invitePerson_6.jpg"}
+      ],
+      "user": {
+        "id": 1,
+        "name": "Andrey",
+        "age": 29,
+        "distance": "18 км от Вас"
+      }
+    },
+    {
+      "id": 5,
+      "images": [
+        {"id": 1, "url": "invitePerson_5.jpg"},
+        {"id": 2, "url": "invitePerson_6.jpg"},
+        {"id": 3, "url": "invitePerson_1.jpg"}
+      ],
+      "user": {
+        "id": 1,
+        "name": "Kulybaka",
+        "age": 29,
+        "distance": "18 км от Вас"
+      }
+    },
+    {
+      "id": 6,
+      "images": [
+        {"id": 1, "url": "invitePerson_6.jpg"},
+        {"id": 2, "url": "invitePerson_1.jpg"},
+        {"id": 3, "url": "invitePerson_2.jpg"}
+      ],
+      "user": {
+        "id": 1,
+        "name": "Name",
+        "age": 29,
+        "distance": "18 км от Вас"
+      }
+    }
   ]
 }

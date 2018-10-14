@@ -19,6 +19,24 @@ const Loading = (props) => {
     )
   }
 
+  if ( type === "invites" ){
+    return(
+      [1,2,3,4,5,6].map(x => (
+        <div key={x} className="invite-grid__col">
+          <div className="i-card is-loading">
+            <div className="i-card__contents">
+              <div className="i-card__user">
+                <div className="i-card__user-name"></div>
+                <div className="i-card__user-distance"></div>
+              </div>
+              <div className="i-card__cta"><span></span></div>
+            </div>
+          </div>
+        </div>
+      ))
+    )
+  }
+
   if ( type === "my-profile" ){
 
   }

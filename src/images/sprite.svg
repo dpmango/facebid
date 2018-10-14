@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg"><symbol id="ico-add-attachment" viewBox="0 0 14 14">
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs>
+        <path d="M7 19h14v-1c0-1.46-3.844-3-7-3s-7 1.54-7 3v1zm7-5c2.67 0 8 1.34 8 4v2H6v-2c0-2.66 5.33-4 8-4zm0-3c1.658 0 3-1.342 3-3s-1.342-3-3-3-3 1.342-3 3 1.342 3 3 3zm-8-1h3v1H6v3H5v-3H2v-1h3V7h1v3zm8 2c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" id="a"/>
+    </defs><symbol id="ico-add-attachment" viewBox="0 0 14 14">
     <title>
         add-attachment
     </title>
@@ -312,6 +314,12 @@
         plus
     </title>
     <path d="M14 8H8v6H6V8H0V6h6V0h2v6h6z"/>
+</symbol><symbol id="ico-profile-add" viewBox="0 0 20 16">
+    <title>
+        profile-add
+    </title>
+    
+    <use xlink:href="#a" transform="translate(-2 -4)"/>
 </symbol><symbol id="ico-profile-thin" viewBox="0 0 16 16">
     <title>
         profile-thin

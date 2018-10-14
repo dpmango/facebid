@@ -10,7 +10,6 @@ class EventCardMedia extends Component {
       // react specific params
       // https://github.com/kidjp85/react-id-swiper
       // containerClass: 'filter-category',
-
       renderPrevButton: () => <button className="e-card__slider-prev"><SvgIcon name="arrow-left" /></button>,
       renderNextButton: () => <button className="e-card__slider-next"><SvgIcon name="arrow-right" /></button>,
 
@@ -40,13 +39,13 @@ class EventCardMedia extends Component {
     return(
       <div className="e-card__media">
         <Swiper {...SwiperParams}>
-          {data.map((image, index) => {
-            return(
-              <div key={index} className="e-card__image">
-                <Image file={image} />
-              </div>
-            )
-          })}
+          {data.map((image, index) => (
+            <div
+              key={index}
+              className="e-card__image">
+              <Image file={image} />
+            </div>
+          ))}
         </Swiper>
       </div>
     )
