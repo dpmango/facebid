@@ -77,3 +77,66 @@
       background-color: $colorBlue
       .ico
         opacity: 1
+
+  &--create
+    display: flex
+    flex-direction: column
+    background: #848E99
+    height: 192px
+
+  &__create
+    margin-top: auto
+    margin-bottom: auto
+    text-align: center
+    color: white
+    padding-left: 10px
+    padding-right: 10px
+    &-plus
+      size: 64px
+      margin-left: auto
+      margin-right: auto
+      border-radius: 50%
+      display: flex
+      align-items: center
+      justify-content: center
+      background: white
+      font-size: 20px
+      color: $colorBlue
+      cursor: pointer
+      box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
+    &-name
+      margin-top: 15px
+      font-size: 18px
+      font-weight: 700
+
+  &.is-loading
+    background: #EBEBEB
+    height: 192px
+    cursor: default
+    .i-event
+      &__selector
+        background: transparent
+        border: 1px solid white
+      &__title
+        background: rgba(white, .5)
+        min-height: 10px
+        max-width: 180px
+        &--2
+          margin-top: 10px
+          max-width: 130px
+      &__cta
+        border-radius: 30px
+        min-height: 40px
+        max-width: 145px
+        display: flex
+        justify-content: center
+        align-items: center
+        border: 1px solid rgba(white, .5)
+        span
+          display: block
+          margin-left: 24px
+          margin-right: 24px
+          width: 100%
+          max-width: 120px
+          min-height: 9px
+          background: rgba(white, .5)

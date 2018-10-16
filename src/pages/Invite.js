@@ -13,7 +13,7 @@ class Invite extends Component {
   }
 
   selectEvent = (id) => {
-    this.setState({selectedEvent: id})
+    this.setState({selectedEvent: id}, () => console.log(this.state))
   }
 
   render() {

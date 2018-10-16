@@ -7,11 +7,12 @@ import {openModal} from 'actions/modal';
 
 class InviteCard extends Component{
   // open event modal
-  openInvite = (id) => {
+  openInvite = (eventId, userId) => {
     this.props.openModal({
       name: "invite",
       options: {
-        userId: id
+        eventId: eventId,
+        userId: userId
       }
     })
   }
@@ -59,7 +60,7 @@ class InviteCard extends Component{
           <div className="i-card__cta">
             <button
               className="btn btn-primary btn--iconed"
-              onClick={this.openInvite.bind(this, id)}>
+              onClick={this.openInvite.bind(this, id, user.id)}>
               <SvgIcon name="profile-add" />
               <span>Пригласить</span>
             </button>

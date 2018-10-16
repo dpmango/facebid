@@ -13,11 +13,17 @@
     color: $colorBlue
     font-weight: 600
     margin-left: 14px
+    cursor: pointer
 
   &__nav
     margin-left: auto
     display: flex
     align-items: center
+    &.is-disabled
+      .r-events
+        &__slider-next, &__slider-prev
+          color: $borderColor
+          pointer-events: none
 
   &__grid
     padding-bottom: 24px

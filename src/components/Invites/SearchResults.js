@@ -39,7 +39,11 @@ class SearchResults extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.selected !== this.props.selected){
-      this.getPeopleList()
+      if ( this.props.selected ){ // if some value is passed
+        this.getPeopleList()
+      } else {
+        this.clearPeopleList()
+      }
     }
   }
 
@@ -52,6 +56,10 @@ class SearchResults extends Component {
       .catch(err => {
         console.log("error on GET invitePeople", err)
       })
+  }
+
+  clearPeopleList = () => {
+    this.setState({people: []})
   }
 
   // filer functions
