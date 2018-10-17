@@ -18,6 +18,18 @@ class EventsGrid extends Component {
     }
 
     this.loadBy = props.type === "my-events" ? 100 : 10
+    // endpoint router
+    switch (props.type) {
+      case "my-events":
+        this.endpoint = `myEvents`
+        break;
+      case "news":
+        this.endpoint = `news`
+        break;
+      default:
+        this.endpoint = `events`
+    }
+
   }
 
   componentDidMount(){
@@ -27,22 +39,9 @@ class EventsGrid extends Component {
   getInitialEvents = () => {
     const { type } = this.props
 
-    // endpoint router
-    let endpoint
-    switch (type) {
-      case "my-events":
-        endpoint = `myEvents?_limit=${this.loadBy}`
-        break;
-      case "news":
-        endpoint = `events?_limit=${this.loadBy}`
-        break;
-      default:
-        endpoint = `events?_limit=${this.loadBy}`
-    }
-
     // api request
     api
-      .get(endpoint)
+      .get(`${this.endpoint}?_limit=${this.loadBy}`)
       .then(res => {
         this.setState({data: res.data})
       })
@@ -54,7 +53,7 @@ class EventsGrid extends Component {
   loadMore = () => {
     // offset ??
     api
-      .get(`events?_page=2&_limit=${this.loadBy}`)
+      .get(`${this.endpoint}?_page=2&_limit=${this.loadBy}`)
       .then(res => {
         this.setState({
           data: this.state.data.concat(res.data)
