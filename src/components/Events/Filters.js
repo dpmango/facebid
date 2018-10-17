@@ -22,15 +22,12 @@ class Filters extends Component {
     //   gender: props.eventFilterRedux.gender,
     //   range: props.eventFilterRedux.range,
     //   age: props.eventFilterRedux.age,
+    //   city: props.eventFilterRedux.city,
     //   languages: props.eventFilterRedux.languages,
     //   categories: props.eventFilterRedux.categories
     // }
 
     this.state = this.initialState
-  }
-
-  clearFiltersClick = () => {
-    this.setState(this.initialState)
   }
 
   filtersToggle = () => {
@@ -40,10 +37,10 @@ class Filters extends Component {
   }
 
   // input functions
-  handleChange = (e) => {
+  handleInputChange = (e) => {
     let fieldName = e.target.name;
-    let fleldVal = e.target.value;
-    this.setState({...this.state, [fieldName]: fleldVal});
+    let fieldVal = e.target.value;
+    this.setState({...this.state, [fieldName]: fieldVal});
   }
 
   // select functions
@@ -57,6 +54,13 @@ class Filters extends Component {
       [name]: val
     })
   };
+
+  // radio functions
+  radioChange = (val, name) => {
+    this.setState({
+      [name]: val
+    })
+  }
 
   selectCategory = (id) => {
     let options = this.state.categories
@@ -77,11 +81,23 @@ class Filters extends Component {
     })
   }
 
+  // cta actions
+  searchFilters = () => {
+
+  }
+
+  clearFiltersClick = () => {
+    this.setState({
+      ...this.initialState,
+      isOpened: true // kep it opened
+    })
+  }
+
   render(){
 
     const {
       state: {
-        isOpened, gender, range, age, languages, categories, eventName
+        isOpened, gender, range, age, city, languages, categories, eventName
       },
       props: {
         openModal
@@ -100,7 +116,7 @@ class Filters extends Component {
             placeholder="Чем ты хочешь заняться?"
             icon="search"
             value={eventName}
-            onChangeHandler={this.handleChange} />
+            onChangeHandler={this.handleInputChange} />
           <div onClick={this.filtersToggle} className="filters__toggle btn btn-circle">
             <SvgIcon name="filter" />
             <SvgIcon name="close" />
@@ -110,11 +126,15 @@ class Filters extends Component {
           isOpened={isOpened}>
           <FiltersCore
             gender={gender}
-            range={range}
             age={age}
+            city={city}
+            range={range}
             languages={languages}
+            onInputChange={this.handleInputChange}
             onSelectChange={this.handleSelectChange}
             onRangeChange={this.rangeSliderChange}
+            onRadioChange={this.radioChange}
+            onFiltersSearchClick={this.searchFilters}
             onClearFiltersClick={this.clearFiltersClick} />
         </Collapse>
         <div className="filters__categories">

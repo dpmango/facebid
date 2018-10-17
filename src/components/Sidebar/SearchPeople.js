@@ -19,9 +19,9 @@ class SearchPeople extends Component {
 
   handleChange = (e) => {
     let fieldName = e.target.name;
-    let fleldVal = e.target.value;
+    let fieldVal = e.target.value;
     this.setState(
-      {...this.state, [fieldName]: fleldVal},
+      {...this.state, [fieldName]: fieldVal},
       () => this.throttledOnchange()
     );
   }

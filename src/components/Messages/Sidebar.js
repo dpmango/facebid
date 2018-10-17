@@ -58,8 +58,8 @@ class Sidebar extends Component {
 
   searchChanged = (e) => {
     let fieldName = e.target.name;
-    let fleldVal = e.target.value;
-    this.setState({...this.state, [fieldName]: fleldVal});
+    let fieldVal = e.target.value;
+    this.setState({...this.state, [fieldName]: fieldVal});
   }
 
   keyPressHandler = (e) => {

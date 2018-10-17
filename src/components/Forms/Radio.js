@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import SvgIcon from '../components/SvgIcon';
 
-class Checkbox extends Component {
+class Radio extends Component {
   render(){
 
     const {
@@ -13,9 +13,9 @@ class Checkbox extends Component {
     } = this.props
 
     return(
-      <div className={"ui-checkbox" + (value ? " is-active" : "")} onClick={clickHandler}>
-        <input type="checkbox" name={name} id={name} />
-        <div className={"ui-checkbox__label" + ( !text ? " ui-checkbox__label--no-text" : "" )}>
+      <div className={"ui-radio" + (value === text ? " is-active" : "")} onClick={clickHandler.bind(this, text, name)}>
+        <input type="radio" name={name} id={name} />
+        <div className={"ui-radio__label" + ( !text ? " ui-radio__label--no-text" : "" )}>
           { text &&
             <span>{text}</span>
           }
@@ -25,7 +25,7 @@ class Checkbox extends Component {
   }
 }
 
-Checkbox.propTypes = {
+Radio.propTypes = {
   name: PropTypes.string,
   text: PropTypes.oneOfType([
     PropTypes.string,
@@ -35,4 +35,4 @@ Checkbox.propTypes = {
   active: PropTypes.bool
 }
 
-export default Checkbox
+export default Radio

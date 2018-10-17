@@ -3,9 +3,10 @@ import { SET_FILTER_PARAMS } from '../actions/event-filter';
 const initialState = {
   isOpened: false,
   eventName: '',
-  gender: null,
-  range: 20,
+  gender: "Всех",
   age: [24, 32],
+  city: '',
+  range: 20,
   languages: [],
   categories: [1]
 }

@@ -62,14 +62,23 @@ class SearchResults extends Component {
     this.setState({people: []})
   }
 
-  // filer functions
-  clearFiltersClick = () => {
-    this.setState(this.initialState)
+  // input functions
+  handleInputChange = (e) => {
+    let fieldName = e.target.name;
+    let fieldVal = e.target.value;
+    this.setState({...this.state, [fieldName]: fieldVal});
   }
 
   // select functions
   handleSelectChange = (value, name) => {
     this.setState({ [name]: value })
+  }
+
+  // radio functions
+  radioChange = (val, name) => {
+    this.setState({
+      [name]: val
+    })
   }
 
   // slider functions
@@ -79,11 +88,24 @@ class SearchResults extends Component {
     })
   };
 
+  // cta actions
+  searchFilters = () => {
+
+  }
+
+  clearFiltersClick = () => {
+    this.setState({
+      ...this.initialState,
+      people: this.state.people,
+      isOpened: true // kep it opened
+    })
+  }
+
 
   render(){
     const {
       state: {
-        gender, range, age, languages, people
+        gender, range, age, city, languages, people
       },
       props: {selected}
     } = this
@@ -99,11 +121,15 @@ class SearchResults extends Component {
         <div className={"filters"}>
           <FiltersCore
             gender={gender}
-            range={range}
             age={age}
+            city={city}
+            range={range}
             languages={languages}
+            onInputChange={this.handleInputChange}
             onSelectChange={this.handleSelectChange}
             onRangeChange={this.rangeSliderChange}
+            onRadioChange={this.radioChange}
+            onFiltersSearchClick={this.searchFilters}
             onClearFiltersClick={this.clearFiltersClick} />
         </div>
 

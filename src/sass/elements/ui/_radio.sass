@@ -1,0 +1,63 @@
+
+// Checkbox
+.ui-radio
+  min-size: 24px
+  padding: 6px 0 5px
+  input
+    display: none
+    width: 0.1px
+    height: 0.1px
+    opacity: 0
+    position: absolute
+    top: 0
+    left: 0
+  &.is-active
+    .ui-radio__label
+      &::before
+        border-color: $colorBlue
+        // background-color: $colorBlue
+        box-shadow: inset 0px 0px 0px 7px $colorBlue
+  &__label
+    display: flex
+    align-items: center
+    width: 100%
+    min-height: 30px
+    // min-height: 24px
+    position: relative
+    cursor: pointer
+    &::before
+      position: absolute
+      left: 0
+      top: 50%
+      transform: translateY(-50%)
+      display: inline-block
+      content: ' '
+      size: 24px
+      background-color: white
+      border: 1px solid #DDE1E6
+      border-radius: 50%
+      cursor: pointer
+      vertical-align: middle
+      cursor: pointer
+      transition: all $transitionSpeed $ease
+    &--no-text
+      // plain checkbox without the label
+    span
+      display: inline-block
+      padding-left: 33px
+      // padding-top: 3px
+      vertical-align: top
+      line-height: 1.27
+      font-size: 14px
+      font-family: $roboto
+      cursor: pointer
+      color: $fontColor
+      transition: .25s $ease
+    &:hover
+      &::before
+        border-color: $colorBlue
+      span
+        color: $colorBlue
+    &.is-disabled
+      &::before
+        background-color: #DDE1E6
