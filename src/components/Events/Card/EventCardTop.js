@@ -85,7 +85,7 @@ class EventCardTop extends Component {
     return(
       <div className="e-card__top">
         <Link
-          to="/profile/2"
+          to={`/profile/${user.id}`}
           className="e-card__user">
           <Avatar
             user={user} />

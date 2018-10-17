@@ -1,0 +1,90 @@
+"user": {
+  "id": 10,
+  "avatar": "avatar10.png",
+  "username": "KaraSuper",
+  "name": "Кара Абгарян",
+  "age": "24",
+  "isVerified": false,
+  "distance": "800 м от Вас"
+},
+"user": {
+  "id": 11,
+  "avatar": "avatar11.png",
+  "username": "YanaChe",
+  "name": "Яна Чернышова",
+  "age": "22",
+  "isVerified": true,
+  "distance": "19 км от Вас"
+},
+"user": {
+  "id": 12,
+  "avatar": "avatar12.png",
+  "username": "iramissmira_star",
+  "name": "Ирина Тарасенко",
+  "age": "25",
+  "isVerified": true,
+  "distance": "9 км от Вас"
+},
+"user": {
+  "id": 13,
+  "avatar": "avatar13.png",
+  "username": "AAksyonova",
+  "name": "Анна Аксенова",
+  "age": "28",
+  "isVerified": false,
+  "distance": "24 км от Вас"
+},
+"user": {
+  "id": 14,
+  "avatar": "avatar14.png",
+  "username": "MissValkova",
+  "name": "Катерина Валькова",
+  "age": "32",
+  "isVerified": false,
+  "distance": "12 км от Вас"
+},
+"user": {
+  "id": 15,
+  "avatar": "avatar15.png",
+  "username": "albinakilina",
+  "name": "Альбина Килина",
+  "age": "29",
+  "isVerified": true,
+  "distance": "12 км от Вас"
+},
+"user": {
+  "id": 16,
+  "avatar": "avatar16.png",
+  "username": "alenavladimirovna",
+  "name": "Алена Пашкова",
+  "age": "23",
+  "isVerified": false,
+  "distance": "2 км от Вас"
+},
+"user": {
+  "id": 20,
+  "avatar": "avatar20.png",
+  "username": "X-NightOsipov",
+  "name": "Александр осипов",
+  "age": "26",
+  "isVerified": true,
+  "distance": "2 км от Вас"
+},
+"user": {
+  "id": 21,
+  "avatar": "avatar21.png",
+  "username": "VipGasanov",
+  "name": "Гусейн Гасанов",
+  "age": "28",
+  "isVerified": false,
+  "distance": "29 км от Вас"
+},
+"user": {
+  "id": 22,
+  "avatar": "avatar22.png",
+  "username": "Tarasmetal",
+  "name": "Тарас Уманский",
+  "age": "28",
+  "isVerified": true,
+  "distance": "35 км от Вас"
+},
