@@ -1,0 +1,37 @@
+// modal event short
+.e-short
+  display: flex
+  align-items: flex-start
+  margin-bottom: 24px
+  &__media
+    position: relative
+    z-index: 1
+    border-radius: 4px
+    overflow: hidden
+    flex: 0 0 128px
+    width: 128px
+    padding-bottom: 128px
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%,-50%)
+      object-fit: cover
+      width: 100%
+      height: 100%
+
+  &__contents
+    flex: 1 1 auto
+    padding-left: 16px
+    padding-top: 8px
+
+  &__desc
+    font-size: 14px
+    font-family: $roboto
+    line-height: 1.5
+    margin-top: 12px
+
+  .e-card__title
+    font-size: 14px
+  .e-card__event-line span
+    font-size: 14px

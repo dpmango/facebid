@@ -351,6 +351,7 @@ class EventCard extends Component {
                   className="e-card__cta"
                   ref={this.ctaRef}>
                   <EventCardCta
+                    id={id}
                     editMode={editMode}
                     actionFlag={actionFlag}
                     onEditModeClick={this.enableEditMode}

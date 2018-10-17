@@ -17,6 +17,7 @@ import Premium from './Premium/Premium';
 import Subscribers from './People/Subscribers';
 import Abuse from './Modal/Abuse';
 import Invite from './Modal/Invite';
+import ParticipateEvent from './Events/ParticipateEvent';
 
 class Common extends Component {
   render(){
@@ -40,6 +41,7 @@ class Common extends Component {
             <Subscribers />
             <Abuse />
             <Invite />
+            <ParticipateEvent />
             <EventCreated />
           </React.Fragment>
         }

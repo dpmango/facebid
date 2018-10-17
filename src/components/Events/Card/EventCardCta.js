@@ -31,6 +31,13 @@ class EventCardCta extends Component {
       this.props.openModal('signup');
       return
     }
+
+    this.props.openModal({
+      name: 'participate',
+      options: {
+        eventId: this.props.id
+      }
+    })
   }
 
   renderCtaButton = (actionFlag) => {
@@ -92,7 +99,7 @@ class EventCardCta extends Component {
     if ( editMode ){
       return null
     }
-    
+
     return(
       <div className="e-card__cta-wrapper">
         {this.renderCtaButton(actionFlag)}
