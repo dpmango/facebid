@@ -11,6 +11,7 @@ class Avatar extends Component{
       background: this.backgrounds[Math.floor(Math.random() * this.backgrounds.length)]
     }
   }
+
   renderInitials = () => {
     const { user } = this.props
 
