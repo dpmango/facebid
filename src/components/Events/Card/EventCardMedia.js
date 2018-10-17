@@ -43,7 +43,7 @@ class EventCardMedia extends Component {
             <div
               key={index}
               className="e-card__image">
-              <Image file={image} />
+              <Image folder="events" file={image} />
             </div>
           ))}
         </Swiper>

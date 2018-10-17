@@ -12,6 +12,7 @@ class EventsGrid extends Component {
 
     this.state = {
       data: null,
+      pagination: null,
       profileFilter: 'all',
       searchFilter: 'date'
     }

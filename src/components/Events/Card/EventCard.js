@@ -259,6 +259,7 @@ class EventCard extends Component {
           from,
           date,
           to,
+          location,
           // desc,
           notification,
           isRemoved
@@ -335,6 +336,7 @@ class EventCard extends Component {
                   name={name}
                   from={from}
                   to={to}
+                  location={location}
                   date={date}
                   desc={desc}
                   onRef={ref => (this.cardInforef = ref)}

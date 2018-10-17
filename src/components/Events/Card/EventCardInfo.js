@@ -64,7 +64,7 @@ class EventCardInfo extends Component{
 
   render(){
     const {
-      props: { name, from, to, date, desc, editMode },
+      props: { name, from, to, location, date, desc, editMode },
       state: { e_name, e_desc }
     } = this
 
@@ -73,9 +73,14 @@ class EventCardInfo extends Component{
         <div className="e-card__head">
           <div className="e-card__title">{name}</div>
           <div className="e-card__event-line">
-            <span>{from}</span>
-            <i className="icon icon-plane"></i>
-            <span>{to}</span>
+            {from &&
+              <Fragment>
+                <span>{from}</span>
+                <i className="icon icon-plane"></i>
+              </Fragment>
+            }
+            { to && <span>{to}</span> }
+            { location && <span>{location}</span>}
           </div>
           <EventCardDate
             baseClass="e-card__date"

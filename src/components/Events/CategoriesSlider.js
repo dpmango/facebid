@@ -33,21 +33,23 @@ class CategoriesSlider extends Component {
 
     let slides = [
       {id: 1, icon: "filter-category-all", name: "Все"},
-      {id: 2, icon: "filter-category-volonter", name: "Волонтерство"},
       {id: 3, icon: "filter-category-travel", name: "Путешествия"},
+      {id: 7, icon: "filter-category-lang", name: "Языковой обмен"},
       {id: 4, icon: "filter-category-movie", name: "В кино"},
       {id: 5, icon: "filter-category-dating", name: "Свидание"},
-      {id: 6, icon: "filter-category-fitness", name: "Фитнес"},
-      {id: 7, icon: "filter-category-lang", name: "Языковой обмен"},
       {id: 8, icon: "filter-category-culture", name: "Культура"},
-      {id: 9, icon: "filter-category-hobby", name: "Хобби"},
-      {id: 10, icon: "filter-category-entertainment", name: "Развлечения"},
       {id: 11, icon: "filter-category-food", name: "Перекусим"},
       {id: 12, icon: "filter-category-childs", name: "Дети"},
-      {id: 13, icon: "filter-category-nightlife", name: "Ночная жизнь"},
-      {id: 14, icon: "filter-category-education", name: "Образование"},
+      {id: 10, icon: "filter-category-entertainment", name: "Развлечения"},
+      {id: 9, icon: "filter-category-hobby", name: "Хобби"},
+      {id: 17, icon: "filter-category-events", name: "Мероприятия"},
+      {id: 6, icon: "filter-category-fitness", name: "Фитнес"},
       {id: 15, icon: "filter-category-activelife", name: "Активный отдых"},
-      {id: 16, icon: "filter-category-couchserfing", name: "Каучсерфинг"}
+      {id: 14, icon: "filter-category-education", name: "Образование"},
+      {id: 2, icon: "filter-category-volonter", name: "Волонтерство"},
+
+      // {id: 13, icon: "filter-category-nightlife", name: "Ночная жизнь"},
+      // {id: 16, icon: "filter-category-couchserfing", name: "Каучсерфинг"}
     ]
     if ( this.props.type === "create-event" ){
       slides = slides.filter(x => x.name !== "Все" )
