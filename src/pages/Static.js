@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {NavLink} from 'react-router-dom'
 import Loading from 'components/Helpers/Loading';
 import api from 'services/Api';
 
@@ -68,8 +69,27 @@ class Static extends Component{
         </div>
         <div className="s-page__sidebar">
           <div className="s-page__sidebar-holder">
+            <div className="h4-title">Помощь</div>
             <ul className="s-page__links-collection">
-              <li></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Популярные вопросы</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Общие вопросы о Badoo</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Профиль</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Верификация профиля</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Знакомства</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Люди Рядом и Поиск</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Сообщения</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Badoo Premium</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Кредиты</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Популярность</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Фото и видео</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Настройки</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Конфиденциальность</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Варианты жалоб</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Мобильное приложение Badoo</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Правила сообщества</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Советы по безопасности</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/about">Условия обслуживания</NavLink></li>
+              <li><NavLink activeClassName="is-active" to="/info/rules">Конфиденциальность</NavLink></li>
             </ul>
           </div>
         </div>

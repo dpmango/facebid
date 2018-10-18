@@ -9,10 +9,13 @@
   &__sidebar
     flex: 0 1 305px
     max-width: 305px
+    // if content is less in height than sidebar
+    padding-bottom: 30px
     &-holder
       background: #FFFFFF
       box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
       border-radius: 4px
+      padding: 34px 32px 32px
   &__contents
     margin: 30px 0
     font-family: $roboto
@@ -26,7 +29,7 @@
       &:hover
         color: $colorBlue
 
-    h1,h2,h3,h4
+    h1, h2, h3, h4
       font-family: $defaultFamily
     h3
       font-size: 18px
@@ -54,7 +57,6 @@
           color: $fontColor
           left: 0
           top: 0
-
     ul
       li
         &::before
@@ -64,11 +66,9 @@
           background: currentColor
           left: 12px
           top: 5px
-
     table
       td
         vertical-align: top
-
       thead
         color: $fontColor
         font-weight: 500
@@ -78,16 +78,29 @@
         td
           padding: 12px 10px
           line-height: 1.7
-
-        td:first-child
-          padding-left: 0
-          width: 40%
-        td:last-child
-          width: 60%
-          padding-right: 0
-
-
+          &:first-child
+            padding-left: 0
+            width: 40%
+          &:last-child
+            width: 60%
+            padding-right: 0
 
 
   &__links-collection
+    list-style: none
+    margin: 33px 0px 0
+    padding: 0
+    font-family: $roboto
+    color: $fontColorGray
     font-size: 14px
+    li
+      margin-bottom: 10px
+      display: block
+      &:last-child
+        margin-bottom: 0
+    a
+      display: inline-block
+      padding: 5px 0
+      transition: .25s $ease
+      &:hover, &.is-active
+        color: $colorBlue
