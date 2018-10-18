@@ -1,3 +1,93 @@
 .s-page
+  display: flex
+  margin-left: -8px
+  margin-right: -8px
+  &__scrollable
+    flex: 0 1 620px
+    max-width: 620px
+    padding: 8px
+  &__sidebar
+    flex: 0 1 305px
+    max-width: 305px
+    &-holder
+      background: #FFFFFF
+      box-shadow: 0 4px 8px 0 rgba(95,95,95,0.10)
+      border-radius: 4px
   &__contents
     margin: 30px 0
+    font-family: $roboto
+    color: $fontColorGray
+    font-size: 14px
+    p
+      line-height: 1.7
+    a
+      border-bottom: 1px solid currentColor
+      transition: .25s $ease
+      &:hover
+        color: $colorBlue
+
+    h1,h2,h3,h4
+      font-family: $defaultFamily
+    h3
+      font-size: 18px
+      font-weight: 700
+      font-family: $defaultFamily
+      margin-bottom: .5em
+      margin-top: 2em
+    ul, ol
+      margin: 1em 0
+      list-style: none
+      padding-left: 0
+      li
+        position: relative
+        margin-bottom: 1em
+        padding-left: 32px
+        &::before
+          display: inline-block
+          position: absolute
+    ol
+      li
+        counter-increment: inst
+        &::before
+          content: counter(inst) ". "
+          font-weight: 500
+          color: $fontColor
+          left: 0
+          top: 0
+
+    ul
+      li
+        &::before
+          content: ' '
+          size: 4px
+          border-radius: 50%
+          background: currentColor
+          left: 12px
+          top: 5px
+
+    table
+      td
+        vertical-align: top
+
+      thead
+        color: $fontColor
+        font-weight: 500
+        td
+          padding-bottom: 0
+      tr
+        td
+          padding: 12px 10px
+          line-height: 1.7
+
+        td:first-child
+          padding-left: 0
+          width: 40%
+        td:last-child
+          width: 60%
+          padding-right: 0
+
+
+
+
+  &__links-collection
+    font-size: 14px

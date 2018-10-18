@@ -26,7 +26,6 @@ class Static extends Component{
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.match !== this.props.match){
-      console.log('seems to be the page has been changed')
       this.getContent();
     }
   }
@@ -60,10 +59,19 @@ class Static extends Component{
     }
     return(
       <div className="s-page">
-        <h1 className="h2-title">{content.title}</h1>
-        <div
-          className="s-page__contents"
-          dangerouslySetInnerHTML={{__html: content.content}}>
+        <div className="s-page__scrollable">
+          <h1 className="h3-title">{content.title}</h1>
+          <div
+            className="s-page__contents"
+            dangerouslySetInnerHTML={{__html: content.content}}>
+          </div>
+        </div>
+        <div className="s-page__sidebar">
+          <div className="s-page__sidebar-holder">
+            <ul className="s-page__links-collection">
+              <li></li>
+            </ul>
+          </div>
         </div>
       </div>
     )
