@@ -43,6 +43,15 @@ class SearchPeople extends Component {
     }
   }
 
+  highlightMatch = (str) => {
+    const { searchValue } = this.state;
+    let result = str;
+
+    const regEx = new RegExp(searchValue, 'gi'); // case insensative
+    result = result.replace(regEx, (str) => '<b>'+str+'</b>')
+    return {__html: result}
+  }
+
   render(){
     const { searchValue, people } = this.state;
 
@@ -52,6 +61,9 @@ class SearchPeople extends Component {
           name="searchValue"
           placeholder="Поиск людей"
           icon="search"
+          extraClass="is-dropdown"
+          keepFocus={true}
+          isClearable={true}
           value={searchValue}
           onChangeHandler={this.handleChange} />
         { people &&
@@ -67,14 +79,16 @@ class SearchPeople extends Component {
                     <Avatar
                       className="avatar avatar--small"
                       user={x.user} />
-                    <div className="ui-search-person__name">{x.user.name}</div>
+                    <div className="ui-search-person__contents">
+                      <div className="ui-search-person__username" dangerouslySetInnerHTML={this.highlightMatch(x.user.username)} />
+                      <div className="ui-search-person__name" dangerouslySetInnerHTML={this.highlightMatch(x.user.name)} />
+                    </div>
                   </Link>
                 ))}
               </Fragment>
               :
-              <span className="ui-search-drop__no-res">No results found</span>
+              <span className="ui-search-drop__no-res">Поиск не дал результатов</span>
             }
-
           </div>
         }
       </div>

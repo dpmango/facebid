@@ -23,7 +23,7 @@
     {
       "id": 1,
       "user": {
-        "id": 2,
+        "id": 1,
         "avatar": "userAvatar.jpg",
         "name": "Agneshka"
       }
@@ -31,41 +31,101 @@
     {
       "id": 2,
       "user": {
-        "id": 2,
-        "avatar": "userAvatar_2.jpg",
-        "name": "Maria"
+        "id": 10,
+        "avatar": "avatar10.png",
+        "username": "KaraSuper",
+        "name": "Кара Абгарян",
+        "age": "24"
       }
     },
     {
       "id": 3,
       "user": {
-        "id": 2,
-        "avatar": "userAvatar.jpg",
-        "name": "Marusia"
+        "id": 11,
+        "avatar": "avatar11.png",
+        "username": "YanaChe",
+        "name": "Яна Чернышова",
+        "age": "22"
       }
     },
     {
       "id": 4,
       "user": {
-        "id": 2,
-        "avatar": "userAvatar_4.jpg",
-        "name": "Ivan"
+        "id": 12,
+        "avatar": "avatar12.png",
+        "username": "iramissmira_star",
+        "name": "Ирина Тарасенко",
+        "age": "25"
       }
     },
     {
       "id": 5,
       "user": {
-        "id": 2,
-        "avatar": "userAvatar_2.jpg",
-        "name": "George"
+        "id": 13,
+        "avatar": "avatar13.png",
+        "username": "AAksyonova",
+        "name": "Анна Аксенова",
+        "age": "28"
       }
     },
     {
       "id": 6,
       "user": {
-        "id": 2,
-        "avatar": "userAvatar_3.jpg",
-        "name": "Margo"
+        "id": 14,
+        "avatar": "avatar14.png",
+        "username": "MissValkova",
+        "name": "Катерина Валькова",
+        "age": "32"
+      }
+    },
+    {
+      "id": 7,
+      "user": {
+        "id": 15,
+        "avatar": "avatar15.png",
+        "username": "albinakilina",
+        "name": "Альбина Килина",
+        "age": "29"
+      }
+    },
+    {
+      "id": 8,
+      "user": {
+        "id": 16,
+        "avatar": "avatar16.png",
+        "username": "alenavladimirovna",
+        "name": "Алена Пашкова",
+        "age": "23"
+      }
+    },
+    {
+      "id": 9,
+      "user": {
+        "id": 20,
+        "avatar": "avatar20.png",
+        "username": "X-NightOsipov",
+        "name": "Александр осипов",
+        "age": "26"
+      }
+    },
+    {
+      "id": 10,
+      "user": {
+        "id": 21,
+        "avatar": "avatar21.png",
+        "username": "VipGasanov",
+        "name": "Гусейн Гасанов",
+        "age": "28"
+      }
+    },
+    {
+      "id": 11,
+      "user": {
+        "id": 22,
+        "avatar": "avatar22.png",
+        "username": "Tarasmetal",
+        "name": "Тарас Уманский",
+        "age": "28"
       }
     }
   ],

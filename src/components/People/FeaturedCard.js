@@ -21,16 +21,14 @@ class FeaturedPeople extends Component {
       this.setState({
         haveRedirect: `/profile/${this.props.data.id}`
       })
+    } else {
+      this.props.openModal({
+        name: "event",
+        options: {
+          eventId: this.props.data.event.id
+        }
+      })
     }
-  }
-
-  onMoreClick = (id) => {
-    this.props.openModal({
-      name: "event",
-      options: {
-        eventId: id
-      }
-    })
   }
 
   render(){
@@ -90,7 +88,6 @@ class FeaturedPeople extends Component {
             <div className="f-people__event-description">{event.text}</div>
             <div className="f-people__event-cta">
               <button
-                onClick={this.onMoreClick.bind(this, event.id)}
                 className="btn btn-outline btn-outline--white btn--block">
                 Узнать больше
               </button>

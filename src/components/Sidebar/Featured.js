@@ -45,17 +45,14 @@ class Featured extends Component {
 
     return (
       <div className="sidebar__featured">
-        { !featuredPeople &&
+        { !featuredPeople ?
           <Loading />
-        }
-        { featuredPeople &&
-          featuredPeople.map(person => {
-            return (
-              <FeaturedCard
-                key={person.id}
-                data={person} />
-            )
-          })
+          :
+          featuredPeople.map(person => (
+            <FeaturedCard
+              key={person.id}
+              data={person} />
+          ))
         }
         <div className="sidebar__featured-cta">
           <button onClick={this.onFeaturedClick} className="btn btn-primary btn--block">Хочу сюда</button>

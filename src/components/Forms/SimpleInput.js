@@ -28,17 +28,22 @@ class SimpleInput extends Component {
   }
 
   onBlurHandler = () => {
+    const {keepFocus, value} = this.props;
+
+    if ( keepFocus && value.length >= 2){
+      return false
+    }
     this.setState({ isFocused: false })
   }
 
   render(){
     const {
-      props: { name, id, value, placeholder, icon },
+      props: { name, id, value, extraClass, placeholder, icon, isClearable },
       state: { isFocused }
     } = this
 
     const type = this.props.type ? this.props.type : "text"
-    const classBuilder = "ui-input" + (icon ? " ui-input--iconed" : "") + ( isFocused ? " is-focused" : "" )
+    const classBuilder = "ui-input" + (extraClass ? ` ${extraClass}` : "") + (icon ? " ui-input--iconed" : "") + ( isFocused ? " is-focused" : "" )
 
     return(
       <div className={classBuilder}>
