@@ -1,14 +1,20 @@
 import { SET_FILTER_PARAMS } from '../actions/event-filter';
 
 const initialState = {
-  isOpened: false,
+  isCoreOpened: false,
   eventName: '',
   gender: "Всех",
   age: [24, 32],
   city: '',
   range: 20,
   languages: [],
-  categories: [1]
+  categories: [1],
+  isExtraOpened: false,
+  departure: '',
+  destination: '',
+  alreadyTravelling: false,
+  lang_language: '',
+  lang_level: ''
 }
 
 const eventFilter = (state = initialState, action) => {

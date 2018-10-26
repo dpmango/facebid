@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Collapse } from 'react-collapse';
 import FiltersCore from './FiltersCore';
 import CategoriesSlider from './CategoriesSlider';
+import FiltersExtra from './FiltersExtra';
 import SvgIcon from '../Helpers/SvgIcon';
 import SimpleInput from '../Forms/SimpleInput';
 // import Toggle from '../Forms/Toggle';
@@ -18,13 +19,16 @@ class Filters extends Component {
       ...props.eventFilterRedux
     }
     // {
+    //   isOpened: props.eventFilterRedux.isOpened,
     //   eventName: props.eventFilterRedux.eventName,
     //   gender: props.eventFilterRedux.gender,
     //   range: props.eventFilterRedux.range,
     //   age: props.eventFilterRedux.age,
     //   city: props.eventFilterRedux.city,
     //   languages: props.eventFilterRedux.languages,
-    //   categories: props.eventFilterRedux.categories
+    //   categories: props.eventFilterRedux.categories,
+    //   isExtraOpened: props.eventFilterRedux.isExtraOpened
+    //   + bunch of extra options
     // }
 
     this.state = this.initialState
@@ -32,7 +36,7 @@ class Filters extends Component {
 
   filtersToggle = () => {
     this.setState({
-      isOpened: !this.state.isOpened
+      isCoreOpened: !this.state.isCoreOpened
     })
   }
 
@@ -62,6 +66,12 @@ class Filters extends Component {
     })
   }
 
+  // checkbox functions
+  handleCheckboxToggle = (name) => {
+    this.setState({[name]: !this.state[name]})
+  }
+
+  // triggered when category is selected
   selectCategory = (id) => {
     let options = this.state.categories
     const index = options.indexOf(id)
@@ -71,14 +81,29 @@ class Filters extends Component {
       options.push(id)
     }
 
+    if ( options.length > 1) {
+      // remove first option (all) if something else selected
+      if (options.indexOf(1) !== -1){
+        options = options.filter(x => x !== 1)
+      }
+      // allow selecting all (id = 1)
+      if ( id === 1 ){
+        options = [1]
+      }
     // reserve first category (all) as default
-    if ( options.length === 0 ){
+    } else if ( options.length === 0 ){
       options = [1]
     }
 
+    // show/hide extra filters
+    const anyExtraAvailable = (options.length === 1) &&
+                              (options[0] === 3 || options[0] === 7) // travel or lang
+
     this.setState({
-      categories: options
+      categories: options,
+      isExtraOpened: anyExtraAvailable
     })
+
   }
 
   // cta actions
@@ -89,7 +114,19 @@ class Filters extends Component {
   clearFiltersClick = () => {
     this.setState({
       ...this.initialState,
-      isOpened: true // kep it opened
+      isCoreOpened: true // keep it opened
+    })
+  }
+
+  clearExtraFiltersClick = () => {
+    this.setState({
+      ...this.state,
+      isExtraOpened: true, // keep it opened
+      departure: this.initialState.departure,
+      destination: this.initialState.destination,
+      alreadyTravelling: this.initialState.alreadyTravelling,
+      lang_language: this.initialState.lang_language,
+      lang_level: this.initialState.lang_level
     })
   }
 
@@ -97,7 +134,8 @@ class Filters extends Component {
 
     const {
       state: {
-        isOpened, gender, range, age, city, languages, categories, eventName
+        isCoreOpened, gender, range, age, city, languages, categories, eventName,
+        isExtraOpened, departure, destination, alreadyTravelling, lang_language, lang_level
       },
       props: {
         openModal
@@ -105,7 +143,7 @@ class Filters extends Component {
     } = this
 
     return(
-      <div className={"filters" + ( isOpened ? " is-active" : "" )}>
+      <div className={"filters" + ( isCoreOpened ? " is-active" : "" )}>
         <div className="filters__top">
           <button onClick={openModal.bind(this, 'create-event')} className="btn btn-primary btn--iconed">
             <SvgIcon name="plus" />
@@ -123,7 +161,7 @@ class Filters extends Component {
           </div>
         </div>
         <Collapse
-          isOpened={isOpened}>
+          isOpened={isCoreOpened}>
           <FiltersCore
             gender={gender}
             age={age}
@@ -141,6 +179,22 @@ class Filters extends Component {
           <CategoriesSlider
             values={categories}
             clickHandler={this.selectCategory}/>
+        </div>
+        <div className="filters__extra">
+          <Collapse
+            isOpened={isExtraOpened}>
+            <FiltersExtra
+              categories={categories}
+              departure={departure}
+              destination={destination}
+              alreadyTravelling={alreadyTravelling}
+              lang_language={lang_language}
+              lang_level={lang_level}
+              onInputChange={this.handleInputChange}
+              onSelectChange={this.handleSelectChange}
+              onCheckboxChange={this.handleCheckboxToggle}
+              onClearExtraFiltersClick={this.clearExtraFiltersClick} />
+          </Collapse>
         </div>
       </div>
     )

@@ -32,7 +32,7 @@
     // display: flex
     &-collapse
       border-top: 1px solid #F4F7FB
-      padding: 25px 25px
+      padding: 30px 24px
       margin-left: -20px
       margin-right: -20px
       display: flex
@@ -93,6 +93,28 @@
   &__slider-prev
     left: 5px
 
+  &__extra
+    &-collapse
+      border-top: 1px solid #F4F7FB
+      padding: 30px 24px
+      margin-left: -8px
+      margin-right: -8px
+      display: flex
+    &-col
+      padding: 0 8px
+      flex: 0 1 auto
+      &--select
+        flex: 0 1 50%
+      &--checkbox
+        flex: 0 0 auto
+        .ui-group
+          padding-top: 5px
+      &--cta
+        flex: 0 0 auto
+        .ui-group
+          padding-top: 10px
+          padding-left: 8px
+          padding-right: 8px
 
   &.is-active
     .filters__toggle
