@@ -44,7 +44,7 @@ class Notification extends Component {
         </div>
         <div
           onClick={this.collapseToggler}
-          className={"notification__wrapper" + (isOpened ? " is-active" : "")}>
+          className={"notification__wrapper" + (isOpened ? " is-opened" : "")}>
           <div className="notification__content">
             <p>{this.renderNotificaitonContent()}</p>
             <div className="notification__timestamp">
