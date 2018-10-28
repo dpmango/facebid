@@ -27,10 +27,12 @@ class Head extends Component{
       avatar: "",
       username: "",
       age: "",
+      distance: "",
       fullname: "",
       isVerified: null,
       userLang: "",
       description: "",
+      featuredEvent: null,
       subscribers: "",
       subscribed: "",
       gallery: {},
@@ -56,10 +58,12 @@ class Head extends Component{
           avatar: res.data.avatar,
           username: res.data.username,
           age: res.data.age,
+          distance: res.data.distance,
           fullname: res.data.fullname,
           isVerified: res.data.isVerified,
           userLang: res.data.userLang,
           description: res.data.description,
+          featuredEvent: res.data.featuredEvent,
           subscribers: res.data.subscribers,
           subscribed: res.data.subscribed,
           gallery: res.data.gallery,
@@ -139,8 +143,14 @@ class Head extends Component{
 
   }
 
-  render(){
+  // helper render functions
+  renderDistance = (di) => {
+    return di ? di : "Местоположение неизвестно"
+  }
 
+
+  // Main render function
+  render(){
     const {
       state: {
         editMode,
@@ -148,10 +158,12 @@ class Head extends Component{
         avatar,
         username,
         age,
+        distance,
         fullname,
         isVerified,
         userLang,
         description,
+        featuredEvent,
         subscribers,
         subscribed,
         gallery,
@@ -179,6 +191,7 @@ class Head extends Component{
               <div className="p-head__left">
                 <HeadAvatar
                   avatar={avatar}
+                  eventId={featuredEvent}
                   onAvatarUpdate={(res) => this.setState({avatar: res})}
                   editMode={editMode} />
                 { !editMode &&
@@ -211,7 +224,7 @@ class Head extends Component{
                     </button>
                   }
                 </div>
-                <div className="p-head__profile-link">Ваш профиль</div>
+                <div className="p-head__profile-link">{isMyProfile ? "Ваш профиль" : this.renderDistance(distance)}</div>
                 { !editMode ?
                   <Fragment>
                     <HeadInfo

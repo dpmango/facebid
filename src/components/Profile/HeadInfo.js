@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import UserLang from './UserLang';
 
 class HeadInfo extends Component {
@@ -6,7 +6,7 @@ class HeadInfo extends Component {
     const { fullname, description, userLang } = this.props
 
     return(
-      <React.Fragment>
+      <Fragment>
         <div className="p-head__row">
           <div className="p-head__row-title">Имя:</div>
           <div className="p-head__row-content">{fullname}</div>
@@ -21,9 +21,13 @@ class HeadInfo extends Component {
                 name={lang.label} />)}
           </div>
         </div>
-
-        <div className="p-head__description">{description}</div>
-      </React.Fragment>
+        <div className="p-head__row">
+          <div className="p-head__row-title">О себе:</div>
+          <div className="p-head__row-content">
+            <div className="p-head__description">{description}</div>
+          </div>
+        </div>
+      </Fragment>
     )
   }
 }

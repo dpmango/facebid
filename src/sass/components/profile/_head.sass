@@ -15,10 +15,15 @@
     flex-direction: column
 
   &__avatar
-    &.is-editable
+    cursor: pointer
+    &.no-outline
+      cursor: default
       border-color: transparent
       &::after
         opacity: 0
+    &:hover
+      &::after
+        transform: scale(1.01)
 
   &__avatar-btn
     position: absolute
@@ -59,7 +64,7 @@
     margin: 16px 0 0
 
   &__row-title
-    flex: 0 0 auto
+    flex: 0 0 150px
     font-family: $roboto
     font-size: 16px
     color: #8894A3
@@ -68,7 +73,8 @@
     flex: 1 1 auto
     display: flex
     flex-wrap: wrap
-    padding-left: 23px
+    // padding-left: 23px
+    padding-left: 10px
 
   &__country
     display: flex
@@ -85,28 +91,28 @@
 
   &__description
     font-size: 16px
-    padding-left: 16px
-    margin-top: 16px
+    // padding-left: 16px
+    // margin-top: 16px
     font-family: $roboto
     line-height: 1.5
-    position: relative
-    &::before
-      display: inline-block
-      content: ' '
-      position: absolute
-      width: 4px
-      top: 0
-      bottom: 0
-      left: 0
-      background: $colorBlue
-      border-radius: 2px 0 0 2px
+    // position: relative
+    // &::before
+    //   display: inline-block
+    //   content: ' '
+    //   position: absolute
+    //   width: 4px
+    //   top: 0
+    //   bottom: 0
+    //   left: 0
+    //   background: $colorBlue
+    //   border-radius: 2px 0 0 2px
 
   &__metrics
     display: flex
     justify-content: space-around
     // margin-top: 18px
-    padding-top: 15px
-    margin-top: auto
+    padding-top: 20px
+    // margin-top: auto
 
   &__metric
     text-align: center

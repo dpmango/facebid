@@ -617,13 +617,15 @@
           "galThumb_2.jpg",
           "galThumb_3.jpg"
         ]
-      }
+      },
+      "featuredEvent": 1
     },
     {
       "id": 2,
       "avatar": "avatarBig_2.jpg",
       "username": "Micheal",
       "age": "20",
+      "distance": "16км от Вас",
       "fullname": "Илларионов Константин",
       "isVerified": false,
       "userLang": [
@@ -654,7 +656,8 @@
           "galThumb_2.jpg",
           "galThumb_3.jpg"
         ]
-      }
+      },
+      "featuredEvent": 2
     },
     {
       "id": 3,

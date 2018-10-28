@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import SvgIcon from '../Helpers/SvgIcon';
 import RenderImage from 'helpers/RenderImage';
@@ -35,30 +35,35 @@ class HeadAvatar extends Component{
   }
 
   openEvent = () => {
+    const {eventId, editMode, openModal} = this.props;
+
+    if ( editMode || !eventId){
+      return false
+    }
     // if outline is active - click on avatar display modal with event
-    this.props.openModal({
+    openModal({
       name: "event",
       options: {
-        eventId: 1
+        eventId: eventId
       }
     })
   }
 
   render(){
 
-    const { avatar, editMode } = this.props
+    const { avatar, editMode, eventId } = this.props
 
     return(
       <div
         onClick={this.openEvent}
-        className={"p-head__avatar avatar-outline" + (editMode ? " is-editable" : "")}>
+        className={"p-head__avatar avatar-outline" + ((editMode || !eventId) ? " no-outline" : "")}>
         <div className="avatar-outline__wrapper">
           <div className="avatar-outline__holder">
 
             { RenderImage(avatar) }
 
             { editMode &&
-              <React.Fragment>
+              <Fragment>
                 <input
                   type="file"
                   ref={this.uploadRef}
@@ -69,7 +74,7 @@ class HeadAvatar extends Component{
                   className="p-head__avatar-btn btn btn-circle btn-circle--white">
                   <SvgIcon name="camera-add" />
                 </button>
-              </React.Fragment>
+              </Fragment>
             }
           </div>
         </div>
