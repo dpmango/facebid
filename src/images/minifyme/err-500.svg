@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="140px" height="246px" viewBox="0 0 140 246" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>err-500</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Marvel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Marvel_500_error" transform="translate(-650.000000, 0.000000)">
+            <g id="Group-4" transform="translate(428.000000, 0.000000)">
+                <g id="Group-3" transform="translate(42.000000, 0.000000)">
+                    <g id="err-500" transform="translate(180.000000, 0.000000)">
+                        <path d="M37,204 L49,204 L49,240 C49,243.313708 46.3137085,246 43,246 L43,246 C39.6862915,246 37,243.313708 37,240 L37,204 Z" id="Rectangle-16" fill="#EBEBEB"></path>
+                        <path d="M92,204 L104,204 L104,240 C104,243.313708 101.313708,246 98,246 L98,246 C94.6862915,246 92,243.313708 92,240 L92,204 Z" id="Rectangle-16-Copy" fill="#EBEBEB"></path>
+                        <polygon id="Rectangle-11" fill="#FFFFFF" points="62 0 78 0 78 207 62 207"></polygon>
+                        <rect id="Rectangle-13" fill="#FFFFFF" x="0" y="183" width="140" height="24" rx="8"></rect>
+                        <path d="M33,139 L107,139 C111.418278,139 115,142.581722 115,147 L115,199 L25,199 L25,147 C25,142.581722 28.581722,139 33,139 Z" id="Rectangle-3" fill="#FFFFFF"></path>
+                        <rect id="Rectangle-15" fill="#FFFFFF" x="54" y="123" width="32" height="8" rx="4"></rect>
+                        <rect id="Rectangle-15-Copy" fill="#FFFFFF" x="54" y="111" width="32" height="8" rx="4"></rect>
+                        <rect id="Rectangle-15-Copy-2" fill="#FFFFFF" x="54" y="99" width="32" height="8" rx="4"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

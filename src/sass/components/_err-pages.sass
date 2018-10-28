@@ -1,14 +1,18 @@
-.not-found
+.err-page
   background: #333333
   color: white
   &__wrapper
     min-height: 100vh
-    max-width: 500px
+    // max-width: 500px
     display: flex
     flex-direction: column
     margin-left: auto
     margin-right: auto
-    padding: 150px 0
+    // padding-top: 150px (not enough for 500)
+    padding: 150px 0 80px 0
+    &--500
+      // icon offset specific for this page
+      padding-top: 300px
   &__picture
     position: relative
 
@@ -34,23 +38,56 @@
     &--top
       size: 500px
 
-  &__404
+  &__code
     position: relative
     z-index: 2
     display: flex
     align-items: center
     justify-content: center
     text-align: center
+    min-height: 230px
     &-4
       font-weight: 700
       font-size: 200px
-
     &-center
       size: 140px
+      display: flex
+      flex-direction: column
       border-radius: 50%
       margin: 0 40px
       background-image: linear-gradient(-180deg, #FFFFFF 0%, #CED9D9 97%)
       box-shadow: 0 20px 40px 0 rgba(0,180,249,0.20)
+    &-center-dots
+      flex: 1 1 auto
+      position: relative
+      font-size: 0
+      &::before, &::after
+        display: inline-block
+        content: ' '
+        position: absolute
+        size: 16px
+        background: #333333
+        border-radius: 50%
+        top: 50%
+        transform: translateY(-50%)
+      &::before
+        left: 35px
+      &::after
+        right: 35px
+
+    &-500ico
+      // TODO - how it will behave 100vh ?
+      position: absolute
+      top: calc(-245px - 75px)
+      left: 50%
+      transform: translateX(-50%)
+      font-size: 0
+      .ico
+        font-size: 245px
+    &--404
+
+    &--500
+      .err-page__code
 
   &__contents
     position: relative
@@ -58,6 +95,15 @@
     text-align: center
     margin-top: 50px
 
+  &__pretitle
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    text-align: center
+    top: -45px
+    font-size: 14px
+    color: $colorWhite70
+    font-family: $roboto
   &__title
     font-size: 40px
     font-weight: 700

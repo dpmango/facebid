@@ -1,0 +1,15 @@
+<svg width="140" height="246" viewBox="0 0 140 246" xmlns="http://www.w3.org/2000/svg">
+    <title>
+        err-500
+    </title>
+    <g fill="none" fill-rule="evenodd">
+        <path d="M37 204h12v36a6 6 0 0 1-12 0v-36z" fill="#EBEBEB"/>
+        <path d="M92 204h12v36a6 6 0 0 1-12 0v-36z" fill="#EBEBEB"/>
+        <path fill="#FFF" d="M62 0h16v207H62z"/>
+        <rect fill="#FFF" y="183" width="140" height="24" rx="8"/>
+        <path d="M33 139h74a8 8 0 0 1 8 8v52H25v-52a8 8 0 0 1 8-8z" fill="#FFF"/>
+        <rect fill="#FFF" x="54" y="123" width="32" height="8" rx="4"/>
+        <rect fill="#FFF" x="54" y="111" width="32" height="8" rx="4"/>
+        <rect fill="#FFF" x="54" y="99" width="32" height="8" rx="4"/>
+    </g>
+</svg>

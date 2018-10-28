@@ -50,10 +50,16 @@ export const Static = MyLoadable({
   webpack: () => [require.resolveWeak('./pages/Static')]
 });
 export const NotFound = MyLoadable({
-  loader: () => import("./pages/NotFound"),
-  modules: ['./pages/NotFound'],
-  webpack: () => [require.resolveWeak('./pages/NotFound')]
+  loader: () => import("./pages/ErrorCodes/404"),
+  modules: ['./pages/ErrorCodes/404'],
+  webpack: () => [require.resolveWeak('./pages/ErrorCodes/404')]
 });
+export const ServerError = MyLoadable({
+  loader: () => import("./pages/ErrorCodes/500"),
+  modules: ['./pages/ErrorCodes/500'],
+  webpack: () => [require.resolveWeak('./pages/ErrorCodes/500')]
+});
+
 
 export const routes = [
   {
@@ -107,6 +113,10 @@ export const routes = [
     isExact: false,
     path: '/info/:id',
     component: Static
+  },
+  {
+    path: '/500',
+    component: ServerError
   },
   {
     path: '',

@@ -155,6 +155,20 @@
         email-with-pen
     </title>
     <path d="M16.973 1.774L9.735 9.012a1 1 0 0 1-1.414 0L1.038 1.729A1 1 0 0 0 1 2.003v10.01a1 1 0 0 0 1 1h6.505a.495.495 0 0 1 0 .99H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4.501a.5.5 0 1 1-1.001 0V2.003c0-.079-.01-.155-.026-.229zm-.686-.729A1 1 0 0 0 16 1.003H2a.975.975 0 0 0-.243.03L8.32 7.597a1 1 0 0 0 1.414 0l6.552-6.552zm-3.655 12.958l3.95-3.95-.609-.607L12 13.419v.584h.632zm-.632 1l-1-1h1v1zm-1 0v-1.584a1 1 0 0 1 .293-.707l3.973-3.973a1 1 0 0 1 1.415 0l.608.608a1 1 0 0 1 0 1.414l-3.95 3.95a1 1 0 0 1-.707.292H11z"/>
+</symbol><symbol id="ico-err-500" viewBox="0 0 140 246">
+    <title>
+        err-500
+    </title>
+    <g fill-rule="evenodd">
+        <path d="M37 204h12v36a6 6 0 0 1-12 0v-36z"/>
+        <path d="M92 204h12v36a6 6 0 0 1-12 0v-36z"/>
+        <path d="M62 0h16v207H62z"/>
+        <rect y="183" width="140" height="24" rx="8"/>
+        <path d="M33 139h74a8 8 0 0 1 8 8v52H25v-52a8 8 0 0 1 8-8z"/>
+        <rect x="54" y="123" width="32" height="8" rx="4"/>
+        <rect x="54" y="111" width="32" height="8" rx="4"/>
+        <rect x="54" y="99" width="32" height="8" rx="4"/>
+    </g>
 </symbol><symbol id="ico-eye-disabled" viewBox="0 0 70 64">
     <title>
         invisible-symbol
