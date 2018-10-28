@@ -1,25 +1,31 @@
 import React, {Component, Fragment} from 'react';
+import { Collapse } from 'react-collapse';
 import Image from '../Helpers/Image';
 import SvgIcon from '../Helpers/SvgIcon';
 import AvatarList from '../People/AvatarList';
-import ConvertTimestampToStr from 'helpers/ConvertTimestampToStr'
+import ConvertTimestampToStr from 'helpers/ConvertTimestampToStr';
+import SingleEventLoader from 'components/Events/SingleEventLoader';
 
 class Notification extends Component {
+  constructor(){
+    super();
 
-  // type invited
-  acceptInvite = () => {
-
+    this.state = {
+      isOpened: false
+    }
   }
 
-  declineInvite = () => {
-
+  collapseToggler = () => {
+    this.setState({
+      isOpened: !this.state.isOpened
+    })
   }
 
   render(){
-
     const {
       // also id if required in api calls
-      props: { user, type, timestamp }
+      props: { user, type, timestamp },
+      state: { isOpened }
     } = this
 
     return(
@@ -36,7 +42,9 @@ class Notification extends Component {
             <SvgIcon name={this.renderIconType()} />
           </div>
         </div>
-        <div className="notification__wrapper">
+        <div
+          onClick={this.collapseToggler}
+          className={"notification__wrapper" + (isOpened ? " is-active" : "")}>
           <div className="notification__content">
             <p>{this.renderNotificaitonContent()}</p>
             <div className="notification__timestamp">
@@ -49,6 +57,14 @@ class Notification extends Component {
             {this.renderActions()}
           </div>
         </div>
+        <Collapse
+          theme={{
+            collapse: 'notification__dropdown',
+            content: 'notification__dropdown-wrapper'
+          }}
+          isOpened={isOpened}>
+          {this.renderMore()}
+        </Collapse>
       </div>
     )
   }
@@ -136,19 +152,12 @@ class Notification extends Component {
 
     switch(type){
       case "invited":
-        return(
-          <Fragment>
-            <button
-              onClick={this.acceptInvite}
-              className="btn btn-outline">
-              Принять
-            </button>
-            <button
-              onClick={this.declineInvite}
-              className="btn btn-outline btn-outline--muted">
-              Отказать
-            </button>
-          </Fragment>
+        return (
+          <div
+            className={"notification__toggler" +
+            (this.state.isOpened ? " is-active" : "")}>
+            <SvgIcon name="select-arrow" />
+          </div>
         )
       case "subscribed":
         return(
@@ -192,6 +201,18 @@ class Notification extends Component {
     }
   }
 
+  renderMore = () => {
+    const { data, type } = this.props
+
+    switch(type){
+      case "invited":
+        return (
+          <SingleEventLoader eventId={data.id} />
+        )
+      default:
+        return null
+    }
+  }
 }
 
 export default Notification

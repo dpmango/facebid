@@ -28,7 +28,7 @@ class ParticipateEvent extends Component{
   }
 
   static getDerivedStateFromProps(nextProps, prevState){
-    console.log(nextProps.modalOptions, prevState)
+    // console.log(nextProps.modalOptions, prevState)
     if (nextProps.modalOptions && (nextProps.modalOptions.eventId !== prevState.eventId)) {
       return {eventId: nextProps.modalOptions.eventId}
     } else {

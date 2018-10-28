@@ -79,7 +79,6 @@ class Head extends Component{
   }
 
   saveUserData = (newState) => {
-
     // newState lifted up when form is saved
     this.setState({
       fullname: newState.fullname,
@@ -88,7 +87,6 @@ class Head extends Component{
     }, () => {
       this.disableEdit()
     })
-
   }
 
   enableEditMode = () => {
