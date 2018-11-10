@@ -69,7 +69,6 @@ class Notification extends Component {
     )
   }
 
-
   // render helper functions
   renderIconType = () => {
 
