@@ -15,7 +15,7 @@
 
 *.zip
 
-.env
+#.env
 dploy.yaml
 
 # misc
