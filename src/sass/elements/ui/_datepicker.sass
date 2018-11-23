@@ -1,0 +1,21 @@
+/* Datepicker overrides
+
+.DayPicker
+  .DayPickerKeyboardShortcuts_buttonReset
+    display: none
+
+  .CalendarDay
+    transition: .25s $ease
+
+  .CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover
+    background: $colorBlue
+    border-color: $colorBlue
+
+  .CalendarDay__selected_span, .CalendarDay__selected_span:hover
+    background: lighten($colorBlue, 20%)
+    border-color: lighten($colorBlue, 20%)
+
+  .CalendarDay__hovered_span, .CalendarDay__hovered_span:hover
+    background: lighten($colorBlue, 10%)
+    border-color: lighten($colorBlue, 10%)
+    color: white

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import 'react-dates/initialize';
 import { DateRangePicker, DayPickerRangeController } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
-// import moment from 'moment';
+import moment from 'moment';
 import api from 'services/Api';
 import EventCard from './Card/EventCard';
 import Loading from '../Helpers/Loading';
@@ -125,6 +125,14 @@ class EventsGrid extends Component {
     })
   }
 
+  handleOutsideClick = (e) => {
+    if ( e.target.closest('.events__datefilter') === null ){
+      this.setState({
+        datepickerFocused: null
+      })
+    }
+  }
+
   formatMomentToDate = (x) => {
     return x.format("YYYY-MM-DD")
   }
@@ -235,6 +243,12 @@ class EventsGrid extends Component {
                   // displayFormat="DD-MM-YYYY"
                   anchorDirection="right"
                   numberOfMonths={1}
+                  onOutsideClick={this.handleOutsideClick}
+                  isOutsideRange={(date) => {
+                      if ( date < moment().subtract('days', 1) ) {
+                        return true
+                      }
+                    }}
                   // horizontalMargin={0}
                 />
               </div>
