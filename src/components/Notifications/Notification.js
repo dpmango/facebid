@@ -63,7 +63,9 @@ class Notification extends Component {
             content: 'notification__dropdown-wrapper'
           }}
           isOpened={isOpened}>
-          {this.renderMore()}
+          <Fragment>
+            {this.renderMore()}
+          </Fragment>
         </Collapse>
       </div>
     )

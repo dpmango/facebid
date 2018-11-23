@@ -147,9 +147,8 @@ class UserMenu extends Component {
       return false
     }
 
-    // separated logic to fin
+    // separated logic to find owner user profile
     if ( currentLocation.indexOf('profile/') !== -1 ){
-      console.log(currentLocation, linkPath)
       return currentLocation === linkPath
     }
 

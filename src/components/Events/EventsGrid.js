@@ -1,5 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
+import 'react-dates/initialize';
+import { DateRangePicker, DayPickerRangeController } from 'react-dates';
+import 'react-dates/lib/css/_datepicker.css';
+// import moment from 'moment';
 import api from 'services/Api';
 import EventCard from './Card/EventCard';
 import Loading from '../Helpers/Loading';
@@ -14,7 +18,10 @@ class EventsGrid extends Component {
       data: null,
       pagination: null,
       profileFilter: 'all',
-      searchFilter: 'date'
+      searchFilter: 'all',
+      datepickerStartDate: null,
+      datepickerEndDate: null,
+      datepickerFocused: null
     }
 
     this.loadBy = props.type === "my-events" ? 100 : 10
@@ -29,6 +36,19 @@ class EventsGrid extends Component {
       default:
         this.endpoint = `events`
     }
+
+    this.profileFilters = [
+      { id: 'all', name: 'Все' },
+      { id: 'my', name: 'Личные' },
+      { id: 'groups', name: 'Групповые' }
+    ]
+
+    this.searchFilters = [
+      { id: 'all', name: 'Все' },
+      { id: 'today', name: 'Сегодня' },
+      { id: 'tomorrow', name: 'Завтра' },
+      { id: 'week', name: 'На этой неделе' }
+    ]
 
   }
 
@@ -73,6 +93,48 @@ class EventsGrid extends Component {
     })
   }
 
+  // calendar functions
+  handleDateChange = ({startDate, endDate}) => {
+    this.setState({
+      datepickerStartDate: startDate,
+      datepickerEndDate: endDate
+    }, () => {
+      const { datepickerFocused, datepickerStartDate, datepickerEndDate } = this.state
+
+      console.log('date changed', {datepickerStartDate}, {datepickerEndDate})
+
+      if ( datepickerFocused === null && datepickerStartDate && datepickerEndDate){
+        const formatedDateRange = this.formatMomentToDate(datepickerStartDate)
+        + " to " +
+        this.formatMomentToDate(datepickerEndDate)
+
+        this.setFilter(formatedDateRange, "searchFilter")
+
+        return
+      }
+      if (datepickerStartDate && datepickerEndDate){
+        console.log('reseting to default profile filter', Object.keys(this.profileFilters)[0].id)
+        this.setFilter(Object.keys(this.profileFilters)[0].id , "searchFilter")
+      }
+    });
+  }
+
+  handleFocusChange = (datepickerFocused) => {
+    this.setState({
+      datepickerFocused
+    })
+  }
+
+  formatMomentToDate = (x) => {
+    return x.format("YYYY-MM-DD")
+  }
+
+  toggleDatePickerVisibility = () => {
+    this.setState({
+      datepickerFocused: this.state.datepickerFocused ? null : "startDate"
+    })
+  }
+
   render(){
     const {
       props: {type},
@@ -81,9 +143,7 @@ class EventsGrid extends Component {
 
     return(
       <div className="events">
-        <div className="events__header">
-          {this.renderHeader()}
-        </div>
+        {this.renderHeader()}
         <div className="events__grid">
           { !data ?
             <Loading type="events" />
@@ -115,26 +175,15 @@ class EventsGrid extends Component {
   renderHeader = () => {
     const {
       props: {type, isMyProfile},
-      state: {profileFilter, searchFilter}
+      state: {profileFilter, searchFilter, datepickerStartDate, datepickerEndDate, datepickerFocused}
     } = this
-
-    const profileFilters = [
-      { id: 'all', name: 'Все' },
-      { id: 'my', name: 'Личные' },
-      { id: 'groups', name: 'Групповые' }
-    ]
-
-    const searchFilters = [
-      { id: 'date', name: 'Время начала' },
-      { id: 'relevance', name: 'Актуальность' },
-    ]
 
     if ( type === "profile" ){
       return (
-        <Fragment>
+        <div className="events__header">
           <h3 className="h3-title">{isMyProfile? "Вы участвуете в событиях" : "События"}</h3>
           <div className="events__header-filter">
-            { profileFilters.map((f, i) => (
+            { this.profileFilters.map((f, i) => (
               <span
                 key={i}
                 className={profileFilter === f.id ? "is-active" : ""}
@@ -143,14 +192,14 @@ class EventsGrid extends Component {
               </span>
             ))}
           </div>
-        </Fragment>
+        </div>
       )
     } else if ( type === "search" ){
       return (
-        <Fragment>
+        <div className="events__header events__header--bordered">
           <h3 className="h3-title">Результаты поиска</h3>
-          <div className="events__header-filter">
-            { searchFilters.map((f, i) => (
+          <div className="events__header-filter events__header-filter--bordered">
+            { this.searchFilters.map((f, i) => (
               <span
                 key={i}
                 className={searchFilter === f.id ? "is-active" : ""}
@@ -158,12 +207,44 @@ class EventsGrid extends Component {
                 {f.name}
               </span>
             ))}
+            {/* calendar filter */}
+            <span
+              // eslint-disable-next-line
+              className={"events__datefilter" + (/^\d{4}/.test(searchFilter) ? " is-active" : "")}>
+              <div
+                onClick={this.toggleDatePickerVisibility}
+                className="events__datefilter-toggler">
+                <SvgIcon name="calendar" />
+              </div>
+              <div
+                className={"events__datefilter-calendar" + (datepickerFocused ? " is-active" : "")}>
+                <DayPickerRangeController
+                  startDate={datepickerStartDate} // momentPropTypes.momentObj or null,
+                  startDateId="datepicker_start" // PropTypes.string.isRequired,
+                  endDate={datepickerEndDate} // momentPropTypes.momentObj or null,
+                  endDateId="datepicker_end" // PropTypes.string.isRequired,
+                  onDatesChange={this.handleDateChange} // PropTypes.func.isRequired
+                  focusedInput={datepickerFocused} // or null
+                  onFocusChange={this.handleFocusChange} // PropTypes.func.isRequired
+                  // optional
+                  // noBorder={true}
+                  // block={true}
+                  // hideKeyboardShortcutsPanel={true}
+                  // showDefaultInputIcon={false}
+                  // inputIconPosition="after"
+                  // displayFormat="DD-MM-YYYY"
+                  anchorDirection="right"
+                  numberOfMonths={1}
+                  // horizontalMargin={0}
+                />
+              </div>
+            </span>
           </div>
-        </Fragment>
+        </div>
       )
     } else if ( type === "my-events" ){
       return (
-        <Fragment>
+        <div className="events__header">
           <h3 className="h3-title">Мои события</h3>
           <div className="events__header-cta">
             <button
@@ -173,13 +254,13 @@ class EventsGrid extends Component {
               <span>Создать событие</span>
             </button>
           </div>
-        </Fragment>
+        </div>
       )
     } else if ( type === "bookmarks" ){
       return(
-        <Fragment>
+        <div className="events__header">
           <h3 className="h3-title">Закладки</h3>
-        </Fragment>
+        </div>
       )
     } else if ( type === "news" ){
       return null

@@ -79,6 +79,7 @@
     "react-collapse": "^4.0.3",
     "react-copy-to-clipboard": "^5.0.1",
     "react-custom-scroll": "^4.0.0",
+    "react-dates": "^18.2.2",
     "react-dev-utils": "^5.0.2",
     "react-dom": "^16.4.2",
     "react-geolocation": "^1.0.4",

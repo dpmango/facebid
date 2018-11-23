@@ -6,10 +6,12 @@
   &__header
     display: flex
     align-items: center
-
+    &--bordered
+      border-bottom: 1px solid #DDE1E6
+      margin-bottom: 24px
   &__header-cta
     margin-left: auto
-    
+
   &__header-total
     margin-left: auto
     font-size: 16px
@@ -37,10 +39,63 @@
         bottom: 0
         right: 0
         width: 1px
+        z-index: 2
+        pointer-events: none
         background: #DDE1E6
       &:last-child
         &::after
           display: none
+    &--bordered
+      span
+        padding-left: 12px
+        padding-right: 12px
+        z-index: 3
+        &::after
+          // bottom indicator
+          top: auto
+          bottom: -15px
+          left: 12px
+          right: 12px
+          width: auto
+          height: 1px
+          opacity: 0
+          background: $colorBlue
+          transition: opacity .25s $ease
+        &:last-child
+          margin-right: -12px
+          &::after
+            display: inline-block
+        &.is-active
+          &::after
+            opacity: 1
+
+  &__datefilter
+    font-size: 0
+    &-toggler
+      transform: translateY(.1em)
+      transition: color .25s $ease
+      .ico
+        font-size: 18px
+    &:hover, &.is-active
+      &::after
+        bottom: -13.5px
+      .events__datefilter-toggler
+        color: $colorBlue
+
+    &-calendar
+      position: absolute
+      z-index: 3
+      top: 55px
+      right: 12px
+      opacity: 0
+      pointer-events: none
+      transform: translate(20px,0)
+      transition: opacity .25s $ease, transform .25s $ease
+      &.is-active
+        pointer-events: all
+        transform: translate(0,0)
+        opacity: 1
+
 
   &__grid
     flex: 1 1 auto

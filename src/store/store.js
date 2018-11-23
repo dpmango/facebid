@@ -4,12 +4,16 @@ import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import { loadState, saveState } from './localStorage';
 import sagas from './sagas';
-import logger from 'redux-logger';
+import {createLogger} from 'redux-logger';
 // import gtmMiddleware from './gtmMiddleware'
 
 const sagaMiddleware = createSagaMiddleware();
 
 const initialState = loadState();
+
+const logger = createLogger({
+  collapsed: true
+});
 
 const createStoreWithMiddleware = compose(
   applyMiddleware(sagaMiddleware, thunk, logger),
