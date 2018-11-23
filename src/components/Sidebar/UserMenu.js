@@ -15,6 +15,13 @@ class UserMenu extends Component {
       menu: [
         {
           id: 1,
+          link: `/profile/${props.userId}`,
+          name: "Моя страница",
+          icon: "profile-thin",
+          counter: null
+        },
+        {
+          id: 2,
           link: "/events",
           name: "Поиск встреч",
           icon: "menu-events",
@@ -25,19 +32,19 @@ class UserMenu extends Component {
           counter: null
         },
         {
-          id: 2,
+          id: 3,
           link: "/invite",
           name: "Пригласить",
           icon: "menu-invite",
           counter: null
         },
-        {
-          id: 3,
-          link: "/my-events",
-          name: "Мои события",
-          icon: "menu-my-events",
-          counter: null
-        },
+        // {
+        //   id: 3,
+        //   link: "/my-events",
+        //   name: "Мои события",
+        //   icon: "menu-my-events",
+        //   counter: null
+        // },
         {
           id: 4,
           modal: "messages",
@@ -52,20 +59,20 @@ class UserMenu extends Component {
           icon: "menu-notifications",
           counter: null
         },
-        {
-          id: 6,
-          link: "/news",
-          name: "Новости",
-          icon: "menu-news",
-          counter: null
-        },
-        {
-          id: 7,
-          link: "/bookmarks",
-          name: "Закладки",
-          icon: "menu-bookmarks",
-          counter: null
-        }
+        // {
+        //   id: 6,
+        //   link: "/news",
+        //   name: "Новости",
+        //   icon: "menu-news",
+        //   counter: null
+        // },
+        // {
+        //   id: 7,
+        //   link: "/bookmarks",
+        //   name: "Закладки",
+        //   icon: "menu-bookmarks",
+        //   counter: null
+        // }
       ]
     }
   }
@@ -184,6 +191,7 @@ UserMenu.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
+  userId: state.user.userId,
   activeModal: state.modal.activeModal
 });
 
