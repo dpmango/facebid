@@ -51,6 +51,9 @@ class CategoriesSlider extends Component {
       // {id: 13, icon: "filter-category-nightlife", name: "Ночная жизнь"},
       // {id: 16, icon: "filter-category-couchserfing", name: "Каучсерфинг"}
     ]
+    if ( this.props.type === "search" ){
+      slides.unshift({id: 20, icon: "filter-category-news", name: "Новости"})
+    }
     if ( this.props.type === "create-event" ){
       slides = slides.filter(x => x.name !== "Все" )
     }

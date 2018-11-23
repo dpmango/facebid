@@ -10,7 +10,8 @@ class Events extends Component {
         <Helmet>
           <title>Поиск событий</title>
         </Helmet>
-        <Filters />
+        <Filters
+          type="search" />
         <EventsGrid
           type="search" />
       </Fragment>

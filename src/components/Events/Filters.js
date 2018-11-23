@@ -86,9 +86,18 @@ class Filters extends Component {
       if (options.indexOf(1) !== -1){
         options = options.filter(x => x !== 1)
       }
+      // remove news also
+      if (options.indexOf(20) !== -1){
+        options = options.filter(x => x !== 20)
+      }
+
       // allow selecting all (id = 1)
       if ( id === 1 ){
         options = [1]
+      }
+      // allow selecting news (id = 20)
+      if ( id === 20 ){
+        options = [20]
       }
     // reserve first category (all) as default
     } else if ( options.length === 0 ){
@@ -177,6 +186,7 @@ class Filters extends Component {
         </Collapse>
         <div className="filters__categories">
           <CategoriesSlider
+            type={this.props.type}
             values={categories}
             clickHandler={this.selectCategory}/>
         </div>
