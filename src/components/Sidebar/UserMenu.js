@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -111,7 +111,7 @@ class UserMenu extends Component {
   }
 
   renderNavEl = (el) => (
-    <React.Fragment>
+    <Fragment>
       <div className="user-menu__icon">
        <SvgIcon name={el.icon} />
       </div>
@@ -130,7 +130,7 @@ class UserMenu extends Component {
           <span>{el.counter}</span>
         </div>
       }
-    </React.Fragment>
+    </Fragment>
   )
 
   isActiveLink = (linkPath) => {
@@ -138,6 +138,7 @@ class UserMenu extends Component {
     // NavLink doesn't update activeClass even with {pure:false} on connect
     // Wait till React redux router v4 support and refactor
     const { activeModal } = this.props;
+    const currentLocation = window.location.pathname
 
     const isModalActiveFromMenu = this.state.menu.some(x => x.modal === activeModal)
     if ( isModalActiveFromMenu ){
@@ -146,8 +147,14 @@ class UserMenu extends Component {
       return false
     }
 
-    // search for simplified "starts with" type
-    return window.location.pathname.indexOf(linkPath) !== -1
+    // separated logic to fin
+    if ( currentLocation.indexOf('profile/') !== -1 ){
+      console.log(currentLocation, linkPath)
+      return currentLocation === linkPath
+    }
+
+    // else search for simplified "starts with" category type
+    return currentLocation.indexOf(linkPath) !== -1
   }
 
 
