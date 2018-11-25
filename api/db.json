@@ -1374,11 +1374,11 @@
         "eventImage_1.jpg"
       ],
       "user": {
-        "name": "Анастасия",
-        "avatar": "userAvatar.jpg",
-        "age": "30",
-        "isVerified": true,
-        "distance": "19 км от Вас"
+        "id": 1,
+        "name": "Agneshka",
+        "avatar": "userAvatar_logined.jpg",
+        "age": "24",
+        "isVerified": true
       },
       "name": "Путешествие, групповое, комментарии",
       "from": "Санкт–Петербург",
@@ -1403,11 +1403,11 @@
         "eventImage_1.jpg"
       ],
       "user": {
-        "name": "Анастасия",
-        "avatar": "userAvatar.jpg",
-        "age": "30",
-        "isVerified": true,
-        "distance": "19 км от Вас"
+        "id": 1,
+        "name": "Agneshka",
+        "avatar": "userAvatar_logined.jpg",
+        "age": "24",
+        "isVerified": true
       },
       "name": "Путешествие, групповое, комментарии",
       "from": "Санкт–Петербург",
@@ -1432,11 +1432,11 @@
         "eventImage_1.jpg"
       ],
       "user": {
-        "name": "Анастасия",
-        "avatar": "userAvatar.jpg",
-        "age": "30",
-        "isVerified": true,
-        "distance": "19 км от Вас"
+        "id": 1,
+        "name": "Agneshka",
+        "avatar": "userAvatar_logined.jpg",
+        "age": "24",
+        "isVerified": true
       },
       "name": "Путешествие, групповое, комментарии",
       "from": "Санкт–Петербург",
@@ -1461,11 +1461,11 @@
         "eventImage_1.jpg"
       ],
       "user": {
-        "name": "Анастасия",
-        "avatar": "userAvatar.jpg",
-        "age": "30",
-        "isVerified": true,
-        "distance": "19 км от Вас"
+        "id": 1,
+        "name": "Agneshka",
+        "avatar": "userAvatar_logined.jpg",
+        "age": "24",
+        "isVerified": true
       },
       "name": "Путешествие, групповое, комментарии",
       "from": "Санкт–Петербург",
@@ -1490,11 +1490,11 @@
         "eventImage_1.jpg"
       ],
       "user": {
-        "name": "Анастасия",
-        "avatar": "userAvatar.jpg",
-        "age": "30",
-        "isVerified": true,
-        "distance": "19 км от Вас"
+        "id": 1,
+        "name": "Agneshka",
+        "avatar": "userAvatar_logined.jpg",
+        "age": "24",
+        "isVerified": true
       },
       "name": "Путешествие, групповое, комментарии",
       "from": "Санкт–Петербург",
@@ -1519,11 +1519,11 @@
         "eventImage_1.jpg"
       ],
       "user": {
-        "name": "Анастасия",
-        "avatar": "userAvatar.jpg",
-        "age": "30",
-        "isVerified": true,
-        "distance": "19 км от Вас"
+        "id": 1,
+        "name": "Agneshka",
+        "avatar": "userAvatar_logined.jpg",
+        "age": "24",
+        "isVerified": true
       },
       "name": "Путешествие, групповое, комментарии",
       "from": "Санкт–Петербург",
@@ -1548,11 +1548,11 @@
         "eventImage_1.jpg"
       ],
       "user": {
-        "name": "Анастасия",
-        "avatar": "userAvatar.jpg",
-        "age": "30",
-        "isVerified": true,
-        "distance": "19 км от Вас"
+        "id": 1,
+        "name": "Agneshka",
+        "avatar": "userAvatar_logined.jpg",
+        "age": "24",
+        "isVerified": true
       },
       "name": "Путешествие, групповое, комментарии",
       "from": "Санкт–Петербург",

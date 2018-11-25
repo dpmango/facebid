@@ -17,30 +17,17 @@ class EventsGrid extends Component {
     this.state = {
       data: null,
       pagination: null,
-      profileFilter: 'all',
+      profileFilter: 'my-events',
       searchFilter: 'all',
       datepickerStartDate: null,
       datepickerEndDate: null,
       datepickerFocused: null
     }
 
-    this.loadBy = props.type === "my-events" ? 100 : 10
-    // endpoint router
-    switch (props.type) {
-      case "my-events":
-        this.endpoint = `myEvents`
-        break;
-      case "news":
-        this.endpoint = `news`
-        break;
-      default:
-        this.endpoint = `events`
-    }
-
     this.profileFilters = [
-      { id: 'all', name: 'Все' },
-      { id: 'my', name: 'Личные' },
-      { id: 'groups', name: 'Групповые' }
+      { id: 'my-events', name: 'Мои события' },
+      { id: 'participate', name: 'Участвую' },
+      { id: 'bookmarks', name: 'Закладки' }
     ]
 
     this.searchFilters = [
@@ -49,11 +36,57 @@ class EventsGrid extends Component {
       { id: 'tomorrow', name: 'Завтра' },
       { id: 'week', name: 'На этой неделе' }
     ]
-
   }
 
   componentDidMount(){
     this.getInitialEvents()
+  }
+
+  getLoadBy = () => {
+    const { props: {type}, state: {profileFilter} } = this;
+
+    if ( type === "profile" ){
+      return profileFilter === "my-events" ? 100 : 10
+    } else {
+      return 10
+    }
+  }
+
+  getEndpoint = () => {
+    const { props: {type}, state: {profileFilter} } = this;
+
+    // endpoint router
+    if ( type === "news" ){
+      return "news"
+    }
+    // if ( type === "events" ){
+    //   return "events"
+    // }
+
+    if ( type === "profile" ){
+      if ( profileFilter === "my-events"){
+        return "myEvents"
+      }
+      // TODO - routing for bookmarks
+    }
+
+    return "events" // default case
+  }
+
+  getEventCardType = () => {
+    const { props: {type}, state: {profileFilter} } = this;
+
+    // as my-events and bookmarks was moved to profile section
+    if ( type === "profile" ){
+      if ( profileFilter === "my-events"){
+        return "my-events"
+      }
+      if ( profileFilter === "bookmarks"){
+        return "bookmarks"
+      }
+    }
+
+    return type // default case
   }
 
   getInitialEvents = () => {
@@ -61,7 +94,7 @@ class EventsGrid extends Component {
 
     // api request
     api
-      .get(`${this.endpoint}?_limit=${this.loadBy}`)
+      .get(`${this.getEndpoint()}?_limit=${this.getLoadBy()}`)
       .then(res => {
         this.setState({data: res.data})
       })
@@ -73,7 +106,7 @@ class EventsGrid extends Component {
   loadMore = () => {
     // offset ??
     api
-      .get(`${this.endpoint}?_page=2&_limit=${this.loadBy}`)
+      .get(`${this.getEndpoint()}?_page=2&_limit=${this.getLoadBy()}`)
       .then(res => {
         this.setState({
           data: this.state.data.concat(res.data)
@@ -113,8 +146,8 @@ class EventsGrid extends Component {
         return
       }
       if (datepickerStartDate && datepickerEndDate){
-        console.log('reseting to default profile filter', Object.keys(this.profileFilters)[0].id)
-        this.setFilter(Object.keys(this.profileFilters)[0].id , "searchFilter")
+        console.log('reseting to default profile filter', Object.keys(this.searchFilters)[0].id)
+        this.setFilter(Object.keys(this.searchFilters)[0].id , "searchFilter")
       }
     });
   }
@@ -145,10 +178,10 @@ class EventsGrid extends Component {
 
   render(){
     const {
-      props: {type},
       state: {data}
     } = this
 
+    console.log('event card type - ' + this.getEventCardType())
     return(
       <div className="events">
         {this.renderHeader()}
@@ -158,7 +191,7 @@ class EventsGrid extends Component {
             :
             data.map(event => (
               <EventCard
-                type={type}
+                type={this.getEventCardType()}
                 key={event.id}
                 data={event} />
             ))
@@ -188,19 +221,28 @@ class EventsGrid extends Component {
 
     if ( type === "profile" ){
       return (
-        <div className="events__header">
-          <h3 className="h3-title">{isMyProfile? "Вы участвуете в событиях" : "События"}</h3>
-          <div className="events__header-filter">
-            { this.profileFilters.map((f, i) => (
-              <span
-                key={i}
-                className={profileFilter === f.id ? "is-active" : ""}
-                onClick={this.setFilter.bind(this, f.id, 'profileFilter')}>
-                {f.name}
-              </span>
-            ))}
-          </div>
-        </div>
+        <Fragment>
+          { isMyProfile &&
+            <div className="events__header events__header--bordered">
+              <h3 className="h3-title">События</h3>
+              <div className="events__header-filter events__header-filter--bordered">
+                { this.profileFilters.map((f, i) => (
+                  <span
+                    key={i}
+                    className={profileFilter === f.id ? "is-active" : ""}
+                    onClick={this.setFilter.bind(this, f.id, 'profileFilter')}>
+                    {f.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          }
+          { !isMyProfile &&
+            <div className="events__header">
+              <h3 className="h3-title">События</h3>
+            </div>
+          }
+        </Fragment>
       )
     } else if ( type === "search" ){
       return (
@@ -280,10 +322,10 @@ class EventsGrid extends Component {
       return null
     } else {
       return(
-        <Fragment>
+        <div className="events__header">
           <h3 className="h3-title">Результаты поиска</h3>
           <div className="events__header-total">Найдено 148 событий</div>
-        </Fragment>
+        </div>
       )
     }
   }

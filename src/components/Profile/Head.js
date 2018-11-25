@@ -52,7 +52,7 @@ class Head extends Component{
     api
       .get(`profiles/${profileId}`)
       .then(res => {
-
+        // console.log(res)
         this.setState({
           isLoaded: true,
           avatar: res.data.avatar,

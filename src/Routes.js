@@ -24,11 +24,11 @@ export const Invite = MyLoadable({
   modules: ['./pages/Invite'],
   webpack: () => [require.resolveWeak('./pages/Invite')]
 });
-export const MyEvents = MyLoadable({
-  loader: () => import("./pages/MyEvents"),
-  modules: ['./pages/MyEvents'],
-  webpack: () => [require.resolveWeak('./pages/MyEvents')]
-});
+// export const MyEvents = MyLoadable({
+//   loader: () => import("./pages/MyEvents"),
+//   modules: ['./pages/MyEvents'],
+//   webpack: () => [require.resolveWeak('./pages/MyEvents')]
+// });
 export const Profile = MyLoadable({
   loader: () => import("./pages/Profile"),
   modules: ['./pages/Profile'],
@@ -39,11 +39,11 @@ export const News = MyLoadable({
   modules: ['./pages/News'],
   webpack: () => [require.resolveWeak('./pages/News')]
 });
-export const Bookmarks = MyLoadable({
-  loader: () => import("./pages/Bookmarks"),
-  modules: ['./pages/Bookmarks'],
-  webpack: () => [require.resolveWeak('./pages/Bookmarks')]
-});
+// export const Bookmarks = MyLoadable({
+//   loader: () => import("./pages/Bookmarks"),
+//   modules: ['./pages/Bookmarks'],
+//   webpack: () => [require.resolveWeak('./pages/Bookmarks')]
+// });
 export const Static = MyLoadable({
   loader: () => import("./pages/Static"),
   modules: ['./pages/Static'],
@@ -85,12 +85,12 @@ export const routes = [
     path: '/invite',
     component: Invite
   },
-  {
-    isExact: false,
-    protected: true,
-    path: '/my-events',
-    component: MyEvents
-  },
+  // {
+  //   isExact: false,
+  //   protected: true,
+  //   path: '/my-events',
+  //   component: MyEvents
+  // },
   {
     isExact: false,
     protected: true,
@@ -103,12 +103,12 @@ export const routes = [
     path: '/news',
     component: News
   },
-  {
-    isExact: false,
-    protected: true,
-    path: '/bookmarks',
-    component: Bookmarks
-  },
+  // {
+  //   isExact: false,
+  //   protected: true,
+  //   path: '/bookmarks',
+  //   component: Bookmarks
+  // },
   {
     isExact: false,
     path: '/info/:id',

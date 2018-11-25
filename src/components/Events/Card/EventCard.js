@@ -313,13 +313,14 @@ class EventCard extends Component {
               onMouseEnter={this.scrollableMouseEnter}
               onMouseLeave={this.scrollableMouseLeave}
               className={"e-card__contents-wrapper" + (shouldCtaStick ? " should-stick" : "") }>
-
-              <EventCardTop
-                type={type}
-                actionFlag={actionFlag}
-                id={id}
-                user={user}
-                shareContents={shareContents} />
+              { !this.isMyEvents &&
+                <EventCardTop
+                  type={type}
+                  actionFlag={actionFlag}
+                  id={id}
+                  user={user}
+                  shareContents={shareContents} />
+              }
 
               <PerfectScrollbar
                 className="scrollbar-blue e-card__scrollable"

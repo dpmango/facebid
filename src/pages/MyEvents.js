@@ -64,7 +64,7 @@ class MyEvents extends Component {
         }
         { eventsCounter &&
           <EventsGrid
-            type="my-events" />
+            type="my-events" /> 
         }
       </React.Fragment>
     );
